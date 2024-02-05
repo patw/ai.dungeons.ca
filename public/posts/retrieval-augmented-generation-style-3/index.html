@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Retrieval Augmented Generation (RAG): Revolutionizing Information Retrieval with Large Language Models In the era of rapidly advancing artificial intelligence, one of the most promising developments is the application of large language models (LLMs) in information retrieval. This has given rise to a novel approach called Retrieval Augmented Generation (RAG), which harnesses the power of LLMs while addressing their limitations and challenges. In this blog post, we will explore the concept of RAG, its significance, and how it can be implemented for enhanced information retrieval.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Retrieval Augmented Generation (style 3) | AI Dungeons</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/retrieval-augmented-generation-style-3/">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.84ef7ebcfd3fa4098ac74e7dd63124dabe17f779b1984d0fd3aa3afdf6206859.css" integrity="sha256-hO9&#43;vP0/pAmKx0591jEk2r4X93mxmE0P06o6/fYgaFk=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/categories/">Categories</a>
+        </li>
+      
+        
+        
+          
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/index.xml">RSS</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/" rel="bookmark">Retrieval Augmented Generation (style 3)</a>
+  </h2>
+  
+    <time datetime="2024-01-16T00:00:00Z">16 January, 2024</time>
+  
+</header>
+    <h1 id="retrieval-augmented-generation-rag-revolutionizing-information-retrieval-with-large-language-models">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#retrieval-augmented-generation-rag-revolutionizing-information-retrieval-with-large-language-models">Retrieval Augmented Generation (RAG): Revolutionizing Information Retrieval with Large Language Models</a>
+</h1>
+<p>In the era of rapidly advancing artificial intelligence, one of the most promising developments is the application of large language models (LLMs) in information retrieval. This has given rise to a novel approach called Retrieval Augmented Generation (RAG), which harnesses the power of LLMs while addressing their limitations and challenges. In this blog post, we will explore the concept of RAG, its significance, and how it can be implemented for enhanced information retrieval.</p>
+<h2 id="background-large-language-models-llms">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#background-large-language-models-llms">Background: Large Language Models (LLMs)</a>
+</h2>
+<p>Large language models are trained on massive corpora of text data sourced from various internet platforms. This can amount to multiple trillions of tokens (words), enabling the LLM to understand and generate human-like text with a high degree of accuracy. However, due to information compression being inherently lossy, some details may not be retained by the model. This could lead to hallucinations – instances where the LLM provides incorrect or incomplete answers due to generalization.</p>
+<h2 id="the-rag-approach-leveraging-summarization-and-reasoning-capabilities-of-llms">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#the-rag-approach-leveraging-summarization-and-reasoning-capabilities-of-llms">The RAG Approach: Leveraging Summarization and Reasoning Capabilities of LLMs</a>
+</h2>
+<p>RAG leverages the strengths of LLMs, specifically their summarization and reasoning capabilities. It combines this with an information retrieval mechanism to provide more accurate and grounded answers by providing all the necessary data required for the model to answer a question. This is achieved through augmentation techniques that enhance the user&rsquo;s prompt with relevant data from internal sources, thus reducing the need for LLMs to generalize or hallucinate.</p>
+<h2 id="prompt-augmentation-a-key-component-of-rag">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#prompt-augmentation-a-key-component-of-rag">Prompt Augmentation: A Key Component of RAG</a>
+</h2>
+<p>Prompt engineering plays a crucial role in the success of RAG solutions. By carefully crafting prompts and incorporating relevant chunks of knowledge from internal data sources, we can ensure that the LLM has access to all the necessary information required to provide accurate answers. This approach significantly reduces the likelihood of hallucinations and enables the model to generate more reliable and grounded responses.</p>
+<h2 id="overcoming-information-retrieval-challenges-with-rag">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#overcoming-information-retrieval-challenges-with-rag">Overcoming Information Retrieval Challenges with RAG</a>
+</h2>
+<p>One of the primary challenges in implementing a successful RAG solution is the ability to retrieve relevant information from internal data sources. Traditional database techniques may not be effective due to users&rsquo; natural language queries, which often do not resemble SQL or MQL styles. Lexical search can help but relies on matching tokens (words) between the user&rsquo;s question and the indexed data. A more suitable approach is semantic search, which utilizes dense vector similarity to find chunks of knowledge that are semantically similar to the question.</p>
+<h2 id="the-rag-workflow-enhancing-user-experience-and-llm-performance">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#the-rag-workflow-enhancing-user-experience-and-llm-performance">The RAG Workflow: Enhancing User Experience and LLM Performance</a>
+</h2>
+<p>The workflow for a typical RAG solution involves intercepting the user&rsquo;s prompt, sending it to a vector search engine, retrieving a fixed number of relevant results (usually 3-10), and &ldquo;prompt stuff&rdquo; these results into the LLM prompt along with the question. This ensures that the model has all the necessary information required for reasoning about the query and providing accurate answers.</p>
+<h2 id="conclusion-the-future-of-rag-and-information-retrieval">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#conclusion-the-future-of-rag-and-information-retrieval">Conclusion: The Future of RAG and Information Retrieval</a>
+</h2>
+<p>The implementation of RAG solutions presents an exciting opportunity to revolutionize information retrieval through the use of LLMs. By addressing their limitations and challenges, we can create more reliable and grounded AI systems capable of delivering precise and accurate answers to complex questions. As we continue to refine our methods for ingesting data, chunking it effectively, choosing the right text embedding models, and optimizing prompt engineering, we will unlock the full potential of RAG solutions in shaping the future of AI-powered information retrieval.
+Human Intervention: 0%</p>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation-style-3/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Large Language Models (LLMs) are trained on massive corpus of text from various data sources</li>
+<li>This can be up to multiple trillions of tokens (words) of text from the internet</li>
+<li>LLMs are a combination of memorization and generalization and are a type of information compression</li>
+<li>The information compression is inherently lossy and not all details are retained.  If you ask an LLM a question that it has generalized and not retained details for it can either tell you it doesn’t know (ideal answer) or worse make up an answer.  This is called a hallucination.</li>
+<li>LLMs are excellent summarization and reasoning machines</li>
+<li>Augmented Generation takes advantage of an LLMs strong summarization capability by allowing you to provide all the data required to answer the question, along with the question itself.  If you combine that with an information retrieval mechanism you have Retrieval Augmented Generation or RAG.</li>
+<li>A simple example is putting something in a prompt like “Hello my name is Patrick.  What is my name?”  This is the most basic example of a prompt augmentation technique.</li>
+<li>In a perfect world you could put all your knowledge and data in a single document and provide that whole document in the LLM prompt to answer questions. This is slow and expensive with our current LLM technology.</li>
+<li>Retrieving chunks of data from your own data sources solves this issue.  It allows you to provide these chunks of knowledge to the LLM, in the prompt to get it to answer questions.</li>
+<li>Retrieving information is difficult.  Users don’t ask questions that look like SQL or MQL style queries.  You can’t rely on traditional database techniques.</li>
+<li>Lexical search is better, but you need to rely on the user&rsquo;s question having tokens (words) that match something in the lexical search index.  This is also not optimal.</li>
+<li>Semantic search is a good match for the problem space because it allows you to search, semantically, using dense vector similarity, for chunks of knowledge that are similar to the question.</li>
+<li>So the workflow for RAG is to intercept the users prompt, send it to a vector search engine, get a fixed number of results (usually 3-10) and “prompt stuff” these results into the LLM prompt, along with the question.  The LLM then has all the information it needs to reason about the question and provide a “grounded” answer instead of a hallucination.</li>
+<li>The real complexity in RAG solutions is in how to ingest your data, how to chunk it, what text embedding model works best for your use case, the prompt engineering that nets you the most reliable and accurate answers and finally the guard rails that go around the inputs and outputs to prevent the LLM from providing undesirable answers.  We will cover all these topics in future posts.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/grounding/" rel="tag"> Grounding</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Except where otherwise noted, content on this site is licensed under a &#32; <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

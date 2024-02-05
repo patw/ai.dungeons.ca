@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Embedding Model Selection: A Comprehensive Guide Embedding models play a crucial role in natural language processing (NLP) applications, enabling accurate analysis and understanding of human language. Selecting the right embedding model can significantly impact the performance and effectiveness of your NLP solution. This blog post aims to provide you with an extensive overview of various embedding model options, along with their strengths and weaknesses, and offer guidance on how to choose the best model for your specific use case.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Embedding Model Selection | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/embedding-model-selection/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/" rel="bookmark">Embedding Model Selection</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+    <h1 id="embedding-model-selection-a-comprehensive-guide">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#embedding-model-selection-a-comprehensive-guide">Embedding Model Selection: A Comprehensive Guide</a>
+</h1>
+<p>Embedding models play a crucial role in natural language processing (NLP) applications, enabling accurate analysis and understanding of human language. Selecting the right embedding model can significantly impact the performance and effectiveness of your NLP solution. This blog post aims to provide you with an extensive overview of various embedding model options, along with their strengths and weaknesses, and offer guidance on how to choose the best model for your specific use case.</p>
+<h2 id="getting-started-text-embedding-models-in-openai">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#getting-started-text-embedding-models-in-openai">Getting Started: Text-Embedding Models in OpenAI</a>
+</h2>
+<p>The easiest way to begin is by directly calling OpenAI&rsquo;s text-embedding-ada-002 model, a 1536-dimensional model with high recall accuracy on non-industry-specific language. However, most RAG use cases will involve GPT-3.5-turbo or GPT-4-turbo models as the large language model (LLM). If you already have an API key and client library for these models, you can use them without any additional effort.</p>
+<h2 id="alternatives-azure-openai-aws-bedrock-and-google-cloud-platform-gcp-vertex">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#alternatives-azure-openai-aws-bedrock-and-google-cloud-platform-gcp-vertex">Alternatives: Azure OpenAI, AWS Bedrock, and Google Cloud Platform (GCP) Vertex</a>
+</h2>
+<p>In some cases, organizations may lack access or authorization to utilize OpenAI services. In such situations, alternative platforms like Azure OpenAI, AWS Bedrock, and GCP Vertex can be recommended as fallback options.</p>
+<h3 id="azure-openai">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#azure-openai">Azure OpenAI</a>
+</h3>
+<p>For Azure OpenAI, the advice remains the same - use text-embedding-ada-002 as the embedding model. You will still find high recall accuracy with this model in non-industry-specific languages.</p>
+<h3 id="google-cloud-platform-gcp-vertex">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#google-cloud-platform-gcp-vertex">Google Cloud Platform (GCP) Vertex</a>
+</h3>
+<p>When working with GCP Vertices, the recommended embedding model is gecko-001, and for LLMs, Palm2 is suggested. The model selection process should be based on your specific requirements and use case scenarios.</p>
+<h2 id="open-source-models-huggingfaces-mteb-leaderboard">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#open-source-models-huggingfaces-mteb-leaderboard">Open Source Models: HuggingFace&rsquo;s MTEB Leaderboard</a>
+</h2>
+<p>If you don&rsquo;t have access to the aforementioned platforms or their models, there are various open-source models available on Huggingface&rsquo;s MTEB Leaderboard. Instruction is one such model family that has demonstrated excellent accuracy in text-embedding tasks. However, new model families with better accuracy continue to emerge, so it&rsquo;s essential to stay updated with the latest advancements.</p>
+<p>Accessing HuggingFace models can be done directly through their API or by downloading and running them locally using the sentence-transformer Python library. Self-hosting these models as a service is also possible, making it easier for organizations to integrate NLP solutions into their systems.</p>
+<h2 id="understanding-model-cards-a-crucial-step-in-selection">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#understanding-model-cards-a-crucial-step-in-selection">Understanding Model Cards: A Crucial Step in Selection</a>
+</h2>
+<p>Before selecting any embedding model, thoroughly review its model card available on HuggingFace. This document contains valuable information about the model&rsquo;s capabilities and limitations, such as context window length (ranging from 512 tokens to 8192 tokens), multi-lingual text embedding support, and more. By understanding these aspects, you can ensure that you choose a model best suited for your specific use case.</p>
+<p>In conclusion, selecting the right embedding model is critical to achieving optimal performance in NLP applications. While this blog post has provided an overview of various options available, it&rsquo;s essential to conduct thorough research and testing before finalizing a model. Remember, each model comes with unique strengths and weaknesses that may or may not align with your requirements.</p>
+<ul>
+<li>Human Intervention: Minor Corrections, the LLM tried to correct GCP Vertex (a product name) to GCP Vertices.  It also renamed the METB leaderboard to M5EB for some reason.  This is probably one of the worst generated blog posts from the system so far.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/embedding-model-selection/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>The easiest way to start is calling OpenAI directly with text-ada-002 as the text embedding model.  It’s 1536 dimensions and has very high recall accuracy on non-industry specific language.  Most use cases will be using gpt-3.5-turbo or gpt4-turbo models as the LLM (large language model), so they will already have an API key and a client library to use this.</li>
+<li>Some larger customers don’t have access or authorization to use OpenAI, so the fallback here is to recommend Azure OpenAI, AWS Bedrock or GCP Vertex.  With Azure OpenAI, the advice above stays the same. With Google GCP and Vertex the embedding model is gecko-001 and the LLM recommended is Palm2.  With Bedrock try Cohere embedding models and Anthropic Claude as the LLM.</li>
+<li>If none of these are available, there’s a wide selection of open source models on Huggingface on the MTEB Leaderboard.  I’ve seen good accuracy with the Instructor family of models but new model families are showing up all the time, with claims of better accuracy:  <a href="https://huggingface.co/spaces/mteb/leaderboard">https://huggingface.co/spaces/mteb/leaderboard</a></li>
+<li>Huggingface models can be accessed through the Huggingface API directly, as a simple replacement for the OpenAI text-ada-002 API.  However, these models can also be downloaded and run locally with the sentence-transformer python library and even self hosted as a service.  See this code for an example: <a href="https://github.com/patw/InstructorVec">https://github.com/patw/InstructorVec</a></li>
+<li>Embedding models all have different strengths and weaknesses, they can vary in the length of the context window (512 tokens to 8192 tokens) and some can handle multilingual text embedding.  Make sure to check out the model card on Huggingface before selecting a model to know what it’s capable of.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/embedding-models/" rel="tag"> Embedding Models</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="LLM Selection: Choosing the Right Language Model for Your RAG Chatbot In today&rsquo;s world of advanced artificial intelligence (AI) and natural language processing (NLP), large language models (LLMs) play a crucial role in developing powerful chatbots. These models, particularly retrieval-augmented generation (RAG) chatbots, have become indispensable for various industries, from customer service to content creation. Selecting the appropriate LLM model that optimizes cost and performance is critical to the success of your use case.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>LLM Selection | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/llm-selection/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/llm-selection/" rel="bookmark">LLM Selection</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+    <h1 id="llm-selection-choosing-the-right-language-model-for-your-rag-chatbot">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#llm-selection-choosing-the-right-language-model-for-your-rag-chatbot">LLM Selection: Choosing the Right Language Model for Your RAG Chatbot</a>
+</h1>
+<p>In today&rsquo;s world of advanced artificial intelligence (AI) and natural language processing (NLP), large language models (LLMs) play a crucial role in developing powerful chatbots. These models, particularly retrieval-augmented generation (RAG) chatbots, have become indispensable for various industries, from customer service to content creation. Selecting the appropriate LLM model that optimizes cost and performance is critical to the success of your use case. This comprehensive blog post will delve into the world of LLMs, providing a detailed comparison of popular models such as OpenAI&rsquo;s GPT-4, GPT-3.5 Turbo, Google Palm2, Amazon Bedrock, Coherent, Meta LLaMA2, and Mistral. We will also discuss the importance of 3rd party open source LLM providers and how they can drastically reduce costs for your chatbot development projects.</p>
+<h2 id="openais-gpt-4-and-gpt-35-turbo">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#openais-gpt-4-and-gpt-35-turbo">OpenAI&rsquo;s GPT-4 and GPT-3.5 Turbo</a>
+</h2>
+<p>OpenAI&rsquo;s GPT-4 is by far the most advanced and sophisticated LLM model to date, offering unparalleled accuracy and functionality. However, concerns about cost and rate limits might make it less attractive for some use cases. Thankfully, OpenAI offers a more affordable alternative in the form of its GPT-3.5 Turbo model. This version performs exceptionally well at a fraction of the price of GPT-4 while still offering robust capabilities for zero-shot augmented summarization tasks. Our recommendation is to start with GPT-3.5 Turbo, as it provides an excellent balance between performance and cost efficiency.</p>
+<h2 id="azure-openai-version">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#azure-openai-version">Azure OpenAI Version</a>
+</h2>
+<p>If your organization is not allowed to use OpenAI directly or operates within a more restrictive/high security environment, consider the Azure OpenAI version. This service integrates seamlessly with other Microsoft technologies, offering a secure and reliable platform for developing RAG chatbots.</p>
+<h2 id="googles-palm2">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#googles-palm2">Google&rsquo;s Palm2</a>
+</h2>
+<p>Google has recently introduced its Palm2 LLM model, which is mostly comparable to OpenAI&rsquo;s offerings in terms of performance and functionality. If your organization already operates within the Google Cloud Platform (GCP) ecosystem, it may be worth investigating Palm2 as a potential alternative for your RAG chatbot development projects.</p>
+<h2 id="amazon-bedrock-family-of-products-and-cohere">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#amazon-bedrock-family-of-products-and-cohere">Amazon Bedrock Family of Products and Cohere</a>
+</h2>
+<p>Amazon has made significant strides in the world of LLMs with its Bedrock family of products and Cohere for embedding tasks. With their recent investment in Anthropic (Claude model), they are poised to become a formidable competitor in the LLM market. Their offerings provide robust capabilities for developing RAG chatbots while offering competitive pricing options for various use cases.</p>
+<h2 id="open-source-models-meta-llama2-mistral-and-3rd-party-providers">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#open-source-models-meta-llama2-mistral-and-3rd-party-providers">Open Source Models: Meta LLaMA2, Mistral, and 3rd Party Providers</a>
+</h2>
+<p>Open source models such as Meta&rsquo;s LLaMA2 family (including AlpaCA, Wizard, Orca, and Vicuna) offer excellent performance at a fraction of the cost of proprietary LLMs. These models can be hosted locally and operated using regular CPU resources or even laptop hardware in some cases. Quantized versions of these models further reduce costs by allowing them to run on lower-power hardware without sacrificing performance.</p>
+<p>Mistral, an up-and-coming open source LLM model, has demonstrated impressive results in various benchmarks, surpassing many of its competitors. We highly recommend considering Mistral for your next RAG chatbot development project.</p>
+<p>Aside from open source models, numerous 3rd party providers have emerged offering their own customized LLMs tailored to specific use cases or industries. Investigating these options can lead to significant cost savings when compared to hosting your own LLM internally. By leveraging the expertise and infrastructure of these providers, you can focus on developing high-quality RAG chatbots while minimizing overhead costs.</p>
+<p>In conclusion, selecting the right LLM model for your RAG chatbot project requires careful consideration of factors such as performance, cost efficiency, security requirements, and compatibility with existing technologies. By evaluating each option based on these criteria, you can ensure that your chosen LLM model will provide the necessary functionality to meet your specific use case needs while maximizing resource utilization and minimizing expenses.</p>
+<ul>
+<li>Human Intervention: Minor.  It keeps changing Cohere (company name) to Coherent.  I&rsquo;m not sure the guys at Cohere, who make really awesome embedding models would appreciate that!</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/llm-selection/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Large Language Models (LLM) are the most important part of your RAG (retrieval augmented generation) chatbot. Selecting the right one to optimize cost and performance is critical to the success of your use case.</li>
+<li>In a perfect world, you’d start and end with OpenAI’s GPT4.  It’s by far the most accurate and sophisticated LLM model to date.  However, cost and rate limits can be a concern.  As well, most models perform very well on zero-shot augmented summarization tasks so you may not need this level of functionality.</li>
+<li>OpenAI offers a much cheaper alternative to GPT4 with gpt-3.5-turbo or gpt-4-turbo.  These models perform very well at a fraction of the price of GPT4.  Our advice is to start here.</li>
+<li>If you are not allowed to use OpenAI directly, use the Azure OpenAI version in more restrictive/high security environments.</li>
+<li>Google currently offers Palm2  which is mostly comparable to the OpenAI offerings.  Customers who are in the GCP ecosystem should look into this first.</li>
+<li>Amazon has the Bedrock family of products and Cohere for embeddings. With the recent Anthropic (Claude model) investment, they will have a very compelling offering.</li>
+<li>There is a large selection of open source models like Meta’s LLaMA2, and derivative fine tunes (alpaca, wizard, orca, vicuna) that similarly perform well on these tasks and can be hosted and executed locally.  Quantized (reduced precision) versions of these models can operate on regular CPUs and even on laptops.  If cloud/api costs are a concern these are worth considering.  If the sensitivity of the data doesn’t allow it to leave a local data center, this may be the only option.</li>
+<li>Mistral, a newcomer to the open source LLM field has the strongest performing small open source LLM model I’ve seen to date, I highly recommend this one over the LLama2 family of models.</li>
+<li>Many 3rd party open source LLM providers have appeared recently, and should be investigated for cost, before trying to host your own LLM internally.  This could be drastically cheaper than standing something up yourself.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/open-source/" rel="tag"> Open Source</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

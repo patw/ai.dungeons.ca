@@ -1,0 +1,28 @@
+baseURL = 'https://ai.dungeons.ca/'
+languageCode = 'en-us'
+title = 'AI Dungeons - Everything I learned about AI'
+theme="hugo-flex"
+
+[taxonomies]
+  tag = 'tags'
+  categories = 'categories'
+
+[params]
+color = "DarkGreen"
+favicon = true
+footer = "Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)"
+width = "60rem"
+
+[menus]
+[[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 10
+[[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+[[menus.main]]
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 30

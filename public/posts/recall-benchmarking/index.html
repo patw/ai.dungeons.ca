@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Recall Benchmarking: Optimizing Vector Search for RAG Chatbots In the realm of Retrieval Augmented Generation (RAG) chatbots, benchmarking the recall of your knowledge or text chunks is critical to building an efficient and accurate AI system. Vector search technology powers this retrieval process, making it essential to optimize for both recall and accuracy in order to create a reliable and useful chatbot. This blog post will delve into the importance of vector search recall accuracy, the role of text embedding models and chunking strategies, and how to benchmark your model effectively.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Recall Benchmarking | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/recall-benchmarking/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/" rel="bookmark">Recall Benchmarking</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+    <h1 id="recall-benchmarking-optimizing-vector-search-for-rag-chatbots">
+  <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/#recall-benchmarking-optimizing-vector-search-for-rag-chatbots">Recall Benchmarking: Optimizing Vector Search for RAG Chatbots</a>
+</h1>
+<p>In the realm of Retrieval Augmented Generation (RAG) chatbots, benchmarking the recall of your knowledge or text chunks is critical to building an efficient and accurate AI system. Vector search technology powers this retrieval process, making it essential to optimize for both recall and accuracy in order to create a reliable and useful chatbot. This blog post will delve into the importance of vector search recall accuracy, the role of text embedding models and chunking strategies, and how to benchmark your model effectively.</p>
+<h2 id="the-impact-of-text-embedding-models-and-chunking-strategies">
+  <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/#the-impact-of-text-embedding-models-and-chunking-strategies">The Impact of Text Embedding Models and Chunking Strategies</a>
+</h2>
+<p>The effectiveness of a chatbot&rsquo;s vector search functionality hinges on the selection of an appropriate text embedding model and the chunking strategy for your documents (e.g., word, PDF, HTML, or TXT). If chunks are too large, you risk losing semantic context; if they are too small, you may fail to capture the entire concept you intend to represent.</p>
+<p>Additionally, low-dimensional embedding models may struggle to adequately represent multiple concepts in a single vector. While high-dimensional models can offer more complexity, it&rsquo;s essential to benchmark their accuracy before implementing them. Some large dimension models might even include dimensions representing languages you never plan on embedding.</p>
+<h2 id="benchmarking-the-embedding-model-with-cosine-similarity-function">
+  <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/#benchmarking-the-embedding-model-with-cosine-similarity-function">Benchmarking the Embedding Model with Cosine Similarity Function</a>
+</h2>
+<p>As part of your Proof of Concept (PoC), you should develop a series of questions and answers and identify where they can be found within your documentation. By using a simple cosine similarity function, you can evaluate how well each question correlates with its corresponding chunk. It&rsquo;s also important to &ldquo;red team&rdquo; some irrelevant promptsto rule out false positives and ensure the accuracy of your search results.</p>
+<p>This benchmarking process should be conducted without involving the Large Language Model (LLM) at first, as it will help you understand the performance of your vector search before integrating the LLM into the equation.</p>
+<h2 id="managing-false-positives-and-setting-confidence-levels">
+  <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/#managing-false-positives-and-setting-confidence-levels">Managing False Positives and Setting Confidence Levels</a>
+</h2>
+<p>False positives—high scoring chunks that are irrelevant to a user&rsquo;s query—are one of the most significant challenges in achieving accurate recall accuracy. To mitigate this issue, set a confidence level (a high cosine similarity score) as a threshold for returning relevant chunks. If no chunk meets this threshold, the chatbot should respond with a message like &ldquo;Sorry, I can&rsquo;t answer this question.&rdquo; This serves as the first critical guardrail against leaking underlying training data or providing hallucinated answers.</p>
+<h2 id="experimenting-with-different-embedding-models">
+  <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/#experimenting-with-different-embedding-models">Experimenting with Different Embedding Models</a>
+</h2>
+<p>When selecting an embedding model for your RAG chatbot, start with the text-ada-002 model from OpenAI and then explore other models that perform well on HuggingFace&rsquo;s MT5 Leaderboard, focusing on semantic text similarity metrics. The goal is to find a combination of an embedding model and chunking strategy that delivers optimal results.</p>
+<p>In summary, the success of your RAG chatbot relies heavily on optimizing vector search recall accuracy through careful selection of text embedding models and effective chunking strategies. By benchmarking these components thoroughly and setting appropriate confidence levels, you can ensure that your chatbot provides accurate and helpful responses to users&rsquo; inquiries while preventing false positives and hallucinated answers.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/recall-benchmarking/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Benchmarking the recall of your knowledge/text chunks is critical to building your RAG (retrieval augmented generation) chatbots.  Vector search is the technology that powers the retrieval, so we must optimize for search recall and accuracy.</li>
+<li>Vector search recall accuracy comes down to the text embedding model selection and your chunking strategy of your documents (word, pdf, html, txt).  If the text chunks are too large, you can lose semantic context, if it’s too small you might not capture the entire concept you are trying to represent.  If the embedding model is low dimensional it might not have the ability to represent multiple concepts in a single vector.  But also, the number of dimensions is only a rough estimate of how sophisticated the embedding model is, so you need to benchmark for accuracy.  Some really large dimension models are using dimensions to represent languages you might never need to embed!</li>
+<li>As part of your PoC you need to come up with a series of questions and answers, and where they can be found within your documentation.  Using this you can benchmark the embedding model with a simple cosine similarity function to see how well the question and the chunk correlate.  You should also “red team” some prompts that should not match your data to rule out false positives.  This whole process can be done without the LLM (large language model) involved at all.</li>
+<li>False positives (high scoring chunks that are not relevant to the search) are the #1 observed problem with recall accuracy in vector search use cases.  You need to make sure your questions are not returning irrelevant data at high cosine similarity scores</li>
+<li>Not every question can be answered.  There must be a confidence level (high cosine similarity score) in the returned chunks before you send them to the LLM.  Use the scores returned from the search engine and a defined score cut-off point to prevent irrelevant chunks from being sent for question answering.  If no chunk scores well, return a message like “Sorry, I can’t answer this question”.  This is your first major guardrail against your chatbot from leaking the underlying training data or providing hallucinated answers.</li>
+<li>Experimenting with different embedding models is encouraged at this stage.  Start with text-ada-002 model from OpenAI, and then try models that are high on the semantic text similarity metric on the HuggingFace MTEB Leaderboard (<a href="https://huggingface.co/spaces/mteb/leaderboard)">https://huggingface.co/spaces/mteb/leaderboard)</a>.  What you want for an outcome is an embedding model and chunking combination that produce the best results.  Use some data science here!</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/embedding/" rel="tag"> Embedding</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Designing for LLM-Driven Applications: A Comprehensive Guide Large Language Models (LLMs) have revolutionized the way we interact with technology, enabling natural language processing and generation to new heights. To harness the full potential of these powerful models in application development, it&rsquo;s crucial to focus on designing effective prompts that optimize their performance. This blog post will delve into the four essential elements of prompt design for LLM-driven applications: system message, augmentation, pre-question prompt, and user question.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Designing for LLM Driven Applications | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/" rel="bookmark">Designing for LLM Driven Applications</a>
+  </h2>
+  
+    <time datetime="2024-01-25T00:00:00Z">25 January, 2024</time>
+  
+</header>
+    <h1 id="designing-for-llm-driven-applications-a-comprehensive-guide">
+  <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/#designing-for-llm-driven-applications-a-comprehensive-guide">Designing for LLM-Driven Applications: A Comprehensive Guide</a>
+</h1>
+<p>Large Language Models (LLMs) have revolutionized the way we interact with technology, enabling natural language processing and generation to new heights. To harness the full potential of these powerful models in application development, it&rsquo;s crucial to focus on designing effective prompts that optimize their performance. This blog post will delve into the four essential elements of prompt design for LLM-driven applications: system message, augmentation, pre-question prompt, and user question.</p>
+<h2 id="system-message">
+  <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/#system-message">System Message</a>
+</h2>
+<p>The system message plays a pivotal role in shaping the tone and personality of the LLM&rsquo;s responses. If you want professional, technical replies, incorporate that into the system message. Similarly, if you desire more conversational or irreverent outputs, reflect those qualities in your system message as well. This will help guide the model towards delivering the desired output style and format.</p>
+<h2 id="augmentation">
+  <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/#augmentation">Augmentation</a>
+</h2>
+<p>In RAG (Retrieval Augmented Generation) use cases, augmentation is critical for providing authoritative responses to user questions. By adding text chunks or distilled facts with context, you empower the LLM to answer queries accurately and efficiently.</p>
+<p>When working with smaller parameter count models (e.g., Mistral-7b), it becomes even more important to have the right data or facts in the prompt, as well as minimizing irrelevant information. Optimize your chunking and recall strategy to achieve optimal performance from the LLM.</p>
+<h2 id="pre-question-prompt">
+  <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/#pre-question-prompt">Pre-Question Prompt</a>
+</h2>
+<p>The pre-question prompt serves as a crucial guiding element for LLMs. A typical prompt starts with &ldquo;Answer the following question using the facts above:&rdquo;, but you will need to customize this message to steer the model away from irrelevant topics, such as discussing the facts or revealing its system message. Additionally, use this section of the prompt to specify the desired output format (e.g., JSON or XML), ensuring that the LLM adheres to your requested format.</p>
+<p>Development cycles may involve iterating on the pre-question prompt to refine and improve the model&rsquo;s responses. This &ldquo;steerability&rdquo; is a critical aspect of designing prompts for LLM-driven applications.</p>
+<h2 id="user-question">
+  <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/#user-question">User Question</a>
+</h2>
+<p>The user question, provided at the end of the prompt, directly impacts the LLM&rsquo;s response generation process. While there are differing opinions on where to place the question within the prompt, our observations have shown stronger performance when placing the data/facts at the top and the pre-question and question at the bottom.</p>
+<p>By meticulously crafting each element of the prompt, developers can maximize the potential of LLMs in their applications, ultimately delivering more accurate, engaging, and user-friendly experiences for end-users.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/designing-for-llm-driven-applications/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Designing for LLM (large language model) driven applications should focus on the various elements of the prompt to the LLM</li>
+<li>The prompt should be broken down into the following 4 elements:  system message (bot identity and personality), the augmentation (data and facts) which is used to answer the question, the pre-question prompt used for steering the response output style and format, and finally the user provided question itself.</li>
+<li>The system message should be designed to give the LLM responses a personality or tone for responses.  If you want a professional tone with technical expertise, build that into the system message.  Same if you want a more conversational, irreverent tone to the outputs.</li>
+<li>The augmentation piece is critical for RAG (retrieval augmented generation) use cases. This is where you add your text chunks or distilled facts with context, so that the LLM can answer the question authoritatively.  The smaller the parameter count of the model (ie mistral-7b) the more important it is to have the correct data or facts in the prompt and as little irrelevant data as possible.  Optimize your chunking and recall strategy to get the biggest wins here.</li>
+<li>The pre-question prompt is usually something like “Answer the following question using the facts above:”, which is a great starting point.  You will need to modify this prompt to steer the model away from things like talking about the facts, or revealing it’s system message or sticking to JUST the facts provided and nothing else.  This is also the place you specify the output format, if you want JSON or XML you ask for it here.  You will spend some development cycles iterating on this part of the prompt to get the best possible outputs.  This is your steerability.</li>
+<li>The question itself is provided by the user and gets quoted into the prompt as the final step.  There’s some arguments in the industry to put the question up at the top of the prompt, but I’ve observed stronger responses by laying out the prompt with the data/facts at the top of the prompt and the pre-question and question at the bottom.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/prompt-engineering/" rel="tag"> Prompt Engineering</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/design/" rel="tag"> Design</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

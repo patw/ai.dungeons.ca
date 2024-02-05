@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques - LLM Presummarization Choosing a good chunking strategy for unstructured text documents is crucial to the success of your Retrieval Augmented Generation (RAG) use case. In this post, we will discuss the use of Large Language Models (LLMs) for pre-summarizing structured data, with the aim of producing semantically rich paragraphs that are ideal inputs for text embedding models and semantic search recall.
+The Challenges of Structured Data Creating dense vector embeddings with structured data like XML and JSON often results in weak embeddings due to repetitive keys and control characters, which can cause poor recall and precision when performing semantic searches.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - LLM Presummarization | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/" rel="bookmark">Chunking Techniques - LLM Presummarization</a>
+  </h2>
+  
+    <time datetime="2024-02-05T00:00:00Z">5 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques---llm-presummarization">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#chunking-techniques---llm-presummarization">Chunking Techniques - LLM Presummarization</a>
+</h1>
+<p>Choosing a good chunking strategy for unstructured text documents is crucial to the success of your Retrieval Augmented Generation (RAG) use case. In this post, we will discuss the use of Large Language Models (LLMs) for pre-summarizing structured data, with the aim of producing semantically rich paragraphs that are ideal inputs for text embedding models and semantic search recall.</p>
+<h2 id="the-challenges-of-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#the-challenges-of-structured-data">The Challenges of Structured Data</a>
+</h2>
+<p>Creating dense vector embeddings with structured data like XML and JSON often results in weak embeddings due to repetitive keys and control characters, which can cause poor recall and precision when performing semantic searches. Similar issues can be encountered with tabular data, point form data, tables of contents, and appendixes found in regular documents. In this post, we will focus on JSON documents specifically.</p>
+<h2 id="llm-pre-summarization-method">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#llm-pre-summarization-method">LLM Pre-Summarization Method</a>
+</h2>
+<p>To address these challenges, we propose using the LLM pre-summarization method, where your original JSON document is fed to the LLM, asking for a one-paragraph summary of the record itself. The output of this summarized record is then sent to the text embedding model for vectorization. This approach can provide significantly improved recall and precision compared to other chunking methods we have discussed in previous posts.</p>
+<h2 id="cost-considerations">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#cost-considerations">Cost Considerations</a>
+</h2>
+<p>The downside of the LLM pre-summarization method is its cost, as running an entire set of structured or unstructured data through the LLM for summarization can be expensive, especially when using commercial models like OpenAI&rsquo;s GPT-4. To mitigate costs, we recommend testing less expensive alternatives such as GPUs or services like Mistral.ai and the &ldquo;mistral-tiny&rdquo; model.</p>
+<h2 id="future-trends-in-chunking-strategies">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#future-trends-in-chunking-strategies">Future Trends in Chunking Strategies</a>
+</h2>
+<p>For projects with larger budgets, LLM pre-summarization will likely be the best choice for chunking strategies. In the future, almost all use cases will require some level of data summarization like &ldquo;Fact Synthesis&rdquo; mentioned earlier in this series. By employing techniques such as LLM pre-summarization, you can better align structured data with text embedding models, enabling more effective semantic search capabilities against structured data.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
+<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will use the LLM itself to pre-summarize the source text.  This ensures that if the data is structured, poorly worded or overly verbose you can output a semantically rich paragraph of english text, which is the ideal input for a text embedding model and semantic search recall.</li>
+<li>The ninth in our series of posts about Chunking techniques we will discuss pre-summarizing structured data, using an LLM for the purpose of producing very strong text embeddings.</li>
+<li>Creating dense vector embeddings with structured data like XML and JSON tends to produce really weak embeddings that suffer from poor recall and even worse precision.  This happens because structured data has lots of repeating keys and control characters.  Text embedding models tend to perform best against semantically rich paragraphs of plain english text.</li>
+<li>This same problem can happen with tabular data, point form data, tables of content and appendixes on regular documents as well.  In this blog post we will address JSON documents specifically.</li>
+<li>Using the LLM pre-sum method, you will feed your original JSON document to the LLM asking for a one paragraph summary of the record itself.  The output of this record should be sent to the text embedding model for vectorization.  This summarized version of the record will have dramatically better recall and precision against natural language queries/prompts than any other chunking method we’ve discussed in this series.</li>
+<li>The downside of LLM pre-sum is the cost.  You need to run your entire set of structured or unstructured data through the LLM to summarize it first.  This can be quite expensive if you’re using commercial LLMs like GPT4 from OpenAI.  Test with the less expensive GPT3-turbo models first to see if the summaries it produces are good enough for your use case.  Even better, try services like Mistral.ai and the “mistral-tiny” model, which are 10x cheaper than even the GPT3-turbo model.</li>
+<li>If money and budget is not a concern for your project, this will be the best possible choice for chunking strategies.  In the future, almost all use cases will require some level of data summarization like the “Fact Synthesis” blog post from earlier in this series.</li>
+<li>This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

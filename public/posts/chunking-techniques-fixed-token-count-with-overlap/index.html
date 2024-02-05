@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques: Fixed Token Count with Overlap Choosing a good chunking strategy for unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. In this blog post, we will focus on one of the most basic yet effective techniques: fixed token count with overlap. This method is widely used in RAG libraries like LangChain and LLAMAindex.
+Background Chunks of text are sent to the text embedding model, which produces dense vectors that can be searched for similarity using vector search.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Fixed Token Count with Overlap | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/" rel="bookmark">Chunking Techniques - Fixed Token Count with Overlap</a>
+  </h2>
+  
+    <time datetime="2024-01-30T00:00:00Z">30 January, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques-fixed-token-count-with-overlap">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#chunking-techniques-fixed-token-count-with-overlap">Chunking Techniques: Fixed Token Count with Overlap</a>
+</h1>
+<p>Choosing a good chunking strategy for unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. In this blog post, we will focus on one of the most basic yet effective techniques: fixed token count with overlap. This method is widely used in RAG libraries like LangChain and LLAMAindex.</p>
+<h2 id="background">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#background">Background</a>
+</h2>
+<p>Chunks of text are sent to the text embedding model, which produces dense vectors that can be searched for similarity using vector search. Chunks returned are then sent to the Large Language Model (LLM) to answer questions. There is no one-size-fits-all approach to text chunking; however, we have observed many different strategies in the field. It&rsquo;s essential to experiment with various techniques and benchmark them against recall and precision using your chosen embedding model.</p>
+<h2 id="fixed-token-count-with-overlap">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#fixed-token-count-with-overlap">Fixed Token Count with Overlap</a>
+</h2>
+<p>The fixed token count with overlap method is a default chunking technique in most RAG libraries. In this approach, you define a fixed number of tokens (words) that will be used per chunk, typically 256 or 512, and specify the desired amount of overlap between adjacent chunks. This method works well when you don&rsquo;t know the structure of the document source upfront and rely on the LLM to reason through broken sentences and potentially irrelevant data.</p>
+<p>This technique is particularly effective with larger, more complex LLM models as it heavily relies on their reasoning capabilities. To implement fixed token count with overlap, follow these steps:</p>
+<ol>
+<li>Define the maximum number of tokens per chunk (e.g., 256 or 512).</li>
+<li>Specify the desired overlap between adjacent chunks (e.g., 32 tokens).</li>
+<li>Break down your unstructured text documents into chunks based on the defined token count and overlap.</li>
+<li>Feed these chunks to the embedding model for vectorization.</li>
+<li>Use the resulting dense vectors in a vector search to find similar chunks.</li>
+<li>Send the retrieved chunks to the LLM for answering questions or generating responses.</li>
+</ol>
+<h2 id="experimentation-and-benchmarking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#experimentation-and-benchmarking">Experimentation and Benchmarking</a>
+</h2>
+<p>To optimize your RAG use case, it&rsquo;s crucial to experiment with various chunking techniques and benchmark their performance against recall and precision metrics using your chosen embedding model. This will help you identify the best possible approach for your specific use case.</p>
+<h2 id="conclusion">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#conclusion">Conclusion</a>
+</h2>
+<p>The fixed token count with overlap method is a versatile and effective text chunking technique used in RAG libraries like LangChain and LLAMAindex. By defining the maximum number of tokens per chunk and the desired overlap between adjacent chunks, you can leverage the reasoning capabilities of larger, more complex LLM models to process unstructured text documents effectively. Experiment with different techniques and benchmark their performance against recall and precision metrics to optimize your RAG use case.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The most basic text chunking strategy is fixed token count with overlap.  This is the default chunking method in most RAG libraries like “langchain” or “llamaindex”.  In this method, you define a fixed number of tokens (words) that will be used per chunk, usually 256 or 512 and how much overlap you want from the previous and next chunk.  This method works well for time when you don’t know the structure of the document source up front and want to rely on the LLM (large language model) to reason through broken sentences and possibly irrelevant data.  This relies heavily on the LLMs reasoning capability and works best with larger, more complex LLM models.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

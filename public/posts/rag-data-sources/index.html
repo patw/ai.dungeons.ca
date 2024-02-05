@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="RAG Data Sources: Building Knowledge-Driven Chatbots In today&rsquo;s fast-paced business landscape, knowledge-driven chatbots play a crucial role in streamlining internal communication and enhancing organizational productivity. The Retrieval Augmented Generation (RAG) approach is the leading technique for building such chatbots, utilizing AI algorithms to retrieve and generate accurate responses based on a vast repository of information.
+Data Source Selection: The Foundation of RAG Chatbots A company&rsquo;s knowledge is often scattered across multiple systems in various formats.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>RAG Data Sources | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/rag-data-sources/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/rag-data-sources/" rel="bookmark">RAG Data Sources</a>
+  </h2>
+  
+    <time datetime="2024-01-17T00:00:00Z">17 January, 2024</time>
+  
+</header>
+    <h1 id="rag-data-sources-building-knowledge-driven-chatbots">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#rag-data-sources-building-knowledge-driven-chatbots">RAG Data Sources: Building Knowledge-Driven Chatbots</a>
+</h1>
+<p>In today&rsquo;s fast-paced business landscape, knowledge-driven chatbots play a crucial role in streamlining internal communication and enhancing organizational productivity. The Retrieval Augmented Generation (RAG) approach is the leading technique for building such chatbots, utilizing AI algorithms to retrieve and generate accurate responses based on a vast repository of information.</p>
+<h2 id="data-source-selection-the-foundation-of-rag-chatbots">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#data-source-selection-the-foundation-of-rag-chatbots">Data Source Selection: The Foundation of RAG Chatbots</a>
+</h2>
+<p>A company&rsquo;s knowledge is often scattered across multiple systems in various formats. Identifying relevant data sources is an essential part of designing a chatbot. To begin, select a corpus of documents that represent the knowledge base you want your chatbot to answer questions about. This should be something immediately useful for specific groups within the organization.</p>
+<h2 id="starting-with-unstructured-data-text-documents-pdfs-and-word-documents">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#starting-with-unstructured-data-text-documents-pdfs-and-word-documents">Starting with Unstructured Data: Text Documents, PDFs, and Word Documents</a>
+</h2>
+<p>The easiest data sources to start with are text documents, PDFs, and Word documents. They are well supported by AI systems such as LLamaIndex and Langchain. Using these tools, you can ingest and chunk the selected documents from a directory. A great tutorial on implementing RAG with Atlas Vector Search, LangChain, and OpenAI can be found here: <a href="https://www.mongodb.com/blog/post/retrieval-augmented-generation-rag-with-atlas-vector-search-langchain-and-openai">RAG with Atlas Vector Search, LangChain, and OpenAI | Mongodb</a>.</p>
+<h2 id="testing-your-chatbot-extensive-evaluation-and-validation">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#testing-your-chatbot-extensive-evaluation-and-validation">Testing Your Chatbot: Extensive Evaluation and Validation</a>
+</h2>
+<p>After setting up your chatbot, it is essential to test its performance extensively. Ask questions that the chatbot should be able to answer based on the source material. This will help you identify any inaccuracies or gaps in the knowledge chunks. Validate what your chatbot gets right and wrong so you can investigate and modify the knowledge chunks later if necessary.</p>
+<h2 id="a-word-of-caution-handling-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#a-word-of-caution-handling-structured-data">A Word of Caution: Handling Structured Data</a>
+</h2>
+<p>While unstructured data such as text documents, PDFs, and Word documents are ideal for starting a RAG-based chatbot, structured data like tables, point form lists, spec sheets, XML, and JSON documents may not embed well. Therefore, they should not be the first data sources you attempt to use. In future blog posts, we will cover techniques for handling structured data using pre-summarization.</p>
+<p>In conclusion, building a knowledge-driven chatbot using RAG involves selecting relevant data sources, starting with unstructured documents like text, PDFs, and Word files, testing your chatbot extensively, and handling structured data with caution. With these strategies in mind, you can create an effective RAG chatbot that enhances communication within your organization and streamlines daily operations.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>RAG (Retrieval Augmented Generation) is the leading technique for building knowledge driven chatbots for your organization</li>
+<li>Data source selection is an important part of the design for chatbots.  A company’s knowledge dispersed in dozens of different systems and in different formats.</li>
+<li>The easiest data sources to start with are text documents, pdfs and word documents. These types are well supported in the LLamaIndex and Langchain systems.</li>
+<li>Start by identifying a set of documents that represents a corpus of knowledge that you want the chatbot to answer questions about.  Pick something that has immediate utility to some group within the organization</li>
+<li>Use LLamaIndex or Langchain to ingest and chunk these documents from a directory.  A great tutorial can be found here:  RAG with Atlas Vector Search, LangChain, and OpenAI | MongoDB</li>
+<li>Test your chatbot extensively with questions it should be able to answer, based on the source material.  Validate what it’s getting right and wrong so you can investigate and modify your knowledge chunks later if they are incorrect.</li>
+<li>A word of warning:  Structured data such as tables, point form lists, spec sheets, xml and json documents do not embed very well and should not be the first data sources you attempt to use.</li>
+<li>We will cover structured data techniques using pre-summarization in later blog posts.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chatbots/" rel="tag"> Chatbots</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/data-sources/" rel="tag"> Data Sources</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

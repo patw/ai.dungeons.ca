@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques - Recursive Chunking In the realm of text processing, selecting an appropriate chunking strategy is paramount for a successful Retrieval Augmented Generation (RAG) use case. The primary purpose behind this technique is to segment unstructured text documents (such as PDFs, Word files, or HTML pages) into manageable pieces that can be fed to the Text Embedding model. This model then produces dense vectors for each chunk, which are subsequently searched based on similarity using vector search algorithms.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Recursive Chunking | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-recursive-chunking/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/" rel="bookmark">Chunking Techniques - Recursive Chunking</a>
+  </h2>
+  
+    <time datetime="2024-02-02T00:00:00Z">2 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques---recursive-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/#chunking-techniques---recursive-chunking">Chunking Techniques - Recursive Chunking</a>
+</h1>
+<p>In the realm of text processing, selecting an appropriate chunking strategy is paramount for a successful Retrieval Augmented Generation (RAG) use case. The primary purpose behind this technique is to segment unstructured text documents (such as PDFs, Word files, or HTML pages) into manageable pieces that can be fed to the Text Embedding model. This model then produces dense vectors for each chunk, which are subsequently searched based on similarity using vector search algorithms. The retrieved chunks are sent to a Large Language Model (LLM), typically for question-answering purposes.</p>
+<p>When it comes to text chunking strategies, there is no one-size-fits-all solution. Different methods might yield varying levels of recall and precision depending on the specifics of your project. It&rsquo;s crucial to experiment with different strategies, benchmark them against each other, and determine which combination offers the best performance with your chosen text embedding model.</p>
+<p>In this blog post, we will delve into one such chunking technique: <strong>Recursive Chunking</strong>. This method has been observed to produce stronger recall results in vector search compared to other popular strategies such as token limit with overlap. The recursive approach involves dividing a single page of text into smaller chunks at multiple levels, resulting in a total of seven embedding vectors per page.</p>
+<p>The process begins by creating an embedding at the page level. This initial step may produce a vague semantic representation in the vector space, depending on the question being asked. To refine this representation and improve recall, the next stage involves splitting each full page into two halves, with separate embeddings generated for the top and bottom parts of the page.</p>
+<p>The recursion continues as we further subdivide these halved sections into quarters, generating more precise embeddings for each quarter. This process generates seven total dense vector embeddings per page, each potentially performing better or worse than others depending on the specifics of the query. The underlying principle behind this technique is that by representing the same data multiple times in different ways, we can achieve better recall rates overall.</p>
+<p>Recursive Chunking has become one of the default chunking methods in popular libraries such as &ldquo;langchain&rdquo; and &ldquo;llamaindex&rdquo;. Its adoption has been driven by its proven effectiveness compared to alternative strategies like token limit with overlap. This technique offers a promising solution for those seeking improved performance in their RAG applications, particularly when working with large amounts of unstructured data.</p>
+<p>In summary, recursive chunking is an innovative and effective approach for segmenting text documents into smaller chunks suitable for embedding and vector search operations. Its ability to produce multiple embeddings per page can significantly improve recall rates, making it a valuable asset in any developer&rsquo;s toolkit. As with any technique, however, it&rsquo;s essential to experiment with different strategies and find the one that works best for your specific use case.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The sixth in our series of posts about Chunking techniques we will discuss splitting a single page of text in half, then in half again to produce 7 embeddings per page.  This method is similar to our first method, token limit with overlap but has proven to produce stronger recall in vector search</li>
+<li>Recursive chunking takes advantage of the idea that different text chunk sizes can produce better or worse recall, depending on the text embedding model.</li>
+<li>In this method you will split your documents up page by page, and produce an embedding at the page level.  This will probably produce a vague semantic representation in the vector space, depending on the question.</li>
+<li>We then split the page in half, embedding the top and bottom halves at the middle part of the page.  This should produce slightly stronger embeddings.</li>
+<li>We take those 2 halves and split them again in half, embedding on the quarter of the page of text.  Producing even stronger embeddings, but potentially missing some of the context the longer page could contain.</li>
+<li>This technique produces 7 total dense vector embeddings for vector search, and each embedding may perform well or poorly depending on the question.  The idea is that the same data is represented multiple ways, in the hope that you will get better recall</li>
+<li>This method is one of the new default chunking methods in the “langchain” and “llamaindex” libraries and has proven to be better than the token limit with overlap chunking method.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

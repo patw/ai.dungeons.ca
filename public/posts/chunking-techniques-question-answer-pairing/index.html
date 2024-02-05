@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques - Question/Answer Pairing In the realm of Retrieval Augmented Generation (RAG) use cases, choosing an appropriate chunking strategy for unstructured text documents is critical to success. This technique involves dividing the text into smaller, manageable chunks that are sent to a text embedding model, which then produces dense vectors that can be searched for similarity using vector search algorithms. The resulting chunks are subsequently sent to a Large Language Model (LLM) to answer specific questions or generate relevant content.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Question Answer Pairing | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-question-answer-pairing/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/" rel="bookmark">Chunking Techniques - Question Answer Pairing</a>
+  </h2>
+  
+    <time datetime="2024-02-01T00:00:00Z">1 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques---questionanswer-pairing">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/#chunking-techniques---questionanswer-pairing">Chunking Techniques - Question/Answer Pairing</a>
+</h1>
+<p>In the realm of Retrieval Augmented Generation (RAG) use cases, choosing an appropriate chunking strategy for unstructured text documents is critical to success. This technique involves dividing the text into smaller, manageable chunks that are sent to a text embedding model, which then produces dense vectors that can be searched for similarity using vector search algorithms. The resulting chunks are subsequently sent to a Large Language Model (LLM) to answer specific questions or generate relevant content.</p>
+<p>While there is no one-size-fits-all solution when it comes to text chunking strategies, many different approaches have been explored in the field. It&rsquo;s essential to experiment with various methods and benchmark them using recall and precision metrics, as well as evaluating their performance against your chosen embedding model.</p>
+<p>In our series of posts about Chunking techniques, we will now focus on the Question/Answer (Q/A) pairing approach. This structured technique involves creating a well-defined question and answer pair that are then embedded together into a single vector. This method works particularly well for managing highly curated sets of answers manually through a CRUD (Create, Read, Update, Delete) style application.</p>
+<p>By embedding a sample question along with its corresponding answer, we have observed dramatic improvements in recall and precision when it comes to the chunks returned. Moreover, this technique is efficient in terms of LLM token budgets, as you only need to send the Answer portion of the Q/A pair during augmentation.</p>
+<p>An example of this approach can be found in the RAGTAG GitHub repository: <a href="https://github.com/patw/RAGTAG">https://github.com/patw/RAGTAG</a>. In summary, incorporating a question and answer pairing strategy into your chunking techniques can lead to improved performance and efficiency in your RAG use cases, ultimately enhancing the overall user experience.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The fourth in our series of posts about Chunking techniques we will discuss embedding a curated question and answer pair for better recall on Q/A chatbot use cases.</li>
+<li>Question/Answer pairing is a more structured technique to text chunking.  In this method, we have a well defined question and answer pair that we want to embed together into a single vector.  This works very well if you want to have highly curated sets of answers that you manage manually with a CRUD style application.  What we have observed is embedding a sample (but common) question along with the answer tends to dramatically increase the recall and precision of the chunks returned.  When you augment the LLM prompt, you typically only have to send the Answer portion of the Q/A pair which is also very efficient on your LL token budget.</li>
+<li>An example of this technique in action can be seen here:  <a href="https://github.com/patw/RAGTAG">https://github.com/patw/RAGTAG</a></li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

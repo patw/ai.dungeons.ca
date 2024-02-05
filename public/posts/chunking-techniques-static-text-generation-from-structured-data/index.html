@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques: Static Text Generation from Structured Data Choosing a good chunking strategy for your unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. Chunks of text, in this context, are the segments that are sent to the text embedding model, which produces dense vectors that are searched for similarity using vector search. The chunks returned are then sent to the Large Language Model (LLM), typically to answer questions.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Static Text Generation from Structured Data | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-static-text-generation-from-structured-data/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-static-text-generation-from-structured-data/" rel="bookmark">Chunking Techniques - Static Text Generation from Structured Data</a>
+  </h2>
+  
+    <time datetime="2024-02-04T00:00:00Z">4 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques-static-text-generation-from-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-static-text-generation-from-structured-data/#chunking-techniques-static-text-generation-from-structured-data">Chunking Techniques: Static Text Generation from Structured Data</a>
+</h1>
+<p>Choosing a good chunking strategy for your unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. Chunks of text, in this context, are the segments that are sent to the text embedding model, which produces dense vectors that are searched for similarity using vector search. The chunks returned are then sent to the Large Language Model (LLM), typically to answer questions.</p>
+<p>There is no one-size-fits-all strategy to text chunking; however, we have observed many different strategies in the field. You should try each approach and benchmark it for recall and precision with your chosen embedding model or experiment with multiple embedding models against each chunking method until you achieve the best possible recall.</p>
+<p>As we delve deeper into this series, the level of sophistication of the techniques will increase. In previous chunking methods in this series, the text chunk was always sent to the LLM without modification after retrieval. In this method, we will use a script to summarize structured data, such as a JSON document from a Mongo collection, into a paragraph of English text. We embed the summarized text but send the original JSON structured document to the LLM prompt to answer the user&rsquo;s question.</p>
+<p>In this eighth post in our series about Chunking techniques, we will discuss pre-summarizing structured data using a script and running the summary text through a text embedding model for vector search retrieval later. Creating dense vector embeddings with structured data like XML and JSON often produces weak embeddings that suffer from poor recall and even worse precision due to the abundance of repeating keys and control characters, which are not semantically rich in plain English text. This same problem can occur with tabular data, point-form data, tables of contents, and appendixes on regular documents as well.</p>
+<p>Converting a JSON document into a paragraph of English text requires a writing script that consumes all the fields and tries to tell a story about the data. Typically, this is done using a story template where the values of the fields get filled in. This process is similar to creating a MadLib, where the nouns and verbs are the values in the source document. The story output will then be run through your text embedding model to store the dense vectors that represent it. Additionally, you will store the original Mongo document ID for the source record along with it, so when you perform a vector search match afterward, you can retrieve the original document and send it to the LLM as part of the prompt augmentation.</p>
+<p>This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data. This approach is also significantly cheaper to implement than LLM Structured Data Summarization, which we will discuss in a future blog post.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-static-text-generation-from-structured-data/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
+<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will use a script to summarize structured data, like a JSON document from a Mongo collection, into a paragraph of english text.  We embed the summarized text, but we will send the original JSON structured document to the LLM prompt to answer the user&rsquo;s question.</li>
+<li>The eighth in our series of posts about Chunking techniques we will discuss pre-summarizing structured data, using a script, and running the summary text through a text embedding model for vector search retrieval later.</li>
+<li>Creating dense vector embeddings with structured data like XML and JSON tends to produce really weak embeddings that suffer from poor recall and even worse precision.  This happens because structured data has lots of repeating keys and control characters.  Text embedding models tend to perform best against semantically rich paragraphs of plain english text.</li>
+<li>This same problem can happen with tabular data, point form data, tables of content and appendixes on regular documents as well.  In this blog post we will address JSON documents specifically.</li>
+<li>Converting a JSON document into a paragraph of english text requires a writing script that consumes all the fields and tries to tell a story about the data.  Typically this is done with a story template, where the values of the fields get filled in.  This is similar to creating a MadLib, where the nouns and verbs are the values in the source document.</li>
+<li>The story output will then be run through your text embedding model to store the dense vectors that represent it.  You will also store the original mongo document ID for the source record along with it, so when you perform a vector search match afterwards you can retrieve the original document and send it to the LLM, as part of the prompt augmentation.</li>
+<li>This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data.</li>
+<li>This technique is also significantly cheaper to implement than LLM Structured Data Summarization, which we will talk about in a future blog post.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

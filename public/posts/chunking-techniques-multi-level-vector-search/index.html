@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques - Multi Level Vector Search In the realm of Retrieval Augmented Generation (RAG) use cases, selecting an appropriate chunking strategy for unstructured text documents is vital to achieving success. This blog post delves into the topic of multi-level vector search, a technique that helps combat semantic overlap or false positive issues in RAG chatbot implementations.
+Understanding Chunking and Text Embeddings Chunks of text, sent to a text embedding model, are responsible for producing dense vectors that are then searched for similarity.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Multi Level Vector Search | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/" rel="bookmark">Chunking Techniques - Multi Level Vector Search</a>
+  </h2>
+  
+    <time datetime="2024-02-02T00:00:00Z">2 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques---multi-level-vector-search">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#chunking-techniques---multi-level-vector-search">Chunking Techniques - Multi Level Vector Search</a>
+</h1>
+<p>In the realm of Retrieval Augmented Generation (RAG) use cases, selecting an appropriate chunking strategy for unstructured text documents is vital to achieving success. This blog post delves into the topic of multi-level vector search, a technique that helps combat semantic overlap or false positive issues in RAG chatbot implementations.</p>
+<h2 id="understanding-chunking-and-text-embeddings">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#understanding-chunking-and-text-embeddings">Understanding Chunking and Text Embeddings</a>
+</h2>
+<p>Chunks of text, sent to a text embedding model, are responsible for producing dense vectors that are then searched for similarity. The chunks returned from this search are subsequently processed by the Large Language Model (LLM) to generate answers or responses. There is no one-size-fits-all approach to text chunking; therefore, it is essential to benchmark various techniques and evaluate their recall and precision against your chosen embedding model.</p>
+<h2 id="embedding-larger-chunks-of-text">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#embedding-larger-chunks-of-text">Embedding Larger Chunks of Text</a>
+</h2>
+<p>The fifth installment in our series on chunking techniques focuses on the idea of embedding larger chunks of text, such as entire chapters from a document. This approach enables more precise vector searches to determine which chapter a specific chunk of text resides within. By incorporating both paragraph-level and chapter-level embeddings, we can improve recall in instances where multiple chapters contain similar topics or lexical elements.</p>
+<h2 id="the-multi-level-vector-search-approach">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#the-multi-level-vector-search-approach">The Multi Level Vector Search Approach</a>
+</h2>
+<p>Multi level vector search requires a two-step embedding approach to effectively handle semantic overlap. Firstly, each paragraph of the source document is embedded using a technique similar to single paragraph chunking that we have covered in previous posts. Secondly, an embedding model with a large token limit, such as OpenAI&rsquo;s &ldquo;text-ada-002&rdquo;, is utilized to generate vector embeddings for entire chapters within the document.</p>
+<p>The chapter-level embeddings provide a general semantic representation of the topics covered within each section but may not be suitable for precise fact recall or answering specific questions. In contrast, paragraph-level embeddings excel in these tasks and can accurately retrieve relevant information.</p>
+<h2 id="integrating-chapter-and-paragraph-embeddings">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#integrating-chapter-and-paragraph-embeddings">Integrating Chapter and Paragraph Embeddings</a>
+</h2>
+<p>The power of multi level vector search lies in its ability to combine both chapter-level and paragraph-level embeddings to narrow down the scope of a user&rsquo;s query. This process begins by querying the chapter-level embedding to identify the specific chapter that contains the topic of interest. Next, the paragraph-level embeddings are queried with a filter that only returns paragraphs from the previously identified chapter.</p>
+<p>By employing this multi-level vector search technique, we can significantly enhance recall in situations where multiple chapters within a document may have considerable semantic overlap. This approach ensures that users receive accurate and relevant responses to their queries while minimizing the risk of false positives or off-topic suggestions.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The fifth in our series of posts about Chunking techniques we will discuss embedding larger chunks of text, such as whole chapters of a document, to allow us to vector search what chapter our chunk of text will reside in</li>
+<li>Multi Level Vector Search helps us with a common issue in RAG chatbot use cases, called “semantic overlap” or the false positive problem.  Multiple chunks of text might have vector embeddings that are extremely similar but in different, unrelated, parts of your original documentation.  Imagine an insurance booklet where you have paragraphs of text that cover “what to do in an accident” and another chapter that discusses your accident coverage.  These are very different concepts but share a lot of lexical similarity.</li>
+<li>Solving this problem requires a 2 step embedding approach:  First we embed each paragraph of our source document, similar to the Single Paragraph Chunking Technique we covered in earlier posts.  We also produce a vector embedding for the entire chapter the paragraph is contained in.</li>
+<li>The whole-chapter embedding will require an embedding model with a very large token limit, such as OpenAI’s “text-ada-002” model.  This will produce a vague semantic representation of what topics are contained in the chapter, but provide very poor similarity search for individual facts.</li>
+<li>The paragraph level embeddings do have good fact recall, and be able to answer our questions</li>
+<li>Multi Level Vector Search is the technique of querying the chapter level embedding to narrow down which chapter of your document contains the topic of interest. We then query the paragraph level embeddings with a filter on the vector search to say we only want to query paragraphs in the specific chapter we narrowed it down to.</li>
+<li>This technique allows us to get much better recall in situations where multiple chapters of a document might have a lot of semantic overlap.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

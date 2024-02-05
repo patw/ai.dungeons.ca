@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Why Not Just Query the LLM Directly? It Knows Everything! Large Language Models (LLMs) have rapidly become a staple in natural language processing, with their impressive ability to generate human-like responses and solve complex tasks. As these models continue to evolve, it&rsquo;s tempting to rely on them as an all-encompassing source of knowledge. However, there are several factors that limit LLMs&rsquo; accuracy and reliability when used without proper precautions. In this blog post, we will delve into the reasons why simply querying the LLM directly may not be the best approach for obtaining accurate information.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Why not just query the LLM directly - It knows everything | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/" rel="bookmark">Why not just query the LLM directly - It knows everything</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+    <h1 id="why-not-just-query-the-llm-directly-it-knows-everything">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#why-not-just-query-the-llm-directly-it-knows-everything">Why Not Just Query the LLM Directly? It Knows Everything!</a>
+</h1>
+<p>Large Language Models (LLMs) have rapidly become a staple in natural language processing, with their impressive ability to generate human-like responses and solve complex tasks. As these models continue to evolve, it&rsquo;s tempting to rely on them as an all-encompassing source of knowledge. However, there are several factors that limit LLMs&rsquo; accuracy and reliability when used without proper precautions. In this blog post, we will delve into the reasons why simply querying the LLM directly may not be the best approach for obtaining accurate information.</p>
+<h2 id="a-mixture-of-fact-recall-and-generalization">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#a-mixture-of-fact-recall-and-generalization">A Mixture of Fact Recall and Generalization</a>
+</h2>
+<p>LLMs are a blend of factual data and generalizations based on the vast amounts of text they have been trained on. While these models possess an extensive repository of facts in their neural weights, it is crucial to recognize that they do not represent all human knowledge verbatim. Instead, they provide a lossy representation that may not always be accurate or up-to-date.</p>
+<h2 id="time-bound-training-data">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#time-bound-training-data">Time-Bound Training Data</a>
+</h2>
+<p>LLMs are trained on data available at a specific point in time. This means that the model might not have access to information generated after its training set cutoff date. In addition, the model is unable to account for updates or changes that occurred since its training phase, which may lead to outdated information being provided as an answer.</p>
+<h2 id="hallucinations-and-generalization-issues">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#hallucinations-and-generalization-issues">Hallucinations and Generalization Issues</a>
+</h2>
+<p>One of the most significant limitations of LLMs is their tendency to &ldquo;hallucinate&rdquo; answers when they do not have the necessary facts in their training set. This can result in incorrect or misleading responses, especially when dealing with complex questions that require specific knowledge or context. To mitigate this issue, it&rsquo;s essential to use prompting techniques like zero-shot summarization with augmentation, which involves sending a question along with possible answers and allowing the LLM to generate a &ldquo;smooth&rdquo; response using only the provided data.</p>
+<h2 id="the-need-for-rag-retrieval-augmented-generation">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#the-need-for-rag-retrieval-augmented-generation">The Need for RAG (Retrieval Augmented Generation)</a>
+</h2>
+<p>To ensure that the information provided by an LLM is accurate, reliable, and relevant, it&rsquo;s crucial to employ Retrieval Augmented Generation (RAG). This technique combines the strengths of retrieval models with LLMs, enabling the model to search for relevant information in external databases or knowledge bases. By incorporating RAG into your workflow, you can significantly improve the quality and credibility of the responses generated by your LLM.</p>
+<p>In conclusion, while LLMs have an impressive range of capabilities, they are not infallible sources of knowledge. By understanding their limitations and employing techniques such as zero-shot summarization with augmentation and RAG, you can ensure that your LLM-powered applications provide accurate, up-to-date, and reliable information to users.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>LLMs (large language models), after they have been trained are a mixture of fact recall and generalization.  They do indeed have tons of facts memorized in the neural weights, but they are a lossy representation of all human knowledge.  They have also been trained at a specific point in time and have no data beyond this point in time.  The exact details of your business and your documents are probably not trained into the model, or have been generalized to a point where they would be misrepresented, even if they were on the public internet and pulled into the training process.  LLMs will “hallucinate” answers for questions you ask, if they don’t have the facts in the training set.  To prevent this we rely on a prompting technique called zero-shot summarization with augmentation.  We send the question, with the possible answer and let the LLM provide a “smooth” response, with only the exact data provided.</li>
+<li></li>
+<li>See our other blog posts about RAG (retrieval augmented generation) for more details.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

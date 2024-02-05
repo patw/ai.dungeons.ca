@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques: Parent Document Retrieval with Graph Chunking In the realm of retrieval augmented generation (RAG) use cases, selecting an appropriate chunking strategy is paramount to the success of your text documents processing. In this blog post, we will delve into a more sophisticated technique called &ldquo;Parent Document Retrieval with Graph Chunking.&rdquo; This method allows for the retrieval of additional context and related chunks from the same collection when answering questions.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Parent Document Retrieval with Graph chunking | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/" rel="bookmark">Chunking Techniques - Parent Document Retrieval with Graph chunking</a>
+  </h2>
+  
+    <time datetime="2024-02-03T00:00:00Z">3 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques-parent-document-retrieval-with-graph-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#chunking-techniques-parent-document-retrieval-with-graph-chunking">Chunking Techniques: Parent Document Retrieval with Graph Chunking</a>
+</h1>
+<p>In the realm of retrieval augmented generation (RAG) use cases, selecting an appropriate chunking strategy is paramount to the success of your text documents processing. In this blog post, we will delve into a more sophisticated technique called &ldquo;Parent Document Retrieval with Graph Chunking.&rdquo; This method allows for the retrieval of additional context and related chunks from the same collection when answering questions.</p>
+<h2 id="background-on-text-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#background-on-text-chunking">Background on Text Chunking</a>
+</h2>
+<p>Chunks of text serve as the input to text embedding models, which generate dense vectors that are then used for vector search, comparing similarity among the chunks. These chunks are subsequently sent to large language models (LLMs) to answer questions or provide relevant information. There is no one-size-fits-all strategy for text chunking; however, it is essential to benchmark various methods against your chosen embedding model to achieve optimal recall and precision.</p>
+<h2 id="parent-document-retrieval-with-graph-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#parent-document-retrieval-with-graph-chunking">Parent Document Retrieval with Graph Chunking</a>
+</h2>
+<p>In previous techniques, the text chunks were directly sent to the LLM after being retrieved from the vector search. In this method, we store both the text chunk and an embedding for the chunk. However, when sending data to the LLM, we opt to utilize the entire page or even the parent document rather than individual chunks. This approach enables us to incorporate more context into our responses, thereby enhancing the accuracy of the generated answers.</p>
+<h2 id="paragraph-level-chunking-with-graph-traversal">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#paragraph-level-chunking-with-graph-traversal">Paragraph Level Chunking with Graph Traversal</a>
+</h2>
+<p>To implement this advanced technique, we will break down the source documents into paragraph-level chunks and store pointers to the preceding and subsequent paragraphs in a database like MongoDB. This allows us to leverage MongoDB&rsquo;s $graphLookup function after performing vector search, retrieving all related paragraphs surrounding the selected paragraph. Consequently, we can send all relevant chunks to the LLM for more contextualized responses.</p>
+<h3 id="maximum-depth-control">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#maximum-depth-control">Maximum Depth Control</a>
+</h3>
+<p>Setting a maximum depth parameter enables you to specify how many chunks before or after you would like to retrieve for additional context in your answers. This provides flexibility in controlling the scope of information included when providing responses, ensuring that the generated content remains relevant and concise.</p>
+<p>In conclusion, Parent Document Retrieval with Graph Chunking is a highly effective technique for enhancing RAG use cases by incorporating more contextual information into your text chunking strategy. By leveraging paragraph-level chunks, graph traversal, and MongoDB&rsquo;s $graphLookup function, you can achieve improved recall and precision in your text embedding models while providing more accurate responses to user queries. As we continue to explore advanced techniques in this series, the level of sophistication will only increase, offering even greater opportunities for optimizing your RAG use cases.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
+<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will store the text chunk and an embedding for the chunk but we may be sending the page or even the whole parent document to the LLM instead of the individual text chunk.</li>
+<li>The seventh in our series of posts about Chunking techniques we will discuss paragraph level chunking while using graph traversal to retrieve the page or even whole document.</li>
+<li>In this method we will continue to break the source documents down into paragraph level chunks, but we will also store pointers to the previous and next paragraph giving us the ability to use MongoDB’s $graphLookup function (after $vectorSearch) to grab all the related paragraphs around the retrieved paragraph, and send all the related chunks to the LLM as well.</li>
+<li>This method lets us retrieve extra chunks from the same collection to provide more context for answering the question.  Setting maxDepth allows you to specify how many chunks before or after you need.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

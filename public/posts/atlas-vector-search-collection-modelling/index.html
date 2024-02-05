@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Atlas Vector Search Collection Modeling: Designing for Optimal RAG Chatbot Performance In the world of retrieval augmented generation (RAG) chatbots, designing Mongodb collections to support vector search plays a crucial role in achieving optimal performance. This blog post will guide you through the essential factors to consider when modeling your MongoDB collections for efficient vector search, including text chunking strategy and query filters. We&rsquo;ll also discuss the importance of identifying different vector field names to facilitate benchmarking and storage of multiple vectors within a document.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Atlas Vector Search Collection Modelling | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/" rel="bookmark">Atlas Vector Search Collection Modelling</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+    <h1 id="atlas-vector-search-collection-modeling-designing-for-optimal-rag-chatbot-performance">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#atlas-vector-search-collection-modeling-designing-for-optimal-rag-chatbot-performance">Atlas Vector Search Collection Modeling: Designing for Optimal RAG Chatbot Performance</a>
+</h1>
+<p>In the world of retrieval augmented generation (RAG) chatbots, designing Mongodb collections to support vector search plays a crucial role in achieving optimal performance. This blog post will guide you through the essential factors to consider when modeling your MongoDB collections for efficient vector search, including text chunking strategy and query filters. We&rsquo;ll also discuss the importance of identifying different vector field names to facilitate benchmarking and storage of multiple vectors within a document.</p>
+<h2 id="textknowledge-chunking-strategy">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#textknowledge-chunking-strategy">Text/Knowledge Chunking Strategy</a>
+</h2>
+<p>To support vector search in your RAG chatbots, you must first determine an effective text or knowledge chunking strategy. This involves breaking down the source documents into smaller, manageable chunks of text that can be indexed and queried efficiently. The choice of chunk size will depend on factors such as the complexity of the information and the specific use case for your chatbot.</p>
+<h2 id="query-filters">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#query-filters">Query Filters</a>
+</h2>
+<p>A well-designed query filter is essential to ensure that only relevant results are returned by the vector search algorithm. Each field you need to filter on should be included in the vector search index, along with the chunk text and the resulting vector output of the text embedding process. This will enable your chatbot to retrieve accurate and precise information from the MongoDB collection during RAG interactions.</p>
+<h2 id="storing-different-text-for-llms">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#storing-different-text-for-llms">Storing Different Text for LLMs</a>
+</h2>
+<p>In some cases, you may want to store different text for sending to the large language model (LLM) in the RAG process than the text used for vector embedding. For instance, pre-summarization techniques can be employed to improve recall and precision of semantic search while still providing the original source document text to the LLM. This dual approach ensures that your chatbot can provide accurate responses based on both summarized and full-text information.</p>
+<h2 id="identifying-vector-field-names">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#identifying-vector-field-names">Identifying Vector Field Names</a>
+</h2>
+<p>To facilitate benchmarking different chunking and embedding strategies, it is crucial to assign unique vector field names that identify which embedding model was used to generate the vector. For example, &ldquo;content_embedding_text_ada_002&rdquo; represents the OpenAI text-ada-002 model. This naming convention will help you track the performance of different models and make informed decisions about optimizing your RAG chatbot&rsquo;s search capabilities.</p>
+<h2 id="scaling-mongodb-atlas-cluster-for-vector-storage">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#scaling-mongodb-atlas-cluster-for-vector-storage">Scaling MongoDB Atlas Cluster for Vector Storage</a>
+</h2>
+<p>As vector search collections can quickly grow in size, particularly with high-dimensional models like text-ada-002 (1536 dimensions or nearly 12kb of floating point numbers per vector), it is essential to plan ahead and configure your MongoDB Atlas cluster accordingly. By sizing up the cluster to accommodate the total number of vectors you intend to store multiplied by the total number of documents, you can ensure that your RAG chatbot maintains optimal performance and responsiveness even as the data volume grows over time.</p>
+<p>In conclusion, designing an efficient MongoDB collection for vector search in RAG chatbots requires careful consideration of text chunking strategy, query filters, differentiation between LLM input text, and unique vector field names to track model performance. By following these best practices and planning for scalability, you can create a powerful, reliable, and responsive RAG chatbot that delivers accurate information to users in real-time.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/atlas-vector-search-collection-modelling/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Designing MongoDB collections to support vector search, for your RAG (retrieval augmented generation) chatbots requires thinking about your text/knowledge chunking strategy and your query filters.</li>
+<li>Every field you need to filter on will need to be included in the vector search index, along with your chunk text and the vector output of the text embedding.</li>
+<li>It’s also possible you’ll want to store different text for sending to the LLM (large language model) in the RAG process than the text you are embedding on.  You might be using pre-summarization techniques to get better recall and precision on your semantic search, but still want to send the original text from the source document to the LLM</li>
+<li>Come up with a vector field name that identifies which embedding model you used to generate the vector, for example:  content_embedding_text_ada_002 to represent the OpenAI text-ada-002 model.  This will become important later when you are benchmarking different chunking and embedding strategies and are storing multiple vectors in your mongo document.</li>
+<li>Warning:  These collections can get quite large!  With models like text-ada-002 being 1536 dimensions, this is nearly 12kb of floating point numbers!  Plan ahead and size up your Mongo Atlas cluster large enough to handle the total number of vectors you want to store multiplied by the total number of documents.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/database-design/" rel="tag"> Database Design</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/search/" rel="tag"> Search</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/embedding/" rel="tag"> Embedding</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/mongodb/" rel="tag"> MongoDB</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/atlas/" rel="tag"> Atlas</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

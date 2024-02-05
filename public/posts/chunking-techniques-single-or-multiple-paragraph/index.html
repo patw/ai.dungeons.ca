@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques: Single or Multiple Paragraphs Choosing an effective chunking strategy for your unstructured text documents (PDF, Word, HTML) is critical to the success of your Retrieval Augmented Generation (RAG) use case. In RAG applications, chunks of text serve as inputs to the text embedding model, which generates dense vectors that are searched for similarity using vector search techniques. The returned chunks then get sent to a Large Language Model (LLM), usually for question-answering tasks.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Single or Multiple Paragraph | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-single-or-multiple-paragraph/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/" rel="bookmark">Chunking Techniques - Single or Multiple Paragraph</a>
+  </h2>
+  
+    <time datetime="2024-01-31T00:00:00Z">31 January, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques-single-or-multiple-paragraphs">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/#chunking-techniques-single-or-multiple-paragraphs">Chunking Techniques: Single or Multiple Paragraphs</a>
+</h1>
+<p>Choosing an effective chunking strategy for your unstructured text documents (PDF, Word, HTML) is critical to the success of your Retrieval Augmented Generation (RAG) use case. In RAG applications, chunks of text serve as inputs to the text embedding model, which generates dense vectors that are searched for similarity using vector search techniques. The returned chunks then get sent to a Large Language Model (LLM), usually for question-answering tasks.</p>
+<p>Unfortunately, there is no one-size-fits-all approach to text chunking; however, various strategies have been observed in the field. It&rsquo;s crucial to try each strategy and benchmark it against your chosen embedding model or experiment with multiple embedding models against different chunking methods until you achieve the best possible recall.</p>
+<p>In this post, we will discuss paragraph boundary chunking, where chunks typically consist of 1-2 paragraphs of text. This method works best for documents written in proper English and assumes that a full semantic thought or concept can be encapsulated within a single paragraph (as good writing should have). Consequently, these tend to produce better vector embeddings due to their strong, semantically defined concepts.</p>
+<p>When using the 1-2 paragraph boundary chunking method, keep in mind that it may not be as effective on documents with less structured or poor English writing. Additionally, you&rsquo;ll need to consider how well your chosen LLM handles larger chunks of text.</p>
+<p>To implement this technique, start by breaking your unstructured document into individual paragraphs using a parsing library or regular expressions. Then, apply the paragraph boundary chunking method, either by grouping consecutive paragraphs together (up to 2) or selecting single paragraphs as chunks. Finally, evaluate the quality of your vector embeddings and adjust your chunking strategy accordingly.</p>
+<p>Remember that experimenting with various chunking methods is essential for achieving optimal results in RAG applications. By benchmarking each method against your chosen embedding model, you can determine which approach yields the best recall and precision. As you continue to refine your chunking strategy, consider exploring other simpler techniques like fixed token with overlap for your RAG use case.</p>
+<ul>
+<li>Human Intervention: Minor.  It recommended sentence level and n-gram embedding which is a terrible idea.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The second in our series of posts about Chunking techniques we will discuss paragraph boundary chunking, with usually 1 to 2 paragraphs of text.</li>
+<li>1-2 paragraph boundary.  This method works best on documents of proper English writing.  It assumes a full semantic thought or concept will be encapsulated in a single paragraph (as good writing should have) and you chunk on a single paragraph or 2 paragraphs.  These tend to produce better vector embeddings as they have a single, strongly semantically defined concept.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

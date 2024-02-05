@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Chunking Techniques - Whole Page Chunks In the realm of text processing, choosing an effective chunking strategy is crucial for the success of your RAG (Retrieval Augmented Generation) use case. Chunks of text serve as input to text embedding models that generate dense vectors, which are then used in vector search algorithms for finding similarity. These chunks are subsequently sent to LLMs (Large Language Models), often to answer specific questions.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Chunking Techniques - Whole Page Chunks | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/chunking-techniques-whole-page-chunks/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/" rel="bookmark">Chunking Techniques - Whole Page Chunks</a>
+  </h2>
+  
+    <time datetime="2024-02-01T00:00:00Z">1 February, 2024</time>
+  
+</header>
+    <h1 id="chunking-techniques---whole-page-chunks">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/#chunking-techniques---whole-page-chunks">Chunking Techniques - Whole Page Chunks</a>
+</h1>
+<p>In the realm of text processing, choosing an effective chunking strategy is crucial for the success of your RAG (Retrieval Augmented Generation) use case. Chunks of text serve as input to text embedding models that generate dense vectors, which are then used in vector search algorithms for finding similarity. These chunks are subsequently sent to LLMs (Large Language Models), often to answer specific questions.</p>
+<p>There is no one-size-fits-all approach to text chunking; however, various strategies have emerged in the field. To optimize your RAG use case, you should test different chunking methods and benchmark their performance using recall and precision measures with your chosen embedding model or experiment with multiple embedding models against each method until achieving optimal recall.</p>
+<p>In our series of posts about Chunking techniques, we will discuss the whole page chunking approach – its advantages and disadvantages. In this strategy, the entire page of the document is treated as a single unit, assuming that the content on each page revolves around a single subject. This method works well for certain PDF documents where each page represents a distinct topic.</p>
+<p>It is essential to note that vector embedding models have token limits, similar to LLMs, which may prevent you from feeding an entire page into the model for vectorization. To overcome this limitation, consider using text-ada-002 from OpenAI, which offers a higher token limit (8192 tokens) for such tasks. However, keep in mind that employing whole page chunking can lead to weak semantic representation when multiple different topics are discussed on a single page.</p>
+<p>To summarize, while the whole page chunking technique has its advantages and may work well for specific document formats, it is crucial to consider potential limitations and optimize your approach accordingly. Experiment with different strategies to find the best solution that aligns with your RAG use case&rsquo;s requirements, and always benchmark your results using relevant metrics such as recall and precision.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The third in our series of posts about Chunking techniques we will discuss embedding the entire page of text, and the advantages and disadvantages of that.</li>
+<li>Whole page chunking.  In this method we chunk the entire page of the document at once, assuming the page itself is talking about a single subject.  This works well for some PDF documents where each page represents a different subject.  Keep in mind that vector embedding models have token limits (just like LLMs) that may prevent you from feeding an entire page into the model for vectorization.  Choose a text embedding model like text-ada-002 from OpenAI, which has a larger token limit (8192 tokens) for a task like this.  Also keep in mind that you will get a weak semantic representation if there’s lots of different topics discussed in the single page</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

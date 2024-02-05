@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="LLM Prompting Strategy: Enhancing Accuracy and Overcoming Guard Rails In the ever-evolving landscape of natural language processing, Large Language Models (LLMs) have emerged as powerful tools for generating human-like responses to a wide range of questions. To harness their full potential, it is crucial to implement an effective LLM prompting strategy that maximizes accuracy and overcomes guard rail limitations. This blog post will delve into the best practices for prompt engineering and provide insights on how to bypass guard rails in sensitive domains like healthcare or law.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>LLM Prompting Strategy | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/llm-prompting-strategy/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/" rel="bookmark">LLM Prompting Strategy</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+    <h1 id="llm-prompting-strategy-enhancing-accuracy-and-overcoming-guard-rails">
+  <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/#llm-prompting-strategy-enhancing-accuracy-and-overcoming-guard-rails">LLM Prompting Strategy: Enhancing Accuracy and Overcoming Guard Rails</a>
+</h1>
+<p>In the ever-evolving landscape of natural language processing, Large Language Models (LLMs) have emerged as powerful tools for generating human-like responses to a wide range of questions. To harness their full potential, it is crucial to implement an effective LLM prompting strategy that maximizes accuracy and overcomes guard rail limitations. This blog post will delve into the best practices for prompt engineering and provide insights on how to bypass guard rails in sensitive domains like healthcare or law.</p>
+<h2 id="the-basics-of-llm-prompting">
+  <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/#the-basics-of-llm-prompting">The Basics of LLM Prompting</a>
+</h2>
+<p>Most prompts to an LLM follow a pattern such as: &ldquo;Can you answer the following question ‘<!-- raw HTML omitted -->’ based on the text below: <!-- raw HTML omitted -->&rdquo;. While this is a solid starting point, it may not always yield optimal results. To achieve higher accuracy, prompt engineering techniques should be employed to tailor the questions and chunks of data provided to the LLM.</p>
+<h2 id="the-role-of-chunks-in-prompting">
+  <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/#the-role-of-chunks-in-prompting">The Role of Chunks in Prompting</a>
+</h2>
+<p>To improve the likelihood of obtaining an answer, it is recommended to send multiple chunks of data as part of the input. This approach allows for a more comprehensive understanding of the context and increases the chances of finding relevant information within the text. Current best practices suggest using 3-10 chunks per prompt.</p>
+<h2 id="guard-rails-and-overcoming-them">
+  <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/#guard-rails-and-overcoming-them">Guard Rails and Overcoming Them</a>
+</h2>
+<p>One challenge faced by LLM users is guard rail limitations that prevent certain types of questions from being answered. In sensitive domains such as healthcare or law, these restrictions can be particularly problematic. To circumvent these blockers, creative prompting strategies must be employed. Open-source LLMs offer unguard models capable of generating more sensitive responses when traditional approaches fail.</p>
+<h2 id="the-role-of-documentation-and-urls">
+  <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/#the-role-of-documentation-and-urls">The Role of Documentation and URLs</a>
+</h2>
+<p>When crafting an LLM prompt, there is no need to include the URL for the associated documentation (usually HTML or PDF links) as part of the input. LLMs may ignore these links regardless of their inclusion in the prompt. To ensure all relevant information is provided, it is advisable to store the URLs in a database like Mongo and append them to the final response generated by the LLM. This method mirrors the approach taken by platforms such as Bing Chat.</p>
+<p>In conclusion, an effective LLM prompting strategy hinges on understanding the intricacies of prompt engineering, the benefits of using multiple chunks of data, overcoming guard rail limitations, and managing documentation URLs. By leveraging these techniques, users can unlock the full potential of LLMs and generate more accurate and useful responses for their specific needs.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/llm-prompting-strategy/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Most prompts to the LLM (large language model) will follow a pattern like this:  “Can you answer the following question ‘ <!-- raw HTML omitted -->’ based on the text below: <!-- raw HTML omitted -->”.  This is a good starting place but you will most likely need to do prompt engineering to get the best possible result.  Use the API or UI for your tool set to take a known question/chunk(s) pair and see what changes to the prompt (ie.  Can you answer the following healthcare question) can result in higher accuracy for the response.</li>
+<li>You can send more than one chunk of data, as long as it fits in the token limit of the LLM. Sending more chunks means it’s more likely to have an answer to the question. The current best practice is 3-10 chunks.</li>
+<li>Be aware that the guard rails on the LLM could prevent some questions from being answered.  This can be a serious problem for healthcare or legal use cases, as the LLM will try to prevent producing responses for these style of questions.  This may require some creative prompting strategies to bypass these blockers. Alternatively, the open source LLMs have a selection of unguarded models that can be used to generate more sensitive responses.</li>
+<li>You don’t need to provide the URL for the documentation (usually HTML or PDF links) as part of the prompt, there’s a high chance that even if you ask for it to be provided as part of the response, the LLM will ignore it.  The URL for the documentation can be stored in the mongo collection and can be appended to the LLM response.  This is similar to how Bing Chat works.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/prompt-engineering/" rel="tag"> Prompt Engineering</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

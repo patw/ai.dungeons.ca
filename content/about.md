@@ -1,0 +1,5 @@
+# Welcome to the AI Dungeons
+
+This blog site is built on FactWeave (https://github.com/patw/FactWeave ), and serves as a showcase for cutting-edge fact synthesis and regeneration technology. It operates by converting input facts into comprehensive content using an open source large language model (LLM). Once the LLM generates this content in Markdown format, Hugo (https://gohugo.io/) transforms these posts into an engaging static website. A unique feature of each article is that it displays the underlying facts used to create it, ensuring transparency and traceability.
+
+In the future, this blog will delve deeper into various Retrieval Augmented Generation (RAG) and grounding techniques, that empower users in designing sophisticated chatbot systems. Additionally, expect insights into exciting LLM "circus tricks" and innovative tools developed to support users and customers alike. Should you have any questions regarding the content, feel free to reach out: pat.wendorf@mongodb.com.

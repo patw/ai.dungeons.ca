@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+
+  
+  
+
+
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml">
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+
+
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/" rel="bookmark">Chunking Techniques - LLM Presummarization</a>
+  </h2>
+  
+    <time datetime="2024-02-05T00:00:00Z">5 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques---llm-presummarization">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#chunking-techniques---llm-presummarization">Chunking Techniques - LLM Presummarization</a>
+</h1>
+<p>Choosing a good chunking strategy for unstructured text documents is crucial to the success of your Retrieval Augmented Generation (RAG) use case. In this post, we will discuss the use of Large Language Models (LLMs) for pre-summarizing structured data, with the aim of producing semantically rich paragraphs that are ideal inputs for text embedding models and semantic search recall.</p>
+<h2 id="the-challenges-of-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#the-challenges-of-structured-data">The Challenges of Structured Data</a>
+</h2>
+<p>Creating dense vector embeddings with structured data like XML and JSON often results in weak embeddings due to repetitive keys and control characters, which can cause poor recall and precision when performing semantic searches. Similar issues can be encountered with tabular data, point form data, tables of contents, and appendixes found in regular documents. In this post, we will focus on JSON documents specifically.</p>
+<h2 id="llm-pre-summarization-method">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#llm-pre-summarization-method">LLM Pre-Summarization Method</a>
+</h2>
+<p>To address these challenges, we propose using the LLM pre-summarization method, where your original JSON document is fed to the LLM, asking for a one-paragraph summary of the record itself. The output of this summarized record is then sent to the text embedding model for vectorization. This approach can provide significantly improved recall and precision compared to other chunking methods we have discussed in previous posts.</p>
+<h2 id="cost-considerations">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#cost-considerations">Cost Considerations</a>
+</h2>
+<p>The downside of the LLM pre-summarization method is its cost, as running an entire set of structured or unstructured data through the LLM for summarization can be expensive, especially when using commercial models like OpenAI&rsquo;s GPT-4. To mitigate costs, we recommend testing less expensive alternatives such as GPUs or services like Mistral.ai and the &ldquo;mistral-tiny&rdquo; model.</p>
+<h2 id="future-trends-in-chunking-strategies">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#future-trends-in-chunking-strategies">Future Trends in Chunking Strategies</a>
+</h2>
+<p>For projects with larger budgets, LLM pre-summarization will likely be the best choice for chunking strategies. In the future, almost all use cases will require some level of data summarization like &ldquo;Fact Synthesis&rdquo; mentioned earlier in this series. By employing techniques such as LLM pre-summarization, you can better align structured data with text embedding models, enabling more effective semantic search capabilities against structured data.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-llm-presummarization/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
+<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will use the LLM itself to pre-summarize the source text.  This ensures that if the data is structured, poorly worded or overly verbose you can output a semantically rich paragraph of english text, which is the ideal input for a text embedding model and semantic search recall.</li>
+<li>The ninth in our series of posts about Chunking techniques we will discuss pre-summarizing structured data, using an LLM for the purpose of producing very strong text embeddings.</li>
+<li>Creating dense vector embeddings with structured data like XML and JSON tends to produce really weak embeddings that suffer from poor recall and even worse precision.  This happens because structured data has lots of repeating keys and control characters.  Text embedding models tend to perform best against semantically rich paragraphs of plain english text.</li>
+<li>This same problem can happen with tabular data, point form data, tables of content and appendixes on regular documents as well.  In this blog post we will address JSON documents specifically.</li>
+<li>Using the LLM pre-sum method, you will feed your original JSON document to the LLM asking for a one paragraph summary of the record itself.  The output of this record should be sent to the text embedding model for vectorization.  This summarized version of the record will have dramatically better recall and precision against natural language queries/prompts than any other chunking method we’ve discussed in this series.</li>
+<li>The downside of LLM pre-sum is the cost.  You need to run your entire set of structured or unstructured data through the LLM to summarize it first.  This can be quite expensive if you’re using commercial LLMs like GPT4 from OpenAI.  Test with the less expensive GPT3-turbo models first to see if the summaries it produces are good enough for your use case.  Even better, try services like Mistral.ai and the “mistral-tiny” model, which are 10x cheaper than even the GPT3-turbo model.</li>
+<li>If money and budget is not a concern for your project, this will be the best possible choice for chunking strategies.  In the future, almost all use cases will require some level of data summarization like the “Fact Synthesis” blog post from earlier in this series.</li>
+<li>This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-static-text-generation-from-structured-data/" rel="bookmark">Chunking Techniques - Static Text Generation from Structured Data</a>
+  </h2>
+  
+    <time datetime="2024-02-04T00:00:00Z">4 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques-static-text-generation-from-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-static-text-generation-from-structured-data/#chunking-techniques-static-text-generation-from-structured-data">Chunking Techniques: Static Text Generation from Structured Data</a>
+</h1>
+<p>Choosing a good chunking strategy for your unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. Chunks of text, in this context, are the segments that are sent to the text embedding model, which produces dense vectors that are searched for similarity using vector search. The chunks returned are then sent to the Large Language Model (LLM), typically to answer questions.</p>
+<p>There is no one-size-fits-all strategy to text chunking; however, we have observed many different strategies in the field. You should try each approach and benchmark it for recall and precision with your chosen embedding model or experiment with multiple embedding models against each chunking method until you achieve the best possible recall.</p>
+<p>As we delve deeper into this series, the level of sophistication of the techniques will increase. In previous chunking methods in this series, the text chunk was always sent to the LLM without modification after retrieval. In this method, we will use a script to summarize structured data, such as a JSON document from a Mongo collection, into a paragraph of English text. We embed the summarized text but send the original JSON structured document to the LLM prompt to answer the user&rsquo;s question.</p>
+<p>In this eighth post in our series about Chunking techniques, we will discuss pre-summarizing structured data using a script and running the summary text through a text embedding model for vector search retrieval later. Creating dense vector embeddings with structured data like XML and JSON often produces weak embeddings that suffer from poor recall and even worse precision due to the abundance of repeating keys and control characters, which are not semantically rich in plain English text. This same problem can occur with tabular data, point-form data, tables of contents, and appendixes on regular documents as well.</p>
+<p>Converting a JSON document into a paragraph of English text requires a writing script that consumes all the fields and tries to tell a story about the data. Typically, this is done using a story template where the values of the fields get filled in. This process is similar to creating a MadLib, where the nouns and verbs are the values in the source document. The story output will then be run through your text embedding model to store the dense vectors that represent it. Additionally, you will store the original Mongo document ID for the source record along with it, so when you perform a vector search match afterward, you can retrieve the original document and send it to the LLM as part of the prompt augmentation.</p>
+<p>This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data. This approach is also significantly cheaper to implement than LLM Structured Data Summarization, which we will discuss in a future blog post.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-static-text-generation-from-structured-data/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
+<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will use a script to summarize structured data, like a JSON document from a Mongo collection, into a paragraph of english text.  We embed the summarized text, but we will send the original JSON structured document to the LLM prompt to answer the user&rsquo;s question.</li>
+<li>The eighth in our series of posts about Chunking techniques we will discuss pre-summarizing structured data, using a script, and running the summary text through a text embedding model for vector search retrieval later.</li>
+<li>Creating dense vector embeddings with structured data like XML and JSON tends to produce really weak embeddings that suffer from poor recall and even worse precision.  This happens because structured data has lots of repeating keys and control characters.  Text embedding models tend to perform best against semantically rich paragraphs of plain english text.</li>
+<li>This same problem can happen with tabular data, point form data, tables of content and appendixes on regular documents as well.  In this blog post we will address JSON documents specifically.</li>
+<li>Converting a JSON document into a paragraph of english text requires a writing script that consumes all the fields and tries to tell a story about the data.  Typically this is done with a story template, where the values of the fields get filled in.  This is similar to creating a MadLib, where the nouns and verbs are the values in the source document.</li>
+<li>The story output will then be run through your text embedding model to store the dense vectors that represent it.  You will also store the original mongo document ID for the source record along with it, so when you perform a vector search match afterwards you can retrieve the original document and send it to the LLM, as part of the prompt augmentation.</li>
+<li>This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data.</li>
+<li>This technique is also significantly cheaper to implement than LLM Structured Data Summarization, which we will talk about in a future blog post.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/" rel="bookmark">Chunking Techniques - Parent Document Retrieval with Graph chunking</a>
+  </h2>
+  
+    <time datetime="2024-02-03T00:00:00Z">3 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques-parent-document-retrieval-with-graph-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#chunking-techniques-parent-document-retrieval-with-graph-chunking">Chunking Techniques: Parent Document Retrieval with Graph Chunking</a>
+</h1>
+<p>In the realm of retrieval augmented generation (RAG) use cases, selecting an appropriate chunking strategy is paramount to the success of your text documents processing. In this blog post, we will delve into a more sophisticated technique called &ldquo;Parent Document Retrieval with Graph Chunking.&rdquo; This method allows for the retrieval of additional context and related chunks from the same collection when answering questions.</p>
+<h2 id="background-on-text-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#background-on-text-chunking">Background on Text Chunking</a>
+</h2>
+<p>Chunks of text serve as the input to text embedding models, which generate dense vectors that are then used for vector search, comparing similarity among the chunks. These chunks are subsequently sent to large language models (LLMs) to answer questions or provide relevant information. There is no one-size-fits-all strategy for text chunking; however, it is essential to benchmark various methods against your chosen embedding model to achieve optimal recall and precision.</p>
+<h2 id="parent-document-retrieval-with-graph-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#parent-document-retrieval-with-graph-chunking">Parent Document Retrieval with Graph Chunking</a>
+</h2>
+<p>In previous techniques, the text chunks were directly sent to the LLM after being retrieved from the vector search. In this method, we store both the text chunk and an embedding for the chunk. However, when sending data to the LLM, we opt to utilize the entire page or even the parent document rather than individual chunks. This approach enables us to incorporate more context into our responses, thereby enhancing the accuracy of the generated answers.</p>
+<h2 id="paragraph-level-chunking-with-graph-traversal">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#paragraph-level-chunking-with-graph-traversal">Paragraph Level Chunking with Graph Traversal</a>
+</h2>
+<p>To implement this advanced technique, we will break down the source documents into paragraph-level chunks and store pointers to the preceding and subsequent paragraphs in a database like MongoDB. This allows us to leverage MongoDB&rsquo;s $graphLookup function after performing vector search, retrieving all related paragraphs surrounding the selected paragraph. Consequently, we can send all relevant chunks to the LLM for more contextualized responses.</p>
+<h3 id="maximum-depth-control">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#maximum-depth-control">Maximum Depth Control</a>
+</h3>
+<p>Setting a maximum depth parameter enables you to specify how many chunks before or after you would like to retrieve for additional context in your answers. This provides flexibility in controlling the scope of information included when providing responses, ensuring that the generated content remains relevant and concise.</p>
+<p>In conclusion, Parent Document Retrieval with Graph Chunking is a highly effective technique for enhancing RAG use cases by incorporating more contextual information into your text chunking strategy. By leveraging paragraph-level chunks, graph traversal, and MongoDB&rsquo;s $graphLookup function, you can achieve improved recall and precision in your text embedding models while providing more accurate responses to user queries. As we continue to explore advanced techniques in this series, the level of sophistication will only increase, offering even greater opportunities for optimizing your RAG use cases.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
+<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will store the text chunk and an embedding for the chunk but we may be sending the page or even the whole parent document to the LLM instead of the individual text chunk.</li>
+<li>The seventh in our series of posts about Chunking techniques we will discuss paragraph level chunking while using graph traversal to retrieve the page or even whole document.</li>
+<li>In this method we will continue to break the source documents down into paragraph level chunks, but we will also store pointers to the previous and next paragraph giving us the ability to use MongoDB’s $graphLookup function (after $vectorSearch) to grab all the related paragraphs around the retrieved paragraph, and send all the related chunks to the LLM as well.</li>
+<li>This method lets us retrieve extra chunks from the same collection to provide more context for answering the question.  Setting maxDepth allows you to specify how many chunks before or after you need.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/" rel="bookmark">Chunking Techniques - Multi Level Vector Search</a>
+  </h2>
+  
+    <time datetime="2024-02-02T00:00:00Z">2 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques---multi-level-vector-search">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#chunking-techniques---multi-level-vector-search">Chunking Techniques - Multi Level Vector Search</a>
+</h1>
+<p>In the realm of Retrieval Augmented Generation (RAG) use cases, selecting an appropriate chunking strategy for unstructured text documents is vital to achieving success. This blog post delves into the topic of multi-level vector search, a technique that helps combat semantic overlap or false positive issues in RAG chatbot implementations.</p>
+<h2 id="understanding-chunking-and-text-embeddings">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#understanding-chunking-and-text-embeddings">Understanding Chunking and Text Embeddings</a>
+</h2>
+<p>Chunks of text, sent to a text embedding model, are responsible for producing dense vectors that are then searched for similarity. The chunks returned from this search are subsequently processed by the Large Language Model (LLM) to generate answers or responses. There is no one-size-fits-all approach to text chunking; therefore, it is essential to benchmark various techniques and evaluate their recall and precision against your chosen embedding model.</p>
+<h2 id="embedding-larger-chunks-of-text">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#embedding-larger-chunks-of-text">Embedding Larger Chunks of Text</a>
+</h2>
+<p>The fifth installment in our series on chunking techniques focuses on the idea of embedding larger chunks of text, such as entire chapters from a document. This approach enables more precise vector searches to determine which chapter a specific chunk of text resides within. By incorporating both paragraph-level and chapter-level embeddings, we can improve recall in instances where multiple chapters contain similar topics or lexical elements.</p>
+<h2 id="the-multi-level-vector-search-approach">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#the-multi-level-vector-search-approach">The Multi Level Vector Search Approach</a>
+</h2>
+<p>Multi level vector search requires a two-step embedding approach to effectively handle semantic overlap. Firstly, each paragraph of the source document is embedded using a technique similar to single paragraph chunking that we have covered in previous posts. Secondly, an embedding model with a large token limit, such as OpenAI&rsquo;s &ldquo;text-ada-002&rdquo;, is utilized to generate vector embeddings for entire chapters within the document.</p>
+<p>The chapter-level embeddings provide a general semantic representation of the topics covered within each section but may not be suitable for precise fact recall or answering specific questions. In contrast, paragraph-level embeddings excel in these tasks and can accurately retrieve relevant information.</p>
+<h2 id="integrating-chapter-and-paragraph-embeddings">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#integrating-chapter-and-paragraph-embeddings">Integrating Chapter and Paragraph Embeddings</a>
+</h2>
+<p>The power of multi level vector search lies in its ability to combine both chapter-level and paragraph-level embeddings to narrow down the scope of a user&rsquo;s query. This process begins by querying the chapter-level embedding to identify the specific chapter that contains the topic of interest. Next, the paragraph-level embeddings are queried with a filter that only returns paragraphs from the previously identified chapter.</p>
+<p>By employing this multi-level vector search technique, we can significantly enhance recall in situations where multiple chapters within a document may have considerable semantic overlap. This approach ensures that users receive accurate and relevant responses to their queries while minimizing the risk of false positives or off-topic suggestions.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The fifth in our series of posts about Chunking techniques we will discuss embedding larger chunks of text, such as whole chapters of a document, to allow us to vector search what chapter our chunk of text will reside in</li>
+<li>Multi Level Vector Search helps us with a common issue in RAG chatbot use cases, called “semantic overlap” or the false positive problem.  Multiple chunks of text might have vector embeddings that are extremely similar but in different, unrelated, parts of your original documentation.  Imagine an insurance booklet where you have paragraphs of text that cover “what to do in an accident” and another chapter that discusses your accident coverage.  These are very different concepts but share a lot of lexical similarity.</li>
+<li>Solving this problem requires a 2 step embedding approach:  First we embed each paragraph of our source document, similar to the Single Paragraph Chunking Technique we covered in earlier posts.  We also produce a vector embedding for the entire chapter the paragraph is contained in.</li>
+<li>The whole-chapter embedding will require an embedding model with a very large token limit, such as OpenAI’s “text-ada-002” model.  This will produce a vague semantic representation of what topics are contained in the chapter, but provide very poor similarity search for individual facts.</li>
+<li>The paragraph level embeddings do have good fact recall, and be able to answer our questions</li>
+<li>Multi Level Vector Search is the technique of querying the chapter level embedding to narrow down which chapter of your document contains the topic of interest. We then query the paragraph level embeddings with a filter on the vector search to say we only want to query paragraphs in the specific chapter we narrowed it down to.</li>
+<li>This technique allows us to get much better recall in situations where multiple chapters of a document might have a lot of semantic overlap.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/" rel="bookmark">Chunking Techniques - Recursive Chunking</a>
+  </h2>
+  
+    <time datetime="2024-02-02T00:00:00Z">2 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques---recursive-chunking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/#chunking-techniques---recursive-chunking">Chunking Techniques - Recursive Chunking</a>
+</h1>
+<p>In the realm of text processing, selecting an appropriate chunking strategy is paramount for a successful Retrieval Augmented Generation (RAG) use case. The primary purpose behind this technique is to segment unstructured text documents (such as PDFs, Word files, or HTML pages) into manageable pieces that can be fed to the Text Embedding model. This model then produces dense vectors for each chunk, which are subsequently searched based on similarity using vector search algorithms. The retrieved chunks are sent to a Large Language Model (LLM), typically for question-answering purposes.</p>
+<p>When it comes to text chunking strategies, there is no one-size-fits-all solution. Different methods might yield varying levels of recall and precision depending on the specifics of your project. It&rsquo;s crucial to experiment with different strategies, benchmark them against each other, and determine which combination offers the best performance with your chosen text embedding model.</p>
+<p>In this blog post, we will delve into one such chunking technique: <strong>Recursive Chunking</strong>. This method has been observed to produce stronger recall results in vector search compared to other popular strategies such as token limit with overlap. The recursive approach involves dividing a single page of text into smaller chunks at multiple levels, resulting in a total of seven embedding vectors per page.</p>
+<p>The process begins by creating an embedding at the page level. This initial step may produce a vague semantic representation in the vector space, depending on the question being asked. To refine this representation and improve recall, the next stage involves splitting each full page into two halves, with separate embeddings generated for the top and bottom parts of the page.</p>
+<p>The recursion continues as we further subdivide these halved sections into quarters, generating more precise embeddings for each quarter. This process generates seven total dense vector embeddings per page, each potentially performing better or worse than others depending on the specifics of the query. The underlying principle behind this technique is that by representing the same data multiple times in different ways, we can achieve better recall rates overall.</p>
+<p>Recursive Chunking has become one of the default chunking methods in popular libraries such as &ldquo;langchain&rdquo; and &ldquo;llamaindex&rdquo;. Its adoption has been driven by its proven effectiveness compared to alternative strategies like token limit with overlap. This technique offers a promising solution for those seeking improved performance in their RAG applications, particularly when working with large amounts of unstructured data.</p>
+<p>In summary, recursive chunking is an innovative and effective approach for segmenting text documents into smaller chunks suitable for embedding and vector search operations. Its ability to produce multiple embeddings per page can significantly improve recall rates, making it a valuable asset in any developer&rsquo;s toolkit. As with any technique, however, it&rsquo;s essential to experiment with different strategies and find the one that works best for your specific use case.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The sixth in our series of posts about Chunking techniques we will discuss splitting a single page of text in half, then in half again to produce 7 embeddings per page.  This method is similar to our first method, token limit with overlap but has proven to produce stronger recall in vector search</li>
+<li>Recursive chunking takes advantage of the idea that different text chunk sizes can produce better or worse recall, depending on the text embedding model.</li>
+<li>In this method you will split your documents up page by page, and produce an embedding at the page level.  This will probably produce a vague semantic representation in the vector space, depending on the question.</li>
+<li>We then split the page in half, embedding the top and bottom halves at the middle part of the page.  This should produce slightly stronger embeddings.</li>
+<li>We take those 2 halves and split them again in half, embedding on the quarter of the page of text.  Producing even stronger embeddings, but potentially missing some of the context the longer page could contain.</li>
+<li>This technique produces 7 total dense vector embeddings for vector search, and each embedding may perform well or poorly depending on the question.  The idea is that the same data is represented multiple ways, in the hope that you will get better recall</li>
+<li>This method is one of the new default chunking methods in the “langchain” and “llamaindex” libraries and has proven to be better than the token limit with overlap chunking method.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/" rel="bookmark">Chunking Techniques - Question Answer Pairing</a>
+  </h2>
+  
+    <time datetime="2024-02-01T00:00:00Z">1 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques---questionanswer-pairing">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/#chunking-techniques---questionanswer-pairing">Chunking Techniques - Question/Answer Pairing</a>
+</h1>
+<p>In the realm of Retrieval Augmented Generation (RAG) use cases, choosing an appropriate chunking strategy for unstructured text documents is critical to success. This technique involves dividing the text into smaller, manageable chunks that are sent to a text embedding model, which then produces dense vectors that can be searched for similarity using vector search algorithms. The resulting chunks are subsequently sent to a Large Language Model (LLM) to answer specific questions or generate relevant content.</p>
+<p>While there is no one-size-fits-all solution when it comes to text chunking strategies, many different approaches have been explored in the field. It&rsquo;s essential to experiment with various methods and benchmark them using recall and precision metrics, as well as evaluating their performance against your chosen embedding model.</p>
+<p>In our series of posts about Chunking techniques, we will now focus on the Question/Answer (Q/A) pairing approach. This structured technique involves creating a well-defined question and answer pair that are then embedded together into a single vector. This method works particularly well for managing highly curated sets of answers manually through a CRUD (Create, Read, Update, Delete) style application.</p>
+<p>By embedding a sample question along with its corresponding answer, we have observed dramatic improvements in recall and precision when it comes to the chunks returned. Moreover, this technique is efficient in terms of LLM token budgets, as you only need to send the Answer portion of the Q/A pair during augmentation.</p>
+<p>An example of this approach can be found in the RAGTAG GitHub repository: <a href="https://github.com/patw/RAGTAG">https://github.com/patw/RAGTAG</a>. In summary, incorporating a question and answer pairing strategy into your chunking techniques can lead to improved performance and efficiency in your RAG use cases, ultimately enhancing the overall user experience.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The fourth in our series of posts about Chunking techniques we will discuss embedding a curated question and answer pair for better recall on Q/A chatbot use cases.</li>
+<li>Question/Answer pairing is a more structured technique to text chunking.  In this method, we have a well defined question and answer pair that we want to embed together into a single vector.  This works very well if you want to have highly curated sets of answers that you manage manually with a CRUD style application.  What we have observed is embedding a sample (but common) question along with the answer tends to dramatically increase the recall and precision of the chunks returned.  When you augment the LLM prompt, you typically only have to send the Answer portion of the Q/A pair which is also very efficient on your LL token budget.</li>
+<li>An example of this technique in action can be seen here:  <a href="https://github.com/patw/RAGTAG">https://github.com/patw/RAGTAG</a></li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/" rel="bookmark">Chunking Techniques - Whole Page Chunks</a>
+  </h2>
+  
+    <time datetime="2024-02-01T00:00:00Z">1 February, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques---whole-page-chunks">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/#chunking-techniques---whole-page-chunks">Chunking Techniques - Whole Page Chunks</a>
+</h1>
+<p>In the realm of text processing, choosing an effective chunking strategy is crucial for the success of your RAG (Retrieval Augmented Generation) use case. Chunks of text serve as input to text embedding models that generate dense vectors, which are then used in vector search algorithms for finding similarity. These chunks are subsequently sent to LLMs (Large Language Models), often to answer specific questions.</p>
+<p>There is no one-size-fits-all approach to text chunking; however, various strategies have emerged in the field. To optimize your RAG use case, you should test different chunking methods and benchmark their performance using recall and precision measures with your chosen embedding model or experiment with multiple embedding models against each method until achieving optimal recall.</p>
+<p>In our series of posts about Chunking techniques, we will discuss the whole page chunking approach – its advantages and disadvantages. In this strategy, the entire page of the document is treated as a single unit, assuming that the content on each page revolves around a single subject. This method works well for certain PDF documents where each page represents a distinct topic.</p>
+<p>It is essential to note that vector embedding models have token limits, similar to LLMs, which may prevent you from feeding an entire page into the model for vectorization. To overcome this limitation, consider using text-ada-002 from OpenAI, which offers a higher token limit (8192 tokens) for such tasks. However, keep in mind that employing whole page chunking can lead to weak semantic representation when multiple different topics are discussed on a single page.</p>
+<p>To summarize, while the whole page chunking technique has its advantages and may work well for specific document formats, it is crucial to consider potential limitations and optimize your approach accordingly. Experiment with different strategies to find the best solution that aligns with your RAG use case&rsquo;s requirements, and always benchmark your results using relevant metrics such as recall and precision.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The third in our series of posts about Chunking techniques we will discuss embedding the entire page of text, and the advantages and disadvantages of that.</li>
+<li>Whole page chunking.  In this method we chunk the entire page of the document at once, assuming the page itself is talking about a single subject.  This works well for some PDF documents where each page represents a different subject.  Keep in mind that vector embedding models have token limits (just like LLMs) that may prevent you from feeding an entire page into the model for vectorization.  Choose a text embedding model like text-ada-002 from OpenAI, which has a larger token limit (8192 tokens) for a task like this.  Also keep in mind that you will get a weak semantic representation if there’s lots of different topics discussed in the single page</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/" rel="bookmark">Chunking Techniques - Single or Multiple Paragraph</a>
+  </h2>
+  
+    <time datetime="2024-01-31T00:00:00Z">31 January, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques-single-or-multiple-paragraphs">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/#chunking-techniques-single-or-multiple-paragraphs">Chunking Techniques: Single or Multiple Paragraphs</a>
+</h1>
+<p>Choosing an effective chunking strategy for your unstructured text documents (PDF, Word, HTML) is critical to the success of your Retrieval Augmented Generation (RAG) use case. In RAG applications, chunks of text serve as inputs to the text embedding model, which generates dense vectors that are searched for similarity using vector search techniques. The returned chunks then get sent to a Large Language Model (LLM), usually for question-answering tasks.</p>
+<p>Unfortunately, there is no one-size-fits-all approach to text chunking; however, various strategies have been observed in the field. It&rsquo;s crucial to try each strategy and benchmark it against your chosen embedding model or experiment with multiple embedding models against different chunking methods until you achieve the best possible recall.</p>
+<p>In this post, we will discuss paragraph boundary chunking, where chunks typically consist of 1-2 paragraphs of text. This method works best for documents written in proper English and assumes that a full semantic thought or concept can be encapsulated within a single paragraph (as good writing should have). Consequently, these tend to produce better vector embeddings due to their strong, semantically defined concepts.</p>
+<p>When using the 1-2 paragraph boundary chunking method, keep in mind that it may not be as effective on documents with less structured or poor English writing. Additionally, you&rsquo;ll need to consider how well your chosen LLM handles larger chunks of text.</p>
+<p>To implement this technique, start by breaking your unstructured document into individual paragraphs using a parsing library or regular expressions. Then, apply the paragraph boundary chunking method, either by grouping consecutive paragraphs together (up to 2) or selecting single paragraphs as chunks. Finally, evaluate the quality of your vector embeddings and adjust your chunking strategy accordingly.</p>
+<p>Remember that experimenting with various chunking methods is essential for achieving optimal results in RAG applications. By benchmarking each method against your chosen embedding model, you can determine which approach yields the best recall and precision. As you continue to refine your chunking strategy, consider exploring other simpler techniques like fixed token with overlap for your RAG use case.</p>
+<ul>
+<li>Human Intervention: Minor.  It recommended sentence level and n-gram embedding which is a terrible idea.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The second in our series of posts about Chunking techniques we will discuss paragraph boundary chunking, with usually 1 to 2 paragraphs of text.</li>
+<li>1-2 paragraph boundary.  This method works best on documents of proper English writing.  It assumes a full semantic thought or concept will be encapsulated in a single paragraph (as good writing should have) and you chunk on a single paragraph or 2 paragraphs.  These tend to produce better vector embeddings as they have a single, strongly semantically defined concept.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/" rel="bookmark">Chunking Techniques - Fixed Token Count with Overlap</a>
+  </h2>
+  
+    <time datetime="2024-01-30T00:00:00Z">30 January, 2024</time>
+  
+</header>
+      
+        <h1 id="chunking-techniques-fixed-token-count-with-overlap">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#chunking-techniques-fixed-token-count-with-overlap">Chunking Techniques: Fixed Token Count with Overlap</a>
+</h1>
+<p>Choosing a good chunking strategy for unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. In this blog post, we will focus on one of the most basic yet effective techniques: fixed token count with overlap. This method is widely used in RAG libraries like LangChain and LLAMAindex.</p>
+<h2 id="background">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#background">Background</a>
+</h2>
+<p>Chunks of text are sent to the text embedding model, which produces dense vectors that can be searched for similarity using vector search. Chunks returned are then sent to the Large Language Model (LLM) to answer questions. There is no one-size-fits-all approach to text chunking; however, we have observed many different strategies in the field. It&rsquo;s essential to experiment with various techniques and benchmark them against recall and precision using your chosen embedding model.</p>
+<h2 id="fixed-token-count-with-overlap">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#fixed-token-count-with-overlap">Fixed Token Count with Overlap</a>
+</h2>
+<p>The fixed token count with overlap method is a default chunking technique in most RAG libraries. In this approach, you define a fixed number of tokens (words) that will be used per chunk, typically 256 or 512, and specify the desired amount of overlap between adjacent chunks. This method works well when you don&rsquo;t know the structure of the document source upfront and rely on the LLM to reason through broken sentences and potentially irrelevant data.</p>
+<p>This technique is particularly effective with larger, more complex LLM models as it heavily relies on their reasoning capabilities. To implement fixed token count with overlap, follow these steps:</p>
+<ol>
+<li>Define the maximum number of tokens per chunk (e.g., 256 or 512).</li>
+<li>Specify the desired overlap between adjacent chunks (e.g., 32 tokens).</li>
+<li>Break down your unstructured text documents into chunks based on the defined token count and overlap.</li>
+<li>Feed these chunks to the embedding model for vectorization.</li>
+<li>Use the resulting dense vectors in a vector search to find similar chunks.</li>
+<li>Send the retrieved chunks to the LLM for answering questions or generating responses.</li>
+</ol>
+<h2 id="experimentation-and-benchmarking">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#experimentation-and-benchmarking">Experimentation and Benchmarking</a>
+</h2>
+<p>To optimize your RAG use case, it&rsquo;s crucial to experiment with various chunking techniques and benchmark their performance against recall and precision metrics using your chosen embedding model. This will help you identify the best possible approach for your specific use case.</p>
+<h2 id="conclusion">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#conclusion">Conclusion</a>
+</h2>
+<p>The fixed token count with overlap method is a versatile and effective text chunking technique used in RAG libraries like LangChain and LLAMAindex. By defining the maximum number of tokens per chunk and the desired overlap between adjacent chunks, you can leverage the reasoning capabilities of larger, more complex LLM models to process unstructured text documents effectively. Experiment with different techniques and benchmark their performance against recall and precision metrics to optimize your RAG use case.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
+<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
+<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
+<li>The most basic text chunking strategy is fixed token count with overlap.  This is the default chunking method in most RAG libraries like “langchain” or “llamaindex”.  In this method, you define a fixed number of tokens (words) that will be used per chunk, usually 256 or 512 and how much overlap you want from the previous and next chunk.  This method works well for time when you don’t know the structure of the document source up front and want to rely on the LLM (large language model) to reason through broken sentences and possibly irrelevant data.  This relies heavily on the LLMs reasoning capability and works best with larger, more complex LLM models.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/" rel="bookmark">Fact Expansion - What you’re Reading Right Now</a>
+  </h2>
+  
+    <time datetime="2024-01-26T00:00:00Z">26 January, 2024</time>
+  
+</header>
+      
+        <h1 id="fact-expansion-what-youre-reading-right-now">
+  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#fact-expansion-what-youre-reading-right-now">Fact Expansion: What You&rsquo;re Reading Right Now</a>
+</h1>
+<p>In the realm of artificial intelligence and natural language processing, Large Language Models (LLMs) have emerged as powerful tools for various applications. Two such techniques that harness the capabilities of LLMs are Fact Expansion and Fact Synthesis. In this blog post, we explore the concept of Fact Expansion, delve into its underlying technology, and discuss its potential implications for knowledge management systems.</p>
+<h2 id="the-rise-of-fact-expansion">
+  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#the-rise-of-fact-expansion">The Rise of Fact Expansion</a>
+</h2>
+<p>Fact Expansion is a technique that leverages the strong capabilities of LLMs, such as summarization and imitation, to re-hydrate facts into longer, more descriptive writing. The core idea behind this method is that you provide a set of facts within a particular knowledge domain, and request the LLM expand these facts into a blog post, technical document, or any other form of extended text.</p>
+<p>This technique can be beneficial if the expanded text is accurate and well-researched, as it allows for the creation of high-quality content without the need for extensive manual writing. However, there is also a risk that the LLM may start hallucinating details about the facts, which could lead to inaccurate or misleading information.</p>
+<h2 id="factweave-a-pioneering-blogging-system">
+  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#factweave-a-pioneering-blogging-system">FactWeave: A Pioneering Blogging System</a>
+</h2>
+<p>One noteworthy application of Fact Expansion is FactWeave (<a href="https://github.com/patw/FactWeave)">https://github.com/patw/FactWeave)</a>, a blogging system that utilizes this technique to generate informative and engaging content. FactWeave serves as the underlying system for this very blog post, demonstrating how Fact Expansion can be employed to create valuable and reliable information for readers.</p>
+<h2 id="the-opposite-technique-fact-synthesis">
+  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#the-opposite-technique-fact-synthesis">The Opposite Technique: Fact Synthesis</a>
+</h2>
+<p>While Fact Expansion focuses on expanding facts into comprehensive text, its counterpart, Fact Synthesis, aims to synthesize long-form texts into concise factual statements. Both of these techniques represent innovative ways of utilizing LLMs to automate knowledge management and communication processes.</p>
+<h2 id="implications-for-future-state-knowledge-management-systems">
+  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#implications-for-future-state-knowledge-management-systems">Implications for Future State Knowledge Management Systems</a>
+</h2>
+<p>The combination of Fact Expansion and Fact Synthesis could pave the way for a new form of compressed communication that involves reducing lengthy texts into facts and subsequently uncoding them with Fact Expansion. This approach can be seen as analogous to the zip/unzip technique for file compression, but for knowledge instead.</p>
+<p>In conclusion, Fact Expansion is an influential technique in the field of AI-powered knowledge management systems. By leveraging the capabilities of LLMs to expand facts into comprehensive text, this method has the potential to revolutionize how we create and share information. As researchers continue to develop and refine these techniques, we can expect to witness even more innovative applications of Fact Expansion in various industries and sectors.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Summarization and imitation are some of the stronger capabilities of Large Language Models (LLM)</li>
+<li>Fact Expansion takes advantage of this by re-hydrating facts into longer, more descriptive writing</li>
+<li>The core idea is you provide a set of facts in a particular knowledge domain, and request the LLM expand these facts into a blog post, or a technical document.</li>
+<li>The LLM will fill in details and expand on the facts which can be good if the expanded text is correct or bad if it starts hallucinating details about the facts</li>
+<li>FactWeave (<a href="https://github.com/patw/FactWeave">https://github.com/patw/FactWeave</a>) is a blogging system that takes advantage of Fact Expansion and is the underlying system that produced the content you are reading right now.</li>
+<li>Fact Expansion is the opposing technique to Fact Synthesis, which we talked about in a previous post.  Both of these techniques are good examples of using LLMs to automate work.</li>
+<li>These techniques could bring about a new form of compressed communication where we reduce long form text into facts and uncompress it later with Fact Expansion.  This could be seen as a type of zip/unzip technique but for knowledge, instead of files.</li>
+<li>Conclusion:  Fact Expansion and Fact Synthesis are very powerful techniques for knowledge management and could represent a key element to future state knowledge management systems, powered by AI.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/facts/" rel="tag">Facts</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/fact-expansion/" rel="tag"> Fact Expansion</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/fact-synthesis/" rel="tag"> Fact Synthesis</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+  
+
+  
+  <nav>
+    
+      <a class="Pagination u-clickable" href="/page/2/" rel="prev">« Previous</a>
+    
+    
+  </nav>
+
+
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

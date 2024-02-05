@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="https://ai.dungeons.ca/xml/base.min.xml" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on AI Dungeons - Everything I learned about AI</title>
+    <link>https://ai.dungeons.ca/categories/</link>
+    <description>Recent content in Categories on AI Dungeons - Everything I learned about AI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link rel="self" href="https://ai.dungeons.ca/categories/index.xml" type="application/rss+xml" />
+    <item>
+      <title>Chunking Techniques - LLM Presummarization</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/</link>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques---llm-presummarization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/#chunking-techniques---llm-presummarization&#34;&gt;Chunking Techniques - LLM Presummarization&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Choosing a good chunking strategy for unstructured text documents is crucial to the success of your Retrieval Augmented Generation (RAG) use case. In this post, we will discuss the use of Large Language Models (LLMs) for pre-summarizing structured data, with the aim of producing semantically rich paragraphs that are ideal inputs for text embedding models and semantic search recall.&lt;/p&gt;
+&lt;h2 id=&#34;the-challenges-of-structured-data&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/#the-challenges-of-structured-data&#34;&gt;The Challenges of Structured Data&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Creating dense vector embeddings with structured data like XML and JSON often results in weak embeddings due to repetitive keys and control characters, which can cause poor recall and precision when performing semantic searches. Similar issues can be encountered with tabular data, point form data, tables of contents, and appendixes found in regular documents. In this post, we will focus on JSON documents specifically.&lt;/p&gt;
+&lt;h2 id=&#34;llm-pre-summarization-method&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/#llm-pre-summarization-method&#34;&gt;LLM Pre-Summarization Method&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To address these challenges, we propose using the LLM pre-summarization method, where your original JSON document is fed to the LLM, asking for a one-paragraph summary of the record itself. The output of this summarized record is then sent to the text embedding model for vectorization. This approach can provide significantly improved recall and precision compared to other chunking methods we have discussed in previous posts.&lt;/p&gt;
+&lt;h2 id=&#34;cost-considerations&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/#cost-considerations&#34;&gt;Cost Considerations&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The downside of the LLM pre-summarization method is its cost, as running an entire set of structured or unstructured data through the LLM for summarization can be expensive, especially when using commercial models like OpenAI&amp;rsquo;s GPT-4. To mitigate costs, we recommend testing less expensive alternatives such as GPUs or services like Mistral.ai and the &amp;ldquo;mistral-tiny&amp;rdquo; model.&lt;/p&gt;
+&lt;h2 id=&#34;future-trends-in-chunking-strategies&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/#future-trends-in-chunking-strategies&#34;&gt;Future Trends in Chunking Strategies&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;For projects with larger budgets, LLM pre-summarization will likely be the best choice for chunking strategies. In the future, almost all use cases will require some level of data summarization like &amp;ldquo;Fact Synthesis&amp;rdquo; mentioned earlier in this series. By employing techniques such as LLM pre-summarization, you can better align structured data with text embedding models, enabling more effective semantic search capabilities against structured data.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;As we get further into this series, the level of sophistication of the techniques will increase.&lt;/li&gt;
+&lt;li&gt;In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will use the LLM itself to pre-summarize the source text.  This ensures that if the data is structured, poorly worded or overly verbose you can output a semantically rich paragraph of english text, which is the ideal input for a text embedding model and semantic search recall.&lt;/li&gt;
+&lt;li&gt;The ninth in our series of posts about Chunking techniques we will discuss pre-summarizing structured data, using an LLM for the purpose of producing very strong text embeddings.&lt;/li&gt;
+&lt;li&gt;Creating dense vector embeddings with structured data like XML and JSON tends to produce really weak embeddings that suffer from poor recall and even worse precision.  This happens because structured data has lots of repeating keys and control characters.  Text embedding models tend to perform best against semantically rich paragraphs of plain english text.&lt;/li&gt;
+&lt;li&gt;This same problem can happen with tabular data, point form data, tables of content and appendixes on regular documents as well.  In this blog post we will address JSON documents specifically.&lt;/li&gt;
+&lt;li&gt;Using the LLM pre-sum method, you will feed your original JSON document to the LLM asking for a one paragraph summary of the record itself.  The output of this record should be sent to the text embedding model for vectorization.  This summarized version of the record will have dramatically better recall and precision against natural language queries/prompts than any other chunking method we’ve discussed in this series.&lt;/li&gt;
+&lt;li&gt;The downside of LLM pre-sum is the cost.  You need to run your entire set of structured or unstructured data through the LLM to summarize it first.  This can be quite expensive if you’re using commercial LLMs like GPT4 from OpenAI.  Test with the less expensive GPT3-turbo models first to see if the summaries it produces are good enough for your use case.  Even better, try services like Mistral.ai and the “mistral-tiny” model, which are 10x cheaper than even the GPT3-turbo model.&lt;/li&gt;
+&lt;li&gt;If money and budget is not a concern for your project, this will be the best possible choice for chunking strategies.  In the future, almost all use cases will require some level of data summarization like the “Fact Synthesis” blog post from earlier in this series.&lt;/li&gt;
+&lt;li&gt;This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Static Text Generation from Structured Data</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-static-text-generation-from-structured-data/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-static-text-generation-from-structured-data/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques-static-text-generation-from-structured-data&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-static-text-generation-from-structured-data/#chunking-techniques-static-text-generation-from-structured-data&#34;&gt;Chunking Techniques: Static Text Generation from Structured Data&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Choosing a good chunking strategy for your unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. Chunks of text, in this context, are the segments that are sent to the text embedding model, which produces dense vectors that are searched for similarity using vector search. The chunks returned are then sent to the Large Language Model (LLM), typically to answer questions.&lt;/p&gt;
+&lt;p&gt;There is no one-size-fits-all strategy to text chunking; however, we have observed many different strategies in the field. You should try each approach and benchmark it for recall and precision with your chosen embedding model or experiment with multiple embedding models against each chunking method until you achieve the best possible recall.&lt;/p&gt;
+&lt;p&gt;As we delve deeper into this series, the level of sophistication of the techniques will increase. In previous chunking methods in this series, the text chunk was always sent to the LLM without modification after retrieval. In this method, we will use a script to summarize structured data, such as a JSON document from a Mongo collection, into a paragraph of English text. We embed the summarized text but send the original JSON structured document to the LLM prompt to answer the user&amp;rsquo;s question.&lt;/p&gt;
+&lt;p&gt;In this eighth post in our series about Chunking techniques, we will discuss pre-summarizing structured data using a script and running the summary text through a text embedding model for vector search retrieval later. Creating dense vector embeddings with structured data like XML and JSON often produces weak embeddings that suffer from poor recall and even worse precision due to the abundance of repeating keys and control characters, which are not semantically rich in plain English text. This same problem can occur with tabular data, point-form data, tables of contents, and appendixes on regular documents as well.&lt;/p&gt;
+&lt;p&gt;Converting a JSON document into a paragraph of English text requires a writing script that consumes all the fields and tries to tell a story about the data. Typically, this is done using a story template where the values of the fields get filled in. This process is similar to creating a MadLib, where the nouns and verbs are the values in the source document. The story output will then be run through your text embedding model to store the dense vectors that represent it. Additionally, you will store the original Mongo document ID for the source record along with it, so when you perform a vector search match afterward, you can retrieve the original document and send it to the LLM as part of the prompt augmentation.&lt;/p&gt;
+&lt;p&gt;This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data. This approach is also significantly cheaper to implement than LLM Structured Data Summarization, which we will discuss in a future blog post.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-static-text-generation-from-structured-data/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;As we get further into this series, the level of sophistication of the techniques will increase.&lt;/li&gt;
+&lt;li&gt;In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will use a script to summarize structured data, like a JSON document from a Mongo collection, into a paragraph of english text.  We embed the summarized text, but we will send the original JSON structured document to the LLM prompt to answer the user&amp;rsquo;s question.&lt;/li&gt;
+&lt;li&gt;The eighth in our series of posts about Chunking techniques we will discuss pre-summarizing structured data, using a script, and running the summary text through a text embedding model for vector search retrieval later.&lt;/li&gt;
+&lt;li&gt;Creating dense vector embeddings with structured data like XML and JSON tends to produce really weak embeddings that suffer from poor recall and even worse precision.  This happens because structured data has lots of repeating keys and control characters.  Text embedding models tend to perform best against semantically rich paragraphs of plain english text.&lt;/li&gt;
+&lt;li&gt;This same problem can happen with tabular data, point form data, tables of content and appendixes on regular documents as well.  In this blog post we will address JSON documents specifically.&lt;/li&gt;
+&lt;li&gt;Converting a JSON document into a paragraph of english text requires a writing script that consumes all the fields and tries to tell a story about the data.  Typically this is done with a story template, where the values of the fields get filled in.  This is similar to creating a MadLib, where the nouns and verbs are the values in the source document.&lt;/li&gt;
+&lt;li&gt;The story output will then be run through your text embedding model to store the dense vectors that represent it.  You will also store the original mongo document ID for the source record along with it, so when you perform a vector search match afterwards you can retrieve the original document and send it to the LLM, as part of the prompt augmentation.&lt;/li&gt;
+&lt;li&gt;This technique should provide a better match between structured data and text embedding models, allowing you to perform semantic search against structured data.&lt;/li&gt;
+&lt;li&gt;This technique is also significantly cheaper to implement than LLM Structured Data Summarization, which we will talk about in a future blog post.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Parent Document Retrieval with Graph chunking</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques-parent-document-retrieval-with-graph-chunking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#chunking-techniques-parent-document-retrieval-with-graph-chunking&#34;&gt;Chunking Techniques: Parent Document Retrieval with Graph Chunking&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of retrieval augmented generation (RAG) use cases, selecting an appropriate chunking strategy is paramount to the success of your text documents processing. In this blog post, we will delve into a more sophisticated technique called &amp;ldquo;Parent Document Retrieval with Graph Chunking.&amp;rdquo; This method allows for the retrieval of additional context and related chunks from the same collection when answering questions.&lt;/p&gt;
+&lt;h2 id=&#34;background-on-text-chunking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#background-on-text-chunking&#34;&gt;Background on Text Chunking&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Chunks of text serve as the input to text embedding models, which generate dense vectors that are then used for vector search, comparing similarity among the chunks. These chunks are subsequently sent to large language models (LLMs) to answer questions or provide relevant information. There is no one-size-fits-all strategy for text chunking; however, it is essential to benchmark various methods against your chosen embedding model to achieve optimal recall and precision.&lt;/p&gt;
+&lt;h2 id=&#34;parent-document-retrieval-with-graph-chunking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#parent-document-retrieval-with-graph-chunking&#34;&gt;Parent Document Retrieval with Graph Chunking&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In previous techniques, the text chunks were directly sent to the LLM after being retrieved from the vector search. In this method, we store both the text chunk and an embedding for the chunk. However, when sending data to the LLM, we opt to utilize the entire page or even the parent document rather than individual chunks. This approach enables us to incorporate more context into our responses, thereby enhancing the accuracy of the generated answers.&lt;/p&gt;
+&lt;h2 id=&#34;paragraph-level-chunking-with-graph-traversal&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#paragraph-level-chunking-with-graph-traversal&#34;&gt;Paragraph Level Chunking with Graph Traversal&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To implement this advanced technique, we will break down the source documents into paragraph-level chunks and store pointers to the preceding and subsequent paragraphs in a database like MongoDB. This allows us to leverage MongoDB&amp;rsquo;s $graphLookup function after performing vector search, retrieving all related paragraphs surrounding the selected paragraph. Consequently, we can send all relevant chunks to the LLM for more contextualized responses.&lt;/p&gt;
+&lt;h3 id=&#34;maximum-depth-control&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#maximum-depth-control&#34;&gt;Maximum Depth Control&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Setting a maximum depth parameter enables you to specify how many chunks before or after you would like to retrieve for additional context in your answers. This provides flexibility in controlling the scope of information included when providing responses, ensuring that the generated content remains relevant and concise.&lt;/p&gt;
+&lt;p&gt;In conclusion, Parent Document Retrieval with Graph Chunking is a highly effective technique for enhancing RAG use cases by incorporating more contextual information into your text chunking strategy. By leveraging paragraph-level chunks, graph traversal, and MongoDB&amp;rsquo;s $graphLookup function, you can achieve improved recall and precision in your text embedding models while providing more accurate responses to user queries. As we continue to explore advanced techniques in this series, the level of sophistication will only increase, offering even greater opportunities for optimizing your RAG use cases.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;As we get further into this series, the level of sophistication of the techniques will increase.&lt;/li&gt;
+&lt;li&gt;In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will store the text chunk and an embedding for the chunk but we may be sending the page or even the whole parent document to the LLM instead of the individual text chunk.&lt;/li&gt;
+&lt;li&gt;The seventh in our series of posts about Chunking techniques we will discuss paragraph level chunking while using graph traversal to retrieve the page or even whole document.&lt;/li&gt;
+&lt;li&gt;In this method we will continue to break the source documents down into paragraph level chunks, but we will also store pointers to the previous and next paragraph giving us the ability to use MongoDB’s $graphLookup function (after $vectorSearch) to grab all the related paragraphs around the retrieved paragraph, and send all the related chunks to the LLM as well.&lt;/li&gt;
+&lt;li&gt;This method lets us retrieve extra chunks from the same collection to provide more context for answering the question.  Setting maxDepth allows you to specify how many chunks before or after you need.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Multi Level Vector Search</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/</link>
+      <pubDate>Fri, 02 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques---multi-level-vector-search&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/#chunking-techniques---multi-level-vector-search&#34;&gt;Chunking Techniques - Multi Level Vector Search&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of Retrieval Augmented Generation (RAG) use cases, selecting an appropriate chunking strategy for unstructured text documents is vital to achieving success. This blog post delves into the topic of multi-level vector search, a technique that helps combat semantic overlap or false positive issues in RAG chatbot implementations.&lt;/p&gt;
+&lt;h2 id=&#34;understanding-chunking-and-text-embeddings&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/#understanding-chunking-and-text-embeddings&#34;&gt;Understanding Chunking and Text Embeddings&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Chunks of text, sent to a text embedding model, are responsible for producing dense vectors that are then searched for similarity. The chunks returned from this search are subsequently processed by the Large Language Model (LLM) to generate answers or responses. There is no one-size-fits-all approach to text chunking; therefore, it is essential to benchmark various techniques and evaluate their recall and precision against your chosen embedding model.&lt;/p&gt;
+&lt;h2 id=&#34;embedding-larger-chunks-of-text&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/#embedding-larger-chunks-of-text&#34;&gt;Embedding Larger Chunks of Text&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The fifth installment in our series on chunking techniques focuses on the idea of embedding larger chunks of text, such as entire chapters from a document. This approach enables more precise vector searches to determine which chapter a specific chunk of text resides within. By incorporating both paragraph-level and chapter-level embeddings, we can improve recall in instances where multiple chapters contain similar topics or lexical elements.&lt;/p&gt;
+&lt;h2 id=&#34;the-multi-level-vector-search-approach&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/#the-multi-level-vector-search-approach&#34;&gt;The Multi Level Vector Search Approach&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Multi level vector search requires a two-step embedding approach to effectively handle semantic overlap. Firstly, each paragraph of the source document is embedded using a technique similar to single paragraph chunking that we have covered in previous posts. Secondly, an embedding model with a large token limit, such as OpenAI&amp;rsquo;s &amp;ldquo;text-ada-002&amp;rdquo;, is utilized to generate vector embeddings for entire chapters within the document.&lt;/p&gt;
+&lt;p&gt;The chapter-level embeddings provide a general semantic representation of the topics covered within each section but may not be suitable for precise fact recall or answering specific questions. In contrast, paragraph-level embeddings excel in these tasks and can accurately retrieve relevant information.&lt;/p&gt;
+&lt;h2 id=&#34;integrating-chapter-and-paragraph-embeddings&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/#integrating-chapter-and-paragraph-embeddings&#34;&gt;Integrating Chapter and Paragraph Embeddings&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The power of multi level vector search lies in its ability to combine both chapter-level and paragraph-level embeddings to narrow down the scope of a user&amp;rsquo;s query. This process begins by querying the chapter-level embedding to identify the specific chapter that contains the topic of interest. Next, the paragraph-level embeddings are queried with a filter that only returns paragraphs from the previously identified chapter.&lt;/p&gt;
+&lt;p&gt;By employing this multi-level vector search technique, we can significantly enhance recall in situations where multiple chapters within a document may have considerable semantic overlap. This approach ensures that users receive accurate and relevant responses to their queries while minimizing the risk of false positives or off-topic suggestions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-multi-level-vector-search/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;The fifth in our series of posts about Chunking techniques we will discuss embedding larger chunks of text, such as whole chapters of a document, to allow us to vector search what chapter our chunk of text will reside in&lt;/li&gt;
+&lt;li&gt;Multi Level Vector Search helps us with a common issue in RAG chatbot use cases, called “semantic overlap” or the false positive problem.  Multiple chunks of text might have vector embeddings that are extremely similar but in different, unrelated, parts of your original documentation.  Imagine an insurance booklet where you have paragraphs of text that cover “what to do in an accident” and another chapter that discusses your accident coverage.  These are very different concepts but share a lot of lexical similarity.&lt;/li&gt;
+&lt;li&gt;Solving this problem requires a 2 step embedding approach:  First we embed each paragraph of our source document, similar to the Single Paragraph Chunking Technique we covered in earlier posts.  We also produce a vector embedding for the entire chapter the paragraph is contained in.&lt;/li&gt;
+&lt;li&gt;The whole-chapter embedding will require an embedding model with a very large token limit, such as OpenAI’s “text-ada-002” model.  This will produce a vague semantic representation of what topics are contained in the chapter, but provide very poor similarity search for individual facts.&lt;/li&gt;
+&lt;li&gt;The paragraph level embeddings do have good fact recall, and be able to answer our questions&lt;/li&gt;
+&lt;li&gt;Multi Level Vector Search is the technique of querying the chapter level embedding to narrow down which chapter of your document contains the topic of interest. We then query the paragraph level embeddings with a filter on the vector search to say we only want to query paragraphs in the specific chapter we narrowed it down to.&lt;/li&gt;
+&lt;li&gt;This technique allows us to get much better recall in situations where multiple chapters of a document might have a lot of semantic overlap.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Recursive Chunking</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-recursive-chunking/</link>
+      <pubDate>Fri, 02 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-recursive-chunking/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques---recursive-chunking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-recursive-chunking/#chunking-techniques---recursive-chunking&#34;&gt;Chunking Techniques - Recursive Chunking&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of text processing, selecting an appropriate chunking strategy is paramount for a successful Retrieval Augmented Generation (RAG) use case. The primary purpose behind this technique is to segment unstructured text documents (such as PDFs, Word files, or HTML pages) into manageable pieces that can be fed to the Text Embedding model. This model then produces dense vectors for each chunk, which are subsequently searched based on similarity using vector search algorithms. The retrieved chunks are sent to a Large Language Model (LLM), typically for question-answering purposes.&lt;/p&gt;
+&lt;p&gt;When it comes to text chunking strategies, there is no one-size-fits-all solution. Different methods might yield varying levels of recall and precision depending on the specifics of your project. It&amp;rsquo;s crucial to experiment with different strategies, benchmark them against each other, and determine which combination offers the best performance with your chosen text embedding model.&lt;/p&gt;
+&lt;p&gt;In this blog post, we will delve into one such chunking technique: &lt;strong&gt;Recursive Chunking&lt;/strong&gt;. This method has been observed to produce stronger recall results in vector search compared to other popular strategies such as token limit with overlap. The recursive approach involves dividing a single page of text into smaller chunks at multiple levels, resulting in a total of seven embedding vectors per page.&lt;/p&gt;
+&lt;p&gt;The process begins by creating an embedding at the page level. This initial step may produce a vague semantic representation in the vector space, depending on the question being asked. To refine this representation and improve recall, the next stage involves splitting each full page into two halves, with separate embeddings generated for the top and bottom parts of the page.&lt;/p&gt;
+&lt;p&gt;The recursion continues as we further subdivide these halved sections into quarters, generating more precise embeddings for each quarter. This process generates seven total dense vector embeddings per page, each potentially performing better or worse than others depending on the specifics of the query. The underlying principle behind this technique is that by representing the same data multiple times in different ways, we can achieve better recall rates overall.&lt;/p&gt;
+&lt;p&gt;Recursive Chunking has become one of the default chunking methods in popular libraries such as &amp;ldquo;langchain&amp;rdquo; and &amp;ldquo;llamaindex&amp;rdquo;. Its adoption has been driven by its proven effectiveness compared to alternative strategies like token limit with overlap. This technique offers a promising solution for those seeking improved performance in their RAG applications, particularly when working with large amounts of unstructured data.&lt;/p&gt;
+&lt;p&gt;In summary, recursive chunking is an innovative and effective approach for segmenting text documents into smaller chunks suitable for embedding and vector search operations. Its ability to produce multiple embeddings per page can significantly improve recall rates, making it a valuable asset in any developer&amp;rsquo;s toolkit. As with any technique, however, it&amp;rsquo;s essential to experiment with different strategies and find the one that works best for your specific use case.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-recursive-chunking/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;The sixth in our series of posts about Chunking techniques we will discuss splitting a single page of text in half, then in half again to produce 7 embeddings per page.  This method is similar to our first method, token limit with overlap but has proven to produce stronger recall in vector search&lt;/li&gt;
+&lt;li&gt;Recursive chunking takes advantage of the idea that different text chunk sizes can produce better or worse recall, depending on the text embedding model.&lt;/li&gt;
+&lt;li&gt;In this method you will split your documents up page by page, and produce an embedding at the page level.  This will probably produce a vague semantic representation in the vector space, depending on the question.&lt;/li&gt;
+&lt;li&gt;We then split the page in half, embedding the top and bottom halves at the middle part of the page.  This should produce slightly stronger embeddings.&lt;/li&gt;
+&lt;li&gt;We take those 2 halves and split them again in half, embedding on the quarter of the page of text.  Producing even stronger embeddings, but potentially missing some of the context the longer page could contain.&lt;/li&gt;
+&lt;li&gt;This technique produces 7 total dense vector embeddings for vector search, and each embedding may perform well or poorly depending on the question.  The idea is that the same data is represented multiple ways, in the hope that you will get better recall&lt;/li&gt;
+&lt;li&gt;This method is one of the new default chunking methods in the “langchain” and “llamaindex” libraries and has proven to be better than the token limit with overlap chunking method.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Question Answer Pairing</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-question-answer-pairing/</link>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-question-answer-pairing/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques---questionanswer-pairing&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-question-answer-pairing/#chunking-techniques---questionanswer-pairing&#34;&gt;Chunking Techniques - Question/Answer Pairing&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of Retrieval Augmented Generation (RAG) use cases, choosing an appropriate chunking strategy for unstructured text documents is critical to success. This technique involves dividing the text into smaller, manageable chunks that are sent to a text embedding model, which then produces dense vectors that can be searched for similarity using vector search algorithms. The resulting chunks are subsequently sent to a Large Language Model (LLM) to answer specific questions or generate relevant content.&lt;/p&gt;
+&lt;p&gt;While there is no one-size-fits-all solution when it comes to text chunking strategies, many different approaches have been explored in the field. It&amp;rsquo;s essential to experiment with various methods and benchmark them using recall and precision metrics, as well as evaluating their performance against your chosen embedding model.&lt;/p&gt;
+&lt;p&gt;In our series of posts about Chunking techniques, we will now focus on the Question/Answer (Q/A) pairing approach. This structured technique involves creating a well-defined question and answer pair that are then embedded together into a single vector. This method works particularly well for managing highly curated sets of answers manually through a CRUD (Create, Read, Update, Delete) style application.&lt;/p&gt;
+&lt;p&gt;By embedding a sample question along with its corresponding answer, we have observed dramatic improvements in recall and precision when it comes to the chunks returned. Moreover, this technique is efficient in terms of LLM token budgets, as you only need to send the Answer portion of the Q/A pair during augmentation.&lt;/p&gt;
+&lt;p&gt;An example of this approach can be found in the RAGTAG GitHub repository: &lt;a href=&#34;https://github.com/patw/RAGTAG&#34;&gt;https://github.com/patw/RAGTAG&lt;/a&gt;. In summary, incorporating a question and answer pairing strategy into your chunking techniques can lead to improved performance and efficiency in your RAG use cases, ultimately enhancing the overall user experience.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-question-answer-pairing/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;The fourth in our series of posts about Chunking techniques we will discuss embedding a curated question and answer pair for better recall on Q/A chatbot use cases.&lt;/li&gt;
+&lt;li&gt;Question/Answer pairing is a more structured technique to text chunking.  In this method, we have a well defined question and answer pair that we want to embed together into a single vector.  This works very well if you want to have highly curated sets of answers that you manage manually with a CRUD style application.  What we have observed is embedding a sample (but common) question along with the answer tends to dramatically increase the recall and precision of the chunks returned.  When you augment the LLM prompt, you typically only have to send the Answer portion of the Q/A pair which is also very efficient on your LL token budget.&lt;/li&gt;
+&lt;li&gt;An example of this technique in action can be seen here:  &lt;a href=&#34;https://github.com/patw/RAGTAG&#34;&gt;https://github.com/patw/RAGTAG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Whole Page Chunks</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-whole-page-chunks/</link>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-whole-page-chunks/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques---whole-page-chunks&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-whole-page-chunks/#chunking-techniques---whole-page-chunks&#34;&gt;Chunking Techniques - Whole Page Chunks&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of text processing, choosing an effective chunking strategy is crucial for the success of your RAG (Retrieval Augmented Generation) use case. Chunks of text serve as input to text embedding models that generate dense vectors, which are then used in vector search algorithms for finding similarity. These chunks are subsequently sent to LLMs (Large Language Models), often to answer specific questions.&lt;/p&gt;
+&lt;p&gt;There is no one-size-fits-all approach to text chunking; however, various strategies have emerged in the field. To optimize your RAG use case, you should test different chunking methods and benchmark their performance using recall and precision measures with your chosen embedding model or experiment with multiple embedding models against each method until achieving optimal recall.&lt;/p&gt;
+&lt;p&gt;In our series of posts about Chunking techniques, we will discuss the whole page chunking approach – its advantages and disadvantages. In this strategy, the entire page of the document is treated as a single unit, assuming that the content on each page revolves around a single subject. This method works well for certain PDF documents where each page represents a distinct topic.&lt;/p&gt;
+&lt;p&gt;It is essential to note that vector embedding models have token limits, similar to LLMs, which may prevent you from feeding an entire page into the model for vectorization. To overcome this limitation, consider using text-ada-002 from OpenAI, which offers a higher token limit (8192 tokens) for such tasks. However, keep in mind that employing whole page chunking can lead to weak semantic representation when multiple different topics are discussed on a single page.&lt;/p&gt;
+&lt;p&gt;To summarize, while the whole page chunking technique has its advantages and may work well for specific document formats, it is crucial to consider potential limitations and optimize your approach accordingly. Experiment with different strategies to find the best solution that aligns with your RAG use case&amp;rsquo;s requirements, and always benchmark your results using relevant metrics such as recall and precision.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-whole-page-chunks/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;The third in our series of posts about Chunking techniques we will discuss embedding the entire page of text, and the advantages and disadvantages of that.&lt;/li&gt;
+&lt;li&gt;Whole page chunking.  In this method we chunk the entire page of the document at once, assuming the page itself is talking about a single subject.  This works well for some PDF documents where each page represents a different subject.  Keep in mind that vector embedding models have token limits (just like LLMs) that may prevent you from feeding an entire page into the model for vectorization.  Choose a text embedding model like text-ada-002 from OpenAI, which has a larger token limit (8192 tokens) for a task like this.  Also keep in mind that you will get a weak semantic representation if there’s lots of different topics discussed in the single page&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Single or Multiple Paragraph</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-single-or-multiple-paragraph/</link>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-single-or-multiple-paragraph/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques-single-or-multiple-paragraphs&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-single-or-multiple-paragraph/#chunking-techniques-single-or-multiple-paragraphs&#34;&gt;Chunking Techniques: Single or Multiple Paragraphs&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Choosing an effective chunking strategy for your unstructured text documents (PDF, Word, HTML) is critical to the success of your Retrieval Augmented Generation (RAG) use case. In RAG applications, chunks of text serve as inputs to the text embedding model, which generates dense vectors that are searched for similarity using vector search techniques. The returned chunks then get sent to a Large Language Model (LLM), usually for question-answering tasks.&lt;/p&gt;
+&lt;p&gt;Unfortunately, there is no one-size-fits-all approach to text chunking; however, various strategies have been observed in the field. It&amp;rsquo;s crucial to try each strategy and benchmark it against your chosen embedding model or experiment with multiple embedding models against different chunking methods until you achieve the best possible recall.&lt;/p&gt;
+&lt;p&gt;In this post, we will discuss paragraph boundary chunking, where chunks typically consist of 1-2 paragraphs of text. This method works best for documents written in proper English and assumes that a full semantic thought or concept can be encapsulated within a single paragraph (as good writing should have). Consequently, these tend to produce better vector embeddings due to their strong, semantically defined concepts.&lt;/p&gt;
+&lt;p&gt;When using the 1-2 paragraph boundary chunking method, keep in mind that it may not be as effective on documents with less structured or poor English writing. Additionally, you&amp;rsquo;ll need to consider how well your chosen LLM handles larger chunks of text.&lt;/p&gt;
+&lt;p&gt;To implement this technique, start by breaking your unstructured document into individual paragraphs using a parsing library or regular expressions. Then, apply the paragraph boundary chunking method, either by grouping consecutive paragraphs together (up to 2) or selecting single paragraphs as chunks. Finally, evaluate the quality of your vector embeddings and adjust your chunking strategy accordingly.&lt;/p&gt;
+&lt;p&gt;Remember that experimenting with various chunking methods is essential for achieving optimal results in RAG applications. By benchmarking each method against your chosen embedding model, you can determine which approach yields the best recall and precision. As you continue to refine your chunking strategy, consider exploring other simpler techniques like fixed token with overlap for your RAG use case.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  It recommended sentence level and n-gram embedding which is a terrible idea.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-single-or-multiple-paragraph/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;The second in our series of posts about Chunking techniques we will discuss paragraph boundary chunking, with usually 1 to 2 paragraphs of text.&lt;/li&gt;
+&lt;li&gt;1-2 paragraph boundary.  This method works best on documents of proper English writing.  It assumes a full semantic thought or concept will be encapsulated in a single paragraph (as good writing should have) and you chunk on a single paragraph or 2 paragraphs.  These tend to produce better vector embeddings as they have a single, strongly semantically defined concept.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Techniques - Fixed Token Count with Overlap</title>
+      <link>https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/</link>
+      <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/</guid>
+      <description>&lt;h1 id=&#34;chunking-techniques-fixed-token-count-with-overlap&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/#chunking-techniques-fixed-token-count-with-overlap&#34;&gt;Chunking Techniques: Fixed Token Count with Overlap&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Choosing a good chunking strategy for unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. In this blog post, we will focus on one of the most basic yet effective techniques: fixed token count with overlap. This method is widely used in RAG libraries like LangChain and LLAMAindex.&lt;/p&gt;
+&lt;h2 id=&#34;background&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/#background&#34;&gt;Background&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Chunks of text are sent to the text embedding model, which produces dense vectors that can be searched for similarity using vector search. Chunks returned are then sent to the Large Language Model (LLM) to answer questions. There is no one-size-fits-all approach to text chunking; however, we have observed many different strategies in the field. It&amp;rsquo;s essential to experiment with various techniques and benchmark them against recall and precision using your chosen embedding model.&lt;/p&gt;
+&lt;h2 id=&#34;fixed-token-count-with-overlap&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/#fixed-token-count-with-overlap&#34;&gt;Fixed Token Count with Overlap&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The fixed token count with overlap method is a default chunking technique in most RAG libraries. In this approach, you define a fixed number of tokens (words) that will be used per chunk, typically 256 or 512, and specify the desired amount of overlap between adjacent chunks. This method works well when you don&amp;rsquo;t know the structure of the document source upfront and rely on the LLM to reason through broken sentences and potentially irrelevant data.&lt;/p&gt;
+&lt;p&gt;This technique is particularly effective with larger, more complex LLM models as it heavily relies on their reasoning capabilities. To implement fixed token count with overlap, follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Define the maximum number of tokens per chunk (e.g., 256 or 512).&lt;/li&gt;
+&lt;li&gt;Specify the desired overlap between adjacent chunks (e.g., 32 tokens).&lt;/li&gt;
+&lt;li&gt;Break down your unstructured text documents into chunks based on the defined token count and overlap.&lt;/li&gt;
+&lt;li&gt;Feed these chunks to the embedding model for vectorization.&lt;/li&gt;
+&lt;li&gt;Use the resulting dense vectors in a vector search to find similar chunks.&lt;/li&gt;
+&lt;li&gt;Send the retrieved chunks to the LLM for answering questions or generating responses.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;experimentation-and-benchmarking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/#experimentation-and-benchmarking&#34;&gt;Experimentation and Benchmarking&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To optimize your RAG use case, it&amp;rsquo;s crucial to experiment with various chunking techniques and benchmark their performance against recall and precision metrics using your chosen embedding model. This will help you identify the best possible approach for your specific use case.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/#conclusion&#34;&gt;Conclusion&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The fixed token count with overlap method is a versatile and effective text chunking technique used in RAG libraries like LangChain and LLAMAindex. By defining the maximum number of tokens per chunk and the desired overlap between adjacent chunks, you can leverage the reasoning capabilities of larger, more complex LLM models to process unstructured text documents effectively. Experiment with different techniques and benchmark their performance against recall and precision metrics to optimize your RAG use case.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-techniques-fixed-token-count-with-overlap/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.&lt;/li&gt;
+&lt;li&gt;Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.&lt;/li&gt;
+&lt;li&gt;There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.&lt;/li&gt;
+&lt;li&gt;The most basic text chunking strategy is fixed token count with overlap.  This is the default chunking method in most RAG libraries like “langchain” or “llamaindex”.  In this method, you define a fixed number of tokens (words) that will be used per chunk, usually 256 or 512 and how much overlap you want from the previous and next chunk.  This method works well for time when you don’t know the structure of the document source up front and want to rely on the LLM (large language model) to reason through broken sentences and possibly irrelevant data.  This relies heavily on the LLMs reasoning capability and works best with larger, more complex LLM models.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Fact Expansion - What you’re Reading Right Now</title>
+      <link>https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/</link>
+      <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/</guid>
+      <description>&lt;h1 id=&#34;fact-expansion-what-youre-reading-right-now&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/#fact-expansion-what-youre-reading-right-now&#34;&gt;Fact Expansion: What You&amp;rsquo;re Reading Right Now&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of artificial intelligence and natural language processing, Large Language Models (LLMs) have emerged as powerful tools for various applications. Two such techniques that harness the capabilities of LLMs are Fact Expansion and Fact Synthesis. In this blog post, we explore the concept of Fact Expansion, delve into its underlying technology, and discuss its potential implications for knowledge management systems.&lt;/p&gt;
+&lt;h2 id=&#34;the-rise-of-fact-expansion&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/#the-rise-of-fact-expansion&#34;&gt;The Rise of Fact Expansion&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Fact Expansion is a technique that leverages the strong capabilities of LLMs, such as summarization and imitation, to re-hydrate facts into longer, more descriptive writing. The core idea behind this method is that you provide a set of facts within a particular knowledge domain, and request the LLM expand these facts into a blog post, technical document, or any other form of extended text.&lt;/p&gt;
+&lt;p&gt;This technique can be beneficial if the expanded text is accurate and well-researched, as it allows for the creation of high-quality content without the need for extensive manual writing. However, there is also a risk that the LLM may start hallucinating details about the facts, which could lead to inaccurate or misleading information.&lt;/p&gt;
+&lt;h2 id=&#34;factweave-a-pioneering-blogging-system&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/#factweave-a-pioneering-blogging-system&#34;&gt;FactWeave: A Pioneering Blogging System&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One noteworthy application of Fact Expansion is FactWeave (&lt;a href=&#34;https://github.com/patw/FactWeave)&#34;&gt;https://github.com/patw/FactWeave)&lt;/a&gt;, a blogging system that utilizes this technique to generate informative and engaging content. FactWeave serves as the underlying system for this very blog post, demonstrating how Fact Expansion can be employed to create valuable and reliable information for readers.&lt;/p&gt;
+&lt;h2 id=&#34;the-opposite-technique-fact-synthesis&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/#the-opposite-technique-fact-synthesis&#34;&gt;The Opposite Technique: Fact Synthesis&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;While Fact Expansion focuses on expanding facts into comprehensive text, its counterpart, Fact Synthesis, aims to synthesize long-form texts into concise factual statements. Both of these techniques represent innovative ways of utilizing LLMs to automate knowledge management and communication processes.&lt;/p&gt;
+&lt;h2 id=&#34;implications-for-future-state-knowledge-management-systems&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/#implications-for-future-state-knowledge-management-systems&#34;&gt;Implications for Future State Knowledge Management Systems&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The combination of Fact Expansion and Fact Synthesis could pave the way for a new form of compressed communication that involves reducing lengthy texts into facts and subsequently uncoding them with Fact Expansion. This approach can be seen as analogous to the zip/unzip technique for file compression, but for knowledge instead.&lt;/p&gt;
+&lt;p&gt;In conclusion, Fact Expansion is an influential technique in the field of AI-powered knowledge management systems. By leveraging the capabilities of LLMs to expand facts into comprehensive text, this method has the potential to revolutionize how we create and share information. As researchers continue to develop and refine these techniques, we can expect to witness even more innovative applications of Fact Expansion in various industries and sectors.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-expansion-what-youre-reading-right-now/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Summarization and imitation are some of the stronger capabilities of Large Language Models (LLM)&lt;/li&gt;
+&lt;li&gt;Fact Expansion takes advantage of this by re-hydrating facts into longer, more descriptive writing&lt;/li&gt;
+&lt;li&gt;The core idea is you provide a set of facts in a particular knowledge domain, and request the LLM expand these facts into a blog post, or a technical document.&lt;/li&gt;
+&lt;li&gt;The LLM will fill in details and expand on the facts which can be good if the expanded text is correct or bad if it starts hallucinating details about the facts&lt;/li&gt;
+&lt;li&gt;FactWeave (&lt;a href=&#34;https://github.com/patw/FactWeave&#34;&gt;https://github.com/patw/FactWeave&lt;/a&gt;) is a blogging system that takes advantage of Fact Expansion and is the underlying system that produced the content you are reading right now.&lt;/li&gt;
+&lt;li&gt;Fact Expansion is the opposing technique to Fact Synthesis, which we talked about in a previous post.  Both of these techniques are good examples of using LLMs to automate work.&lt;/li&gt;
+&lt;li&gt;These techniques could bring about a new form of compressed communication where we reduce long form text into facts and uncompress it later with Fact Expansion.  This could be seen as a type of zip/unzip technique but for knowledge, instead of files.&lt;/li&gt;
+&lt;li&gt;Conclusion:  Fact Expansion and Fact Synthesis are very powerful techniques for knowledge management and could represent a key element to future state knowledge management systems, powered by AI.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Designing for LLM Driven Applications</title>
+      <link>https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/</link>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/</guid>
+      <description>&lt;h1 id=&#34;designing-for-llm-driven-applications-a-comprehensive-guide&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/#designing-for-llm-driven-applications-a-comprehensive-guide&#34;&gt;Designing for LLM-Driven Applications: A Comprehensive Guide&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Large Language Models (LLMs) have revolutionized the way we interact with technology, enabling natural language processing and generation to new heights. To harness the full potential of these powerful models in application development, it&amp;rsquo;s crucial to focus on designing effective prompts that optimize their performance. This blog post will delve into the four essential elements of prompt design for LLM-driven applications: system message, augmentation, pre-question prompt, and user question.&lt;/p&gt;
+&lt;h2 id=&#34;system-message&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/#system-message&#34;&gt;System Message&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The system message plays a pivotal role in shaping the tone and personality of the LLM&amp;rsquo;s responses. If you want professional, technical replies, incorporate that into the system message. Similarly, if you desire more conversational or irreverent outputs, reflect those qualities in your system message as well. This will help guide the model towards delivering the desired output style and format.&lt;/p&gt;
+&lt;h2 id=&#34;augmentation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/#augmentation&#34;&gt;Augmentation&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In RAG (Retrieval Augmented Generation) use cases, augmentation is critical for providing authoritative responses to user questions. By adding text chunks or distilled facts with context, you empower the LLM to answer queries accurately and efficiently.&lt;/p&gt;
+&lt;p&gt;When working with smaller parameter count models (e.g., Mistral-7b), it becomes even more important to have the right data or facts in the prompt, as well as minimizing irrelevant information. Optimize your chunking and recall strategy to achieve optimal performance from the LLM.&lt;/p&gt;
+&lt;h2 id=&#34;pre-question-prompt&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/#pre-question-prompt&#34;&gt;Pre-Question Prompt&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The pre-question prompt serves as a crucial guiding element for LLMs. A typical prompt starts with &amp;ldquo;Answer the following question using the facts above:&amp;rdquo;, but you will need to customize this message to steer the model away from irrelevant topics, such as discussing the facts or revealing its system message. Additionally, use this section of the prompt to specify the desired output format (e.g., JSON or XML), ensuring that the LLM adheres to your requested format.&lt;/p&gt;
+&lt;p&gt;Development cycles may involve iterating on the pre-question prompt to refine and improve the model&amp;rsquo;s responses. This &amp;ldquo;steerability&amp;rdquo; is a critical aspect of designing prompts for LLM-driven applications.&lt;/p&gt;
+&lt;h2 id=&#34;user-question&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/#user-question&#34;&gt;User Question&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The user question, provided at the end of the prompt, directly impacts the LLM&amp;rsquo;s response generation process. While there are differing opinions on where to place the question within the prompt, our observations have shown stronger performance when placing the data/facts at the top and the pre-question and question at the bottom.&lt;/p&gt;
+&lt;p&gt;By meticulously crafting each element of the prompt, developers can maximize the potential of LLMs in their applications, ultimately delivering more accurate, engaging, and user-friendly experiences for end-users.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/designing-for-llm-driven-applications/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Designing for LLM (large language model) driven applications should focus on the various elements of the prompt to the LLM&lt;/li&gt;
+&lt;li&gt;The prompt should be broken down into the following 4 elements:  system message (bot identity and personality), the augmentation (data and facts) which is used to answer the question, the pre-question prompt used for steering the response output style and format, and finally the user provided question itself.&lt;/li&gt;
+&lt;li&gt;The system message should be designed to give the LLM responses a personality or tone for responses.  If you want a professional tone with technical expertise, build that into the system message.  Same if you want a more conversational, irreverent tone to the outputs.&lt;/li&gt;
+&lt;li&gt;The augmentation piece is critical for RAG (retrieval augmented generation) use cases. This is where you add your text chunks or distilled facts with context, so that the LLM can answer the question authoritatively.  The smaller the parameter count of the model (ie mistral-7b) the more important it is to have the correct data or facts in the prompt and as little irrelevant data as possible.  Optimize your chunking and recall strategy to get the biggest wins here.&lt;/li&gt;
+&lt;li&gt;The pre-question prompt is usually something like “Answer the following question using the facts above:”, which is a great starting point.  You will need to modify this prompt to steer the model away from things like talking about the facts, or revealing it’s system message or sticking to JUST the facts provided and nothing else.  This is also the place you specify the output format, if you want JSON or XML you ask for it here.  You will spend some development cycles iterating on this part of the prompt to get the best possible outputs.  This is your steerability.&lt;/li&gt;
+&lt;li&gt;The question itself is provided by the user and gets quoted into the prompt as the final step.  There’s some arguments in the industry to put the question up at the top of the prompt, but I’ve observed stronger responses by laying out the prompt with the data/facts at the top of the prompt and the pre-question and question at the bottom.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Fact Synthesis - A Powerful Technique for Augmentation</title>
+      <link>https://ai.dungeons.ca/posts/fact-synthesis-a-powerful-technique-for-augmentation/</link>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/fact-synthesis-a-powerful-technique-for-augmentation/</guid>
+      <description>&lt;h1 id=&#34;fact-synthesis-a-powerful-technique-for-augmentation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-synthesis-a-powerful-technique-for-augmentation/#fact-synthesis-a-powerful-technique-for-augmentation&#34;&gt;Fact Synthesis: A Powerful Technique for Augmentation&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The use of large language models (LLMs) has become increasingly prevalent in the industry, with retrieval augmented generation (RAG) emerging as a reliable method to achieve strong results from these models. Current techniques involve &amp;ldquo;chunking&amp;rdquo; documents into individual paragraphs or fixed numbers of words and running them through text embedding models for vector search later. While effective, this approach relies heavily on the ability of the embedding model to accurately represent semantic concepts within the chunks of text and requires constant experimentation and benchmarking for optimal results.&lt;/p&gt;
+&lt;p&gt;To address these limitations and improve the process of augmenting LLMs, we propose a new method: fact synthesis. This technique involves extracting individual facts from raw source texts and summarizing them with the assistance of LLMs. The first step in this process is to reduce the source data into individual facts, which can then be stored in a transactional data store like MongoDB.&lt;/p&gt;
+&lt;p&gt;Facts can be grouped together into &amp;ldquo;chunks&amp;rdquo; for vectorization using text embedders such as text-ada-002. When a user poses a question, it too can be vectorized and a simple similarity search performed to retrieve the relevant facts. The LLM can then generate an answer based on these retrieved facts.&lt;/p&gt;
+&lt;p&gt;Fact grouping into chunks can be achieved through several methods:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Fixed number of facts per chunk:&lt;/strong&gt; Generate chunks containing a fixed number of facts, with no semantic boundaries between them. This approach is straightforward but may result in less coherent information.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Topic-grouped facts:&lt;/strong&gt; If metadata such as document names or chapters is available, it can be used to group related facts together based on context. This method allows for larger chunks as the embedding models represent semantically similar facts within a single knowledge domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Semantically similar facts:&lt;/strong&gt; Grouping facts by their similarity enables the generation of large text chunks with fewer embedding vectors. However, this method is computationally expensive and may not be feasible for all use cases.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By adopting fact synthesis in your own application, you can leverage the power of LLMs while minimizing their reliance on irrelevant information within text chunks. The blog system FactWeave, for example, employs a different technique called &amp;ldquo;fact expansion&amp;rdquo; to generate its content. However, by exploring and implementing fact synthesis, developers can create more efficient and effective augmentation systems tailored to their specific needs.&lt;/p&gt;
+&lt;p&gt;To get started with fact synthesis, refer to the following GitHub examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/patw/ExternalBrain&#34;&gt;Fact Synthesis Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/patw/FactWeave&#34;&gt;Fact Expansion Example (FactWeave)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/fact-synthesis-a-powerful-technique-for-augmentation/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;RAG (retrieval augmented generation) has emerged as the most reliable technique for getting strong results from LLMs (large language models)&lt;/li&gt;
+&lt;li&gt;The current state of the industry is “chunking” documents. Word, PDF, HTML and other unstructured data sources are chunked into individual paragraphs or fixed numbers of words.  These chunks are then run through a text embedding model which produces vectors and those vectors are stored in a vector search engine for retrieval later.  The chunks we retrieve will be sent to the LLM prompt as part of the augmentation process.  This lets the LLM provide grounded answers to users&amp;rsquo; questions with retrieved data (chunks).&lt;/li&gt;
+&lt;li&gt;This technique relies heavily on the embedding model’s ability to represent the semantic concepts in the chunk of text, which can be hit or miss.  You need to experiment and benchmark to get good results.&lt;/li&gt;
+&lt;li&gt;It also relies on the LLMs ability to reason through the irrelevant text in the chunk, because you will not always have a perfect chunk of text with only the concepts required to answer the question using RAG&lt;/li&gt;
+&lt;li&gt;We propose a new method of chunking with only point form, individual facts extracted from the raw source text and summarized by the LLM itself.  This is fact synthesis&lt;/li&gt;
+&lt;li&gt;The first step in the process is to reduce the source data (usually blobs of text) into individual facts.  These facts can then be stored individually in a transactional data store like MongoDB&lt;/li&gt;
+&lt;li&gt;Facts can be grouped together into a “chunk” and the chunk can be run through a text embedder model like text-ada-002 to generate vectors.  When a user provides a question, this question can be vectorized as well and then a simple vector similarity search can be done to retrieve the facts relevant to the question, for the LLM to provide an answer.&lt;/li&gt;
+&lt;li&gt;Grouping facts into chunks can be done though a few methods:  1) Fixed number of facts per chunk.  Generate the chunks with a fixed number of facts, with no real semantic boundary between the facts.  2) Topic grouped facts.  If you have topic metadata (document name, document chapter) you can group the facts together by the context they were found in.  This should allow you to group more facts together per chunk because the embeddings are representing facts that should be covering a single topic or knowledge domain  3) Semantically similar facts.  You can group facts by how similar they are to other facts allowing you to generate very large text chunks with very few embeddings.  This method will be the most compute expensive to generate but provides a large reduction in vector storage.&lt;/li&gt;
+&lt;li&gt;Call to action:  Try Fact Synthesis in your own use case!  This blog system (FactWeave) actually uses the opposite technique (Fact Expansion) to generate these blog posts.&lt;/li&gt;
+&lt;li&gt;See the following github example for Fact Synthesis:  &lt;a href=&#34;https://github.com/patw/ExternalBrain&#34;&gt;https://github.com/patw/ExternalBrain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;See the following github example for Fact Expansion:  &lt;a href=&#34;https://github.com/patw/FactWeave&#34;&gt;https://github.com/patw/FactWeave&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>VAMPL Stack - Everything you need to build RAG solutions</title>
+      <link>https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/</link>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/</guid>
+      <description>&lt;h2 id=&#34;vampl-stack-everything-you-need-to-build-rag-solutions&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#vampl-stack-everything-you-need-to-build-rag-solutions&#34;&gt;VAMPL Stack: Everything You Need to Build RAG Solutions&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In the ever-evolving landscape of generative AI, companies are diving headfirst into leveraging this powerful technology. As Retrieval Augmented Generation (RAG) chatbots become the go-to solution, developers need a robust yet agile stack that caters to maximum velocity in development. Enter VAMPL: Vectorizer, Atlas Mongo, Python, and LLM (Large Language Model).&lt;/p&gt;
+&lt;h3 id=&#34;the-power-of-text-embeddings&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#the-power-of-text-embeddings&#34;&gt;The Power of Text Embeddings&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The current state of the art for text chunk retrieval involves using text embedding models that produce dense vectors. Pair this up with semantic search, and you can augment the LLM prompt with your own knowledge chunks. This allows developers to create more sophisticated chatbots that can understand context and provide accurate answers based on a vast array of data sources.&lt;/p&gt;
+&lt;h3 id=&#34;atlas-mongo-the-developers-dream&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#atlas-mongo-the-developers-dream&#34;&gt;Atlas Mongo: The Developer&amp;rsquo;s Dream&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Atlas Mongo, a full-featured developer data platform, is a game-changer for teams building generative AI solutions. Offering a transactional database (document store), lexicographic search, vector search—all fully hosted with robust security and backup features—it significantly reduces cognitive load on developers. With MQL (Mongo Query Language) at your fingertips, integrating this powerful tool into your stack has never been easier.&lt;/p&gt;
+&lt;h3 id=&#34;the-unbeatable-versatility-of-python&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#the-unbeatable-versatility-of-python&#34;&gt;The Unbeatable Versatility of Python&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Python remains the de facto language for working with generative AI due to its numerous easy-to-use integrations with various LLM and embedding providers. Plus, the ability to run these models locally is a game-changer. Python&amp;rsquo;s dominance in data science ensures that it will continue to be at the heart of AI development for years to come.&lt;/p&gt;
+&lt;h3 id=&#34;the-key-technology-large-language-models-llms&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#the-key-technology-large-language-models-llms&#34;&gt;The Key Technology: Large Language Models (LLMs)&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The LLM and its summarization and reasoning abilities are the cornerstone technologies for building modern chatbots. RAG techniques have proven reliable and easy to implement, enabling developers to build generative chatbots that can answer questions with your company&amp;rsquo;s data sources. This level of reliability simply isn&amp;rsquo;t possible with raw model prompting alone.&lt;/p&gt;
+&lt;h3 id=&#34;introducing-the-vampl-stack&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#introducing-the-vampl-stack&#34;&gt;Introducing the VAMPL Stack&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;By combining these powerful tools into one cohesive stack, you have everything you need to build RAG solutions for your organization. The VAMPL Stack offers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Efficient and accurate text embedding models&lt;/li&gt;
+&lt;li&gt;Atlas Mongo&amp;rsquo;s robust data platform features&lt;/li&gt;
+&lt;li&gt;Python&amp;rsquo;s versatility and ease of use with LLMs&lt;/li&gt;
+&lt;li&gt;The power and reliability of Large Language Models (LLMs)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this comprehensive stack, developers can build cutting-edge RAG chatbots that leverage your company&amp;rsquo;s knowledge base while providing users with accurate and contextual responses. Say goodbye to the limitations of traditional chatbot solutions—the VAMPL Stack is here to revolutionize the way you approach generative AI development.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/vampl-stack-everything-you-need-to-build-rag-solutions/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;With RAG (retrieval augmented generation) Chatbots becoming the go-to solution for companies jumping into the generative AI industry, I prose a new development stack for maximum veolocity: VAMPL  - Vectorizer, Atlas Mongo, Python and LLM (Large Language Model).&lt;/li&gt;
+&lt;li&gt;The current state of the art for text chunk retreival is using text embedding models that produce dense vectors.  Pair this up with semantic search and you can augment the LLM prompt with your own knowledge chunks&lt;/li&gt;
+&lt;li&gt;Mongo Atlas is a full Developer Data Platform with transactional database (document store), lexical search, vector search fully hosted with security and backups all accessible with a single mongo driver and using MQL for query.  It&amp;rsquo;s a massive reduction in cognitave load for teams building genai solutions.&lt;/li&gt;
+&lt;li&gt;Python remains the defacto language for working with generative AI due to it&amp;rsquo;s many easy to use integrations with different LLM and embedding providers and even the ability to run these models locally.  The world of data science is powered by Python&lt;/li&gt;
+&lt;li&gt;The LLM and it&amp;rsquo;s summarization and reasoning ability is the key technology for building modern chatbots.  The RAG technique has proven to be reliable and easy to implement allowing you to build modern generative chatbots that can answer questions with your own companies data sources.  This isn&amp;rsquo;t reliable or even possible with raw model prompting.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Atlas Vector Search Collection Modelling</title>
+      <link>https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/</guid>
+      <description>&lt;h1 id=&#34;atlas-vector-search-collection-modeling-designing-for-optimal-rag-chatbot-performance&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#atlas-vector-search-collection-modeling-designing-for-optimal-rag-chatbot-performance&#34;&gt;Atlas Vector Search Collection Modeling: Designing for Optimal RAG Chatbot Performance&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the world of retrieval augmented generation (RAG) chatbots, designing Mongodb collections to support vector search plays a crucial role in achieving optimal performance. This blog post will guide you through the essential factors to consider when modeling your MongoDB collections for efficient vector search, including text chunking strategy and query filters. We&amp;rsquo;ll also discuss the importance of identifying different vector field names to facilitate benchmarking and storage of multiple vectors within a document.&lt;/p&gt;
+&lt;h2 id=&#34;textknowledge-chunking-strategy&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#textknowledge-chunking-strategy&#34;&gt;Text/Knowledge Chunking Strategy&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To support vector search in your RAG chatbots, you must first determine an effective text or knowledge chunking strategy. This involves breaking down the source documents into smaller, manageable chunks of text that can be indexed and queried efficiently. The choice of chunk size will depend on factors such as the complexity of the information and the specific use case for your chatbot.&lt;/p&gt;
+&lt;h2 id=&#34;query-filters&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#query-filters&#34;&gt;Query Filters&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A well-designed query filter is essential to ensure that only relevant results are returned by the vector search algorithm. Each field you need to filter on should be included in the vector search index, along with the chunk text and the resulting vector output of the text embedding process. This will enable your chatbot to retrieve accurate and precise information from the MongoDB collection during RAG interactions.&lt;/p&gt;
+&lt;h2 id=&#34;storing-different-text-for-llms&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#storing-different-text-for-llms&#34;&gt;Storing Different Text for LLMs&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In some cases, you may want to store different text for sending to the large language model (LLM) in the RAG process than the text used for vector embedding. For instance, pre-summarization techniques can be employed to improve recall and precision of semantic search while still providing the original source document text to the LLM. This dual approach ensures that your chatbot can provide accurate responses based on both summarized and full-text information.&lt;/p&gt;
+&lt;h2 id=&#34;identifying-vector-field-names&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#identifying-vector-field-names&#34;&gt;Identifying Vector Field Names&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To facilitate benchmarking different chunking and embedding strategies, it is crucial to assign unique vector field names that identify which embedding model was used to generate the vector. For example, &amp;ldquo;content_embedding_text_ada_002&amp;rdquo; represents the OpenAI text-ada-002 model. This naming convention will help you track the performance of different models and make informed decisions about optimizing your RAG chatbot&amp;rsquo;s search capabilities.&lt;/p&gt;
+&lt;h2 id=&#34;scaling-mongodb-atlas-cluster-for-vector-storage&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#scaling-mongodb-atlas-cluster-for-vector-storage&#34;&gt;Scaling MongoDB Atlas Cluster for Vector Storage&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;As vector search collections can quickly grow in size, particularly with high-dimensional models like text-ada-002 (1536 dimensions or nearly 12kb of floating point numbers per vector), it is essential to plan ahead and configure your MongoDB Atlas cluster accordingly. By sizing up the cluster to accommodate the total number of vectors you intend to store multiplied by the total number of documents, you can ensure that your RAG chatbot maintains optimal performance and responsiveness even as the data volume grows over time.&lt;/p&gt;
+&lt;p&gt;In conclusion, designing an efficient MongoDB collection for vector search in RAG chatbots requires careful consideration of text chunking strategy, query filters, differentiation between LLM input text, and unique vector field names to track model performance. By following these best practices and planning for scalability, you can create a powerful, reliable, and responsive RAG chatbot that delivers accurate information to users in real-time.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/atlas-vector-search-collection-modelling/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Designing MongoDB collections to support vector search, for your RAG (retrieval augmented generation) chatbots requires thinking about your text/knowledge chunking strategy and your query filters.&lt;/li&gt;
+&lt;li&gt;Every field you need to filter on will need to be included in the vector search index, along with your chunk text and the vector output of the text embedding.&lt;/li&gt;
+&lt;li&gt;It’s also possible you’ll want to store different text for sending to the LLM (large language model) in the RAG process than the text you are embedding on.  You might be using pre-summarization techniques to get better recall and precision on your semantic search, but still want to send the original text from the source document to the LLM&lt;/li&gt;
+&lt;li&gt;Come up with a vector field name that identifies which embedding model you used to generate the vector, for example:  content_embedding_text_ada_002 to represent the OpenAI text-ada-002 model.  This will become important later when you are benchmarking different chunking and embedding strategies and are storing multiple vectors in your mongo document.&lt;/li&gt;
+&lt;li&gt;Warning:  These collections can get quite large!  With models like text-ada-002 being 1536 dimensions, this is nearly 12kb of floating point numbers!  Plan ahead and size up your Mongo Atlas cluster large enough to handle the total number of vectors you want to store multiplied by the total number of documents.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Chunking Strategy</title>
+      <link>https://ai.dungeons.ca/posts/chunking-strategy/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/chunking-strategy/</guid>
+      <description>&lt;h1 id=&#34;chunking-strategy-a-comprehensive-approach-to-text-vectorization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#chunking-strategy-a-comprehensive-approach-to-text-vectorization&#34;&gt;Chunking Strategy: A Comprehensive Approach to Text Vectorization&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Text vectorization is an essential step in various Natural Language Processing (NLP) tasks, such as information retrieval, question answering, and sentiment analysis. One critical aspect of text vectorization is chunking, or breaking down the source documents into smaller, manageable pieces for processing. This blog post will delve into the intricacies of chunking strategies, highlighting various approaches and their implications on model performance.&lt;/p&gt;
+&lt;h2 id=&#34;the-importance-of-chunking-in-text-vectorization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#the-importance-of-chunking-in-text-vectorization&#34;&gt;The Importance of Chunking in Text Vectorization&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Chunking is an iterative process involving experimentation to find the optimal way to break down source documents like Word, PDF, Text, or HTML files. These documents can be chunked into single sentences, fixed-length bytes, multiple sentences, paragraphs, pages, chapters, or even entire documents. A suitable starting point for this endeavor is utilizing the chunking functionality provided by libraries such as LlamaIndex or LangChain. However, it may be necessary to evolve and adopt more sophisticated methods based on specific project requirements.&lt;/p&gt;
+&lt;h2 id=&#34;token-limits-in-text-embedding-models&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#token-limits-in-text-embedding-models&#34;&gt;Token Limits in Text Embedding Models&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Most text embedding models have a maximum token limit of 512 tokens, with exceptions like OpenAI&amp;rsquo;s text-ada-002 model offering an extended limit of 8192 tokens. These constraints significantly impact the chunking strategy as they directly affect the semantic representation and recall accuracy. While it might be tempting to fill up the entire token limit for models with higher thresholds, it is essential to consider that smaller amounts of text tend to capture more precise semantic details.&lt;/p&gt;
+&lt;h2 id=&#34;improving-recall-accuracy-through-recursive-chunking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#improving-recall-accuracy-through-recursive-chunking&#34;&gt;Improving Recall Accuracy through Recursive Chunking&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Recursive chunking is an emerging technique aimed at enhancing recall accuracy by breaking down larger chunks of text into smaller pieces progressively. This method involves vectorizing a more extensive segment of text, splitting it in half, and then vectorizing those parts again. Real-world results demonstrate that this approach can improve recall accuracy by up to 10-20%, although it comes with the cost of generating additional vectors (seven, in particular). To implement this technique, duplicate the original larger chunk of text in each Mongo document before sending it to a Large Language Model (LLM) for evaluation. Afterward, use an MQL $group stage operation to remove duplicates.&lt;/p&gt;
+&lt;h2 id=&#34;chunking-and-sending-text-to-llms&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#chunking-and-sending-text-to-llms&#34;&gt;Chunking and Sending Text to LLMs&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;It is crucial to consider that the chunked data might not be identical to the text submitted to the LLM for evaluation. In many cases, it may be beneficial to send a larger amount of text, such as an entire paragraph surrounding a specific sentence, particularly when employing sentence-level chunking. This approach ensures that the LLM has sufficient context to evaluate the question accurately and effectively. Be mindful of the token limits imposed by different LLMs (generally between 4,000 and 8,000 tokens) and use as much text as necessary without exceeding these constraints.&lt;/p&gt;
+&lt;h2 id=&#34;pre-summarizing-non-textual-data&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#pre-summarizing-non-textual-data&#34;&gt;Pre-Summarizing Non-Textual Data&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Not all text yields useful vectors for embedding models, particularly when dealing with tabular or point form data structures. A viable solution to this issue is pre-summarization. By sending such non-textual content to the LLM for summarization into a paragraph of semantically rich text, you can improve the likelihood of generating meaningful vectors. Text embedding models perform best when processing well-structured English texts.&lt;/p&gt;
+&lt;h2 id=&#34;tailoring-chunking-strategies-for-different-document-types&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#tailoring-chunking-strategies-for-different-document-types&#34;&gt;Tailoring Chunking Strategies for Different Document Types&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The chunking strategy required for vectorizing source documents will vary depending on their structure. For instance, spreadsheets, CSV files, or structured data (JSON or XML) will necessitate different approaches compared to unstructured Word and PDF documents or HTML files. In the former case, it may be challenging to employ the same workflow as for the latter, requiring adjustments and customizations according to each document type&amp;rsquo;s specific characteristics.&lt;/p&gt;
+&lt;p&gt;In conclusion, the chunking strategy plays a critical role in determining the effectiveness of text vectorization and subsequent NLP tasks. By carefully considering token limits, recursive chunking, sending the appropriate amount of text to LLMs, pre-summarizing non-textual data, and tailoring strategies for different document types, one can optimize their text processing workflows and achieve better model performance and accuracy.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/chunking-strategy/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;There is no right answer for chunking your source documents (Word, PDF, Text, HTML).  This is an iterative process of experimentation where the end result could be chunked by a single sentence, fixed byte length, multiple fixed sentences, whole paragraph, multiple paragraph, whole page, whole chapter, or even whole document.  A good place to start is the chunking functionality in llamaindex or langchain, but you may need to evolve to more sophisticated methods.&lt;/li&gt;
+&lt;li&gt;Most text embedding models are limited to 512 tokens (words or word parts).  The text-ada-002 model from OpenAI is the exception at 8192 tokens.  These limits will greatly influence the chunking strategy.&lt;/li&gt;
+&lt;li&gt;Recall accuracy does not seem reliable at the edge of the token limit of the embedding model.  The naive strategy is to just stuff the text up to 8192 tokens (e.g. text-ada-002) and hope for the best, but smaller amounts of text seem to capture the semantic details better.&lt;/li&gt;
+&lt;li&gt;However, you can also use a large token limit to get a vague semantic representation of a large chunk of text for multi-level vector search, so it depends on the requirement. See Recall Benchmarking post for more details.&lt;/li&gt;
+&lt;li&gt;Another emerging technique to improve recall accuracy is recursive chunking:  Vectorize a larger chunk of text, split that text in half then vectorize those pieces, then split in half again and vectorize again.  Real world results show up to 10-20% better accuracy, at the (higher) cost of 7 vectors.  Each mongo document would duplicate the larger chunk of text, to send to the LLM (large language model) and you would perform an MQL $group stage to remove duplicates.&lt;/li&gt;
+&lt;li&gt;Your chunked data might not be what you stuff into the prompt for the LLM to evaluate. In many cases you might want to send a larger amount of text.  This is especially true if you decide to chunk on a sentence level.  It’s much better to send the entire paragraph surrounding the sentence, as it could contain more details for the LLM to evaluate against the original question.  If you chunk on a paragraph, it might be useful to send the surrounding paragraphs.  The LLM needs enough text to answer the question, what you vectorize might not be enough.  Be aware of the token limit on the LLM model you are using (usually 4-8k) and use as much as you need for accuracy.&lt;/li&gt;
+&lt;li&gt;Not all text will produce useful vectors.  Tables and point forms can produce unexpected results in the text embedding model.  One solution to this is pre-summarization:  You can send these tables or point form lists to the LLM to pre-summarize into a paragraph of semantically rich text, and then vectorize on that text.  Embedding models tend to perform best with semantically rich english text.&lt;/li&gt;
+&lt;li&gt;Depending on the structure of the documents, different chunking strategies may be needed.  If you are attempting to vectorize spreadsheets, csv files or structured data (json or xml), you will probably not be able to use the same workflow as your unstructured Word and PDF and HTML docs.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Embedding Model Selection</title>
+      <link>https://ai.dungeons.ca/posts/embedding-model-selection/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/embedding-model-selection/</guid>
+      <description>&lt;h1 id=&#34;embedding-model-selection-a-comprehensive-guide&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#embedding-model-selection-a-comprehensive-guide&#34;&gt;Embedding Model Selection: A Comprehensive Guide&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Embedding models play a crucial role in natural language processing (NLP) applications, enabling accurate analysis and understanding of human language. Selecting the right embedding model can significantly impact the performance and effectiveness of your NLP solution. This blog post aims to provide you with an extensive overview of various embedding model options, along with their strengths and weaknesses, and offer guidance on how to choose the best model for your specific use case.&lt;/p&gt;
+&lt;h2 id=&#34;getting-started-text-embedding-models-in-openai&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#getting-started-text-embedding-models-in-openai&#34;&gt;Getting Started: Text-Embedding Models in OpenAI&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The easiest way to begin is by directly calling OpenAI&amp;rsquo;s text-embedding-ada-002 model, a 1536-dimensional model with high recall accuracy on non-industry-specific language. However, most RAG use cases will involve GPT-3.5-turbo or GPT-4-turbo models as the large language model (LLM). If you already have an API key and client library for these models, you can use them without any additional effort.&lt;/p&gt;
+&lt;h2 id=&#34;alternatives-azure-openai-aws-bedrock-and-google-cloud-platform-gcp-vertex&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#alternatives-azure-openai-aws-bedrock-and-google-cloud-platform-gcp-vertex&#34;&gt;Alternatives: Azure OpenAI, AWS Bedrock, and Google Cloud Platform (GCP) Vertex&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In some cases, organizations may lack access or authorization to utilize OpenAI services. In such situations, alternative platforms like Azure OpenAI, AWS Bedrock, and GCP Vertex can be recommended as fallback options.&lt;/p&gt;
+&lt;h3 id=&#34;azure-openai&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#azure-openai&#34;&gt;Azure OpenAI&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;For Azure OpenAI, the advice remains the same - use text-embedding-ada-002 as the embedding model. You will still find high recall accuracy with this model in non-industry-specific languages.&lt;/p&gt;
+&lt;h3 id=&#34;google-cloud-platform-gcp-vertex&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#google-cloud-platform-gcp-vertex&#34;&gt;Google Cloud Platform (GCP) Vertex&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;When working with GCP Vertices, the recommended embedding model is gecko-001, and for LLMs, Palm2 is suggested. The model selection process should be based on your specific requirements and use case scenarios.&lt;/p&gt;
+&lt;h2 id=&#34;open-source-models-huggingfaces-mteb-leaderboard&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#open-source-models-huggingfaces-mteb-leaderboard&#34;&gt;Open Source Models: HuggingFace&amp;rsquo;s MTEB Leaderboard&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you don&amp;rsquo;t have access to the aforementioned platforms or their models, there are various open-source models available on Huggingface&amp;rsquo;s MTEB Leaderboard. Instruction is one such model family that has demonstrated excellent accuracy in text-embedding tasks. However, new model families with better accuracy continue to emerge, so it&amp;rsquo;s essential to stay updated with the latest advancements.&lt;/p&gt;
+&lt;p&gt;Accessing HuggingFace models can be done directly through their API or by downloading and running them locally using the sentence-transformer Python library. Self-hosting these models as a service is also possible, making it easier for organizations to integrate NLP solutions into their systems.&lt;/p&gt;
+&lt;h2 id=&#34;understanding-model-cards-a-crucial-step-in-selection&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#understanding-model-cards-a-crucial-step-in-selection&#34;&gt;Understanding Model Cards: A Crucial Step in Selection&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Before selecting any embedding model, thoroughly review its model card available on HuggingFace. This document contains valuable information about the model&amp;rsquo;s capabilities and limitations, such as context window length (ranging from 512 tokens to 8192 tokens), multi-lingual text embedding support, and more. By understanding these aspects, you can ensure that you choose a model best suited for your specific use case.&lt;/p&gt;
+&lt;p&gt;In conclusion, selecting the right embedding model is critical to achieving optimal performance in NLP applications. While this blog post has provided an overview of various options available, it&amp;rsquo;s essential to conduct thorough research and testing before finalizing a model. Remember, each model comes with unique strengths and weaknesses that may or may not align with your requirements.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor Corrections, the LLM tried to correct GCP Vertex (a product name) to GCP Vertices.  It also renamed the METB leaderboard to M5EB for some reason.  This is probably one of the worst generated blog posts from the system so far.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/embedding-model-selection/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The easiest way to start is calling OpenAI directly with text-ada-002 as the text embedding model.  It’s 1536 dimensions and has very high recall accuracy on non-industry specific language.  Most use cases will be using gpt-3.5-turbo or gpt4-turbo models as the LLM (large language model), so they will already have an API key and a client library to use this.&lt;/li&gt;
+&lt;li&gt;Some larger customers don’t have access or authorization to use OpenAI, so the fallback here is to recommend Azure OpenAI, AWS Bedrock or GCP Vertex.  With Azure OpenAI, the advice above stays the same. With Google GCP and Vertex the embedding model is gecko-001 and the LLM recommended is Palm2.  With Bedrock try Cohere embedding models and Anthropic Claude as the LLM.&lt;/li&gt;
+&lt;li&gt;If none of these are available, there’s a wide selection of open source models on Huggingface on the MTEB Leaderboard.  I’ve seen good accuracy with the Instructor family of models but new model families are showing up all the time, with claims of better accuracy:  &lt;a href=&#34;https://huggingface.co/spaces/mteb/leaderboard&#34;&gt;https://huggingface.co/spaces/mteb/leaderboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Huggingface models can be accessed through the Huggingface API directly, as a simple replacement for the OpenAI text-ada-002 API.  However, these models can also be downloaded and run locally with the sentence-transformer python library and even self hosted as a service.  See this code for an example: &lt;a href=&#34;https://github.com/patw/InstructorVec&#34;&gt;https://github.com/patw/InstructorVec&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Embedding models all have different strengths and weaknesses, they can vary in the length of the context window (512 tokens to 8192 tokens) and some can handle multilingual text embedding.  Make sure to check out the model card on Huggingface before selecting a model to know what it’s capable of.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Enhancing Recall</title>
+      <link>https://ai.dungeons.ca/posts/enhancing-recall/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/enhancing-recall/</guid>
+      <description>&lt;h1 id=&#34;enhancing-recall-a-comprehensive-guide-to-improving-vector-search-performance-in-rag-chatbots&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#enhancing-recall-a-comprehensive-guide-to-improving-vector-search-performance-in-rag-chatbots&#34;&gt;Enhancing Recall: A Comprehensive Guide to Improving Vector Search Performance in RAG Chatbots&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the world of retrieval-augmented generation (RAG) chatbots, ensuring high recall and accuracy is crucial for providing users with relevant and accurate information. This blog post delves into various strategies and techniques that can help enhance recall in vector search applications, focusing specifically on improving the quality and efficiency of text chunk retrieval.&lt;/p&gt;
+&lt;h2 id=&#34;numcandidates-striking-a-balance-between-accuracy-and-time&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#numcandidates-striking-a-balance-between-accuracy-and-time&#34;&gt;NumCanDidates: Striking a Balance Between Accuracy and Time&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;numCandidates&lt;/code&gt; parameter in the Atlas Vector Search operator determines the number of nearest neighbors to evaluate for similarity. While low values can result in poor quality chunks, higher values increase the chances that the approximate nearest neighbor (ANN) algorithm will find something useful. However, very high values (&amp;gt;800) may lead to slow query performance.&lt;/p&gt;
+&lt;p&gt;To improve recall accuracy, it is recommended to set a minimum of 100-200 candidates and apply a limit of 5-10 after that for chunks sent to the large language model (LLM). Applying re-ranking techniques in memory on the app tier using manual cosine re-rank with cross encoder can boost the text chunk scores, especially when re-ranking 100-500 vectors.&lt;/p&gt;
+&lt;h2 id=&#34;instructor-embeddings-leveraging-llm-style-prompting-for-better-accuracy&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#instructor-embeddings-leveraging-llm-style-prompting-for-better-accuracy&#34;&gt;Instructor Embeddings: Leveraging LLM-Style Prompting for Better Accuracy&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The Instructor family of text embedding models requires an LLM-style prompt to generate vectors. By utilizing this additional prompting strategy, you can achieve better accuracy with fewer dimensions compared to OpenAI&amp;rsquo;s text-ada-002 model. This technique allows the embedding model to capture more context and nuance in your data, resulting in improved recall performance.&lt;/p&gt;
+&lt;h2 id=&#34;multi-level-vector-search-achieving-better-precision-through-contextualization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#multi-level-vector-search-achieving-better-precision-through-contextualization&#34;&gt;Multi-Level Vector Search: Achieving Better Precision Through Contextualization&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Another effective approach for enhancing recall is through multi-level vector search. By first vectorizing a larger chunk of text, such as an entire chapter, and then also vectorizing individual paragraphs, you can narrow down the context to specific sections within your documents. This method helps mitigate false positives when multiple chapters contain semantically similar paragraphs.&lt;/p&gt;
+&lt;h2 id=&#34;hybrid-search-combining-text-and-vector-searches-for-improved-confidence&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#hybrid-search-combining-text-and-vector-searches-for-improved-confidence&#34;&gt;Hybrid Search: Combining Text and Vector Searches for Improved Confidence&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Hybrid search involves sending both text and vector searches simultaneously, allowing you to re-rank vector results where they intersect with text search results or include high-scoring text results that are missing from the vector search result set. By combining these two powerful search methods, you can increase your confidence in the relevance of the recalled chunks.&lt;/p&gt;
+&lt;h2 id=&#34;pre-summarizing-and-chunking-optimizing-token-limits-for-improved-recall&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#pre-summarizing-and-chunking-optimizing-token-limits-for-improved-recall&#34;&gt;Pre-Summarizing and Chunking: Optimizing Token Limits for Improved Recall&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Pre-summarizing entire sections of your documentation using an LLM can help you work within the token limits of embedding models, making it easier to represent complex content effectively. In addition, applying this technique to any section that isn&amp;rsquo;t being represented well by the embedding model, such as point form, tables, or structured data (e.g., JSON and XML), may result in improved recall accuracy.&lt;/p&gt;
+&lt;h2 id=&#34;adjusting-chunk-sizes-the-impact-on-recall-accuracy&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#adjusting-chunk-sizes-the-impact-on-recall-accuracy&#34;&gt;Adjusting Chunk Sizes: The Impact on Recall Accuracy&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Changing your chunk sizes (number of tokens) can significantly impact recall accuracy and should be explored before accepting poor results. Different strategies, such as breaking down content into smaller or larger chunks, may yield better outcomes depending on the nature of your data and the specific requirements of your chatbot application.&lt;/p&gt;
+&lt;h2 id=&#34;continuous-benchmarking-staying-ahead-of-emerging-trends-in-embedding-models&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#continuous-benchmarking-staying-ahead-of-emerging-trends-in-embedding-models&#34;&gt;Continuous Benchmarking: Staying Ahead of Emerging Trends in Embedding Models&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;As new embedding models continue to emerge, it&amp;rsquo;s essential to continuously benchmark and assess their performance against your specific data. By building reproducible tests and staying up-to-date with the latest developments in this field, you can ensure that your chatbot remains optimized for accuracy and recall over time.&lt;/p&gt;
+&lt;p&gt;In conclusion, enhancing recall in vector search applications requires a combination of strategic techniques and careful consideration of various factors. By implementing these strategies effectively, you can improve the quality and efficiency of text chunk retrieval, ultimately resulting in a better user experience for your RAG chatbot.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  It kept changing Instructor (name of an embedding model) to Instructors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/enhancing-recall/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The numCandidates in the Atlas Vector Search $vectorSearch operator determines the number of nearest neighbors to evaluate for similarity.  Our recommendation is a minimum of 100-200 and applying a limit of 5-10 after that for chunks to send to the LLM (large language model) for your RAG (retrieval augmented generation) chatbot.  Low  numCandidates values (sometimes called K in other vector search engines) can result in poor quality chunks being retrieved.  Higher numCandidates  values will result in a better chance than the ANN (approximate nearest neighbor) algorithm will find something useful but it’s a trade off between accuracy and time.  Very high numCandidates  values (&amp;gt; 800) can result in slow query performance.&lt;/li&gt;
+&lt;li&gt;Re-ranking the results in-memory on the app tier, using a manual cosine re-rank with a cross encoder can result in better text chunk scores.  Re-ranking 100-500 vectors is relatively fast for a small boost in accuracy.&lt;/li&gt;
+&lt;li&gt;The Instructor family of text embedding models requires an LLM style prompt to generate vectors.  You can use this additional prompting strategy to get better accuracy for less dimensions than OpenAI’s text-ada-002 text embedding model&lt;/li&gt;
+&lt;li&gt;Multi-level vector search has worked well for some customers. The idea here is to use the large token limit (8192 tokens) of text-ada-002’s embedding model to summarize a large chunk of text, like an entire chapter of a book, then also vectorize the individual paragraphs.  You run the first vector search against the “wider” context to narrow down what chapter the text is relevant to, then query vector search again to get the specific paragraph.  This has been used to guard against false positives  when multiple chapters can contain semantically similar paragraphs.&lt;/li&gt;
+&lt;li&gt;Hybrid Search can be used to increase the confidence you have in the recalled chunks.  If you send a text search, along with a vector search. You can re-rank vector results where they intersect with text search results, or include high scoring text results that are missing from the vector search result set.  The idea here is, if the vectors and tokens are both ranking highly, it’s probably a more relevant chunk.&lt;/li&gt;
+&lt;li&gt;Using the LLM to pre-summarize entire sections of your documentation allows you to easier work within the token limits of the embedding models.  You can vectorize the smaller summarized text, and it may even have better recall than the original.  This same technique should be applied with any section of your documents that isn’t being represented well by the embedding model, like point form, tables or even JSON and XML structured data.  Yes, you can even summarize data in mongo collections!&lt;/li&gt;
+&lt;li&gt;Changing your chunk sizes (numbers of tokens) can have a dramatic effect on recall accuracy.  Try different chunking strategies before accepting poor results.&lt;/li&gt;
+&lt;li&gt;Always be benchmarking!  New embedding models are appearing all the time, and your specific data might be better represented by another model.  Build reproducible tests.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>LLM Prompting Strategy</title>
+      <link>https://ai.dungeons.ca/posts/llm-prompting-strategy/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/llm-prompting-strategy/</guid>
+      <description>&lt;h1 id=&#34;llm-prompting-strategy-enhancing-accuracy-and-overcoming-guard-rails&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-prompting-strategy/#llm-prompting-strategy-enhancing-accuracy-and-overcoming-guard-rails&#34;&gt;LLM Prompting Strategy: Enhancing Accuracy and Overcoming Guard Rails&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the ever-evolving landscape of natural language processing, Large Language Models (LLMs) have emerged as powerful tools for generating human-like responses to a wide range of questions. To harness their full potential, it is crucial to implement an effective LLM prompting strategy that maximizes accuracy and overcomes guard rail limitations. This blog post will delve into the best practices for prompt engineering and provide insights on how to bypass guard rails in sensitive domains like healthcare or law.&lt;/p&gt;
+&lt;h2 id=&#34;the-basics-of-llm-prompting&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-prompting-strategy/#the-basics-of-llm-prompting&#34;&gt;The Basics of LLM Prompting&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Most prompts to an LLM follow a pattern such as: &amp;ldquo;Can you answer the following question ‘&lt;!-- raw HTML omitted --&gt;’ based on the text below: &lt;!-- raw HTML omitted --&gt;&amp;rdquo;. While this is a solid starting point, it may not always yield optimal results. To achieve higher accuracy, prompt engineering techniques should be employed to tailor the questions and chunks of data provided to the LLM.&lt;/p&gt;
+&lt;h2 id=&#34;the-role-of-chunks-in-prompting&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-prompting-strategy/#the-role-of-chunks-in-prompting&#34;&gt;The Role of Chunks in Prompting&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To improve the likelihood of obtaining an answer, it is recommended to send multiple chunks of data as part of the input. This approach allows for a more comprehensive understanding of the context and increases the chances of finding relevant information within the text. Current best practices suggest using 3-10 chunks per prompt.&lt;/p&gt;
+&lt;h2 id=&#34;guard-rails-and-overcoming-them&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-prompting-strategy/#guard-rails-and-overcoming-them&#34;&gt;Guard Rails and Overcoming Them&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One challenge faced by LLM users is guard rail limitations that prevent certain types of questions from being answered. In sensitive domains such as healthcare or law, these restrictions can be particularly problematic. To circumvent these blockers, creative prompting strategies must be employed. Open-source LLMs offer unguard models capable of generating more sensitive responses when traditional approaches fail.&lt;/p&gt;
+&lt;h2 id=&#34;the-role-of-documentation-and-urls&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-prompting-strategy/#the-role-of-documentation-and-urls&#34;&gt;The Role of Documentation and URLs&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When crafting an LLM prompt, there is no need to include the URL for the associated documentation (usually HTML or PDF links) as part of the input. LLMs may ignore these links regardless of their inclusion in the prompt. To ensure all relevant information is provided, it is advisable to store the URLs in a database like Mongo and append them to the final response generated by the LLM. This method mirrors the approach taken by platforms such as Bing Chat.&lt;/p&gt;
+&lt;p&gt;In conclusion, an effective LLM prompting strategy hinges on understanding the intricacies of prompt engineering, the benefits of using multiple chunks of data, overcoming guard rail limitations, and managing documentation URLs. By leveraging these techniques, users can unlock the full potential of LLMs and generate more accurate and useful responses for their specific needs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-prompting-strategy/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Most prompts to the LLM (large language model) will follow a pattern like this:  “Can you answer the following question ‘ &lt;!-- raw HTML omitted --&gt;’ based on the text below: &lt;!-- raw HTML omitted --&gt;”.  This is a good starting place but you will most likely need to do prompt engineering to get the best possible result.  Use the API or UI for your tool set to take a known question/chunk(s) pair and see what changes to the prompt (ie.  Can you answer the following healthcare question) can result in higher accuracy for the response.&lt;/li&gt;
+&lt;li&gt;You can send more than one chunk of data, as long as it fits in the token limit of the LLM. Sending more chunks means it’s more likely to have an answer to the question. The current best practice is 3-10 chunks.&lt;/li&gt;
+&lt;li&gt;Be aware that the guard rails on the LLM could prevent some questions from being answered.  This can be a serious problem for healthcare or legal use cases, as the LLM will try to prevent producing responses for these style of questions.  This may require some creative prompting strategies to bypass these blockers. Alternatively, the open source LLMs have a selection of unguarded models that can be used to generate more sensitive responses.&lt;/li&gt;
+&lt;li&gt;You don’t need to provide the URL for the documentation (usually HTML or PDF links) as part of the prompt, there’s a high chance that even if you ask for it to be provided as part of the response, the LLM will ignore it.  The URL for the documentation can be stored in the mongo collection and can be appended to the LLM response.  This is similar to how Bing Chat works.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>LLM Selection</title>
+      <link>https://ai.dungeons.ca/posts/llm-selection/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/llm-selection/</guid>
+      <description>&lt;h1 id=&#34;llm-selection-choosing-the-right-language-model-for-your-rag-chatbot&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#llm-selection-choosing-the-right-language-model-for-your-rag-chatbot&#34;&gt;LLM Selection: Choosing the Right Language Model for Your RAG Chatbot&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In today&amp;rsquo;s world of advanced artificial intelligence (AI) and natural language processing (NLP), large language models (LLMs) play a crucial role in developing powerful chatbots. These models, particularly retrieval-augmented generation (RAG) chatbots, have become indispensable for various industries, from customer service to content creation. Selecting the appropriate LLM model that optimizes cost and performance is critical to the success of your use case. This comprehensive blog post will delve into the world of LLMs, providing a detailed comparison of popular models such as OpenAI&amp;rsquo;s GPT-4, GPT-3.5 Turbo, Google Palm2, Amazon Bedrock, Coherent, Meta LLaMA2, and Mistral. We will also discuss the importance of 3rd party open source LLM providers and how they can drastically reduce costs for your chatbot development projects.&lt;/p&gt;
+&lt;h2 id=&#34;openais-gpt-4-and-gpt-35-turbo&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#openais-gpt-4-and-gpt-35-turbo&#34;&gt;OpenAI&amp;rsquo;s GPT-4 and GPT-3.5 Turbo&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;OpenAI&amp;rsquo;s GPT-4 is by far the most advanced and sophisticated LLM model to date, offering unparalleled accuracy and functionality. However, concerns about cost and rate limits might make it less attractive for some use cases. Thankfully, OpenAI offers a more affordable alternative in the form of its GPT-3.5 Turbo model. This version performs exceptionally well at a fraction of the price of GPT-4 while still offering robust capabilities for zero-shot augmented summarization tasks. Our recommendation is to start with GPT-3.5 Turbo, as it provides an excellent balance between performance and cost efficiency.&lt;/p&gt;
+&lt;h2 id=&#34;azure-openai-version&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#azure-openai-version&#34;&gt;Azure OpenAI Version&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If your organization is not allowed to use OpenAI directly or operates within a more restrictive/high security environment, consider the Azure OpenAI version. This service integrates seamlessly with other Microsoft technologies, offering a secure and reliable platform for developing RAG chatbots.&lt;/p&gt;
+&lt;h2 id=&#34;googles-palm2&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#googles-palm2&#34;&gt;Google&amp;rsquo;s Palm2&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Google has recently introduced its Palm2 LLM model, which is mostly comparable to OpenAI&amp;rsquo;s offerings in terms of performance and functionality. If your organization already operates within the Google Cloud Platform (GCP) ecosystem, it may be worth investigating Palm2 as a potential alternative for your RAG chatbot development projects.&lt;/p&gt;
+&lt;h2 id=&#34;amazon-bedrock-family-of-products-and-cohere&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#amazon-bedrock-family-of-products-and-cohere&#34;&gt;Amazon Bedrock Family of Products and Cohere&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Amazon has made significant strides in the world of LLMs with its Bedrock family of products and Cohere for embedding tasks. With their recent investment in Anthropic (Claude model), they are poised to become a formidable competitor in the LLM market. Their offerings provide robust capabilities for developing RAG chatbots while offering competitive pricing options for various use cases.&lt;/p&gt;
+&lt;h2 id=&#34;open-source-models-meta-llama2-mistral-and-3rd-party-providers&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#open-source-models-meta-llama2-mistral-and-3rd-party-providers&#34;&gt;Open Source Models: Meta LLaMA2, Mistral, and 3rd Party Providers&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Open source models such as Meta&amp;rsquo;s LLaMA2 family (including AlpaCA, Wizard, Orca, and Vicuna) offer excellent performance at a fraction of the cost of proprietary LLMs. These models can be hosted locally and operated using regular CPU resources or even laptop hardware in some cases. Quantized versions of these models further reduce costs by allowing them to run on lower-power hardware without sacrificing performance.&lt;/p&gt;
+&lt;p&gt;Mistral, an up-and-coming open source LLM model, has demonstrated impressive results in various benchmarks, surpassing many of its competitors. We highly recommend considering Mistral for your next RAG chatbot development project.&lt;/p&gt;
+&lt;p&gt;Aside from open source models, numerous 3rd party providers have emerged offering their own customized LLMs tailored to specific use cases or industries. Investigating these options can lead to significant cost savings when compared to hosting your own LLM internally. By leveraging the expertise and infrastructure of these providers, you can focus on developing high-quality RAG chatbots while minimizing overhead costs.&lt;/p&gt;
+&lt;p&gt;In conclusion, selecting the right LLM model for your RAG chatbot project requires careful consideration of factors such as performance, cost efficiency, security requirements, and compatibility with existing technologies. By evaluating each option based on these criteria, you can ensure that your chosen LLM model will provide the necessary functionality to meet your specific use case needs while maximizing resource utilization and minimizing expenses.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  It keeps changing Cohere (company name) to Coherent.  I&amp;rsquo;m not sure the guys at Cohere, who make really awesome embedding models would appreciate that!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/llm-selection/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Large Language Models (LLM) are the most important part of your RAG (retrieval augmented generation) chatbot. Selecting the right one to optimize cost and performance is critical to the success of your use case.&lt;/li&gt;
+&lt;li&gt;In a perfect world, you’d start and end with OpenAI’s GPT4.  It’s by far the most accurate and sophisticated LLM model to date.  However, cost and rate limits can be a concern.  As well, most models perform very well on zero-shot augmented summarization tasks so you may not need this level of functionality.&lt;/li&gt;
+&lt;li&gt;OpenAI offers a much cheaper alternative to GPT4 with gpt-3.5-turbo or gpt-4-turbo.  These models perform very well at a fraction of the price of GPT4.  Our advice is to start here.&lt;/li&gt;
+&lt;li&gt;If you are not allowed to use OpenAI directly, use the Azure OpenAI version in more restrictive/high security environments.&lt;/li&gt;
+&lt;li&gt;Google currently offers Palm2  which is mostly comparable to the OpenAI offerings.  Customers who are in the GCP ecosystem should look into this first.&lt;/li&gt;
+&lt;li&gt;Amazon has the Bedrock family of products and Cohere for embeddings. With the recent Anthropic (Claude model) investment, they will have a very compelling offering.&lt;/li&gt;
+&lt;li&gt;There is a large selection of open source models like Meta’s LLaMA2, and derivative fine tunes (alpaca, wizard, orca, vicuna) that similarly perform well on these tasks and can be hosted and executed locally.  Quantized (reduced precision) versions of these models can operate on regular CPUs and even on laptops.  If cloud/api costs are a concern these are worth considering.  If the sensitivity of the data doesn’t allow it to leave a local data center, this may be the only option.&lt;/li&gt;
+&lt;li&gt;Mistral, a newcomer to the open source LLM field has the strongest performing small open source LLM model I’ve seen to date, I highly recommend this one over the LLama2 family of models.&lt;/li&gt;
+&lt;li&gt;Many 3rd party open source LLM providers have appeared recently, and should be investigated for cost, before trying to host your own LLM internally.  This could be drastically cheaper than standing something up yourself.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Recall Benchmarking</title>
+      <link>https://ai.dungeons.ca/posts/recall-benchmarking/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/recall-benchmarking/</guid>
+      <description>&lt;h1 id=&#34;recall-benchmarking-optimizing-vector-search-for-rag-chatbots&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/recall-benchmarking/#recall-benchmarking-optimizing-vector-search-for-rag-chatbots&#34;&gt;Recall Benchmarking: Optimizing Vector Search for RAG Chatbots&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of Retrieval Augmented Generation (RAG) chatbots, benchmarking the recall of your knowledge or text chunks is critical to building an efficient and accurate AI system. Vector search technology powers this retrieval process, making it essential to optimize for both recall and accuracy in order to create a reliable and useful chatbot. This blog post will delve into the importance of vector search recall accuracy, the role of text embedding models and chunking strategies, and how to benchmark your model effectively.&lt;/p&gt;
+&lt;h2 id=&#34;the-impact-of-text-embedding-models-and-chunking-strategies&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/recall-benchmarking/#the-impact-of-text-embedding-models-and-chunking-strategies&#34;&gt;The Impact of Text Embedding Models and Chunking Strategies&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The effectiveness of a chatbot&amp;rsquo;s vector search functionality hinges on the selection of an appropriate text embedding model and the chunking strategy for your documents (e.g., word, PDF, HTML, or TXT). If chunks are too large, you risk losing semantic context; if they are too small, you may fail to capture the entire concept you intend to represent.&lt;/p&gt;
+&lt;p&gt;Additionally, low-dimensional embedding models may struggle to adequately represent multiple concepts in a single vector. While high-dimensional models can offer more complexity, it&amp;rsquo;s essential to benchmark their accuracy before implementing them. Some large dimension models might even include dimensions representing languages you never plan on embedding.&lt;/p&gt;
+&lt;h2 id=&#34;benchmarking-the-embedding-model-with-cosine-similarity-function&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/recall-benchmarking/#benchmarking-the-embedding-model-with-cosine-similarity-function&#34;&gt;Benchmarking the Embedding Model with Cosine Similarity Function&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;As part of your Proof of Concept (PoC), you should develop a series of questions and answers and identify where they can be found within your documentation. By using a simple cosine similarity function, you can evaluate how well each question correlates with its corresponding chunk. It&amp;rsquo;s also important to &amp;ldquo;red team&amp;rdquo; some irrelevant promptsto rule out false positives and ensure the accuracy of your search results.&lt;/p&gt;
+&lt;p&gt;This benchmarking process should be conducted without involving the Large Language Model (LLM) at first, as it will help you understand the performance of your vector search before integrating the LLM into the equation.&lt;/p&gt;
+&lt;h2 id=&#34;managing-false-positives-and-setting-confidence-levels&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/recall-benchmarking/#managing-false-positives-and-setting-confidence-levels&#34;&gt;Managing False Positives and Setting Confidence Levels&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;False positives—high scoring chunks that are irrelevant to a user&amp;rsquo;s query—are one of the most significant challenges in achieving accurate recall accuracy. To mitigate this issue, set a confidence level (a high cosine similarity score) as a threshold for returning relevant chunks. If no chunk meets this threshold, the chatbot should respond with a message like &amp;ldquo;Sorry, I can&amp;rsquo;t answer this question.&amp;rdquo; This serves as the first critical guardrail against leaking underlying training data or providing hallucinated answers.&lt;/p&gt;
+&lt;h2 id=&#34;experimenting-with-different-embedding-models&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/recall-benchmarking/#experimenting-with-different-embedding-models&#34;&gt;Experimenting with Different Embedding Models&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When selecting an embedding model for your RAG chatbot, start with the text-ada-002 model from OpenAI and then explore other models that perform well on HuggingFace&amp;rsquo;s MT5 Leaderboard, focusing on semantic text similarity metrics. The goal is to find a combination of an embedding model and chunking strategy that delivers optimal results.&lt;/p&gt;
+&lt;p&gt;In summary, the success of your RAG chatbot relies heavily on optimizing vector search recall accuracy through careful selection of text embedding models and effective chunking strategies. By benchmarking these components thoroughly and setting appropriate confidence levels, you can ensure that your chatbot provides accurate and helpful responses to users&amp;rsquo; inquiries while preventing false positives and hallucinated answers.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/recall-benchmarking/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Benchmarking the recall of your knowledge/text chunks is critical to building your RAG (retrieval augmented generation) chatbots.  Vector search is the technology that powers the retrieval, so we must optimize for search recall and accuracy.&lt;/li&gt;
+&lt;li&gt;Vector search recall accuracy comes down to the text embedding model selection and your chunking strategy of your documents (word, pdf, html, txt).  If the text chunks are too large, you can lose semantic context, if it’s too small you might not capture the entire concept you are trying to represent.  If the embedding model is low dimensional it might not have the ability to represent multiple concepts in a single vector.  But also, the number of dimensions is only a rough estimate of how sophisticated the embedding model is, so you need to benchmark for accuracy.  Some really large dimension models are using dimensions to represent languages you might never need to embed!&lt;/li&gt;
+&lt;li&gt;As part of your PoC you need to come up with a series of questions and answers, and where they can be found within your documentation.  Using this you can benchmark the embedding model with a simple cosine similarity function to see how well the question and the chunk correlate.  You should also “red team” some prompts that should not match your data to rule out false positives.  This whole process can be done without the LLM (large language model) involved at all.&lt;/li&gt;
+&lt;li&gt;False positives (high scoring chunks that are not relevant to the search) are the #1 observed problem with recall accuracy in vector search use cases.  You need to make sure your questions are not returning irrelevant data at high cosine similarity scores&lt;/li&gt;
+&lt;li&gt;Not every question can be answered.  There must be a confidence level (high cosine similarity score) in the returned chunks before you send them to the LLM.  Use the scores returned from the search engine and a defined score cut-off point to prevent irrelevant chunks from being sent for question answering.  If no chunk scores well, return a message like “Sorry, I can’t answer this question”.  This is your first major guardrail against your chatbot from leaking the underlying training data or providing hallucinated answers.&lt;/li&gt;
+&lt;li&gt;Experimenting with different embedding models is encouraged at this stage.  Start with text-ada-002 model from OpenAI, and then try models that are high on the semantic text similarity metric on the HuggingFace MTEB Leaderboard (&lt;a href=&#34;https://huggingface.co/spaces/mteb/leaderboard)&#34;&gt;https://huggingface.co/spaces/mteb/leaderboard)&lt;/a&gt;.  What you want for an outcome is an embedding model and chunking combination that produce the best results.  Use some data science here!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Updating RAG Data Sources</title>
+      <link>https://ai.dungeons.ca/posts/updating-rag-data-sources/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/updating-rag-data-sources/</guid>
+      <description>&lt;h1 id=&#34;updating-rag-data-sources-a-comprehensive-guide-to-ensuring-your-chatbot-remains-informed&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#updating-rag-data-sources-a-comprehensive-guide-to-ensuring-your-chatbot-remains-informed&#34;&gt;Updating RAG Data Sources: A Comprehensive Guide to Ensuring Your Chatbot Remains Informed&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Retrieval-Augmented Generation (RAG) chatbots are valuable tools for providing users with relevant and up-to-date information. However, as the world evolves and data in your document sources (PDF, HTML, Word, Text) changes over time, it&amp;rsquo;s crucial to have a robust strategy in place for updating these vectors so that your RAG chatbot can continue delivering accurate responses. In this blog post, we will discuss various strategies for updating RAG data sources, including using transactional data stores, batch update processes, and implementing a Change Data Capture (CDC) approach.&lt;/p&gt;
+&lt;h2 id=&#34;utilizing-transactional-data-stores&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#utilizing-transactional-data-stores&#34;&gt;Utilizing Transactional Data Stores&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One of the most effective ways to manage updates in your RAG chatbot&amp;rsquo;s data sources is by chunking documents into a transactional data store, such as LangChain or LLamaIndex. This allows you to replace chunks when they are updated while also tracking important metrics about their performance, including how often they are queried and the number of positive/negative responses they receive from users.&lt;/p&gt;
+&lt;h3 id=&#34;chunking-application&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#chunking-application&#34;&gt;Chunking Application&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;When implementing a chunking application, it&amp;rsquo;s essential to consider real-time edits in your Content Management System (CMS) system. This will enable you to make corrections to poor or incorrect responses promptly and ensure that your chatbot provides accurate information at all times.&lt;/p&gt;
+&lt;h3 id=&#34;batch-update-strategy&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#batch-update-strategy&#34;&gt;Batch Update Strategy&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;An efficient way to keep your RAG data sources up-to-date is by employing a batch update strategy, either through a timer-based system or by detecting changes in the documents themselves. This method may not be the most immediate, but it ensures that your chatbot always has access to current information.&lt;/p&gt;
+&lt;h3 id=&#34;change-data-capture-cdc-and-triggers&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#change-data-capture-cdc-and-triggers&#34;&gt;Change Data Capture (CDC) and Triggers&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;To stay informed about updates in your data sources, you can also leverage Change Data Capture (CDC), which involves monitoring changes within your database and triggering actions based on those modifications. One example of how this works is VectorStreaM, an open-source tool developed by Patrick Walton that enables real-time vector updates in MongoDB Atlas.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion-plan-for-updates-to-ensure-solid-responses&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#conclusion-plan-for-updates-to-ensure-solid-responses&#34;&gt;Conclusion: Plan for Updates to Ensure Solid Responses&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In summary, developing a plan for updating RAG data sources is essential for maintaining the accuracy and reliability of your chatbot&amp;rsquo;s responses. By utilizing transactional data stores, employing batch update strategies, and leveraging CDC techniques, you can ensure that your chatbot remains well-informed and ready to assist users with up-to-date information.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/updating-rag-data-sources/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Data in your document sources (PDF, HTML, Word, Text) will change over time.  You should have a strategy for updating your vector embeddings so your RAG (retrieval augmented generation) chatbot can talk about up to date information&lt;/li&gt;
+&lt;li&gt;Consider a process of chunking your documents into a transactional data store (using langchain or llamaindex), so you can replace chunks if they are updated.  This also lets you store metrics about the chunks performance, such as how often it’s queried.  You can also track how many times the chunk had  a positive or negative response if you implement user provided thumbs up/down on your chatbot responses.&lt;/li&gt;
+&lt;li&gt;A batch update strategy is recommended, either on a timer or when you detect changes to the documents.  This is not super efficient, but it’ll ensure you have up to date knowledge in your chatbot&lt;/li&gt;
+&lt;li&gt;If you build a CMS system on top of your text/knowledge chunks you can edit them in real time to correct poor or incorrect responses from the chatbot.&lt;/li&gt;
+&lt;li&gt;Also consider that you need to run updated chunks through your text embedding models, so you have updated dense vectors in your vector search engine.  This can be done using CDC (change data detection) and triggers or as part of your chunking application.  VectorStream (&lt;a href=&#34;https://github.com/patw/VectorStream&#34;&gt;https://github.com/patw/VectorStream&lt;/a&gt;) is an example of how to do this in MongoDB Atlas&lt;/li&gt;
+&lt;li&gt;Call to action:  Make sure you have a plan in place for updating the knowledge your chatbot has, so it’s always giving solid responses.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>User Feedback for Chatbots</title>
+      <link>https://ai.dungeons.ca/posts/user-feedback-for-chatbots/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/user-feedback-for-chatbots/</guid>
+      <description>&lt;h1 id=&#34;user-feedback-for-chatbots-enhancing-performance-and-optimization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#user-feedback-for-chatbots-enhancing-performance-and-optimization&#34;&gt;User Feedback for Chatbots: Enhancing Performance and Optimization&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the realm of AI-driven chatbots, particularly those employing Large Language Models (LLMs) as their foundational technology, one crucial factor that often determines the success of these applications is the integration of user feedback. This blog post delves into the importance of user feedback in improving a chatbot&amp;rsquo;s performance, as well as the significance of storing question-answer pairs and implementing preference models for optimization.&lt;/p&gt;
+&lt;h2 id=&#34;the-role-of-user-feedback-in-chatbots&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#the-role-of-user-feedback-in-chatbots&#34;&gt;The Role of User Feedback in Chatbots&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A chatbot&amp;rsquo;s primary goal is to provide accurate and relevant responses to users while maintaining an engaging conversation. However, not all generated answers will be correct or satisfactory. This is where user feedback comes into play. By allowing users to rate the quality of responses, we can gain valuable insights into which parts of our LLM-driven chatbot are functioning well and which require improvement.&lt;/p&gt;
+&lt;h2 id=&#34;storing-question-answer-pairs-for-analysis&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#storing-question-answer-pairs-for-analysis&#34;&gt;Storing Question-Answer Pairs for Analysis&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One effective way to gather data on a chatbot&amp;rsquo;s performance is by storing each question-answer pair alongside the user feedback provided. This approach enables us to analyze trends in response accuracy and identify areas where our chatbot may be struggling. Additionally, this information can be used for recall benchmarking, which compares the chatbot&amp;rsquo;s performance over time.&lt;/p&gt;
+&lt;h2 id=&#34;implementing-thumbs-updown-mechanism-for-response-scoring&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#implementing-thumbs-updown-mechanism-for-response-scoring&#34;&gt;Implementing Thumbs Up/Down Mechanism for Response Scoring&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A simple yet powerful mechanism to collect user feedback is by incorporating a thumbs up or thumbs down feature in our chatbot interface. This allows users to quickly indicate whether they found the response helpful or not, providing us with valuable data on the overall accuracy of our LLM-driven chatbot. By assigning numerical scores based on user feedback, we can filter out underperforming text chunks and focus on improving their quality.&lt;/p&gt;
+&lt;h2 id=&#34;supervised-fine-tuning-for-optimization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#supervised-fine-tuning-for-optimization&#34;&gt;Supervised Fine Tuning for Optimization&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In the short to medium term future, advancements in supervised fine tuning techniques will enable us to optimize our chatbots more effectively than ever before. This method involves training a model using labeled data, which can be derived from the question-answer pairs collected through user feedback. By leveraging this approach, we can tailor our LLM-driven chatbot to better suit the needs of its users and deliver increasingly accurate responses over time.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#conclusion&#34;&gt;Conclusion&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In conclusion, the integration of user feedback is essential for continuously improving the performance and relevance of LLM-driven chatbots. By storing question-answer pairs and implementing a thumbs up/down mechanism, we can gain valuable insights into our chatbot&amp;rsquo;s accuracy and identify areas requiring improvement. Moreover, as supervised fine tuning techniques evolve, we will be able to optimize our chatbots more effectively, ensuring they remain an indispensable tool in the world of AI-powered communication.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/user-feedback-for-chatbots/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;When building your LLM (large language model) driven RAG (retrieval augmented generation) chatbot, you want user feedback to improve its performance.&lt;/li&gt;
+&lt;li&gt;Not all answers coming from the chatbot will be right.  It’s important to store the question and the response for further analysis along with a mechanism like thumbs up/down on the response.  This lets you “score” your text chunk accuracy and eventually filter out chunks that are not producing good results.  Add a key in your mongo document for this feedback.&lt;/li&gt;
+&lt;li&gt;Storing the question/answer pairs can also be used later for recall benchmarking and supervised fine tuning an instruct-tuned LLM on your data set.  Currently supervised fine tuning and direct preference optimization model training techniques are expensive and painful to do, but this will change in the short to medium term future.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Why not just query the LLM directly - It knows everything</title>
+      <link>https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/</guid>
+      <description>&lt;h1 id=&#34;why-not-just-query-the-llm-directly-it-knows-everything&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/#why-not-just-query-the-llm-directly-it-knows-everything&#34;&gt;Why Not Just Query the LLM Directly? It Knows Everything!&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Large Language Models (LLMs) have rapidly become a staple in natural language processing, with their impressive ability to generate human-like responses and solve complex tasks. As these models continue to evolve, it&amp;rsquo;s tempting to rely on them as an all-encompassing source of knowledge. However, there are several factors that limit LLMs&amp;rsquo; accuracy and reliability when used without proper precautions. In this blog post, we will delve into the reasons why simply querying the LLM directly may not be the best approach for obtaining accurate information.&lt;/p&gt;
+&lt;h2 id=&#34;a-mixture-of-fact-recall-and-generalization&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/#a-mixture-of-fact-recall-and-generalization&#34;&gt;A Mixture of Fact Recall and Generalization&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;LLMs are a blend of factual data and generalizations based on the vast amounts of text they have been trained on. While these models possess an extensive repository of facts in their neural weights, it is crucial to recognize that they do not represent all human knowledge verbatim. Instead, they provide a lossy representation that may not always be accurate or up-to-date.&lt;/p&gt;
+&lt;h2 id=&#34;time-bound-training-data&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/#time-bound-training-data&#34;&gt;Time-Bound Training Data&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;LLMs are trained on data available at a specific point in time. This means that the model might not have access to information generated after its training set cutoff date. In addition, the model is unable to account for updates or changes that occurred since its training phase, which may lead to outdated information being provided as an answer.&lt;/p&gt;
+&lt;h2 id=&#34;hallucinations-and-generalization-issues&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/#hallucinations-and-generalization-issues&#34;&gt;Hallucinations and Generalization Issues&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One of the most significant limitations of LLMs is their tendency to &amp;ldquo;hallucinate&amp;rdquo; answers when they do not have the necessary facts in their training set. This can result in incorrect or misleading responses, especially when dealing with complex questions that require specific knowledge or context. To mitigate this issue, it&amp;rsquo;s essential to use prompting techniques like zero-shot summarization with augmentation, which involves sending a question along with possible answers and allowing the LLM to generate a &amp;ldquo;smooth&amp;rdquo; response using only the provided data.&lt;/p&gt;
+&lt;h2 id=&#34;the-need-for-rag-retrieval-augmented-generation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/#the-need-for-rag-retrieval-augmented-generation&#34;&gt;The Need for RAG (Retrieval Augmented Generation)&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To ensure that the information provided by an LLM is accurate, reliable, and relevant, it&amp;rsquo;s crucial to employ Retrieval Augmented Generation (RAG). This technique combines the strengths of retrieval models with LLMs, enabling the model to search for relevant information in external databases or knowledge bases. By incorporating RAG into your workflow, you can significantly improve the quality and credibility of the responses generated by your LLM.&lt;/p&gt;
+&lt;p&gt;In conclusion, while LLMs have an impressive range of capabilities, they are not infallible sources of knowledge. By understanding their limitations and employing techniques such as zero-shot summarization with augmentation and RAG, you can ensure that your LLM-powered applications provide accurate, up-to-date, and reliable information to users.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/why-not-just-query-the-llm-directly-it-knows-everything/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;LLMs (large language models), after they have been trained are a mixture of fact recall and generalization.  They do indeed have tons of facts memorized in the neural weights, but they are a lossy representation of all human knowledge.  They have also been trained at a specific point in time and have no data beyond this point in time.  The exact details of your business and your documents are probably not trained into the model, or have been generalized to a point where they would be misrepresented, even if they were on the public internet and pulled into the training process.  LLMs will “hallucinate” answers for questions you ask, if they don’t have the facts in the training set.  To prevent this we rely on a prompting technique called zero-shot summarization with augmentation.  We send the question, with the possible answer and let the LLM provide a “smooth” response, with only the exact data provided.&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;See our other blog posts about RAG (retrieval augmented generation) for more details.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>RAG Data Sources</title>
+      <link>https://ai.dungeons.ca/posts/rag-data-sources/</link>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/rag-data-sources/</guid>
+      <description>&lt;h1 id=&#34;rag-data-sources-building-knowledge-driven-chatbots&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/rag-data-sources/#rag-data-sources-building-knowledge-driven-chatbots&#34;&gt;RAG Data Sources: Building Knowledge-Driven Chatbots&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In today&amp;rsquo;s fast-paced business landscape, knowledge-driven chatbots play a crucial role in streamlining internal communication and enhancing organizational productivity. The Retrieval Augmented Generation (RAG) approach is the leading technique for building such chatbots, utilizing AI algorithms to retrieve and generate accurate responses based on a vast repository of information.&lt;/p&gt;
+&lt;h2 id=&#34;data-source-selection-the-foundation-of-rag-chatbots&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/rag-data-sources/#data-source-selection-the-foundation-of-rag-chatbots&#34;&gt;Data Source Selection: The Foundation of RAG Chatbots&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A company&amp;rsquo;s knowledge is often scattered across multiple systems in various formats. Identifying relevant data sources is an essential part of designing a chatbot. To begin, select a corpus of documents that represent the knowledge base you want your chatbot to answer questions about. This should be something immediately useful for specific groups within the organization.&lt;/p&gt;
+&lt;h2 id=&#34;starting-with-unstructured-data-text-documents-pdfs-and-word-documents&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/rag-data-sources/#starting-with-unstructured-data-text-documents-pdfs-and-word-documents&#34;&gt;Starting with Unstructured Data: Text Documents, PDFs, and Word Documents&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The easiest data sources to start with are text documents, PDFs, and Word documents. They are well supported by AI systems such as LLamaIndex and Langchain. Using these tools, you can ingest and chunk the selected documents from a directory. A great tutorial on implementing RAG with Atlas Vector Search, LangChain, and OpenAI can be found here: &lt;a href=&#34;https://www.mongodb.com/blog/post/retrieval-augmented-generation-rag-with-atlas-vector-search-langchain-and-openai&#34;&gt;RAG with Atlas Vector Search, LangChain, and OpenAI | Mongodb&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;testing-your-chatbot-extensive-evaluation-and-validation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/rag-data-sources/#testing-your-chatbot-extensive-evaluation-and-validation&#34;&gt;Testing Your Chatbot: Extensive Evaluation and Validation&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After setting up your chatbot, it is essential to test its performance extensively. Ask questions that the chatbot should be able to answer based on the source material. This will help you identify any inaccuracies or gaps in the knowledge chunks. Validate what your chatbot gets right and wrong so you can investigate and modify the knowledge chunks later if necessary.&lt;/p&gt;
+&lt;h2 id=&#34;a-word-of-caution-handling-structured-data&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/rag-data-sources/#a-word-of-caution-handling-structured-data&#34;&gt;A Word of Caution: Handling Structured Data&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;While unstructured data such as text documents, PDFs, and Word documents are ideal for starting a RAG-based chatbot, structured data like tables, point form lists, spec sheets, XML, and JSON documents may not embed well. Therefore, they should not be the first data sources you attempt to use. In future blog posts, we will cover techniques for handling structured data using pre-summarization.&lt;/p&gt;
+&lt;p&gt;In conclusion, building a knowledge-driven chatbot using RAG involves selecting relevant data sources, starting with unstructured documents like text, PDFs, and Word files, testing your chatbot extensively, and handling structured data with caution. With these strategies in mind, you can create an effective RAG chatbot that enhances communication within your organization and streamlines daily operations.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/rag-data-sources/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;RAG (Retrieval Augmented Generation) is the leading technique for building knowledge driven chatbots for your organization&lt;/li&gt;
+&lt;li&gt;Data source selection is an important part of the design for chatbots.  A company’s knowledge dispersed in dozens of different systems and in different formats.&lt;/li&gt;
+&lt;li&gt;The easiest data sources to start with are text documents, pdfs and word documents. These types are well supported in the LLamaIndex and Langchain systems.&lt;/li&gt;
+&lt;li&gt;Start by identifying a set of documents that represents a corpus of knowledge that you want the chatbot to answer questions about.  Pick something that has immediate utility to some group within the organization&lt;/li&gt;
+&lt;li&gt;Use LLamaIndex or Langchain to ingest and chunk these documents from a directory.  A great tutorial can be found here:  RAG with Atlas Vector Search, LangChain, and OpenAI | MongoDB&lt;/li&gt;
+&lt;li&gt;Test your chatbot extensively with questions it should be able to answer, based on the source material.  Validate what it’s getting right and wrong so you can investigate and modify your knowledge chunks later if they are incorrect.&lt;/li&gt;
+&lt;li&gt;A word of warning:  Structured data such as tables, point form lists, spec sheets, xml and json documents do not embed very well and should not be the first data sources you attempt to use.&lt;/li&gt;
+&lt;li&gt;We will cover structured data techniques using pre-summarization in later blog posts.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Retrieval Augmented Chatbots </title>
+      <link>https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/</link>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/</guid>
+      <description>&lt;h1 id=&#34;retrieval-augmented-chatbots-the-future-of-business-intelligence&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#retrieval-augmented-chatbots-the-future-of-business-intelligence&#34;&gt;Retrieval Augmented Chatbots: The Future of Business Intelligence&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The advent of generative AI technology has opened up a world of possibilities for businesses to enhance their operations and streamline communication. OpenAI&amp;rsquo;s ChatGPT and image generation models like Stable Diffusion have demonstrated the potential of AI in solving business problems and improving efficiency across various sectors. In response, nearly every company worldwide is developing an AI strategy to integrate generative AI technologies into their existing business models. One of the most promising use cases for generative AI in businesses is Retrieval Augmented Chatbots (RAG), which leverage the power of Large Language Models (LLMs) to answer questions based on data provided within a prompt (augmentation).&lt;/p&gt;
+&lt;h2 id=&#34;the-foundation-rag-and-llms&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#the-foundation-rag-and-llms&#34;&gt;The Foundation: RAG and LLMs&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Retrieval Augmented Generation (RAG) is an approach that combines retrieval methods with generative language models, such as GPT-3 or OpenAI&amp;rsquo;s ChatGPT. This technique allows chatbots to &amp;ldquo;talk to documents,&amp;rdquo; ingesting them, chunking the text, vectorizing those chunks using a text embedding model, and then employing semantic search to retrieve relevant chunks of text for answering questions posed by users.&lt;/p&gt;
+&lt;p&gt;The integration of RAG with Large Language Models (LLMs) has enabled chatbots to tap into the vast potential of retrieval-based augmentation. LLMs can comprehend complex queries and provide accurate responses based on the data provided in the prompt, further enhancing their capabilities to assist businesses in various aspects.&lt;/p&gt;
+&lt;h2 id=&#34;empowering-customer-support-agents&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#empowering-customer-support-agents&#34;&gt;Empowering Customer Support Agents&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One significant use case for RAG-enabled chatbots is empowering customer support agents by granting them access to an entire knowledge base they work with through &amp;ldquo;chat-with-docs.&amp;rdquo; This feature allows agents to search and retrieve relevant information from internal documents, articles, or guides without the need for manual browsing. As a result, customer support teams can provide faster and more accurate responses to inquiries, improving overall customer satisfaction.&lt;/p&gt;
+&lt;h2 id=&#34;enhancing-customer-experience&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#enhancing-customer-experience&#34;&gt;Enhancing Customer Experience&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;RAG-enabled chatbots can also be used directly by customers to answer questions about billing, insurance plans, coverage, or processes. By providing customers with easy access to essential information, businesses can streamline their communication channels and reduce the need for human intervention in basic inquiries. This not only improves customer experience but also frees up customer support agents to focus on more complex tasks.&lt;/p&gt;
+&lt;h2 id=&#34;boosting-developer-productivity&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#boosting-developer-productivity&#34;&gt;Boosting Developer Productivity&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Another crucial application of RAG-enabled chatbots is connecting them to internal code bases, allowing developers to ask questions about large and complex codebases. This feature is particularly useful for navigating through vast legacy codes, making it easier for developers to find relevant information quickly and efficiently. As a result, businesses can improve developer productivity and ensure that teams spend more time creating innovative solutions rather than wasting time searching for information within their codebase.&lt;/p&gt;
+&lt;h2 id=&#34;the-inteligence-augmented-workforce&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#the-inteligence-augmented-workforce&#34;&gt;The Inteligence Augmented Workforce&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The future of most companies will be chatbot-based systems with vectorized knowledge spanning the entire history of the company and all internal knowledge. This intelligence augmentation approach aims to provide every employee with an AI-powered assistant, reducing friction in day-to-day activities and improving overall productivity. As businesses continue to integrate generative AI technologies into their operations, RAG-enabled chatbots will play a crucial role in shaping the future of work, streamlining communication, and fostering innovation across various industries.&lt;/p&gt;
+&lt;h2 id=&#34;design-considerations-for-chatbot-implementation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#design-considerations-for-chatbot-implementation&#34;&gt;Design Considerations for Chatbot Implementation&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;While the potential of RAG-enabled chatbots is undeniable, it&amp;rsquo;s essential to consider several design factors when implementing these systems. These include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Chunking knowledge into manageable pieces to ensure efficient retrieval and vectorization.&lt;/li&gt;
+&lt;li&gt;Selecting appropriate text embedding models to optimize semantic search capabilities.&lt;/li&gt;
+&lt;li&gt;Implementing robust security measures to protect sensitive data and prevent unauthorized access.&lt;/li&gt;
+&lt;li&gt;Designing intuitive user interfaces that allow users to interact with chatbots seamlessly.&lt;/li&gt;
+&lt;li&gt;Continuously training and updating the LLM to ensure it remains up-to-date with the latest information and trends.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In conclusion, Retrieval Augmented Chatbots (RAG) represent a game-changing approach to leveraging generative AI technologies in businesses. By combining retrieval methods with powerful Large Language Models (LLMs), these chatbots can revolutionize customer support, streamline communication channels, and empower employees to work more efficiently. As companies continue to embrace AI-driven solutions, RAG-enabled chatbots will undoubtedly play a pivotal role in shaping the future of business intelligence and productivity.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-chatbots-/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenAI’s ChatGPT and image generation models like Stable Diffusion have shown the promise for using AI to solve business problems&lt;/li&gt;
+&lt;li&gt;Nearly every company in the world is attempting to come up with an AI strategy to integrate generative AI to enhance their existing business&lt;/li&gt;
+&lt;li&gt;The most straightforward use case for generative AI in business is retrieval augmented chatbots using RAG (retrieval augmented generation) as the underlying technique&lt;/li&gt;
+&lt;li&gt;Chatbots can be used to “talk to documents”.  Ingest the documents, chunk the text, vectorize the chunks using a text embedding model and then use semantic search to retrieve those chunks of text to send to a Large Language Model (LLM) to answer questions.&lt;/li&gt;
+&lt;li&gt;RAG takes advantage of LLMs ability to answer questions based on data provided in the prompt (augmentation).&lt;/li&gt;
+&lt;li&gt;Chatbots can be used to empower customer support agents by giving them chat-with-docs access to the entire knowledge base they work with.&lt;/li&gt;
+&lt;li&gt;Chatbots can be used by customers directly (with more guardrails in place) to answer questions about billing, insurance plans, coverage, and processes.&lt;/li&gt;
+&lt;li&gt;Chatbots can be connected to internal code bases to allow developers to ask questions about large, complex code bases.  This is especially useful with large legacy code.&lt;/li&gt;
+&lt;li&gt;The future state for most companies will be chatbots that have vectorized knowledge for the entire history of the company and all internal knowledge.  This gives every single employee an assistant to reduce friction in day to day activities.  We call this the Intelligence Augmented Workforce.&lt;/li&gt;
+&lt;li&gt;Chatbots have many design considerations around how to chunk and vectorize knowledge, that will be addressed in future blog posts.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Retrieval Augmented Generation</title>
+      <link>https://ai.dungeons.ca/posts/retrieval-augmented-generation/</link>
+      <pubDate>Tue, 16 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/retrieval-augmented-generation/</guid>
+      <description>&lt;h1 id=&#34;retrieval-augmented-generation-enhancing-llm-performance-with-contextualized-information&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#retrieval-augmented-generation-enhancing-llm-performance-with-contextualized-information&#34;&gt;Retrieval Augmented Generation: Enhancing LLM Performance with Contextualized Information&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Large Language Models (LLMs) have revolutionized the field of natural language processing, providing us with powerful tools for text generation, understanding, and reasoning. However, as with any technology, there are limitations to what LLMs can achieve on their own. One such limitation is the issue of &amp;ldquo;hallucinations&amp;rdquo;, where an LLM may provide incorrect or fabricated information in response to a question that it has generalized and not retained specific details for. This blog post will explore Retrieval Augmented Generation (RAG), a technique that utilizes semantic search and augmented prompt engineering to enhance the performance of LLMs by providing them with contextually relevant information to answer questions more accurately.&lt;/p&gt;
+&lt;h2 id=&#34;understanding-large-language-models&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#understanding-large-language-models&#34;&gt;Understanding Large Language Models&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;LLMs are trained on massive corpora of text from various data sources, often reaching multiple trillions of tokens (words) of internet content. They combine memorization and generalization to provide information compression, which can be inherently lossy, resulting in the aforementioned hallucination phenomenon. Despite these limitations, LLMs are excellent summarization and reasoning machines that have the potential to revolutionize fields like AI-powered chatbots, virtual assistants, and content generation.&lt;/p&gt;
+&lt;h2 id=&#34;introducing-retrieval-augmented-generation-rag&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#introducing-retrieval-augmented-generation-rag&#34;&gt;Introducing Retrieval Augmented Generation (RAG)&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;RAG is a technique that leverages an LLM&amp;rsquo;s strong summarization capabilities by allowing users to provide all the data required to answer a question, along with the question itself. This can be achieved through a combination of information retrieval and prompt engineering techniques. At its core, RAG aims to address the issue of hallucinations by providing contextually relevant knowledge to LLMs to help them ground their answers in reality.&lt;/p&gt;
+&lt;h2 id=&#34;the-role-of-prompt-engineering-in-rag&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#the-role-of-prompt-engineering-in-rag&#34;&gt;The Role of Prompt Engineering in RAG&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A key aspect of RAG is prompt engineering, which involves crafting an effective prompt that includes both the user&amp;rsquo;s question and any relevant data required for the LLM to provide a reliable answer. This can involve techniques such as prompt augmentation, where additional information is added to the initial question. For example, if you asked an LLM &amp;ldquo;What is my name?&amp;rdquo;, providing the prompt &amp;ldquo;Hello, my name is Patrick. What is my name?&amp;rdquo; would help ground the response and prevent hallucinations.&lt;/p&gt;
+&lt;h2 id=&#34;semantic-search-for-rag&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#semantic-search-for-rag&#34;&gt;Semantic Search for RAG&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A major challenge in implementing RAG is retrieving relevant information from vast databases or knowledge repositories to include in the LLM&amp;rsquo;s prompt. Traditional database techniques and simple lexicographical searches may not be effective, as users do not typically ask questions that match database query formats. Instead, semantic search is a more suitable approach for RAG implementations, as it allows the retrieval of information based on dense vector similarity. This enables the retrieval of chunks of knowledge that are semantically similar to the user&amp;rsquo;s question, providing contextually relevant information to the LLM without relying solely on lexical matching.&lt;/p&gt;
+&lt;h2 id=&#34;workflow-for-rag&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#workflow-for-rag&#34;&gt;Workflow for RAG&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The workflow for implementing RAG involves several steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Intercepting the user&amp;rsquo;s prompt and sending it to a vector search engine.&lt;/li&gt;
+&lt;li&gt;Retrieving a fixed number of results (typically 3-10) from the search engine.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Prompt stuff&amp;rdquo; these retrieved results into the LLM prompt, along with the original question.&lt;/li&gt;
+&lt;li&gt;Running the augmented prompt through the LLM to receive a grounded answer based on the contextually relevant information provided in the prompt.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#conclusion&#34;&gt;Conclusion&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Retrieval Augmented Generation (RAG) is an innovative technique that harnesses the power of semantic search and prompt engineering to enhance the performance of large language models by providing them with contextually relevant information to answer questions more accurately. By addressing the issue of hallucinations and improving the grounding of LLM responses, RAG has the potential to revolutionize the way we interact with AI-powered chatbots, virtual assistants, and content generation tools. As we continue to explore the possibilities of RAG, it is essential to focus on refining data ingestion, prompt engineering, and text embedding models for optimal performance and accuracy in our LLM implementations.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/retrieval-augmented-generation/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Large Language Models (LLMs) are trained on massive corpus of text from various data sources&lt;/li&gt;
+&lt;li&gt;This can be up to multiple trillions of tokens (words) of text from the internet&lt;/li&gt;
+&lt;li&gt;LLMs are a combination of memorization and generalization and are a type of information compression&lt;/li&gt;
+&lt;li&gt;The information compression is inherently lossy and not all details are retained.  If you ask an LLM a question that it has generalized and not retained details for it can either tell you it doesn’t know (ideal answer) or worse make up an answer.  This is called a hallucination.&lt;/li&gt;
+&lt;li&gt;LLMs are excellent summarization and reasoning machines&lt;/li&gt;
+&lt;li&gt;Augmented Generation takes advantage of an LLMs strong summarization capability by allowing you to provide all the data required to answer the question, along with the question itself.  If you combine that with an information retrieval mechanism you have Retrieval Augmented Generation or RAG.&lt;/li&gt;
+&lt;li&gt;A simple example is putting something in a prompt like “Hello my name is Patrick.  What is my name?”  This is the most basic example of a prompt augmentation technique.&lt;/li&gt;
+&lt;li&gt;In a perfect world you could put all your knowledge and data in a single document and provide that whole document in the LLM prompt to answer questions. This is slow and expensive with our current LLM technology.&lt;/li&gt;
+&lt;li&gt;Retrieving chunks of data from your own data sources solves this issue.  It allows you to provide these chunks of knowledge to the LLM, in the prompt to get it to answer questions.&lt;/li&gt;
+&lt;li&gt;Retrieving information is difficult.  Users don’t ask questions that look like SQL or MQL style queries.  You can’t rely on traditional database techniques.&lt;/li&gt;
+&lt;li&gt;Lexical search is better, but you need to rely on the user&amp;rsquo;s question having tokens (words) that match something in the lexical search index.  This is also not optimal.&lt;/li&gt;
+&lt;li&gt;Semantic search is a good match for the problem space because it allows you to search, semantically, using dense vector similarity, for chunks of knowledge that are similar to the question.&lt;/li&gt;
+&lt;li&gt;So the workflow for RAG is to intercept the users prompt, send it to a vector search engine, get a fixed number of results (usually 3-10) and “prompt stuff” these results into the LLM prompt, along with the question.  The LLM then has all the information it needs to reason about the question and provide a “grounded” answer instead of a hallucination.&lt;/li&gt;
+&lt;li&gt;The real complexity in RAG solutions is in how to ingest your data, how to chunk it, what text embedding model works best for your use case, the prompt engineering that nets you the most reliable and accurate answers and finally the guard rails that go around the inputs and outputs to prevent the LLM from providing undesirable answers.  We will cover all these topics in future posts.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+  </channel>
+</rss>
