@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+
+  
+  
+
+
+  <meta charset="utf-8">
+
+
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml">
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+    
+    
+    
+      
+      
+    
+    
+    
+  
+
+
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/" rel="bookmark">Why not just query the LLM directly - It knows everything</a>
+  </h2>
+  
+    <time datetime="2024-01-18T00:00:00Z">18 January, 2024</time>
+  
+</header>
+      
+        <h1 id="why-not-just-query-the-llm-directly-it-knows-everything">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#why-not-just-query-the-llm-directly-it-knows-everything">Why Not Just Query the LLM Directly? It Knows Everything!</a>
+</h1>
+<p>Large Language Models (LLMs) have rapidly become a staple in natural language processing, with their impressive ability to generate human-like responses and solve complex tasks. As these models continue to evolve, it&rsquo;s tempting to rely on them as an all-encompassing source of knowledge. However, there are several factors that limit LLMs&rsquo; accuracy and reliability when used without proper precautions. In this blog post, we will delve into the reasons why simply querying the LLM directly may not be the best approach for obtaining accurate information.</p>
+<h2 id="a-mixture-of-fact-recall-and-generalization">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#a-mixture-of-fact-recall-and-generalization">A Mixture of Fact Recall and Generalization</a>
+</h2>
+<p>LLMs are a blend of factual data and generalizations based on the vast amounts of text they have been trained on. While these models possess an extensive repository of facts in their neural weights, it is crucial to recognize that they do not represent all human knowledge verbatim. Instead, they provide a lossy representation that may not always be accurate or up-to-date.</p>
+<h2 id="time-bound-training-data">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#time-bound-training-data">Time-Bound Training Data</a>
+</h2>
+<p>LLMs are trained on data available at a specific point in time. This means that the model might not have access to information generated after its training set cutoff date. In addition, the model is unable to account for updates or changes that occurred since its training phase, which may lead to outdated information being provided as an answer.</p>
+<h2 id="hallucinations-and-generalization-issues">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#hallucinations-and-generalization-issues">Hallucinations and Generalization Issues</a>
+</h2>
+<p>One of the most significant limitations of LLMs is their tendency to &ldquo;hallucinate&rdquo; answers when they do not have the necessary facts in their training set. This can result in incorrect or misleading responses, especially when dealing with complex questions that require specific knowledge or context. To mitigate this issue, it&rsquo;s essential to use prompting techniques like zero-shot summarization with augmentation, which involves sending a question along with possible answers and allowing the LLM to generate a &ldquo;smooth&rdquo; response using only the provided data.</p>
+<h2 id="the-need-for-rag-retrieval-augmented-generation">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#the-need-for-rag-retrieval-augmented-generation">The Need for RAG (Retrieval Augmented Generation)</a>
+</h2>
+<p>To ensure that the information provided by an LLM is accurate, reliable, and relevant, it&rsquo;s crucial to employ Retrieval Augmented Generation (RAG). This technique combines the strengths of retrieval models with LLMs, enabling the model to search for relevant information in external databases or knowledge bases. By incorporating RAG into your workflow, you can significantly improve the quality and credibility of the responses generated by your LLM.</p>
+<p>In conclusion, while LLMs have an impressive range of capabilities, they are not infallible sources of knowledge. By understanding their limitations and employing techniques such as zero-shot summarization with augmentation and RAG, you can ensure that your LLM-powered applications provide accurate, up-to-date, and reliable information to users.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/why-not-just-query-the-llm-directly-it-knows-everything/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>LLMs (large language models), after they have been trained are a mixture of fact recall and generalization.  They do indeed have tons of facts memorized in the neural weights, but they are a lossy representation of all human knowledge.  They have also been trained at a specific point in time and have no data beyond this point in time.  The exact details of your business and your documents are probably not trained into the model, or have been generalized to a point where they would be misrepresented, even if they were on the public internet and pulled into the training process.  LLMs will “hallucinate” answers for questions you ask, if they don’t have the facts in the training set.  To prevent this we rely on a prompting technique called zero-shot summarization with augmentation.  We send the question, with the possible answer and let the LLM provide a “smooth” response, with only the exact data provided.</li>
+<li></li>
+<li>See our other blog posts about RAG (retrieval augmented generation) for more details.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/rag-data-sources/" rel="bookmark">RAG Data Sources</a>
+  </h2>
+  
+    <time datetime="2024-01-17T00:00:00Z">17 January, 2024</time>
+  
+</header>
+      
+        <h1 id="rag-data-sources-building-knowledge-driven-chatbots">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#rag-data-sources-building-knowledge-driven-chatbots">RAG Data Sources: Building Knowledge-Driven Chatbots</a>
+</h1>
+<p>In today&rsquo;s fast-paced business landscape, knowledge-driven chatbots play a crucial role in streamlining internal communication and enhancing organizational productivity. The Retrieval Augmented Generation (RAG) approach is the leading technique for building such chatbots, utilizing AI algorithms to retrieve and generate accurate responses based on a vast repository of information.</p>
+<h2 id="data-source-selection-the-foundation-of-rag-chatbots">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#data-source-selection-the-foundation-of-rag-chatbots">Data Source Selection: The Foundation of RAG Chatbots</a>
+</h2>
+<p>A company&rsquo;s knowledge is often scattered across multiple systems in various formats. Identifying relevant data sources is an essential part of designing a chatbot. To begin, select a corpus of documents that represent the knowledge base you want your chatbot to answer questions about. This should be something immediately useful for specific groups within the organization.</p>
+<h2 id="starting-with-unstructured-data-text-documents-pdfs-and-word-documents">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#starting-with-unstructured-data-text-documents-pdfs-and-word-documents">Starting with Unstructured Data: Text Documents, PDFs, and Word Documents</a>
+</h2>
+<p>The easiest data sources to start with are text documents, PDFs, and Word documents. They are well supported by AI systems such as LLamaIndex and Langchain. Using these tools, you can ingest and chunk the selected documents from a directory. A great tutorial on implementing RAG with Atlas Vector Search, LangChain, and OpenAI can be found here: <a href="https://www.mongodb.com/blog/post/retrieval-augmented-generation-rag-with-atlas-vector-search-langchain-and-openai">RAG with Atlas Vector Search, LangChain, and OpenAI | Mongodb</a>.</p>
+<h2 id="testing-your-chatbot-extensive-evaluation-and-validation">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#testing-your-chatbot-extensive-evaluation-and-validation">Testing Your Chatbot: Extensive Evaluation and Validation</a>
+</h2>
+<p>After setting up your chatbot, it is essential to test its performance extensively. Ask questions that the chatbot should be able to answer based on the source material. This will help you identify any inaccuracies or gaps in the knowledge chunks. Validate what your chatbot gets right and wrong so you can investigate and modify the knowledge chunks later if necessary.</p>
+<h2 id="a-word-of-caution-handling-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#a-word-of-caution-handling-structured-data">A Word of Caution: Handling Structured Data</a>
+</h2>
+<p>While unstructured data such as text documents, PDFs, and Word documents are ideal for starting a RAG-based chatbot, structured data like tables, point form lists, spec sheets, XML, and JSON documents may not embed well. Therefore, they should not be the first data sources you attempt to use. In future blog posts, we will cover techniques for handling structured data using pre-summarization.</p>
+<p>In conclusion, building a knowledge-driven chatbot using RAG involves selecting relevant data sources, starting with unstructured documents like text, PDFs, and Word files, testing your chatbot extensively, and handling structured data with caution. With these strategies in mind, you can create an effective RAG chatbot that enhances communication within your organization and streamlines daily operations.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/rag-data-sources/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>RAG (Retrieval Augmented Generation) is the leading technique for building knowledge driven chatbots for your organization</li>
+<li>Data source selection is an important part of the design for chatbots.  A company’s knowledge dispersed in dozens of different systems and in different formats.</li>
+<li>The easiest data sources to start with are text documents, pdfs and word documents. These types are well supported in the LLamaIndex and Langchain systems.</li>
+<li>Start by identifying a set of documents that represents a corpus of knowledge that you want the chatbot to answer questions about.  Pick something that has immediate utility to some group within the organization</li>
+<li>Use LLamaIndex or Langchain to ingest and chunk these documents from a directory.  A great tutorial can be found here:  RAG with Atlas Vector Search, LangChain, and OpenAI | MongoDB</li>
+<li>Test your chatbot extensively with questions it should be able to answer, based on the source material.  Validate what it’s getting right and wrong so you can investigate and modify your knowledge chunks later if they are incorrect.</li>
+<li>A word of warning:  Structured data such as tables, point form lists, spec sheets, xml and json documents do not embed very well and should not be the first data sources you attempt to use.</li>
+<li>We will cover structured data techniques using pre-summarization in later blog posts.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chatbots/" rel="tag"> Chatbots</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/data-sources/" rel="tag"> Data Sources</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/" rel="bookmark">Retrieval Augmented Chatbots </a>
+  </h2>
+  
+    <time datetime="2024-01-17T00:00:00Z">17 January, 2024</time>
+  
+</header>
+      
+        <h1 id="retrieval-augmented-chatbots-the-future-of-business-intelligence">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#retrieval-augmented-chatbots-the-future-of-business-intelligence">Retrieval Augmented Chatbots: The Future of Business Intelligence</a>
+</h1>
+<p>The advent of generative AI technology has opened up a world of possibilities for businesses to enhance their operations and streamline communication. OpenAI&rsquo;s ChatGPT and image generation models like Stable Diffusion have demonstrated the potential of AI in solving business problems and improving efficiency across various sectors. In response, nearly every company worldwide is developing an AI strategy to integrate generative AI technologies into their existing business models. One of the most promising use cases for generative AI in businesses is Retrieval Augmented Chatbots (RAG), which leverage the power of Large Language Models (LLMs) to answer questions based on data provided within a prompt (augmentation).</p>
+<h2 id="the-foundation-rag-and-llms">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#the-foundation-rag-and-llms">The Foundation: RAG and LLMs</a>
+</h2>
+<p>Retrieval Augmented Generation (RAG) is an approach that combines retrieval methods with generative language models, such as GPT-3 or OpenAI&rsquo;s ChatGPT. This technique allows chatbots to &ldquo;talk to documents,&rdquo; ingesting them, chunking the text, vectorizing those chunks using a text embedding model, and then employing semantic search to retrieve relevant chunks of text for answering questions posed by users.</p>
+<p>The integration of RAG with Large Language Models (LLMs) has enabled chatbots to tap into the vast potential of retrieval-based augmentation. LLMs can comprehend complex queries and provide accurate responses based on the data provided in the prompt, further enhancing their capabilities to assist businesses in various aspects.</p>
+<h2 id="empowering-customer-support-agents">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#empowering-customer-support-agents">Empowering Customer Support Agents</a>
+</h2>
+<p>One significant use case for RAG-enabled chatbots is empowering customer support agents by granting them access to an entire knowledge base they work with through &ldquo;chat-with-docs.&rdquo; This feature allows agents to search and retrieve relevant information from internal documents, articles, or guides without the need for manual browsing. As a result, customer support teams can provide faster and more accurate responses to inquiries, improving overall customer satisfaction.</p>
+<h2 id="enhancing-customer-experience">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#enhancing-customer-experience">Enhancing Customer Experience</a>
+</h2>
+<p>RAG-enabled chatbots can also be used directly by customers to answer questions about billing, insurance plans, coverage, or processes. By providing customers with easy access to essential information, businesses can streamline their communication channels and reduce the need for human intervention in basic inquiries. This not only improves customer experience but also frees up customer support agents to focus on more complex tasks.</p>
+<h2 id="boosting-developer-productivity">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#boosting-developer-productivity">Boosting Developer Productivity</a>
+</h2>
+<p>Another crucial application of RAG-enabled chatbots is connecting them to internal code bases, allowing developers to ask questions about large and complex codebases. This feature is particularly useful for navigating through vast legacy codes, making it easier for developers to find relevant information quickly and efficiently. As a result, businesses can improve developer productivity and ensure that teams spend more time creating innovative solutions rather than wasting time searching for information within their codebase.</p>
+<h2 id="the-inteligence-augmented-workforce">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#the-inteligence-augmented-workforce">The Inteligence Augmented Workforce</a>
+</h2>
+<p>The future of most companies will be chatbot-based systems with vectorized knowledge spanning the entire history of the company and all internal knowledge. This intelligence augmentation approach aims to provide every employee with an AI-powered assistant, reducing friction in day-to-day activities and improving overall productivity. As businesses continue to integrate generative AI technologies into their operations, RAG-enabled chatbots will play a crucial role in shaping the future of work, streamlining communication, and fostering innovation across various industries.</p>
+<h2 id="design-considerations-for-chatbot-implementation">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#design-considerations-for-chatbot-implementation">Design Considerations for Chatbot Implementation</a>
+</h2>
+<p>While the potential of RAG-enabled chatbots is undeniable, it&rsquo;s essential to consider several design factors when implementing these systems. These include:</p>
+<ol>
+<li>Chunking knowledge into manageable pieces to ensure efficient retrieval and vectorization.</li>
+<li>Selecting appropriate text embedding models to optimize semantic search capabilities.</li>
+<li>Implementing robust security measures to protect sensitive data and prevent unauthorized access.</li>
+<li>Designing intuitive user interfaces that allow users to interact with chatbots seamlessly.</li>
+<li>Continuously training and updating the LLM to ensure it remains up-to-date with the latest information and trends.</li>
+</ol>
+<p>In conclusion, Retrieval Augmented Chatbots (RAG) represent a game-changing approach to leveraging generative AI technologies in businesses. By combining retrieval methods with powerful Large Language Models (LLMs), these chatbots can revolutionize customer support, streamline communication channels, and empower employees to work more efficiently. As companies continue to embrace AI-driven solutions, RAG-enabled chatbots will undoubtedly play a pivotal role in shaping the future of business intelligence and productivity.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-chatbots-/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>OpenAI’s ChatGPT and image generation models like Stable Diffusion have shown the promise for using AI to solve business problems</li>
+<li>Nearly every company in the world is attempting to come up with an AI strategy to integrate generative AI to enhance their existing business</li>
+<li>The most straightforward use case for generative AI in business is retrieval augmented chatbots using RAG (retrieval augmented generation) as the underlying technique</li>
+<li>Chatbots can be used to “talk to documents”.  Ingest the documents, chunk the text, vectorize the chunks using a text embedding model and then use semantic search to retrieve those chunks of text to send to a Large Language Model (LLM) to answer questions.</li>
+<li>RAG takes advantage of LLMs ability to answer questions based on data provided in the prompt (augmentation).</li>
+<li>Chatbots can be used to empower customer support agents by giving them chat-with-docs access to the entire knowledge base they work with.</li>
+<li>Chatbots can be used by customers directly (with more guardrails in place) to answer questions about billing, insurance plans, coverage, and processes.</li>
+<li>Chatbots can be connected to internal code bases to allow developers to ask questions about large, complex code bases.  This is especially useful with large legacy code.</li>
+<li>The future state for most companies will be chatbots that have vectorized knowledge for the entire history of the company and all internal knowledge.  This gives every single employee an assistant to reduce friction in day to day activities.  We call this the Intelligence Augmented Workforce.</li>
+<li>Chatbots have many design considerations around how to chunk and vectorize knowledge, that will be addressed in future blog posts.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chatbots/" rel="tag"> Chatbots</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/" rel="bookmark">Retrieval Augmented Generation</a>
+  </h2>
+  
+    <time datetime="2024-01-16T00:00:00Z">16 January, 2024</time>
+  
+</header>
+      
+        <h1 id="retrieval-augmented-generation-enhancing-llm-performance-with-contextualized-information">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#retrieval-augmented-generation-enhancing-llm-performance-with-contextualized-information">Retrieval Augmented Generation: Enhancing LLM Performance with Contextualized Information</a>
+</h1>
+<p>Large Language Models (LLMs) have revolutionized the field of natural language processing, providing us with powerful tools for text generation, understanding, and reasoning. However, as with any technology, there are limitations to what LLMs can achieve on their own. One such limitation is the issue of &ldquo;hallucinations&rdquo;, where an LLM may provide incorrect or fabricated information in response to a question that it has generalized and not retained specific details for. This blog post will explore Retrieval Augmented Generation (RAG), a technique that utilizes semantic search and augmented prompt engineering to enhance the performance of LLMs by providing them with contextually relevant information to answer questions more accurately.</p>
+<h2 id="understanding-large-language-models">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#understanding-large-language-models">Understanding Large Language Models</a>
+</h2>
+<p>LLMs are trained on massive corpora of text from various data sources, often reaching multiple trillions of tokens (words) of internet content. They combine memorization and generalization to provide information compression, which can be inherently lossy, resulting in the aforementioned hallucination phenomenon. Despite these limitations, LLMs are excellent summarization and reasoning machines that have the potential to revolutionize fields like AI-powered chatbots, virtual assistants, and content generation.</p>
+<h2 id="introducing-retrieval-augmented-generation-rag">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#introducing-retrieval-augmented-generation-rag">Introducing Retrieval Augmented Generation (RAG)</a>
+</h2>
+<p>RAG is a technique that leverages an LLM&rsquo;s strong summarization capabilities by allowing users to provide all the data required to answer a question, along with the question itself. This can be achieved through a combination of information retrieval and prompt engineering techniques. At its core, RAG aims to address the issue of hallucinations by providing contextually relevant knowledge to LLMs to help them ground their answers in reality.</p>
+<h2 id="the-role-of-prompt-engineering-in-rag">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#the-role-of-prompt-engineering-in-rag">The Role of Prompt Engineering in RAG</a>
+</h2>
+<p>A key aspect of RAG is prompt engineering, which involves crafting an effective prompt that includes both the user&rsquo;s question and any relevant data required for the LLM to provide a reliable answer. This can involve techniques such as prompt augmentation, where additional information is added to the initial question. For example, if you asked an LLM &ldquo;What is my name?&rdquo;, providing the prompt &ldquo;Hello, my name is Patrick. What is my name?&rdquo; would help ground the response and prevent hallucinations.</p>
+<h2 id="semantic-search-for-rag">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#semantic-search-for-rag">Semantic Search for RAG</a>
+</h2>
+<p>A major challenge in implementing RAG is retrieving relevant information from vast databases or knowledge repositories to include in the LLM&rsquo;s prompt. Traditional database techniques and simple lexicographical searches may not be effective, as users do not typically ask questions that match database query formats. Instead, semantic search is a more suitable approach for RAG implementations, as it allows the retrieval of information based on dense vector similarity. This enables the retrieval of chunks of knowledge that are semantically similar to the user&rsquo;s question, providing contextually relevant information to the LLM without relying solely on lexical matching.</p>
+<h2 id="workflow-for-rag">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#workflow-for-rag">Workflow for RAG</a>
+</h2>
+<p>The workflow for implementing RAG involves several steps:</p>
+<ol>
+<li>Intercepting the user&rsquo;s prompt and sending it to a vector search engine.</li>
+<li>Retrieving a fixed number of results (typically 3-10) from the search engine.</li>
+<li>&ldquo;Prompt stuff&rdquo; these retrieved results into the LLM prompt, along with the original question.</li>
+<li>Running the augmented prompt through the LLM to receive a grounded answer based on the contextually relevant information provided in the prompt.</li>
+</ol>
+<h2 id="conclusion">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#conclusion">Conclusion</a>
+</h2>
+<p>Retrieval Augmented Generation (RAG) is an innovative technique that harnesses the power of semantic search and prompt engineering to enhance the performance of large language models by providing them with contextually relevant information to answer questions more accurately. By addressing the issue of hallucinations and improving the grounding of LLM responses, RAG has the potential to revolutionize the way we interact with AI-powered chatbots, virtual assistants, and content generation tools. As we continue to explore the possibilities of RAG, it is essential to focus on refining data ingestion, prompt engineering, and text embedding models for optimal performance and accuracy in our LLM implementations.</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/retrieval-augmented-generation/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>Large Language Models (LLMs) are trained on massive corpus of text from various data sources</li>
+<li>This can be up to multiple trillions of tokens (words) of text from the internet</li>
+<li>LLMs are a combination of memorization and generalization and are a type of information compression</li>
+<li>The information compression is inherently lossy and not all details are retained.  If you ask an LLM a question that it has generalized and not retained details for it can either tell you it doesn’t know (ideal answer) or worse make up an answer.  This is called a hallucination.</li>
+<li>LLMs are excellent summarization and reasoning machines</li>
+<li>Augmented Generation takes advantage of an LLMs strong summarization capability by allowing you to provide all the data required to answer the question, along with the question itself.  If you combine that with an information retrieval mechanism you have Retrieval Augmented Generation or RAG.</li>
+<li>A simple example is putting something in a prompt like “Hello my name is Patrick.  What is my name?”  This is the most basic example of a prompt augmentation technique.</li>
+<li>In a perfect world you could put all your knowledge and data in a single document and provide that whole document in the LLM prompt to answer questions. This is slow and expensive with our current LLM technology.</li>
+<li>Retrieving chunks of data from your own data sources solves this issue.  It allows you to provide these chunks of knowledge to the LLM, in the prompt to get it to answer questions.</li>
+<li>Retrieving information is difficult.  Users don’t ask questions that look like SQL or MQL style queries.  You can’t rely on traditional database techniques.</li>
+<li>Lexical search is better, but you need to rely on the user&rsquo;s question having tokens (words) that match something in the lexical search index.  This is also not optimal.</li>
+<li>Semantic search is a good match for the problem space because it allows you to search, semantically, using dense vector similarity, for chunks of knowledge that are similar to the question.</li>
+<li>So the workflow for RAG is to intercept the users prompt, send it to a vector search engine, get a fixed number of results (usually 3-10) and “prompt stuff” these results into the LLM prompt, along with the question.  The LLM then has all the information it needs to reason about the question and provide a “grounded” answer instead of a hallucination.</li>
+<li>The real complexity in RAG solutions is in how to ingest your data, how to chunk it, what text embedding model works best for your use case, the prompt engineering that nets you the most reliable and accurate answers and finally the guard rails that go around the inputs and outputs to prevent the LLM from providing undesirable answers.  We will cover all these topics in future posts.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/grounding/" rel="tag"> Grounding</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+  
+
+  
+  <nav>
+    
+    
+      <a class="Pagination Pagination--right u-clickable" href="/page/3/" rel="next">Next »</a>
+    
+  </nav>
+
+
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

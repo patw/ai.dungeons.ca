@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Tool Series - extBrain: Your External Brain for Building Another You https://github.com/patw/ExternalBrain
+In our ongoing series exploring various tools to build Generative AI applications, we present the eighth tool in the lineup: extBrain. This innovative platform allows you to tap into a powerful knowledge management system designed specifically for question answering. By leveraging advanced techniques such as Fact Synthesis and Retrieval Augmented Generation (RAG), extBrain enables efficient storage, vector storage, and precise semantic search capabilities.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Tool Series - extBrain | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/tool-series-extbrain/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/" rel="bookmark">Tool Series - extBrain</a>
+  </h2>
+  
+    <time datetime="2024-02-12T00:00:00Z">12 February, 2024</time>
+  
+</header>
+    <h1 id="tool-series---extbrain-your-external-brain-for-building-another-you">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#tool-series---extbrain-your-external-brain-for-building-another-you">Tool Series - extBrain: Your External Brain for Building Another You</a>
+</h1>
+<p><a href="https://github.com/patw/ExternalBrain">https://github.com/patw/ExternalBrain</a></p>
+<p>In our ongoing series exploring various tools to build Generative AI applications, we present the eighth tool in the lineup: <em>extBrain</em>. This innovative platform allows you to tap into a powerful knowledge management system designed specifically for question answering. By leveraging advanced techniques such as Fact Synthesis and Retrieval Augmented Generation (RAG), extBrain enables efficient storage, vector storage, and precise semantic search capabilities. In this blog post, we&rsquo;ll delve into the technical aspects of <em>extBrain</em> and how it can transform your AI application development process.</p>
+<h2 id="a-brief-overview-of-fact-synthesis">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#a-brief-overview-of-fact-synthesis">A Brief Overview of Fact Synthesis</a>
+</h2>
+<p>At the core of extBrain lies its ability to break down large text articles into individual facts using Fact Synthesis. This process involves reducing textual data into a structured format (facts), making it easier for machines to understand and process information. By storing these facts in Mongo collections alongside metadata such as the source, context, and timestamp, extBrain can provide authoritative answers based on up-to-date knowledge sources.</p>
+<h2 id="grouping-facts-into-semantically-relevant-chunks">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#grouping-facts-into-semantically-relevant-chunks">Grouping Facts into Semantically Relevant Chunks</a>
+</h2>
+<p>One of the key advantages of using extBrain is its ability to group facts into chunks of text. This can be achieved through various methods, including fixed numbers of grouped facts or more advanced techniques like context-based grouping and semantic similarity matching. By organizing facts into relevant groups, extBrain ensures that users receive accurate responses tailored to their specific inquiries.</p>
+<h2 id="leveraging-rag-for-enhanced-question-answering">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#leveraging-rag-for-enhanced-question-answering">Leveraging RAG for Enhanced Question Answering</a>
+</h2>
+<p>RAG (Retrieval Augmented Generation) systems  are common in the AI industry. These systems break down source documents such as PDF, Word, or HTML files into smaller text blobs and perform text embedding to generate dense vectors. ExtBrain takes this concept one step further by focusing exclusively on grouping facts together, resulting in a more efficient use of resources and improved vector search accuracy.</p>
+<h2 id="using-semantically-similar-facts-for-larger-text-chunks">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#using-semantically-similar-facts-for-larger-text-chunks">Using Semantically Similar Facts for Larger Text Chunks</a>
+</h2>
+<p>By grouping semantically similar facts into larger text chunks, extBrain enables users to ask broader questions while still maintaining high recall rates. This approach ensures that relevant information is readily available without compromising the overall efficiency of the system.</p>
+<h2 id="a-second-you-the-power-of-your-external-brain">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#a-second-you-the-power-of-your-external-brain">A Second You: The Power of Your External Brain</a>
+</h2>
+<p>ExtBrain&rsquo;s primary goal is to act as an extension of your own knowledge and cognitive abilities. By ingesting all your relevant data, extBrain can provide authoritative answers on demand, allowing you to work smarter instead of harder. This innovative approach to AI application development has the potential to revolutionize how we approach problem-solving and information retrieval.</p>
+<h2 id="multiple-front-end-options-for-easy-access">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#multiple-front-end-options-for-easy-access">Multiple Front End Options for Easy Access</a>
+</h2>
+<p>To make it even more convenient for users, extBrain offers multiple front end options for asking questions, including a website, a Discord bot, and a Slack bot. These intuitive interfaces allow you to access your external brain from virtually anywhere, making it simple to retrieve accurate information whenever you need it.</p>
+<h2 id="managing-facts-and-summarizing-text-with-the-extbrain-back-end">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#managing-facts-and-summarizing-text-with-the-extbrain-back-end">Managing Facts and Summarizing Text with the extBrain Back End</a>
+</h2>
+<p>The extBrain back end serves as an administrative interface for managing facts and summarizing large chunks of text into digestible pieces of information. This powerful tool enables users to input, organize, and refine their knowledge base, ensuring that they always have access to up-to-date, accurate data when needed.</p>
+<h2 id="conclusion-why-everyone-should-have-an-external-brain">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#conclusion-why-everyone-should-have-an-external-brain">Conclusion: Why Everyone Should Have an External Brain</a>
+</h2>
+<p>In conclusion, extBrain offers a comprehensive solution for building scalable AI applications focused on question answering. With its innovative approach to Fact Synthesis and RAG systems, combined with the ability to group semantically similar facts into larger text chunks, extBrain delivers efficient storage solutions and accurate vector search capabilities. By leveraging these features, you can work smarter, not harder, and revolutionize your AI application development process. So why wait? It&rsquo;s time to unlock the power of your external brain!</p>
+<p><em>Note: The views expressed in this blog post are based on publicly available information and represent our understanding of extBrain as a tool for building Generative AI applications.</em></p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>Eighth Tool in the series is External Brain (<a href="https://github.com/patw/ExternalBrain">https://github.com/patw/ExternalBrain</a>)</li>
+<li>External Brain uses Fact Synthesis (reducing text into facts - see previous posts about the subject) which allows the user to paste in large text articles and reduce them down to individual facts.</li>
+<li>Facts are stored in Mongo collections along with some metadata about who stated the facts, what was the context and when it was stated.</li>
+<li>The facts can then be grouped together into chunks of text, by either a fixed number of grouped facts or with more clever methods like only grouping together facts from the same context or even facts based on their semantic similarity.</li>
+<li>Users can then ask questions to the LLM (large language model) and we will perform semantic search to find the fact chunks that are most relevant to the question, which will be injected into the prompt to the LLM.  This is an example of RAG (retrieval augmented generation).</li>
+<li>Most RAG systems will chunk up source documents like PDF, Word, HTML files into blobs of text, and run text embedding models against that to produce dense vectors.</li>
+<li>extBrain only chunks on groups of facts, which reduces the overall size of the data set and produces more accurate results in vector search and stronger results from the LLM.</li>
+<li>Semantically similar facts can produce larger text chunks without causing recall issues later on.</li>
+<li>External Brain can act as a second you.  It’s designed to ingest all your knowledge and be able to answer authoritatively on it.  This technique could allow knowledge workers to scale.</li>
+<li>extBrain has multiple front ends for asking questions:  A website, a Discord bot and a Slack bot.</li>
+<li>The extBrain back end, or admin UI allows you to enter and manage facts and summarize large chunks of text into facts.</li>
+<li>This is a pretty ideal system for question answering.  It’s efficient on storage and vectors (which are expensive to store).</li>
+<li>Call to action:  Everyone should have an external brain!  Work smarter not harder.</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/ai-tools/" rel="tag">AI Tools</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/python/" rel="tag"> Python</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

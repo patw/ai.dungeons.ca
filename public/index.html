@@ -54,26 +54,17 @@
     
     
     
-      
-      
-    
     
     
   
     
     
     
-      
-      
-    
     
     
   
     
     
-    
-      
-      
     
     
     
@@ -188,6 +179,1031 @@
         
 
   
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/" rel="bookmark">Tool Series - extBrain</a>
+  </h2>
+  
+    <time datetime="2024-02-12T00:00:00Z">12 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series---extbrain-your-external-brain-for-building-another-you">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#tool-series---extbrain-your-external-brain-for-building-another-you">Tool Series - extBrain: Your External Brain for Building Another You</a>
+</h1>
+<p><a href="https://github.com/patw/ExternalBrain">https://github.com/patw/ExternalBrain</a></p>
+<p>In our ongoing series exploring various tools to build Generative AI applications, we present the eighth tool in the lineup: <em>extBrain</em>. This innovative platform allows you to tap into a powerful knowledge management system designed specifically for question answering. By leveraging advanced techniques such as Fact Synthesis and Retrieval Augmented Generation (RAG), extBrain enables efficient storage, vector storage, and precise semantic search capabilities. In this blog post, we&rsquo;ll delve into the technical aspects of <em>extBrain</em> and how it can transform your AI application development process.</p>
+<h2 id="a-brief-overview-of-fact-synthesis">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#a-brief-overview-of-fact-synthesis">A Brief Overview of Fact Synthesis</a>
+</h2>
+<p>At the core of extBrain lies its ability to break down large text articles into individual facts using Fact Synthesis. This process involves reducing textual data into a structured format (facts), making it easier for machines to understand and process information. By storing these facts in Mongo collections alongside metadata such as the source, context, and timestamp, extBrain can provide authoritative answers based on up-to-date knowledge sources.</p>
+<h2 id="grouping-facts-into-semantically-relevant-chunks">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#grouping-facts-into-semantically-relevant-chunks">Grouping Facts into Semantically Relevant Chunks</a>
+</h2>
+<p>One of the key advantages of using extBrain is its ability to group facts into chunks of text. This can be achieved through various methods, including fixed numbers of grouped facts or more advanced techniques like context-based grouping and semantic similarity matching. By organizing facts into relevant groups, extBrain ensures that users receive accurate responses tailored to their specific inquiries.</p>
+<h2 id="leveraging-rag-for-enhanced-question-answering">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#leveraging-rag-for-enhanced-question-answering">Leveraging RAG for Enhanced Question Answering</a>
+</h2>
+<p>RAG (Retrieval Augmented Generation) systems  are common in the AI industry. These systems break down source documents such as PDF, Word, or HTML files into smaller text blobs and perform text embedding to generate dense vectors. ExtBrain takes this concept one step further by focusing exclusively on grouping facts together, resulting in a more efficient use of resources and improved vector search accuracy.</p>
+<h2 id="using-semantically-similar-facts-for-larger-text-chunks">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#using-semantically-similar-facts-for-larger-text-chunks">Using Semantically Similar Facts for Larger Text Chunks</a>
+</h2>
+<p>By grouping semantically similar facts into larger text chunks, extBrain enables users to ask broader questions while still maintaining high recall rates. This approach ensures that relevant information is readily available without compromising the overall efficiency of the system.</p>
+<h2 id="a-second-you-the-power-of-your-external-brain">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#a-second-you-the-power-of-your-external-brain">A Second You: The Power of Your External Brain</a>
+</h2>
+<p>ExtBrain&rsquo;s primary goal is to act as an extension of your own knowledge and cognitive abilities. By ingesting all your relevant data, extBrain can provide authoritative answers on demand, allowing you to work smarter instead of harder. This innovative approach to AI application development has the potential to revolutionize how we approach problem-solving and information retrieval.</p>
+<h2 id="multiple-front-end-options-for-easy-access">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#multiple-front-end-options-for-easy-access">Multiple Front End Options for Easy Access</a>
+</h2>
+<p>To make it even more convenient for users, extBrain offers multiple front end options for asking questions, including a website, a Discord bot, and a Slack bot. These intuitive interfaces allow you to access your external brain from virtually anywhere, making it simple to retrieve accurate information whenever you need it.</p>
+<h2 id="managing-facts-and-summarizing-text-with-the-extbrain-back-end">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#managing-facts-and-summarizing-text-with-the-extbrain-back-end">Managing Facts and Summarizing Text with the extBrain Back End</a>
+</h2>
+<p>The extBrain back end serves as an administrative interface for managing facts and summarizing large chunks of text into digestible pieces of information. This powerful tool enables users to input, organize, and refine their knowledge base, ensuring that they always have access to up-to-date, accurate data when needed.</p>
+<h2 id="conclusion-why-everyone-should-have-an-external-brain">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#conclusion-why-everyone-should-have-an-external-brain">Conclusion: Why Everyone Should Have an External Brain</a>
+</h2>
+<p>In conclusion, extBrain offers a comprehensive solution for building scalable AI applications focused on question answering. With its innovative approach to Fact Synthesis and RAG systems, combined with the ability to group semantically similar facts into larger text chunks, extBrain delivers efficient storage solutions and accurate vector search capabilities. By leveraging these features, you can work smarter, not harder, and revolutionize your AI application development process. So why wait? It&rsquo;s time to unlock the power of your external brain!</p>
+<p><em>Note: The views expressed in this blog post are based on publicly available information and represent our understanding of extBrain as a tool for building Generative AI applications.</em></p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-extbrain/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>Eighth Tool in the series is External Brain (<a href="https://github.com/patw/ExternalBrain">https://github.com/patw/ExternalBrain</a>)</li>
+<li>External Brain uses Fact Synthesis (reducing text into facts - see previous posts about the subject) which allows the user to paste in large text articles and reduce them down to individual facts.</li>
+<li>Facts are stored in Mongo collections along with some metadata about who stated the facts, what was the context and when it was stated.</li>
+<li>The facts can then be grouped together into chunks of text, by either a fixed number of grouped facts or with more clever methods like only grouping together facts from the same context or even facts based on their semantic similarity.</li>
+<li>Users can then ask questions to the LLM (large language model) and we will perform semantic search to find the fact chunks that are most relevant to the question, which will be injected into the prompt to the LLM.  This is an example of RAG (retrieval augmented generation).</li>
+<li>Most RAG systems will chunk up source documents like PDF, Word, HTML files into blobs of text, and run text embedding models against that to produce dense vectors.</li>
+<li>extBrain only chunks on groups of facts, which reduces the overall size of the data set and produces more accurate results in vector search and stronger results from the LLM.</li>
+<li>Semantically similar facts can produce larger text chunks without causing recall issues later on.</li>
+<li>External Brain can act as a second you.  It’s designed to ingest all your knowledge and be able to answer authoritatively on it.  This technique could allow knowledge workers to scale.</li>
+<li>extBrain has multiple front ends for asking questions:  A website, a Discord bot and a Slack bot.</li>
+<li>The extBrain back end, or admin UI allows you to enter and manage facts and summarize large chunks of text into facts.</li>
+<li>This is a pretty ideal system for question answering.  It’s efficient on storage and vectors (which are expensive to store).</li>
+<li>Call to action:  Everyone should have an external brain!  Work smarter not harder.</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/ai-tools/" rel="tag">AI Tools</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/python/" rel="tag"> Python</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/" rel="bookmark">Tool Series - FactWeave</a>
+  </h2>
+  
+    <time datetime="2024-02-09T00:00:00Z">9 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series---factweave-writing-more-by-writing-less">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#tool-series---factweave-writing-more-by-writing-less">Tool Series - FactWeave: Writing More by Writing Less</a>
+</h1>
+<p>In the ongoing series of covering different tools for building Generative AI applications, we introduce FactWeave (<a href="https://github.com/patw/FactWeave)">https://github.com/patw/FactWeave)</a>, a unique tool that can generate blog posts with minimal input. Designed with Fact Expansion in mind, it&rsquo;s the perfect solution if you want to share your thoughts and ideas without spending hours crafting each post.</p>
+<h2 id="how-factweave-works">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#how-factweave-works">How FactWeave Works</a>
+</h2>
+<p>FactWeave is an incredible example of Fact Expansion. This tool allows you to input individual facts, which are then fed into a Large Language Model (LLM) along with some prompt engineering to generate specific types of blog posts. You can choose from technical, personal, or humor-based content, and the output will be Markdown files ready for consumption by static site generators like HUGO.</p>
+<h2 id="a-website-built-with-factweave">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#a-website-built-with-factweave">A Website Built with FactWeave</a>
+</h2>
+<p>The website you&rsquo;re currently reading is a testament to the power of FactWeave. This tool has helped me share my ideas in a well-formatted and professional manner, which has been incredibly valuable for my customers at Mongodb who are interested in building Retrieval Augmented Generation (RAG) use cases.</p>
+<h2 id="managing-your-blog-posts-with-factweave">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#managing-your-blog-posts-with-factweave">Managing Your Blog Posts with FactWeave</a>
+</h2>
+<p>FactWeave also acts as a Content Management System (CMS). It enables you to manage your blog posts, change their tags, titles, or content. If the &ldquo;post&rdquo; field is blank, FactWeave will generate the blog post using the LLM. Afterward, you can edit the post as needed.</p>
+<h2 id="tailoring-the-content">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#tailoring-the-content">Tailoring the Content</a>
+</h2>
+<p>The default tone for FactWeave&rsquo;s generated posts is technical, detailed, and professional. However, you have the option to change this tone to personal if you prefer a more casual writing style. The term &ldquo;detailed&rdquo; might sometimes produce overly wordy content, so you can also switch it to &ldquo;succinct&rdquo; for shorter blog posts.</p>
+<h2 id="automating-tags">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#automating-tags">Automating Tags</a>
+</h2>
+<p>Currently, FactWeave uses default tags such as &ldquo;RAG&rdquo;, &ldquo;Grounding&rdquo;, and &ldquo;LLM&rdquo;. However, I plan on updating the system to generate these tags automatically based on the content of each post. This way, the AI can help you categorize your blog posts more effectively!</p>
+<h2 id="factweave-built-with-python">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#factweave-built-with-python">FactWeave Built With Python</a>
+</h2>
+<p>FactWeave is built using Flask, FlaskBootstrap, and FlaskForms, which are popular tools in this series. The tool also incorporates vector search functionality to help you find relevant articles for editing later.</p>
+<h2 id="conclusion">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#conclusion">Conclusion</a>
+</h2>
+<p>In conclusion, FactWeave is a powerful tool that can help you create engaging blog posts with minimal effort. By inputting individual facts, the AI generates well-formatted, personalized content that can be edited and managed as needed. With its versatility and ease of use, FactWeave is an excellent choice for anyone looking to streamline their blogging process.</p>
+<p>So why not give it a try? Write more by writing less with FactWeave!</p>
+<ul>
+<li>Human Intervention: Minor.  It called Fact Expansion &ldquo;Facet Expansion&rdquo;.  Also renamed one of the headings.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>Seventh Tool in the series is FactWeave (<a href="https://www.github.com/patw/FactWeave">https://www.github.com/patw/FactWeave</a>)</li>
+<li>FactWeave is a tool for generating blog posts by just providing individual facts.</li>
+<li>This tool is an example of Fact Expansion (see previous blog post about this subject), it&rsquo;s the opposite of Fact Synthesis</li>
+<li>You can provide an arbitrary number of facts, which get fed to the LLM (large language model), with some prompt engineering to produce a specific type of blog post (technical, personal, humor) and output Markdown files.</li>
+<li>The Markdown files can be consumed by static site generators like HUGO, to deploy a complete website with minimal inputs.</li>
+<li>The website you&rsquo;re reading right now is produced by FactWeave</li>
+<li>FactWeave helped me get my ideas into a nicely formatted blog site which has been valuable for my customers at MongoDB who are interested in building RAG (retrieval augmented generation) use cases</li>
+<li>FactWeave itself is a CMS.  It provides the ability to manage the blog posts, change their tags, title or content.  It only generates the blog post using the LLM if the “post” field is blank.  After the post is generated it can be edited.</li>
+<li>Sometimes I do need to edit the blog posts and I indicate that with the “Human Intervention” part at the bottom of the post.  If it says “None”, it means I haven’t edited the post.  If I do have to edit I explain what and why.  Usually it’s due to the LLM hallucinating URLs or referencing open source projects with the wrong name.</li>
+<li>The default tone for posts is “technical, detailed and professional”.  This directs the LLM to produce technical sounding blogs.  I sometimes change &ldquo;professional to “personal” when I want that tone instead.  The term “detailed” can also be a problem, sometimes.  It’ll get very wordy, so I’ll change it to “succinct” instead.</li>
+<li>The system also has default tags “RAG, Grounding, LLM” but I’ll modify the system later to have to produce tags automatically from the outputted content.  When you have an AI problem, more AI fixes it!</li>
+<li>The tool is built using Flask, FlaskBootstrap and FlaskForms as are many of the tools in this series.</li>
+<li>It also incorporates vector search, to find relevant articles.  This is so I can edit them later.</li>
+<li>Call to action:  This same technique could be used for building technical documentation, or even your own blogging solution.  Clever tagline: Write more by writing less!</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/ai-tools/" rel="tag">AI Tools</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/python/" rel="tag"> Python</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/" rel="bookmark"> Tool Series - discord_llama</a>
+  </h2>
+  
+    <time datetime="2024-02-08T00:00:00Z">8 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series-discord_llama---the-ultimate-ai-companion-for-your-server">
+  <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/#tool-series-discord_llama---the-ultimate-ai-companion-for-your-server">Tool Series: Discord_Llama - The Ultimate AI Companion for Your Server</a>
+</h1>
+<p>Discord has become an integral part of our online social lives, allowing friends and communities to connect through chat rooms, voice channels, and even play games together. With the ever-growing demand for unique experiences in these servers, it&rsquo;s no wonder that developers are continuously creating innovative tools to enhance interactions between users. Today, we&rsquo;re taking a deep dive into <code>discord_llama</code>, a fantastic tool designed to bring large language models (LLMs) to life within your Discord server.</p>
+<p><code>Discord_Llama</code> is an open-source project by <a href="https://github.com/patw">Pat W.</a> that allows you to create LLM-driven chatbots tailored to your server&rsquo;s needs. This versatile tool can introduce personality, humor, and even specific ideologies into your bot, making for a more engaging and entertaining user experience.</p>
+<h2 id="how-does-it-work">
+  <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/#how-does-it-work">How Does it Work?</a>
+</h2>
+<p><code>Discord_Llama</code> leverages the same <code>llama.cpp</code> running in server mode as its LLM backend, sharing this powerful technology with other tools such as BottyBot, SumBot, RAGTAG, and ExtBrain. This backend is GPU-accelerated, ensuring lightning-fast responses to user queries on your Discord server.</p>
+<p>Currently, <code>discord_llama</code> supports up to 7 different personality-based bots, ranging from the more conventional WizaardBot for answering questions to more unique concepts like ideology-focused bots or even a bot that clones a friend and their interests (HermanBot). The tool offers a wide variety of options to cater to your server&rsquo;s preferences.</p>
+<h2 id="chatting-with-bots">
+  <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/#chatting-with-bots">Chatting with Bots</a>
+</h2>
+<p>One standout feature of <code>discord_llama</code> is its access to Discord channel history, allowing bots to engage in back-and-forth conversations with users for up to five lines by default. This immersive interaction greatly enhances the user experience and fosters a more natural conversation flow within your server.</p>
+<h2 id="the-future-of-discord_llama">
+  <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/#the-future-of-discord_llama">The Future of <code>discord_llama</code></a>
+</h2>
+<p>Although development on <code>discord_llaama</code> has slowed in recent months, it continues to provide valuable chatbot services to four different Discord servers. A potential enhancement for this tool could involve further augmentation, such as web searches for up-to-date information or more advanced interaction capabilities. Regardless of its future developments, <code>discord_llaama</code> remains an invaluable asset for server owners and users alike.</p>
+<h2 id="conclusion">
+  <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/#conclusion">Conclusion</a>
+</h2>
+<p>In a world where Discord has become the go-to platform for connecting with friends and communities, having engaging chatbots is more important than ever. With <code>Discord_Llama</code>, you can now add personality and unique experiences to your servers, enriching conversations and entertaining users in ways previously unimaginable. If you haven&rsquo;t already given this tool a try, I highly recommend checking out the GitHub repository <a href="https://www.github.com/patw/discord_llama">here</a> and exploring the potential of LLMs in your Discord community. Who knows? You might just discover your server&rsquo;s new best friend!</p>
+<ul>
+<li>Human Intervention: None</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/-tool-series-discord_llama/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>
+<ul>
+<li>Sixth Tool in the series is discord_llama (<a href="https://www.github.com/patw/discord_llama">https://www.github.com/patw/discord_llama</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>discord_llama is a tool for building LLM (large language model) driven chatbots for Discord servers</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The tool allows you to build bots with personality and add them to an existing discord server.  They can respond to questions, and even react to specific keywords, at random, to act like regular users in the discord server.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>discord_llama uses the same llama.cpp running in server mode as the LLM back end which is shared in my homelab with tools like BottyBot, SumBot, RAGTAG and ExtBrain.  This llama.cpp instance is GPU accelerated allowing very fast responses to questions from users in Discord.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>I currently run about 7 different personality based bots that range from the very boring WizardBot, which is a typical chatbot for answering questions to more extreme personality based bots like ideological focused bots and even a bot to clone a friend and his interests (HermanBot)!</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The bots have access to the discord channel history (up to 5 lines by default) which allows them to have back and forth exchanges with Discord users, which provides a great experience for the users.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This project hasn&rsquo;t seen much work in the last few months, but continues to provide useful chatbot services to 4 different Discord servers.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>A future enhancement to this tool could be further augmentation like web searches, for more up to date information.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>If you run a discord server, or particiopate in one, this tool can add a ton of value to conversations, or just troll the users <!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/discord/" rel="tag">Discord</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chatbots/" rel="tag"> Chatbots</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-bottybot/" rel="bookmark">Tool Series - BottyBot</a>
+  </h2>
+  
+    <time datetime="2024-02-08T00:00:00Z">8 February, 2024</time>
+  
+</header>
+      
+        <h2 id="tool-series---bottybot-a-frontend-chat-ui-for-local-llm-models">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-bottybot/#tool-series---bottybot-a-frontend-chat-ui-for-local-llm-models">Tool Series - BottyBot: A Frontend Chat UI for Local LLM Models</a>
+</h2>
+<p><a href="https://www.github.com/patw/BottyBot">https://www.github.com/patw/BottyBot</a></p>
+<p>In this installment of our Generative AI (GenAI) tool series, we will be exploring a unique solution to interfacing with locally hosted Large Language Models (LLMs): BottyBot. Developed by an individual who was not satisfied with existing options on the market, BottyBot is specifically designed to seamlessly connect with <code>llama.cpp</code> running in server mode. This powerful frontend chat UI has become a crucial tool in the developer&rsquo;s daily workflow, serving as the main interface for interacting with multiple tools and applications that leverage the capabilities of the LLM.</p>
+<p>The creator of BottyBot operates two GPU-accelerated instances of <code>llama.cpp</code>, which serve as the backbone for numerous applications such as SumBot, ExtBrain, RAGTAG (soon to be updated), and several Python scripts, including a website generator. These tools benefit from the efficiency and versatility provided by BottyBot&rsquo;s intuitive chat interface, which is typically powered by either the OpenHermes Mistral or Dolphin Mistral families of LLM models.</p>
+<p>One of the key features that sets BottyBot apart is its support for multiple &ldquo;bot&rdquo; identities. These distinct personalities can be engaging to interact with and are entirely generated within the application itself. The development process of BottyBot exemplifies a unique approach known as &ldquo;bootstrapping,&rdquo; where much of the initial design was created using OpenAI&rsquo;s ChatGPT-3, while subsequent features were added by directly communicating with the LLM model integrated into BottyBot. This innovative method has resulted in a continually evolving and feature-rich application that caters to a wide range of use cases.</p>
+<p>In addition to its core functionality, BottyBot also includes export capabilities for formatting and organizing conversations in an easily shareable format. This feature is particularly useful for collaborating with others or showcasing the results of interactions with LLM models.</p>
+<p>While BottyBot does not currently support Retrieval Augmented Generation (RAG) techniques like RAGTAG or ExtBrain, its developers have expressed interest in potentially incorporating manual augmentation or vector search capabilities in future updates. This would allow users to enhance the prompt generation process and further optimize their interactions with LLM models.</p>
+<p>Overall, BottyBot has proven to be an incredibly valuable tool for individuals who wish to harness the power of local, open-source Large Language Models while maintaining complete privacy and control over their data. As a result, it serves as a perfect example of how cutting-edge AI technology can be effectively integrated into everyday workflows and applications. Stay tuned for future updates and enhancements to this versatile and essential chat interface!</p>
+<ul>
+<li>Human Intervention: Minor.  Added the URL for the github repo up top.  Also, it seemed to depersonalize me entirely in this article talking about an unknown developer.  I&rsquo;m cool with it, but I probably needed to add some context in the points to indicate who worked on it.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-bottybot/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>
+<ul>
+<li>Fifth Tool in the series is BottyBoy (<a href="https://www.github.com/patw/BottyBot">https://www.github.com/patw/BottyBot</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>BottyBot is a front end chat UI that connects to llama.cpp running in server mode which hosts a LLM (large language model)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>I wasn&rsquo;t happy with other solutions on the market and none of them could consume llama.cpp in server mode directly.  I operate 2 GPU accelerated instances of llama.cpp which is used by multiple tools like SumBot, ExtBrain, RAGTAG (soon, it needs updating) and a few python scripts like my website generator</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>BottyBot has been a huge success for me, as I use it daily as my main chat interface to LLM models. The back end llama.cpp server is usually running the OpenHermes Mistral or Dolphin Mistral families of LLM models.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>BottyBot supports different &ldquo;bot&rdquo; identities that represent differnet personalities that can be interesting to interact with.  The entire set of built in identites were generated by BottyBot!</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>BottyBot was a perfect example of bootstrapping:  I designed a lot of the application with OpenAI&rsquo;s ChatGPT 3, but as soon as the UI was running well enough, all features from that point on were added by talking to the LLM and getting useful python code for features I wanted.  It&rsquo;s now being used for all future products.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>I added export functionality to produce nicely formatted exports for conversations.  These are useful for sharing with others.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>BottyBot is not an example of RAG (retrieval augmented generation) like RAGTAG or ExtBrain.  BottyBoty uses the LLM directly without any augmentation.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>A future enhancement to this tool could include manual augmentation or vector search for augmenting the LLM prompt.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>I love this tool and so far, it&rsquo;s provided the most value to me personally and is a perfect example of using local, opensource large language models with full privacy.</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chatbot/" rel="tag"> Chatbot</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-instructorvec/" rel="bookmark">Tool Series - InstructorVec</a>
+  </h2>
+  
+    <time datetime="2024-02-07T00:00:00Z">7 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series---instructorvec-a-single-endpoint-for-text-embedding">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-instructorvec/#tool-series---instructorvec-a-single-endpoint-for-text-embedding">Tool Series - InstructorVec: A Single Endpoint for Text Embedding</a>
+</h1>
+<p><a href="https://www.github.com/patw/InstructorVec">https://www.github.com/patw/InstructorVec</a></p>
+<p>In this series, we dive into different tools and techniques used to build Generative AI applications. As we progress through the series, we&rsquo;ll explore a variety of methods that aid in creating efficient and powerful models. Today, we delve into InstructorVec, the latest evolution in the VectorService tool family.</p>
+<p>InstructorVec is not just another text embedding model; it&rsquo;s an innovative approach to generating dense vectors for production use cases. It&rsquo;s designed as a single endpoint that calls the instructor-large model from HuggingFace, marking a departure from the previous VectorService tool that hosted eight different embedding endpoints. This change allows us to focus entirely on a singular solution for text embedding and outputting 768 dimension dense vectors, making it ideal for real-world applications.</p>
+<p>To achieve this, InstructorVec loads the full instructor-large model but quantizes it from its original FP32 precision down to FP8. This slight reduction in precision offers significant performance improvements without compromising the quality of the outputs. In fact, executing InstructorVec takes no more than 100 milliseconds on a CPU, compared to the 1000 millisecond execution time at full FP32 precision. As a result, many RAG (Retrieval Augmented Generation) tools that consume this service have become much more responsive and efficient.</p>
+<p>As we continue to build new production applications, InstructorVec will serve as the baseline vectorizer for all our tools moving forward. This is because its performance and precision make it a reliable solution for various use cases. Moreover, we currently maintain multiple copies of this service to cater to different production requirements.</p>
+<p>In the future, we may expand InstructorVec&rsquo;s capabilities by adding a similarity checking endpoint. Similarity checking was one of the most useful features in the legacy VectorService tool, and its integration into InstructorVec will further enhance its versatility and utility.</p>
+<p>To sum it up, InstructorVec is an innovative single-endpoint solution for text embedding that delivers high performance and precision while being ideal for production applications. As we continue to refine this tool, we&rsquo;re excited about the possibilities it holds for enhancing our Generative AI applications and unlocking new levels of efficiency in RAG tools. Stay tuned as we explore more exciting developments in the world of text embedding and Generative AI!</p>
+<ul>
+<li>Human Intervention: Minor.  I added the URL for the github repo.  Sometimes it adds it as a link in the text, other times it forgets it entirely.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-instructorvec/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Fourth Tool in the series is InstructVec (<a href="https://www.github.com/patw/InstructorVec">https://www.github.com/patw/InstructorVec</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>InstructorVec is the next generation of VectorService tool, however instead of hosting 8 different embedding endpoints, it hosts a single endpoint that calls the instructor-large model from HuggingFace.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The other text embedding models in VectorService are nice to show off differences in vector outputs and can demonstrate how different models measure similarity between two strings of text.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>InstructorVec is focused entirely on being a single endpoint for text embedding and outputting 768 dimension dense vectors for production use cases.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool loads the full instructor-large model, but quantizes it from full FP32 precision down to FP8.  For a small loss in precision in the model weights, it executes in 100 ms or less on CPU compared to 1000 ms at full precision.  This has made some RAG (retrieval augmented generation) tools that consume this service, much more responsive.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This will be the baseline vectorizer I&rsquo;ll be using in all tools moving forward, and currently operate multiple copies of this for servicing different production applications</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Future state for this tool might include a similarity checking endpoint, as this has been very useful in the legacy VectorService tool.</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-ragtag/" rel="bookmark">Tool Series - RAGTAG</a>
+  </h2>
+  
+    <time datetime="2024-02-07T00:00:00Z">7 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series---ragtag-an-in-depth-look-at-retrieval-augmented-generation">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-ragtag/#tool-series---ragtag-an-in-depth-look-at-retrieval-augmented-generation">Tool Series - RAGTAG: An In-depth Look at Retrieval Augmented Generation</a>
+</h1>
+<p><a href="https://www.github.com/patw/RAGTAG">https://www.github.com/patw/RAGTAG</a></p>
+<p>In our ongoing series covering various tools for building Generative AI applications, we dive into the third tool: <strong>RAGTAG</strong>. This end-to-end example of RAG (Retrieval Augmented Generation) allows you to experiment with question/answer pairs, test lexicographic and semantic search capabilities, and generate an LLM (Large Language Model) response using semantically augmented data.</p>
+<p>As a simple CRUD application, RAGTAG enables users to create and modify question/answer pairs that are combined into a single chunk of text. This text is then run through the &ldquo;instruct-large&rdquo; text embedding model for retrieval later on. All semantic search in RAGTAG is performed using vector search with the same &ldquo;instruct-large&rdquo; model.</p>
+<p>The key to RAGTAG&rsquo;s effectiveness lies in its tunable features. The chunk testing tool allows users to adjust the score cut-off for cosine similarity in vector search as well as control the K value, which determines the overrequest value on the vector search query. Meanwhile, the LLM tester provides an interface to set the above semantic search parameters along with system messages, prompts, and user questions.</p>
+<p>RAGTAG is a product of Mongodb&rsquo;s specialist search group and has been in production since its inception. It serves as a valuable tool for question answering, demonstrating the power of RAG and its practical applications. However, there is room for improvement. The current LLM (implemented with the Llama.cpp Python module) runs on CPU instead of GPU, which can cause response generation to be slow.</p>
+<p>Looking towards the future, we envision a more efficient version of RAGTAG that incorporates InstructorVec for text embedding and runs Llama.cpp in server mode. By leveraging these advancements, RAGTAG will be better equipped to share infrastructure with other tools and enjoy the benefits of GPU-accelerated token generation for faster response times.</p>
+<p>In conclusion, RAGTAG is an essential tool for those looking to experiment with Retrieval Augmented Generation. With its robust capabilities and potential for improvement, it continues to be a valuable resource within our Generative AI toolkit. Stay tuned as we explore further advancements in this exciting field!</p>
+<ul>
+<li>Human Intervention: Added URL for github project and fixed InstructionVec to InstructorVec</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-ragtag/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>
+<ul>
+<li>Third Tool in the series is RAGTAG (<a href="https://www.github.com/patw/RAGTAG">https://www.github.com/patw/RAGTAG</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>RAGTAG is an end-to-end example of RAG (retrieval augmented generation) allowing you to manually create question/answer pairs, testing lexical and semantic search and allow you to generate an LLM (large language model) response with semantic search augmented data and manipulate the system message and the prompt to see how it changes the ouput.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This is a pretty simple CRUD application that lets you create and modify question/answer pairs which get appended together as a single chunk of text and run through the &ldquo;instructor-large&rdquo; text embedding model for retrieval later.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>All semantic search is performed using vector search using the same instructor-large model</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The chunk testing tool allows you to tune the score cut-off for the cosine similarity in the vector search as well as the K value, which controls the overrequest value on the vector search query</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The LLM tester allows you to set the above semantic search values as well as the system message and the LLM prompt format along with the users question.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>RAGTAG was a great experiment and is still used in production for question answering for our own specialist search group at MongoDB</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool also integrated the text embedding model and the LLM into a single installable package, which was very convenient.  However, the LLM (running on llama.cpp python module) will run on CPU instead of GPU making the output responses quite slow</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The future for this tool is to migrate it to the InstructorVec for text embedding and on llama.cpp running in server mode, so it can share infra with other tools and run on GPU for much faster token generation.</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/" rel="bookmark">Tool Series - SumBot</a>
+  </h2>
+  
+    <time datetime="2024-02-06T00:00:00Z">6 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series---sumbot-a-powerful-ai-summarization-tool-for-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#tool-series---sumbot-a-powerful-ai-summarization-tool-for-structured-data">Tool Series - SumBot: A Powerful AI Summarization Tool for Structured Data</a>
+</h1>
+<p><a href="https://www.github.com/patw/sumbot">https://www.github.com/patw/sumbot</a></p>
+<p>In our ongoing series covering various tools used for building Generative AI (genai) applications, we are excited to introduce you to SumBot, a Python FastAPI service designed specifically for summarizing structured data into semantically rich English text. As the second tool in this series, SumBot has proven its worth as an essential addition to any genai developer&rsquo;s toolbox, particularly when working with JSON or XML data.</p>
+<h2 id="what-is-sumbot">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#what-is-sumbot">What is SumBot?</a>
+</h2>
+<p>SumBot is a powerful AI summarization tool that takes structured data (usually JSON) and converts it into coherent paragraphs of English text. With just a single endpoint (<code>summarize</code>) and two parameters - <code>entity</code> and <code>data</code>, this Python FastAPI service can quickly process and summarize your data, making it ideal for running through text embedding models like BERT or Instruct-large.</p>
+<h2 id="why-use-sumbot">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#why-use-sumbot">Why Use SumBot?</a>
+</h2>
+<p>Embedding models often struggle to perform well on JSON, XML, point form data, or tabular data. By using an LLM (Large Language Model) for pre-summarization before text embedding, you can significantly improve recall and precision for semantic search. SumBot was the first tool I hosted on a GPU with LLaMA.cpp running in server mode, utilizing the OpenHermes-2.5-Mistral-7b model to provide accurate summarizations.</p>
+<h2 id="how-does-sumbot-work">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#how-does-sumbot-work">How Does SumBot Work?</a>
+</h2>
+<p>The actual LLM prompt uses the <code>entity</code> parameter to guide the LLM into summarizing the JSON or XML data. This guidance can be necessary if the keys in your JSON document aren&rsquo;t clear enough for the LLM to figure out what it&rsquo;s summarizing. Thankfully, SumBot doesn&rsquo;t require validation of whether the input data is actually JSON or XML; it can summarize almost anything as long as you provide it an <code>entity</code> and <code>data</code>.</p>
+<h2 id="deploying-sumbot">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#deploying-sumbot">Deploying SumBot</a>
+</h2>
+<p>SumBot can be deployed against any LLaMA.cpp server running locally or could be easily updated to point to a hosted service like Mistral.ai or OpenAI. This flexibility makes SumBot an excellent choice for developers who need to quickly process and summarize large amounts of structured data while taking advantage of the latest advancements in AI technology.</p>
+<p>In conclusion, SumBot is a valuable addition to any genai developer&rsquo;s toolbox. Its ability to transform JSON or XML data into coherent English text using LLM pre-summarization makes it an essential tool for improving recall and precision in semantic search. As the second installment in our series on tools for building Generative AI applications, SumBot demonstrates the power of leveraging cutting-edge technology to optimize workflows and enhance productivity.</p>
+<ul>
+<li>Human Intervention: Minor.  I had to add the Github URL to sumbot to the article.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>
+<ul>
+<li>Second tool in the series is SumBot (<a href="https://www.github.com/patw/sumbot">https://www.github.com/patw/sumbot</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>SumBot is used for summarizing structured data (usually JSON) into paragraphs of sementically rich english text.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The tool is a Python FastAPI service with a single endpoint (summarize) and two parameters: entity and data</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The output of SumBot is ideal for running through text embedding models like BERT or Instructor-large</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Embedding models tend to perform poorly on JSON, XML, point form data and tabular data.  Using an LLM (large language model) for pre-summarization before text embedding can provide a drastic increase in recall and precision for semantic search</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>SumBot was the first tool I hosted on GPU with llama.cpp running in server mode with the OpenHermes-2.5-Mistral-7b model.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The actual LLM prompt uses the entity parameter to guide the LLM into summarizing the JSON or XML data.  This can be necessary if the keys in the JSON document aren&rsquo;t clear enough for the LLM to figure out what it&rsquo;s summarizing.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>SumBot doesn&rsquo;t validate if it&rsquo;s actually JSON or XML data! It can be used to summarize almost anything, as long as you provide it an entity and data.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool can be deployed against any llama.cpp server running locally or could be easily updated to point to a hosted service like Mistral.ai or OpenAI</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/presum/" rel="tag"> Presum</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llama.cpp/" rel="tag"> llama.cpp</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
+  
+    <article>
+      <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/" rel="bookmark">Tool Series - VectorService</a>
+  </h2>
+  
+    <time datetime="2024-02-06T00:00:00Z">6 February, 2024</time>
+  
+</header>
+      
+        <h1 id="tool-series---vectorservice-exploring-the-journey-of-text-embedding-models">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#tool-series---vectorservice-exploring-the-journey-of-text-embedding-models">Tool Series - VectorService: Exploring the Journey of Text Embedding Models</a>
+</h1>
+<p>In this series, we will dive deep into different tools used for building Generative AI (GenAI) applications. The first tool in our exploration is <a href="https://www.github.com/patw/VectorService">VectorService</a>, a FastAPI service that generates dense vectors using various text embedding models.</p>
+<p>The initial motivation behind VectorService was to test out multiple different text embedding models for generating semantic search capabilities for RAG (Retrieval Augmented Generation) tools with LLMs (Large Language Models). The journey of exploring and implementing various embedding models in this tool has taught us valuable lessons about the evolution of language processing techniques.</p>
+<h2 id="from-spacy-to-sentencetransformers-a-journey-of-improvement">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#from-spacy-to-sentencetransformers-a-journey-of-improvement">From SpaCY to SentenceTransformers: A Journey of Improvement</a>
+</h2>
+<p>VectorService&rsquo;s initial models were sourced from the Python <a href="https://spacy.io/">SpaCY Library</a>. We implemented small (96d), medium (384d), and large (384d) SpaCY models, which proved to be quite easy to use. However, these models performed poorly beyond a few words or a single sentence compared to more modern alternatives like BERT. They remain in use for legacy reasons in some applications.</p>
+<p>To improve the quality of text embeddings, we then moved on to using the <a href="https://www.sbert.net/">SentenceTransformers Library</a>, which was incredibly easy to work with. The library provided two models: all-MiniLM-L6-v2 (384d) and all-mpnet-base-v2 (768d). These models performed significantly better than SpaCY, demonstrating the advancements in language processing techniques over time. Many RAG examples online still show miniLM as the text embedding model of choice; however, it&rsquo;s worth noting that larger models like mpnet-all-MiniLM-L6-cos-v1 outperform it significantly.</p>
+<h2 id="bert-a-significant-leap-in-quality">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#bert-a-significant-leap-in-quality">BERT: A Significant Leap in Quality</a>
+</h2>
+<p>Next, we explored using <a href="https://arxiv.org/abs/1810.04805">BERT</a> (Bidirectional Encoder Representations from Transformers), a groundbreaking language processing model developed by Google. BERT uses 768 dimensions and delivered a substantial improvement in the quality of text embeddings compared to its predecessors. The recall and precision metrics showed significant jumps, indicating that BERT was a major step forward for text embedding models.</p>
+<h2 id="sota-instructor-large-takes-center-stage">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#sota-instructor-large-takes-center-stage">SOTA: Instructor-Large Takes Center Stage</a>
+</h2>
+<p>The final model we integrated into VectorService was <a href="https://huggingface.co/hkunlp/instructor-large">Instructor-Large</a>, a state-of-the-art (SOTA) language processing model at the time of its release. This model achieved exceptional results on the HuggingFace MTEB leaderboard and required 4 gigabytes of memory to run, making it quite slow on CPUs.</p>
+<p>However, the quality level of Instructor-Large was considered the bare minimum for production use cases, and it could be quantized to reduce its memory footprint and latency. This model required LLM-style prompting to produce optimal results and directly competed with OpenAI&rsquo;s much larger text-ada-002 model, which is typically used as a default in RAG applications.</p>
+<h2 id="a-comparison-of-models-the-power-of-benchmarking">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#a-comparison-of-models-the-power-of-benchmarking">A Comparison of Models: The Power of Benchmarking</a>
+</h2>
+<p>To provide users with valuable insights into the performance of different models, VectorService included endpoints for comparing similarity results across all text embedding models implemented. This feature allowed users to benchmark recall and precision metrics between various models, which in turn helped them optimize their RAG use cases.</p>
+<h2 id="the-evolution-of-text-embedding-models-from-legacy-to-state-of-the-art">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#the-evolution-of-text-embedding-models-from-legacy-to-state-of-the-art">The Evolution of Text Embedding Models: From Legacy to State-of-the-Art</a>
+</h2>
+<p>As we have seen, the journey from SpaCY to Instruction-Large showcases the evolution of text embedding models and how they have improved over time. VectorService served as a valuable experimentation platform for exploring different models and their capabilities. However, it is now considered legacy and not recommended for use. Instead, we recommend using <a href="https://www.github.com/InstructorVec">InstrucTorVec</a>, an open-source alternative that offers self-hosted vector embedding solutions with exceptional performance and ease of use.</p>
+<p>In conclusion, the development of VectorService has been a fascinating journey through the world of text embedding models. From SpaCY&rsquo;s early attempts to BERT&rsquo;s groundbreaking achievements and Instruction-Large&rsquo;s SOTA status, we have witnessed the incredible progress made in language processing technologies. As we move forward into an era of increasingly sophisticated AI applications, it is essential for developers and researchers alike to continue exploring new frontiers in this rapidly evolving field.</p>
+<ul>
+<li>Human Intervention: Moderate: the bot continues to call the Instructor model Instruction and totally made up a research paper for it.  I also had to correct the two sentence transformer model names, but that was entirely my fault for providing the wrong names in the facts.  I wrote it on a plane while I was half asleep.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>First tool in the series is VectorService (<a href="https://www.github.com/patw/VectorService">https://www.github.com/patw/VectorService</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Text embedding models that output dense vectors and critical for building semantic search for RAG (retrieval augmented generation) tools with LLMs (large language models)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Originally wanted to test out multiple different text embedding models, so built a FastAPI service in Python that would generate dense vectors using different models.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The first 3 models were from the Python SpaCY Library. I implemented small (96d), medium (384d) and large (384d).  SpaCY was very easy to use, but performed pretty poorly beyond a few words or a single sentence, compared to more modern models like BERT.  They&rsquo;re still in the process for legacy reasons.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The next two models were minilm-l6 (384d) and mpnet-alllm (768d).  These models performed much better than SpaCY and used the HuggingFace SentenceTransformers library, which was super easy to use.  Many RAG examples online still show minilm as the text embedding model, and while it performs poorly compared to larger models it&rsquo;s still quite good.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Next, I tried BERT (768d).  This model used 768 dimensions and seemed to be another large step up in quality for embeddings and was the first time I saw large jumps in recall and precision.  BERT has much more dimensions than minilm, but performed better in all my tests</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Finally I added in Instructor-large (768d).  This model was considered SOTA (state of the art) for the time it released and quickly became #1 on the Huggingface MTEB leaderboard.  The model itself needed 4 gigs of memory to run and is quite slow on CPU.  However, the quality level should be considered the bare minimum for production use cases, and can be quantized to run with less memory and less latency. Instructor requires LLM style prompting to produce good results and competes directly with OpenAI&rsquo;s much larger text-ada-002 model, which is the default for most RAG use cases.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool also included endpoints for comparing similarity results across all the models, which is useful to show off in a demo.  It gives customers the idea that they should be benchmarking recall and precision between multiple models to optimize the RAG use case.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>At this point, VectorService is legacy and not recommended.  InstructorVec (<a href="https://www.github.com/InstructorVec">https://www.github.com/InstructorVec</a>) is considered a replacement for this tool.  It was a great exercise for experimenting with different embedding models but InstructorVec is all you need for self hosted, open source vector embeddings.</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    </article>
+    
+      <div class="Divider"></div>
+    
   
     <article>
       <header class="Heading">
@@ -366,739 +1382,6 @@
           
             <li class="Tags-item u-background">
               <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/" rel="bookmark">Chunking Techniques - Parent Document Retrieval with Graph chunking</a>
-  </h2>
-  
-    <time datetime="2024-02-03T00:00:00Z">3 February, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques-parent-document-retrieval-with-graph-chunking">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#chunking-techniques-parent-document-retrieval-with-graph-chunking">Chunking Techniques: Parent Document Retrieval with Graph Chunking</a>
-</h1>
-<p>In the realm of retrieval augmented generation (RAG) use cases, selecting an appropriate chunking strategy is paramount to the success of your text documents processing. In this blog post, we will delve into a more sophisticated technique called &ldquo;Parent Document Retrieval with Graph Chunking.&rdquo; This method allows for the retrieval of additional context and related chunks from the same collection when answering questions.</p>
-<h2 id="background-on-text-chunking">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#background-on-text-chunking">Background on Text Chunking</a>
-</h2>
-<p>Chunks of text serve as the input to text embedding models, which generate dense vectors that are then used for vector search, comparing similarity among the chunks. These chunks are subsequently sent to large language models (LLMs) to answer questions or provide relevant information. There is no one-size-fits-all strategy for text chunking; however, it is essential to benchmark various methods against your chosen embedding model to achieve optimal recall and precision.</p>
-<h2 id="parent-document-retrieval-with-graph-chunking">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#parent-document-retrieval-with-graph-chunking">Parent Document Retrieval with Graph Chunking</a>
-</h2>
-<p>In previous techniques, the text chunks were directly sent to the LLM after being retrieved from the vector search. In this method, we store both the text chunk and an embedding for the chunk. However, when sending data to the LLM, we opt to utilize the entire page or even the parent document rather than individual chunks. This approach enables us to incorporate more context into our responses, thereby enhancing the accuracy of the generated answers.</p>
-<h2 id="paragraph-level-chunking-with-graph-traversal">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#paragraph-level-chunking-with-graph-traversal">Paragraph Level Chunking with Graph Traversal</a>
-</h2>
-<p>To implement this advanced technique, we will break down the source documents into paragraph-level chunks and store pointers to the preceding and subsequent paragraphs in a database like MongoDB. This allows us to leverage MongoDB&rsquo;s $graphLookup function after performing vector search, retrieving all related paragraphs surrounding the selected paragraph. Consequently, we can send all relevant chunks to the LLM for more contextualized responses.</p>
-<h3 id="maximum-depth-control">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#maximum-depth-control">Maximum Depth Control</a>
-</h3>
-<p>Setting a maximum depth parameter enables you to specify how many chunks before or after you would like to retrieve for additional context in your answers. This provides flexibility in controlling the scope of information included when providing responses, ensuring that the generated content remains relevant and concise.</p>
-<p>In conclusion, Parent Document Retrieval with Graph Chunking is a highly effective technique for enhancing RAG use cases by incorporating more contextual information into your text chunking strategy. By leveraging paragraph-level chunks, graph traversal, and MongoDB&rsquo;s $graphLookup function, you can achieve improved recall and precision in your text embedding models while providing more accurate responses to user queries. As we continue to explore advanced techniques in this series, the level of sophistication will only increase, offering even greater opportunities for optimizing your RAG use cases.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-parent-document-retrieval-with-graph-chunking/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>As we get further into this series, the level of sophistication of the techniques will increase.</li>
-<li>In previous chunking methods in this series, the text chunk was always sent to the LLM, unmodified after retrieval.  In this method we will store the text chunk and an embedding for the chunk but we may be sending the page or even the whole parent document to the LLM instead of the individual text chunk.</li>
-<li>The seventh in our series of posts about Chunking techniques we will discuss paragraph level chunking while using graph traversal to retrieve the page or even whole document.</li>
-<li>In this method we will continue to break the source documents down into paragraph level chunks, but we will also store pointers to the previous and next paragraph giving us the ability to use MongoDB’s $graphLookup function (after $vectorSearch) to grab all the related paragraphs around the retrieved paragraph, and send all the related chunks to the LLM as well.</li>
-<li>This method lets us retrieve extra chunks from the same collection to provide more context for answering the question.  Setting maxDepth allows you to specify how many chunks before or after you need.</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/" rel="bookmark">Chunking Techniques - Multi Level Vector Search</a>
-  </h2>
-  
-    <time datetime="2024-02-02T00:00:00Z">2 February, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques---multi-level-vector-search">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#chunking-techniques---multi-level-vector-search">Chunking Techniques - Multi Level Vector Search</a>
-</h1>
-<p>In the realm of Retrieval Augmented Generation (RAG) use cases, selecting an appropriate chunking strategy for unstructured text documents is vital to achieving success. This blog post delves into the topic of multi-level vector search, a technique that helps combat semantic overlap or false positive issues in RAG chatbot implementations.</p>
-<h2 id="understanding-chunking-and-text-embeddings">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#understanding-chunking-and-text-embeddings">Understanding Chunking and Text Embeddings</a>
-</h2>
-<p>Chunks of text, sent to a text embedding model, are responsible for producing dense vectors that are then searched for similarity. The chunks returned from this search are subsequently processed by the Large Language Model (LLM) to generate answers or responses. There is no one-size-fits-all approach to text chunking; therefore, it is essential to benchmark various techniques and evaluate their recall and precision against your chosen embedding model.</p>
-<h2 id="embedding-larger-chunks-of-text">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#embedding-larger-chunks-of-text">Embedding Larger Chunks of Text</a>
-</h2>
-<p>The fifth installment in our series on chunking techniques focuses on the idea of embedding larger chunks of text, such as entire chapters from a document. This approach enables more precise vector searches to determine which chapter a specific chunk of text resides within. By incorporating both paragraph-level and chapter-level embeddings, we can improve recall in instances where multiple chapters contain similar topics or lexical elements.</p>
-<h2 id="the-multi-level-vector-search-approach">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#the-multi-level-vector-search-approach">The Multi Level Vector Search Approach</a>
-</h2>
-<p>Multi level vector search requires a two-step embedding approach to effectively handle semantic overlap. Firstly, each paragraph of the source document is embedded using a technique similar to single paragraph chunking that we have covered in previous posts. Secondly, an embedding model with a large token limit, such as OpenAI&rsquo;s &ldquo;text-ada-002&rdquo;, is utilized to generate vector embeddings for entire chapters within the document.</p>
-<p>The chapter-level embeddings provide a general semantic representation of the topics covered within each section but may not be suitable for precise fact recall or answering specific questions. In contrast, paragraph-level embeddings excel in these tasks and can accurately retrieve relevant information.</p>
-<h2 id="integrating-chapter-and-paragraph-embeddings">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#integrating-chapter-and-paragraph-embeddings">Integrating Chapter and Paragraph Embeddings</a>
-</h2>
-<p>The power of multi level vector search lies in its ability to combine both chapter-level and paragraph-level embeddings to narrow down the scope of a user&rsquo;s query. This process begins by querying the chapter-level embedding to identify the specific chapter that contains the topic of interest. Next, the paragraph-level embeddings are queried with a filter that only returns paragraphs from the previously identified chapter.</p>
-<p>By employing this multi-level vector search technique, we can significantly enhance recall in situations where multiple chapters within a document may have considerable semantic overlap. This approach ensures that users receive accurate and relevant responses to their queries while minimizing the risk of false positives or off-topic suggestions.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-multi-level-vector-search/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>The fifth in our series of posts about Chunking techniques we will discuss embedding larger chunks of text, such as whole chapters of a document, to allow us to vector search what chapter our chunk of text will reside in</li>
-<li>Multi Level Vector Search helps us with a common issue in RAG chatbot use cases, called “semantic overlap” or the false positive problem.  Multiple chunks of text might have vector embeddings that are extremely similar but in different, unrelated, parts of your original documentation.  Imagine an insurance booklet where you have paragraphs of text that cover “what to do in an accident” and another chapter that discusses your accident coverage.  These are very different concepts but share a lot of lexical similarity.</li>
-<li>Solving this problem requires a 2 step embedding approach:  First we embed each paragraph of our source document, similar to the Single Paragraph Chunking Technique we covered in earlier posts.  We also produce a vector embedding for the entire chapter the paragraph is contained in.</li>
-<li>The whole-chapter embedding will require an embedding model with a very large token limit, such as OpenAI’s “text-ada-002” model.  This will produce a vague semantic representation of what topics are contained in the chapter, but provide very poor similarity search for individual facts.</li>
-<li>The paragraph level embeddings do have good fact recall, and be able to answer our questions</li>
-<li>Multi Level Vector Search is the technique of querying the chapter level embedding to narrow down which chapter of your document contains the topic of interest. We then query the paragraph level embeddings with a filter on the vector search to say we only want to query paragraphs in the specific chapter we narrowed it down to.</li>
-<li>This technique allows us to get much better recall in situations where multiple chapters of a document might have a lot of semantic overlap.</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/" rel="bookmark">Chunking Techniques - Recursive Chunking</a>
-  </h2>
-  
-    <time datetime="2024-02-02T00:00:00Z">2 February, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques---recursive-chunking">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/#chunking-techniques---recursive-chunking">Chunking Techniques - Recursive Chunking</a>
-</h1>
-<p>In the realm of text processing, selecting an appropriate chunking strategy is paramount for a successful Retrieval Augmented Generation (RAG) use case. The primary purpose behind this technique is to segment unstructured text documents (such as PDFs, Word files, or HTML pages) into manageable pieces that can be fed to the Text Embedding model. This model then produces dense vectors for each chunk, which are subsequently searched based on similarity using vector search algorithms. The retrieved chunks are sent to a Large Language Model (LLM), typically for question-answering purposes.</p>
-<p>When it comes to text chunking strategies, there is no one-size-fits-all solution. Different methods might yield varying levels of recall and precision depending on the specifics of your project. It&rsquo;s crucial to experiment with different strategies, benchmark them against each other, and determine which combination offers the best performance with your chosen text embedding model.</p>
-<p>In this blog post, we will delve into one such chunking technique: <strong>Recursive Chunking</strong>. This method has been observed to produce stronger recall results in vector search compared to other popular strategies such as token limit with overlap. The recursive approach involves dividing a single page of text into smaller chunks at multiple levels, resulting in a total of seven embedding vectors per page.</p>
-<p>The process begins by creating an embedding at the page level. This initial step may produce a vague semantic representation in the vector space, depending on the question being asked. To refine this representation and improve recall, the next stage involves splitting each full page into two halves, with separate embeddings generated for the top and bottom parts of the page.</p>
-<p>The recursion continues as we further subdivide these halved sections into quarters, generating more precise embeddings for each quarter. This process generates seven total dense vector embeddings per page, each potentially performing better or worse than others depending on the specifics of the query. The underlying principle behind this technique is that by representing the same data multiple times in different ways, we can achieve better recall rates overall.</p>
-<p>Recursive Chunking has become one of the default chunking methods in popular libraries such as &ldquo;langchain&rdquo; and &ldquo;llamaindex&rdquo;. Its adoption has been driven by its proven effectiveness compared to alternative strategies like token limit with overlap. This technique offers a promising solution for those seeking improved performance in their RAG applications, particularly when working with large amounts of unstructured data.</p>
-<p>In summary, recursive chunking is an innovative and effective approach for segmenting text documents into smaller chunks suitable for embedding and vector search operations. Its ability to produce multiple embeddings per page can significantly improve recall rates, making it a valuable asset in any developer&rsquo;s toolkit. As with any technique, however, it&rsquo;s essential to experiment with different strategies and find the one that works best for your specific use case.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-recursive-chunking/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>The sixth in our series of posts about Chunking techniques we will discuss splitting a single page of text in half, then in half again to produce 7 embeddings per page.  This method is similar to our first method, token limit with overlap but has proven to produce stronger recall in vector search</li>
-<li>Recursive chunking takes advantage of the idea that different text chunk sizes can produce better or worse recall, depending on the text embedding model.</li>
-<li>In this method you will split your documents up page by page, and produce an embedding at the page level.  This will probably produce a vague semantic representation in the vector space, depending on the question.</li>
-<li>We then split the page in half, embedding the top and bottom halves at the middle part of the page.  This should produce slightly stronger embeddings.</li>
-<li>We take those 2 halves and split them again in half, embedding on the quarter of the page of text.  Producing even stronger embeddings, but potentially missing some of the context the longer page could contain.</li>
-<li>This technique produces 7 total dense vector embeddings for vector search, and each embedding may perform well or poorly depending on the question.  The idea is that the same data is represented multiple ways, in the hope that you will get better recall</li>
-<li>This method is one of the new default chunking methods in the “langchain” and “llamaindex” libraries and has proven to be better than the token limit with overlap chunking method.</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/" rel="bookmark">Chunking Techniques - Question Answer Pairing</a>
-  </h2>
-  
-    <time datetime="2024-02-01T00:00:00Z">1 February, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques---questionanswer-pairing">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/#chunking-techniques---questionanswer-pairing">Chunking Techniques - Question/Answer Pairing</a>
-</h1>
-<p>In the realm of Retrieval Augmented Generation (RAG) use cases, choosing an appropriate chunking strategy for unstructured text documents is critical to success. This technique involves dividing the text into smaller, manageable chunks that are sent to a text embedding model, which then produces dense vectors that can be searched for similarity using vector search algorithms. The resulting chunks are subsequently sent to a Large Language Model (LLM) to answer specific questions or generate relevant content.</p>
-<p>While there is no one-size-fits-all solution when it comes to text chunking strategies, many different approaches have been explored in the field. It&rsquo;s essential to experiment with various methods and benchmark them using recall and precision metrics, as well as evaluating their performance against your chosen embedding model.</p>
-<p>In our series of posts about Chunking techniques, we will now focus on the Question/Answer (Q/A) pairing approach. This structured technique involves creating a well-defined question and answer pair that are then embedded together into a single vector. This method works particularly well for managing highly curated sets of answers manually through a CRUD (Create, Read, Update, Delete) style application.</p>
-<p>By embedding a sample question along with its corresponding answer, we have observed dramatic improvements in recall and precision when it comes to the chunks returned. Moreover, this technique is efficient in terms of LLM token budgets, as you only need to send the Answer portion of the Q/A pair during augmentation.</p>
-<p>An example of this approach can be found in the RAGTAG GitHub repository: <a href="https://github.com/patw/RAGTAG">https://github.com/patw/RAGTAG</a>. In summary, incorporating a question and answer pairing strategy into your chunking techniques can lead to improved performance and efficiency in your RAG use cases, ultimately enhancing the overall user experience.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-question-answer-pairing/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>The fourth in our series of posts about Chunking techniques we will discuss embedding a curated question and answer pair for better recall on Q/A chatbot use cases.</li>
-<li>Question/Answer pairing is a more structured technique to text chunking.  In this method, we have a well defined question and answer pair that we want to embed together into a single vector.  This works very well if you want to have highly curated sets of answers that you manage manually with a CRUD style application.  What we have observed is embedding a sample (but common) question along with the answer tends to dramatically increase the recall and precision of the chunks returned.  When you augment the LLM prompt, you typically only have to send the Answer portion of the Q/A pair which is also very efficient on your LL token budget.</li>
-<li>An example of this technique in action can be seen here:  <a href="https://github.com/patw/RAGTAG">https://github.com/patw/RAGTAG</a></li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/" rel="bookmark">Chunking Techniques - Whole Page Chunks</a>
-  </h2>
-  
-    <time datetime="2024-02-01T00:00:00Z">1 February, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques---whole-page-chunks">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/#chunking-techniques---whole-page-chunks">Chunking Techniques - Whole Page Chunks</a>
-</h1>
-<p>In the realm of text processing, choosing an effective chunking strategy is crucial for the success of your RAG (Retrieval Augmented Generation) use case. Chunks of text serve as input to text embedding models that generate dense vectors, which are then used in vector search algorithms for finding similarity. These chunks are subsequently sent to LLMs (Large Language Models), often to answer specific questions.</p>
-<p>There is no one-size-fits-all approach to text chunking; however, various strategies have emerged in the field. To optimize your RAG use case, you should test different chunking methods and benchmark their performance using recall and precision measures with your chosen embedding model or experiment with multiple embedding models against each method until achieving optimal recall.</p>
-<p>In our series of posts about Chunking techniques, we will discuss the whole page chunking approach – its advantages and disadvantages. In this strategy, the entire page of the document is treated as a single unit, assuming that the content on each page revolves around a single subject. This method works well for certain PDF documents where each page represents a distinct topic.</p>
-<p>It is essential to note that vector embedding models have token limits, similar to LLMs, which may prevent you from feeding an entire page into the model for vectorization. To overcome this limitation, consider using text-ada-002 from OpenAI, which offers a higher token limit (8192 tokens) for such tasks. However, keep in mind that employing whole page chunking can lead to weak semantic representation when multiple different topics are discussed on a single page.</p>
-<p>To summarize, while the whole page chunking technique has its advantages and may work well for specific document formats, it is crucial to consider potential limitations and optimize your approach accordingly. Experiment with different strategies to find the best solution that aligns with your RAG use case&rsquo;s requirements, and always benchmark your results using relevant metrics such as recall and precision.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-whole-page-chunks/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>The third in our series of posts about Chunking techniques we will discuss embedding the entire page of text, and the advantages and disadvantages of that.</li>
-<li>Whole page chunking.  In this method we chunk the entire page of the document at once, assuming the page itself is talking about a single subject.  This works well for some PDF documents where each page represents a different subject.  Keep in mind that vector embedding models have token limits (just like LLMs) that may prevent you from feeding an entire page into the model for vectorization.  Choose a text embedding model like text-ada-002 from OpenAI, which has a larger token limit (8192 tokens) for a task like this.  Also keep in mind that you will get a weak semantic representation if there’s lots of different topics discussed in the single page</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/" rel="bookmark">Chunking Techniques - Single or Multiple Paragraph</a>
-  </h2>
-  
-    <time datetime="2024-01-31T00:00:00Z">31 January, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques-single-or-multiple-paragraphs">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/#chunking-techniques-single-or-multiple-paragraphs">Chunking Techniques: Single or Multiple Paragraphs</a>
-</h1>
-<p>Choosing an effective chunking strategy for your unstructured text documents (PDF, Word, HTML) is critical to the success of your Retrieval Augmented Generation (RAG) use case. In RAG applications, chunks of text serve as inputs to the text embedding model, which generates dense vectors that are searched for similarity using vector search techniques. The returned chunks then get sent to a Large Language Model (LLM), usually for question-answering tasks.</p>
-<p>Unfortunately, there is no one-size-fits-all approach to text chunking; however, various strategies have been observed in the field. It&rsquo;s crucial to try each strategy and benchmark it against your chosen embedding model or experiment with multiple embedding models against different chunking methods until you achieve the best possible recall.</p>
-<p>In this post, we will discuss paragraph boundary chunking, where chunks typically consist of 1-2 paragraphs of text. This method works best for documents written in proper English and assumes that a full semantic thought or concept can be encapsulated within a single paragraph (as good writing should have). Consequently, these tend to produce better vector embeddings due to their strong, semantically defined concepts.</p>
-<p>When using the 1-2 paragraph boundary chunking method, keep in mind that it may not be as effective on documents with less structured or poor English writing. Additionally, you&rsquo;ll need to consider how well your chosen LLM handles larger chunks of text.</p>
-<p>To implement this technique, start by breaking your unstructured document into individual paragraphs using a parsing library or regular expressions. Then, apply the paragraph boundary chunking method, either by grouping consecutive paragraphs together (up to 2) or selecting single paragraphs as chunks. Finally, evaluate the quality of your vector embeddings and adjust your chunking strategy accordingly.</p>
-<p>Remember that experimenting with various chunking methods is essential for achieving optimal results in RAG applications. By benchmarking each method against your chosen embedding model, you can determine which approach yields the best recall and precision. As you continue to refine your chunking strategy, consider exploring other simpler techniques like fixed token with overlap for your RAG use case.</p>
-<ul>
-<li>Human Intervention: Minor.  It recommended sentence level and n-gram embedding which is a terrible idea.</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-single-or-multiple-paragraph/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>The second in our series of posts about Chunking techniques we will discuss paragraph boundary chunking, with usually 1 to 2 paragraphs of text.</li>
-<li>1-2 paragraph boundary.  This method works best on documents of proper English writing.  It assumes a full semantic thought or concept will be encapsulated in a single paragraph (as good writing should have) and you chunk on a single paragraph or 2 paragraphs.  These tend to produce better vector embeddings as they have a single, strongly semantically defined concept.</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/" rel="bookmark">Chunking Techniques - Fixed Token Count with Overlap</a>
-  </h2>
-  
-    <time datetime="2024-01-30T00:00:00Z">30 January, 2024</time>
-  
-</header>
-      
-        <h1 id="chunking-techniques-fixed-token-count-with-overlap">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#chunking-techniques-fixed-token-count-with-overlap">Chunking Techniques: Fixed Token Count with Overlap</a>
-</h1>
-<p>Choosing a good chunking strategy for unstructured text documents is critical to the success of your Retrieval Augmented Generation (RAG) use case. In this blog post, we will focus on one of the most basic yet effective techniques: fixed token count with overlap. This method is widely used in RAG libraries like LangChain and LLAMAindex.</p>
-<h2 id="background">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#background">Background</a>
-</h2>
-<p>Chunks of text are sent to the text embedding model, which produces dense vectors that can be searched for similarity using vector search. Chunks returned are then sent to the Large Language Model (LLM) to answer questions. There is no one-size-fits-all approach to text chunking; however, we have observed many different strategies in the field. It&rsquo;s essential to experiment with various techniques and benchmark them against recall and precision using your chosen embedding model.</p>
-<h2 id="fixed-token-count-with-overlap">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#fixed-token-count-with-overlap">Fixed Token Count with Overlap</a>
-</h2>
-<p>The fixed token count with overlap method is a default chunking technique in most RAG libraries. In this approach, you define a fixed number of tokens (words) that will be used per chunk, typically 256 or 512, and specify the desired amount of overlap between adjacent chunks. This method works well when you don&rsquo;t know the structure of the document source upfront and rely on the LLM to reason through broken sentences and potentially irrelevant data.</p>
-<p>This technique is particularly effective with larger, more complex LLM models as it heavily relies on their reasoning capabilities. To implement fixed token count with overlap, follow these steps:</p>
-<ol>
-<li>Define the maximum number of tokens per chunk (e.g., 256 or 512).</li>
-<li>Specify the desired overlap between adjacent chunks (e.g., 32 tokens).</li>
-<li>Break down your unstructured text documents into chunks based on the defined token count and overlap.</li>
-<li>Feed these chunks to the embedding model for vectorization.</li>
-<li>Use the resulting dense vectors in a vector search to find similar chunks.</li>
-<li>Send the retrieved chunks to the LLM for answering questions or generating responses.</li>
-</ol>
-<h2 id="experimentation-and-benchmarking">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#experimentation-and-benchmarking">Experimentation and Benchmarking</a>
-</h2>
-<p>To optimize your RAG use case, it&rsquo;s crucial to experiment with various chunking techniques and benchmark their performance against recall and precision metrics using your chosen embedding model. This will help you identify the best possible approach for your specific use case.</p>
-<h2 id="conclusion">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#conclusion">Conclusion</a>
-</h2>
-<p>The fixed token count with overlap method is a versatile and effective text chunking technique used in RAG libraries like LangChain and LLAMAindex. By defining the maximum number of tokens per chunk and the desired overlap between adjacent chunks, you can leverage the reasoning capabilities of larger, more complex LLM models to process unstructured text documents effectively. Experiment with different techniques and benchmark their performance against recall and precision metrics to optimize your RAG use case.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/chunking-techniques-fixed-token-count-with-overlap/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Choosing a good chunking strategy for your unstructured text documents (pdf, word, html) is critical to the success of your RAG (retrieval augmented generation) use case.</li>
-<li>Chunks of text, in this case are what is sent to the text embedding model, which produces dense vectors which are searched for similarity using vector search.  Chunks returned are sent to the LLM (large language model), usually to answer questions.</li>
-<li>There is no one size fits all strategy to text chunking, however we have observed many different strategies in the field.  You should try each one and benchmark it for recall and precision with your embedding model of choice, or experiment with multiple embedding models against each chunking method until you get the best possible recall.</li>
-<li>The most basic text chunking strategy is fixed token count with overlap.  This is the default chunking method in most RAG libraries like “langchain” or “llamaindex”.  In this method, you define a fixed number of tokens (words) that will be used per chunk, usually 256 or 512 and how much overlap you want from the previous and next chunk.  This method works well for time when you don’t know the structure of the document source up front and want to rely on the LLM (large language model) to reason through broken sentences and possibly irrelevant data.  This relies heavily on the LLMs reasoning capability and works best with larger, more complex LLM models.</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
-            </li>
-          
-        </ul>
-      
-    
-  </footer>
-
-    </article>
-    
-      <div class="Divider"></div>
-    
-  
-    <article>
-      <header class="Heading">
-  <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/" rel="bookmark">Fact Expansion - What you’re Reading Right Now</a>
-  </h2>
-  
-    <time datetime="2024-01-26T00:00:00Z">26 January, 2024</time>
-  
-</header>
-      
-        <h1 id="fact-expansion-what-youre-reading-right-now">
-  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#fact-expansion-what-youre-reading-right-now">Fact Expansion: What You&rsquo;re Reading Right Now</a>
-</h1>
-<p>In the realm of artificial intelligence and natural language processing, Large Language Models (LLMs) have emerged as powerful tools for various applications. Two such techniques that harness the capabilities of LLMs are Fact Expansion and Fact Synthesis. In this blog post, we explore the concept of Fact Expansion, delve into its underlying technology, and discuss its potential implications for knowledge management systems.</p>
-<h2 id="the-rise-of-fact-expansion">
-  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#the-rise-of-fact-expansion">The Rise of Fact Expansion</a>
-</h2>
-<p>Fact Expansion is a technique that leverages the strong capabilities of LLMs, such as summarization and imitation, to re-hydrate facts into longer, more descriptive writing. The core idea behind this method is that you provide a set of facts within a particular knowledge domain, and request the LLM expand these facts into a blog post, technical document, or any other form of extended text.</p>
-<p>This technique can be beneficial if the expanded text is accurate and well-researched, as it allows for the creation of high-quality content without the need for extensive manual writing. However, there is also a risk that the LLM may start hallucinating details about the facts, which could lead to inaccurate or misleading information.</p>
-<h2 id="factweave-a-pioneering-blogging-system">
-  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#factweave-a-pioneering-blogging-system">FactWeave: A Pioneering Blogging System</a>
-</h2>
-<p>One noteworthy application of Fact Expansion is FactWeave (<a href="https://github.com/patw/FactWeave)">https://github.com/patw/FactWeave)</a>, a blogging system that utilizes this technique to generate informative and engaging content. FactWeave serves as the underlying system for this very blog post, demonstrating how Fact Expansion can be employed to create valuable and reliable information for readers.</p>
-<h2 id="the-opposite-technique-fact-synthesis">
-  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#the-opposite-technique-fact-synthesis">The Opposite Technique: Fact Synthesis</a>
-</h2>
-<p>While Fact Expansion focuses on expanding facts into comprehensive text, its counterpart, Fact Synthesis, aims to synthesize long-form texts into concise factual statements. Both of these techniques represent innovative ways of utilizing LLMs to automate knowledge management and communication processes.</p>
-<h2 id="implications-for-future-state-knowledge-management-systems">
-  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#implications-for-future-state-knowledge-management-systems">Implications for Future State Knowledge Management Systems</a>
-</h2>
-<p>The combination of Fact Expansion and Fact Synthesis could pave the way for a new form of compressed communication that involves reducing lengthy texts into facts and subsequently uncoding them with Fact Expansion. This approach can be seen as analogous to the zip/unzip technique for file compression, but for knowledge instead.</p>
-<p>In conclusion, Fact Expansion is an influential technique in the field of AI-powered knowledge management systems. By leveraging the capabilities of LLMs to expand facts into comprehensive text, this method has the potential to revolutionize how we create and share information. As researchers continue to develop and refine these techniques, we can expect to witness even more innovative applications of Fact Expansion in various industries and sectors.</p>
-<ul>
-<li>Human Intervention: None</li>
-</ul>
-<h3 id="facts-used">
-  <a class="Heading-link u-clickable" href="/posts/fact-expansion-what-youre-reading-right-now/#facts-used">Facts Used:</a>
-</h3>
-<ul>
-<li>Summarization and imitation are some of the stronger capabilities of Large Language Models (LLM)</li>
-<li>Fact Expansion takes advantage of this by re-hydrating facts into longer, more descriptive writing</li>
-<li>The core idea is you provide a set of facts in a particular knowledge domain, and request the LLM expand these facts into a blog post, or a technical document.</li>
-<li>The LLM will fill in details and expand on the facts which can be good if the expanded text is correct or bad if it starts hallucinating details about the facts</li>
-<li>FactWeave (<a href="https://github.com/patw/FactWeave">https://github.com/patw/FactWeave</a>) is a blogging system that takes advantage of Fact Expansion and is the underlying system that produced the content you are reading right now.</li>
-<li>Fact Expansion is the opposing technique to Fact Synthesis, which we talked about in a previous post.  Both of these techniques are good examples of using LLMs to automate work.</li>
-<li>These techniques could bring about a new form of compressed communication where we reduce long form text into facts and uncompress it later with Fact Expansion.  This could be seen as a type of zip/unzip technique but for knowledge, instead of files.</li>
-<li>Conclusion:  Fact Expansion and Fact Synthesis are very powerful techniques for knowledge management and could represent a key element to future state knowledge management systems, powered by AI.</li>
-</ul>
-
-      
-      
-
-
-  
-
-  
-
-
-
-
-
-  <footer>
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
-            </li>
-          
-        </ul>
-      
-    
-      
-        <ul class="Tags">
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/facts/" rel="tag">Facts</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/fact-expansion/" rel="tag"> Fact Expansion</a>
-            </li>
-          
-            <li class="Tags-item u-background">
-              <a class="Tags-link u-clickable" href="/tags/fact-synthesis/" rel="tag"> Fact Synthesis</a>
             </li>
           
         </ul>

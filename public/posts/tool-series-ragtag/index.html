@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Tool Series - RAGTAG: An In-depth Look at Retrieval Augmented Generation https://www.github.com/patw/RAGTAG
+In our ongoing series covering various tools for building Generative AI applications, we dive into the third tool: RAGTAG. This end-to-end example of RAG (Retrieval Augmented Generation) allows you to experiment with question/answer pairs, test lexicographic and semantic search capabilities, and generate an LLM (Large Language Model) response using semantically augmented data.
+As a simple CRUD application, RAGTAG enables users to create and modify question/answer pairs that are combined into a single chunk of text.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Tool Series - RAGTAG | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/tool-series-ragtag/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-ragtag/" rel="bookmark">Tool Series - RAGTAG</a>
+  </h2>
+  
+    <time datetime="2024-02-07T00:00:00Z">7 February, 2024</time>
+  
+</header>
+    <h1 id="tool-series---ragtag-an-in-depth-look-at-retrieval-augmented-generation">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-ragtag/#tool-series---ragtag-an-in-depth-look-at-retrieval-augmented-generation">Tool Series - RAGTAG: An In-depth Look at Retrieval Augmented Generation</a>
+</h1>
+<p><a href="https://www.github.com/patw/RAGTAG">https://www.github.com/patw/RAGTAG</a></p>
+<p>In our ongoing series covering various tools for building Generative AI applications, we dive into the third tool: <strong>RAGTAG</strong>. This end-to-end example of RAG (Retrieval Augmented Generation) allows you to experiment with question/answer pairs, test lexicographic and semantic search capabilities, and generate an LLM (Large Language Model) response using semantically augmented data.</p>
+<p>As a simple CRUD application, RAGTAG enables users to create and modify question/answer pairs that are combined into a single chunk of text. This text is then run through the &ldquo;instruct-large&rdquo; text embedding model for retrieval later on. All semantic search in RAGTAG is performed using vector search with the same &ldquo;instruct-large&rdquo; model.</p>
+<p>The key to RAGTAG&rsquo;s effectiveness lies in its tunable features. The chunk testing tool allows users to adjust the score cut-off for cosine similarity in vector search as well as control the K value, which determines the overrequest value on the vector search query. Meanwhile, the LLM tester provides an interface to set the above semantic search parameters along with system messages, prompts, and user questions.</p>
+<p>RAGTAG is a product of Mongodb&rsquo;s specialist search group and has been in production since its inception. It serves as a valuable tool for question answering, demonstrating the power of RAG and its practical applications. However, there is room for improvement. The current LLM (implemented with the Llama.cpp Python module) runs on CPU instead of GPU, which can cause response generation to be slow.</p>
+<p>Looking towards the future, we envision a more efficient version of RAGTAG that incorporates InstructorVec for text embedding and runs Llama.cpp in server mode. By leveraging these advancements, RAGTAG will be better equipped to share infrastructure with other tools and enjoy the benefits of GPU-accelerated token generation for faster response times.</p>
+<p>In conclusion, RAGTAG is an essential tool for those looking to experiment with Retrieval Augmented Generation. With its robust capabilities and potential for improvement, it continues to be a valuable resource within our Generative AI toolkit. Stay tuned as we explore further advancements in this exciting field!</p>
+<ul>
+<li>Human Intervention: Added URL for github project and fixed InstructionVec to InstructorVec</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-ragtag/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>
+<ul>
+<li>Third Tool in the series is RAGTAG (<a href="https://www.github.com/patw/RAGTAG">https://www.github.com/patw/RAGTAG</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>RAGTAG is an end-to-end example of RAG (retrieval augmented generation) allowing you to manually create question/answer pairs, testing lexical and semantic search and allow you to generate an LLM (large language model) response with semantic search augmented data and manipulate the system message and the prompt to see how it changes the ouput.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This is a pretty simple CRUD application that lets you create and modify question/answer pairs which get appended together as a single chunk of text and run through the &ldquo;instructor-large&rdquo; text embedding model for retrieval later.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>All semantic search is performed using vector search using the same instructor-large model</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The chunk testing tool allows you to tune the score cut-off for the cosine similarity in the vector search as well as the K value, which controls the overrequest value on the vector search query</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The LLM tester allows you to set the above semantic search values as well as the system message and the LLM prompt format along with the users question.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>RAGTAG was a great experiment and is still used in production for question answering for our own specialist search group at MongoDB</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool also integrated the text embedding model and the LLM into a single installable package, which was very convenient.  However, the LLM (running on llama.cpp python module) will run on CPU instead of GPU making the output responses quite slow</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The future for this tool is to migrate it to the InstructorVec for text embedding and on llama.cpp running in server mode, so it can share infra with other tools and run on GPU for much faster token generation.</li>
+</ul>
+</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/rag/" rel="tag">RAG</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

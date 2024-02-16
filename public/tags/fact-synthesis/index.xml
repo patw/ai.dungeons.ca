@@ -10,6 +10,607 @@
     <lastBuildDate>Fri, 26 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link rel="self" href="https://ai.dungeons.ca/tags/fact-synthesis/index.xml" type="application/rss+xml" />
     <item>
+      <title>Tool Series - extBrain</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-extbrain/</link>
+      <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-extbrain/</guid>
+      <description>&lt;h1 id=&#34;tool-series---extbrain-your-external-brain-for-building-another-you&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#tool-series---extbrain-your-external-brain-for-building-another-you&#34;&gt;Tool Series - extBrain: Your External Brain for Building Another You&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/patw/ExternalBrain&#34;&gt;https://github.com/patw/ExternalBrain&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In our ongoing series exploring various tools to build Generative AI applications, we present the eighth tool in the lineup: &lt;em&gt;extBrain&lt;/em&gt;. This innovative platform allows you to tap into a powerful knowledge management system designed specifically for question answering. By leveraging advanced techniques such as Fact Synthesis and Retrieval Augmented Generation (RAG), extBrain enables efficient storage, vector storage, and precise semantic search capabilities. In this blog post, we&amp;rsquo;ll delve into the technical aspects of &lt;em&gt;extBrain&lt;/em&gt; and how it can transform your AI application development process.&lt;/p&gt;
+&lt;h2 id=&#34;a-brief-overview-of-fact-synthesis&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#a-brief-overview-of-fact-synthesis&#34;&gt;A Brief Overview of Fact Synthesis&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;At the core of extBrain lies its ability to break down large text articles into individual facts using Fact Synthesis. This process involves reducing textual data into a structured format (facts), making it easier for machines to understand and process information. By storing these facts in Mongo collections alongside metadata such as the source, context, and timestamp, extBrain can provide authoritative answers based on up-to-date knowledge sources.&lt;/p&gt;
+&lt;h2 id=&#34;grouping-facts-into-semantically-relevant-chunks&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#grouping-facts-into-semantically-relevant-chunks&#34;&gt;Grouping Facts into Semantically Relevant Chunks&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One of the key advantages of using extBrain is its ability to group facts into chunks of text. This can be achieved through various methods, including fixed numbers of grouped facts or more advanced techniques like context-based grouping and semantic similarity matching. By organizing facts into relevant groups, extBrain ensures that users receive accurate responses tailored to their specific inquiries.&lt;/p&gt;
+&lt;h2 id=&#34;leveraging-rag-for-enhanced-question-answering&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#leveraging-rag-for-enhanced-question-answering&#34;&gt;Leveraging RAG for Enhanced Question Answering&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;RAG (Retrieval Augmented Generation) systems  are common in the AI industry. These systems break down source documents such as PDF, Word, or HTML files into smaller text blobs and perform text embedding to generate dense vectors. ExtBrain takes this concept one step further by focusing exclusively on grouping facts together, resulting in a more efficient use of resources and improved vector search accuracy.&lt;/p&gt;
+&lt;h2 id=&#34;using-semantically-similar-facts-for-larger-text-chunks&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#using-semantically-similar-facts-for-larger-text-chunks&#34;&gt;Using Semantically Similar Facts for Larger Text Chunks&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;By grouping semantically similar facts into larger text chunks, extBrain enables users to ask broader questions while still maintaining high recall rates. This approach ensures that relevant information is readily available without compromising the overall efficiency of the system.&lt;/p&gt;
+&lt;h2 id=&#34;a-second-you-the-power-of-your-external-brain&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#a-second-you-the-power-of-your-external-brain&#34;&gt;A Second You: The Power of Your External Brain&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;ExtBrain&amp;rsquo;s primary goal is to act as an extension of your own knowledge and cognitive abilities. By ingesting all your relevant data, extBrain can provide authoritative answers on demand, allowing you to work smarter instead of harder. This innovative approach to AI application development has the potential to revolutionize how we approach problem-solving and information retrieval.&lt;/p&gt;
+&lt;h2 id=&#34;multiple-front-end-options-for-easy-access&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#multiple-front-end-options-for-easy-access&#34;&gt;Multiple Front End Options for Easy Access&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To make it even more convenient for users, extBrain offers multiple front end options for asking questions, including a website, a Discord bot, and a Slack bot. These intuitive interfaces allow you to access your external brain from virtually anywhere, making it simple to retrieve accurate information whenever you need it.&lt;/p&gt;
+&lt;h2 id=&#34;managing-facts-and-summarizing-text-with-the-extbrain-back-end&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#managing-facts-and-summarizing-text-with-the-extbrain-back-end&#34;&gt;Managing Facts and Summarizing Text with the extBrain Back End&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The extBrain back end serves as an administrative interface for managing facts and summarizing large chunks of text into digestible pieces of information. This powerful tool enables users to input, organize, and refine their knowledge base, ensuring that they always have access to up-to-date, accurate data when needed.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion-why-everyone-should-have-an-external-brain&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#conclusion-why-everyone-should-have-an-external-brain&#34;&gt;Conclusion: Why Everyone Should Have an External Brain&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In conclusion, extBrain offers a comprehensive solution for building scalable AI applications focused on question answering. With its innovative approach to Fact Synthesis and RAG systems, combined with the ability to group semantically similar facts into larger text chunks, extBrain delivers efficient storage solutions and accurate vector search capabilities. By leveraging these features, you can work smarter, not harder, and revolutionize your AI application development process. So why wait? It&amp;rsquo;s time to unlock the power of your external brain!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: The views expressed in this blog post are based on publicly available information and represent our understanding of extBrain as a tool for building Generative AI applications.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-extbrain/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;li&gt;Eighth Tool in the series is External Brain (&lt;a href=&#34;https://github.com/patw/ExternalBrain&#34;&gt;https://github.com/patw/ExternalBrain&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;External Brain uses Fact Synthesis (reducing text into facts - see previous posts about the subject) which allows the user to paste in large text articles and reduce them down to individual facts.&lt;/li&gt;
+&lt;li&gt;Facts are stored in Mongo collections along with some metadata about who stated the facts, what was the context and when it was stated.&lt;/li&gt;
+&lt;li&gt;The facts can then be grouped together into chunks of text, by either a fixed number of grouped facts or with more clever methods like only grouping together facts from the same context or even facts based on their semantic similarity.&lt;/li&gt;
+&lt;li&gt;Users can then ask questions to the LLM (large language model) and we will perform semantic search to find the fact chunks that are most relevant to the question, which will be injected into the prompt to the LLM.  This is an example of RAG (retrieval augmented generation).&lt;/li&gt;
+&lt;li&gt;Most RAG systems will chunk up source documents like PDF, Word, HTML files into blobs of text, and run text embedding models against that to produce dense vectors.&lt;/li&gt;
+&lt;li&gt;extBrain only chunks on groups of facts, which reduces the overall size of the data set and produces more accurate results in vector search and stronger results from the LLM.&lt;/li&gt;
+&lt;li&gt;Semantically similar facts can produce larger text chunks without causing recall issues later on.&lt;/li&gt;
+&lt;li&gt;External Brain can act as a second you.  It’s designed to ingest all your knowledge and be able to answer authoritatively on it.  This technique could allow knowledge workers to scale.&lt;/li&gt;
+&lt;li&gt;extBrain has multiple front ends for asking questions:  A website, a Discord bot and a Slack bot.&lt;/li&gt;
+&lt;li&gt;The extBrain back end, or admin UI allows you to enter and manage facts and summarize large chunks of text into facts.&lt;/li&gt;
+&lt;li&gt;This is a pretty ideal system for question answering.  It’s efficient on storage and vectors (which are expensive to store).&lt;/li&gt;
+&lt;li&gt;Call to action:  Everyone should have an external brain!  Work smarter not harder.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Tool Series - FactWeave</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-factweave/</link>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-factweave/</guid>
+      <description>&lt;h1 id=&#34;tool-series---factweave-writing-more-by-writing-less&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#tool-series---factweave-writing-more-by-writing-less&#34;&gt;Tool Series - FactWeave: Writing More by Writing Less&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the ongoing series of covering different tools for building Generative AI applications, we introduce FactWeave (&lt;a href=&#34;https://github.com/patw/FactWeave)&#34;&gt;https://github.com/patw/FactWeave)&lt;/a&gt;, a unique tool that can generate blog posts with minimal input. Designed with Fact Expansion in mind, it&amp;rsquo;s the perfect solution if you want to share your thoughts and ideas without spending hours crafting each post.&lt;/p&gt;
+&lt;h2 id=&#34;how-factweave-works&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#how-factweave-works&#34;&gt;How FactWeave Works&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;FactWeave is an incredible example of Fact Expansion. This tool allows you to input individual facts, which are then fed into a Large Language Model (LLM) along with some prompt engineering to generate specific types of blog posts. You can choose from technical, personal, or humor-based content, and the output will be Markdown files ready for consumption by static site generators like HUGO.&lt;/p&gt;
+&lt;h2 id=&#34;a-website-built-with-factweave&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#a-website-built-with-factweave&#34;&gt;A Website Built with FactWeave&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The website you&amp;rsquo;re currently reading is a testament to the power of FactWeave. This tool has helped me share my ideas in a well-formatted and professional manner, which has been incredibly valuable for my customers at Mongodb who are interested in building Retrieval Augmented Generation (RAG) use cases.&lt;/p&gt;
+&lt;h2 id=&#34;managing-your-blog-posts-with-factweave&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#managing-your-blog-posts-with-factweave&#34;&gt;Managing Your Blog Posts with FactWeave&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;FactWeave also acts as a Content Management System (CMS). It enables you to manage your blog posts, change their tags, titles, or content. If the &amp;ldquo;post&amp;rdquo; field is blank, FactWeave will generate the blog post using the LLM. Afterward, you can edit the post as needed.&lt;/p&gt;
+&lt;h2 id=&#34;tailoring-the-content&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#tailoring-the-content&#34;&gt;Tailoring the Content&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The default tone for FactWeave&amp;rsquo;s generated posts is technical, detailed, and professional. However, you have the option to change this tone to personal if you prefer a more casual writing style. The term &amp;ldquo;detailed&amp;rdquo; might sometimes produce overly wordy content, so you can also switch it to &amp;ldquo;succinct&amp;rdquo; for shorter blog posts.&lt;/p&gt;
+&lt;h2 id=&#34;automating-tags&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#automating-tags&#34;&gt;Automating Tags&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Currently, FactWeave uses default tags such as &amp;ldquo;RAG&amp;rdquo;, &amp;ldquo;Grounding&amp;rdquo;, and &amp;ldquo;LLM&amp;rdquo;. However, I plan on updating the system to generate these tags automatically based on the content of each post. This way, the AI can help you categorize your blog posts more effectively!&lt;/p&gt;
+&lt;h2 id=&#34;factweave-built-with-python&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#factweave-built-with-python&#34;&gt;FactWeave Built With Python&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;FactWeave is built using Flask, FlaskBootstrap, and FlaskForms, which are popular tools in this series. The tool also incorporates vector search functionality to help you find relevant articles for editing later.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#conclusion&#34;&gt;Conclusion&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In conclusion, FactWeave is a powerful tool that can help you create engaging blog posts with minimal effort. By inputting individual facts, the AI generates well-formatted, personalized content that can be edited and managed as needed. With its versatility and ease of use, FactWeave is an excellent choice for anyone looking to streamline their blogging process.&lt;/p&gt;
+&lt;p&gt;So why not give it a try? Write more by writing less with FactWeave!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  It called Fact Expansion &amp;ldquo;Facet Expansion&amp;rdquo;.  Also renamed one of the headings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-factweave/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;li&gt;Seventh Tool in the series is FactWeave (&lt;a href=&#34;https://www.github.com/patw/FactWeave&#34;&gt;https://www.github.com/patw/FactWeave&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;FactWeave is a tool for generating blog posts by just providing individual facts.&lt;/li&gt;
+&lt;li&gt;This tool is an example of Fact Expansion (see previous blog post about this subject), it&amp;rsquo;s the opposite of Fact Synthesis&lt;/li&gt;
+&lt;li&gt;You can provide an arbitrary number of facts, which get fed to the LLM (large language model), with some prompt engineering to produce a specific type of blog post (technical, personal, humor) and output Markdown files.&lt;/li&gt;
+&lt;li&gt;The Markdown files can be consumed by static site generators like HUGO, to deploy a complete website with minimal inputs.&lt;/li&gt;
+&lt;li&gt;The website you&amp;rsquo;re reading right now is produced by FactWeave&lt;/li&gt;
+&lt;li&gt;FactWeave helped me get my ideas into a nicely formatted blog site which has been valuable for my customers at MongoDB who are interested in building RAG (retrieval augmented generation) use cases&lt;/li&gt;
+&lt;li&gt;FactWeave itself is a CMS.  It provides the ability to manage the blog posts, change their tags, title or content.  It only generates the blog post using the LLM if the “post” field is blank.  After the post is generated it can be edited.&lt;/li&gt;
+&lt;li&gt;Sometimes I do need to edit the blog posts and I indicate that with the “Human Intervention” part at the bottom of the post.  If it says “None”, it means I haven’t edited the post.  If I do have to edit I explain what and why.  Usually it’s due to the LLM hallucinating URLs or referencing open source projects with the wrong name.&lt;/li&gt;
+&lt;li&gt;The default tone for posts is “technical, detailed and professional”.  This directs the LLM to produce technical sounding blogs.  I sometimes change &amp;ldquo;professional to “personal” when I want that tone instead.  The term “detailed” can also be a problem, sometimes.  It’ll get very wordy, so I’ll change it to “succinct” instead.&lt;/li&gt;
+&lt;li&gt;The system also has default tags “RAG, Grounding, LLM” but I’ll modify the system later to have to produce tags automatically from the outputted content.  When you have an AI problem, more AI fixes it!&lt;/li&gt;
+&lt;li&gt;The tool is built using Flask, FlaskBootstrap and FlaskForms as are many of the tools in this series.&lt;/li&gt;
+&lt;li&gt;It also incorporates vector search, to find relevant articles.  This is so I can edit them later.&lt;/li&gt;
+&lt;li&gt;Call to action:  This same technique could be used for building technical documentation, or even your own blogging solution.  Clever tagline: Write more by writing less!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title> Tool Series - discord_llama</title>
+      <link>https://ai.dungeons.ca/posts/-tool-series-discord_llama/</link>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/-tool-series-discord_llama/</guid>
+      <description>&lt;h1 id=&#34;tool-series-discord_llama---the-ultimate-ai-companion-for-your-server&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/-tool-series-discord_llama/#tool-series-discord_llama---the-ultimate-ai-companion-for-your-server&#34;&gt;Tool Series: Discord_Llama - The Ultimate AI Companion for Your Server&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Discord has become an integral part of our online social lives, allowing friends and communities to connect through chat rooms, voice channels, and even play games together. With the ever-growing demand for unique experiences in these servers, it&amp;rsquo;s no wonder that developers are continuously creating innovative tools to enhance interactions between users. Today, we&amp;rsquo;re taking a deep dive into &lt;code&gt;discord_llama&lt;/code&gt;, a fantastic tool designed to bring large language models (LLMs) to life within your Discord server.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Discord_Llama&lt;/code&gt; is an open-source project by &lt;a href=&#34;https://github.com/patw&#34;&gt;Pat W.&lt;/a&gt; that allows you to create LLM-driven chatbots tailored to your server&amp;rsquo;s needs. This versatile tool can introduce personality, humor, and even specific ideologies into your bot, making for a more engaging and entertaining user experience.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-it-work&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/-tool-series-discord_llama/#how-does-it-work&#34;&gt;How Does it Work?&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Discord_Llama&lt;/code&gt; leverages the same &lt;code&gt;llama.cpp&lt;/code&gt; running in server mode as its LLM backend, sharing this powerful technology with other tools such as BottyBot, SumBot, RAGTAG, and ExtBrain. This backend is GPU-accelerated, ensuring lightning-fast responses to user queries on your Discord server.&lt;/p&gt;
+&lt;p&gt;Currently, &lt;code&gt;discord_llama&lt;/code&gt; supports up to 7 different personality-based bots, ranging from the more conventional WizaardBot for answering questions to more unique concepts like ideology-focused bots or even a bot that clones a friend and their interests (HermanBot). The tool offers a wide variety of options to cater to your server&amp;rsquo;s preferences.&lt;/p&gt;
+&lt;h2 id=&#34;chatting-with-bots&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/-tool-series-discord_llama/#chatting-with-bots&#34;&gt;Chatting with Bots&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One standout feature of &lt;code&gt;discord_llama&lt;/code&gt; is its access to Discord channel history, allowing bots to engage in back-and-forth conversations with users for up to five lines by default. This immersive interaction greatly enhances the user experience and fosters a more natural conversation flow within your server.&lt;/p&gt;
+&lt;h2 id=&#34;the-future-of-discord_llama&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/-tool-series-discord_llama/#the-future-of-discord_llama&#34;&gt;The Future of &lt;code&gt;discord_llama&lt;/code&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Although development on &lt;code&gt;discord_llaama&lt;/code&gt; has slowed in recent months, it continues to provide valuable chatbot services to four different Discord servers. A potential enhancement for this tool could involve further augmentation, such as web searches for up-to-date information or more advanced interaction capabilities. Regardless of its future developments, &lt;code&gt;discord_llaama&lt;/code&gt; remains an invaluable asset for server owners and users alike.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/-tool-series-discord_llama/#conclusion&#34;&gt;Conclusion&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In a world where Discord has become the go-to platform for connecting with friends and communities, having engaging chatbots is more important than ever. With &lt;code&gt;Discord_Llama&lt;/code&gt;, you can now add personality and unique experiences to your servers, enriching conversations and entertaining users in ways previously unimaginable. If you haven&amp;rsquo;t already given this tool a try, I highly recommend checking out the GitHub repository &lt;a href=&#34;https://www.github.com/patw/discord_llama&#34;&gt;here&lt;/a&gt; and exploring the potential of LLMs in your Discord community. Who knows? You might just discover your server&amp;rsquo;s new best friend!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: None&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/-tool-series-discord_llama/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Sixth Tool in the series is discord_llama (&lt;a href=&#34;https://www.github.com/patw/discord_llama&#34;&gt;https://www.github.com/patw/discord_llama&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;discord_llama is a tool for building LLM (large language model) driven chatbots for Discord servers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The tool allows you to build bots with personality and add them to an existing discord server.  They can respond to questions, and even react to specific keywords, at random, to act like regular users in the discord server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;discord_llama uses the same llama.cpp running in server mode as the LLM back end which is shared in my homelab with tools like BottyBot, SumBot, RAGTAG and ExtBrain.  This llama.cpp instance is GPU accelerated allowing very fast responses to questions from users in Discord.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;I currently run about 7 different personality based bots that range from the very boring WizardBot, which is a typical chatbot for answering questions to more extreme personality based bots like ideological focused bots and even a bot to clone a friend and his interests (HermanBot)!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The bots have access to the discord channel history (up to 5 lines by default) which allows them to have back and forth exchanges with Discord users, which provides a great experience for the users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This project hasn&amp;rsquo;t seen much work in the last few months, but continues to provide useful chatbot services to 4 different Discord servers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;A future enhancement to this tool could be further augmentation like web searches, for more up to date information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;If you run a discord server, or particiopate in one, this tool can add a ton of value to conversations, or just troll the users &lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Tool Series - BottyBot</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-bottybot/</link>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-bottybot/</guid>
+      <description>&lt;h2 id=&#34;tool-series---bottybot-a-frontend-chat-ui-for-local-llm-models&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-bottybot/#tool-series---bottybot-a-frontend-chat-ui-for-local-llm-models&#34;&gt;Tool Series - BottyBot: A Frontend Chat UI for Local LLM Models&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.github.com/patw/BottyBot&#34;&gt;https://www.github.com/patw/BottyBot&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this installment of our Generative AI (GenAI) tool series, we will be exploring a unique solution to interfacing with locally hosted Large Language Models (LLMs): BottyBot. Developed by an individual who was not satisfied with existing options on the market, BottyBot is specifically designed to seamlessly connect with &lt;code&gt;llama.cpp&lt;/code&gt; running in server mode. This powerful frontend chat UI has become a crucial tool in the developer&amp;rsquo;s daily workflow, serving as the main interface for interacting with multiple tools and applications that leverage the capabilities of the LLM.&lt;/p&gt;
+&lt;p&gt;The creator of BottyBot operates two GPU-accelerated instances of &lt;code&gt;llama.cpp&lt;/code&gt;, which serve as the backbone for numerous applications such as SumBot, ExtBrain, RAGTAG (soon to be updated), and several Python scripts, including a website generator. These tools benefit from the efficiency and versatility provided by BottyBot&amp;rsquo;s intuitive chat interface, which is typically powered by either the OpenHermes Mistral or Dolphin Mistral families of LLM models.&lt;/p&gt;
+&lt;p&gt;One of the key features that sets BottyBot apart is its support for multiple &amp;ldquo;bot&amp;rdquo; identities. These distinct personalities can be engaging to interact with and are entirely generated within the application itself. The development process of BottyBot exemplifies a unique approach known as &amp;ldquo;bootstrapping,&amp;rdquo; where much of the initial design was created using OpenAI&amp;rsquo;s ChatGPT-3, while subsequent features were added by directly communicating with the LLM model integrated into BottyBot. This innovative method has resulted in a continually evolving and feature-rich application that caters to a wide range of use cases.&lt;/p&gt;
+&lt;p&gt;In addition to its core functionality, BottyBot also includes export capabilities for formatting and organizing conversations in an easily shareable format. This feature is particularly useful for collaborating with others or showcasing the results of interactions with LLM models.&lt;/p&gt;
+&lt;p&gt;While BottyBot does not currently support Retrieval Augmented Generation (RAG) techniques like RAGTAG or ExtBrain, its developers have expressed interest in potentially incorporating manual augmentation or vector search capabilities in future updates. This would allow users to enhance the prompt generation process and further optimize their interactions with LLM models.&lt;/p&gt;
+&lt;p&gt;Overall, BottyBot has proven to be an incredibly valuable tool for individuals who wish to harness the power of local, open-source Large Language Models while maintaining complete privacy and control over their data. As a result, it serves as a perfect example of how cutting-edge AI technology can be effectively integrated into everyday workflows and applications. Stay tuned for future updates and enhancements to this versatile and essential chat interface!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  Added the URL for the github repo up top.  Also, it seemed to depersonalize me entirely in this article talking about an unknown developer.  I&amp;rsquo;m cool with it, but I probably needed to add some context in the points to indicate who worked on it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-bottybot/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Fifth Tool in the series is BottyBoy (&lt;a href=&#34;https://www.github.com/patw/BottyBot&#34;&gt;https://www.github.com/patw/BottyBot&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;BottyBot is a front end chat UI that connects to llama.cpp running in server mode which hosts a LLM (large language model)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;I wasn&amp;rsquo;t happy with other solutions on the market and none of them could consume llama.cpp in server mode directly.  I operate 2 GPU accelerated instances of llama.cpp which is used by multiple tools like SumBot, ExtBrain, RAGTAG (soon, it needs updating) and a few python scripts like my website generator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;BottyBot has been a huge success for me, as I use it daily as my main chat interface to LLM models. The back end llama.cpp server is usually running the OpenHermes Mistral or Dolphin Mistral families of LLM models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;BottyBot supports different &amp;ldquo;bot&amp;rdquo; identities that represent differnet personalities that can be interesting to interact with.  The entire set of built in identites were generated by BottyBot!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;BottyBot was a perfect example of bootstrapping:  I designed a lot of the application with OpenAI&amp;rsquo;s ChatGPT 3, but as soon as the UI was running well enough, all features from that point on were added by talking to the LLM and getting useful python code for features I wanted.  It&amp;rsquo;s now being used for all future products.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;I added export functionality to produce nicely formatted exports for conversations.  These are useful for sharing with others.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;BottyBot is not an example of RAG (retrieval augmented generation) like RAGTAG or ExtBrain.  BottyBoty uses the LLM directly without any augmentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;A future enhancement to this tool could include manual augmentation or vector search for augmenting the LLM prompt.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;I love this tool and so far, it&amp;rsquo;s provided the most value to me personally and is a perfect example of using local, opensource large language models with full privacy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Tool Series - InstructorVec</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-instructorvec/</link>
+      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-instructorvec/</guid>
+      <description>&lt;h1 id=&#34;tool-series---instructorvec-a-single-endpoint-for-text-embedding&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-instructorvec/#tool-series---instructorvec-a-single-endpoint-for-text-embedding&#34;&gt;Tool Series - InstructorVec: A Single Endpoint for Text Embedding&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.github.com/patw/InstructorVec&#34;&gt;https://www.github.com/patw/InstructorVec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this series, we dive into different tools and techniques used to build Generative AI applications. As we progress through the series, we&amp;rsquo;ll explore a variety of methods that aid in creating efficient and powerful models. Today, we delve into InstructorVec, the latest evolution in the VectorService tool family.&lt;/p&gt;
+&lt;p&gt;InstructorVec is not just another text embedding model; it&amp;rsquo;s an innovative approach to generating dense vectors for production use cases. It&amp;rsquo;s designed as a single endpoint that calls the instructor-large model from HuggingFace, marking a departure from the previous VectorService tool that hosted eight different embedding endpoints. This change allows us to focus entirely on a singular solution for text embedding and outputting 768 dimension dense vectors, making it ideal for real-world applications.&lt;/p&gt;
+&lt;p&gt;To achieve this, InstructorVec loads the full instructor-large model but quantizes it from its original FP32 precision down to FP8. This slight reduction in precision offers significant performance improvements without compromising the quality of the outputs. In fact, executing InstructorVec takes no more than 100 milliseconds on a CPU, compared to the 1000 millisecond execution time at full FP32 precision. As a result, many RAG (Retrieval Augmented Generation) tools that consume this service have become much more responsive and efficient.&lt;/p&gt;
+&lt;p&gt;As we continue to build new production applications, InstructorVec will serve as the baseline vectorizer for all our tools moving forward. This is because its performance and precision make it a reliable solution for various use cases. Moreover, we currently maintain multiple copies of this service to cater to different production requirements.&lt;/p&gt;
+&lt;p&gt;In the future, we may expand InstructorVec&amp;rsquo;s capabilities by adding a similarity checking endpoint. Similarity checking was one of the most useful features in the legacy VectorService tool, and its integration into InstructorVec will further enhance its versatility and utility.&lt;/p&gt;
+&lt;p&gt;To sum it up, InstructorVec is an innovative single-endpoint solution for text embedding that delivers high performance and precision while being ideal for production applications. As we continue to refine this tool, we&amp;rsquo;re excited about the possibilities it holds for enhancing our Generative AI applications and unlocking new levels of efficiency in RAG tools. Stay tuned as we explore more exciting developments in the world of text embedding and Generative AI!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  I added the URL for the github repo.  Sometimes it adds it as a link in the text, other times it forgets it entirely.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-instructorvec/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Fourth Tool in the series is InstructVec (&lt;a href=&#34;https://www.github.com/patw/InstructorVec&#34;&gt;https://www.github.com/patw/InstructorVec&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;InstructorVec is the next generation of VectorService tool, however instead of hosting 8 different embedding endpoints, it hosts a single endpoint that calls the instructor-large model from HuggingFace.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The other text embedding models in VectorService are nice to show off differences in vector outputs and can demonstrate how different models measure similarity between two strings of text.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;InstructorVec is focused entirely on being a single endpoint for text embedding and outputting 768 dimension dense vectors for production use cases.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This tool loads the full instructor-large model, but quantizes it from full FP32 precision down to FP8.  For a small loss in precision in the model weights, it executes in 100 ms or less on CPU compared to 1000 ms at full precision.  This has made some RAG (retrieval augmented generation) tools that consume this service, much more responsive.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This will be the baseline vectorizer I&amp;rsquo;ll be using in all tools moving forward, and currently operate multiple copies of this for servicing different production applications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Future state for this tool might include a similarity checking endpoint, as this has been very useful in the legacy VectorService tool.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Tool Series - RAGTAG</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-ragtag/</link>
+      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-ragtag/</guid>
+      <description>&lt;h1 id=&#34;tool-series---ragtag-an-in-depth-look-at-retrieval-augmented-generation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-ragtag/#tool-series---ragtag-an-in-depth-look-at-retrieval-augmented-generation&#34;&gt;Tool Series - RAGTAG: An In-depth Look at Retrieval Augmented Generation&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.github.com/patw/RAGTAG&#34;&gt;https://www.github.com/patw/RAGTAG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In our ongoing series covering various tools for building Generative AI applications, we dive into the third tool: &lt;strong&gt;RAGTAG&lt;/strong&gt;. This end-to-end example of RAG (Retrieval Augmented Generation) allows you to experiment with question/answer pairs, test lexicographic and semantic search capabilities, and generate an LLM (Large Language Model) response using semantically augmented data.&lt;/p&gt;
+&lt;p&gt;As a simple CRUD application, RAGTAG enables users to create and modify question/answer pairs that are combined into a single chunk of text. This text is then run through the &amp;ldquo;instruct-large&amp;rdquo; text embedding model for retrieval later on. All semantic search in RAGTAG is performed using vector search with the same &amp;ldquo;instruct-large&amp;rdquo; model.&lt;/p&gt;
+&lt;p&gt;The key to RAGTAG&amp;rsquo;s effectiveness lies in its tunable features. The chunk testing tool allows users to adjust the score cut-off for cosine similarity in vector search as well as control the K value, which determines the overrequest value on the vector search query. Meanwhile, the LLM tester provides an interface to set the above semantic search parameters along with system messages, prompts, and user questions.&lt;/p&gt;
+&lt;p&gt;RAGTAG is a product of Mongodb&amp;rsquo;s specialist search group and has been in production since its inception. It serves as a valuable tool for question answering, demonstrating the power of RAG and its practical applications. However, there is room for improvement. The current LLM (implemented with the Llama.cpp Python module) runs on CPU instead of GPU, which can cause response generation to be slow.&lt;/p&gt;
+&lt;p&gt;Looking towards the future, we envision a more efficient version of RAGTAG that incorporates InstructorVec for text embedding and runs Llama.cpp in server mode. By leveraging these advancements, RAGTAG will be better equipped to share infrastructure with other tools and enjoy the benefits of GPU-accelerated token generation for faster response times.&lt;/p&gt;
+&lt;p&gt;In conclusion, RAGTAG is an essential tool for those looking to experiment with Retrieval Augmented Generation. With its robust capabilities and potential for improvement, it continues to be a valuable resource within our Generative AI toolkit. Stay tuned as we explore further advancements in this exciting field!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Added URL for github project and fixed InstructionVec to InstructorVec&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-ragtag/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Third Tool in the series is RAGTAG (&lt;a href=&#34;https://www.github.com/patw/RAGTAG&#34;&gt;https://www.github.com/patw/RAGTAG&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;RAGTAG is an end-to-end example of RAG (retrieval augmented generation) allowing you to manually create question/answer pairs, testing lexical and semantic search and allow you to generate an LLM (large language model) response with semantic search augmented data and manipulate the system message and the prompt to see how it changes the ouput.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This is a pretty simple CRUD application that lets you create and modify question/answer pairs which get appended together as a single chunk of text and run through the &amp;ldquo;instructor-large&amp;rdquo; text embedding model for retrieval later.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;All semantic search is performed using vector search using the same instructor-large model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The chunk testing tool allows you to tune the score cut-off for the cosine similarity in the vector search as well as the K value, which controls the overrequest value on the vector search query&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The LLM tester allows you to set the above semantic search values as well as the system message and the LLM prompt format along with the users question.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;RAGTAG was a great experiment and is still used in production for question answering for our own specialist search group at MongoDB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This tool also integrated the text embedding model and the LLM into a single installable package, which was very convenient.  However, the LLM (running on llama.cpp python module) will run on CPU instead of GPU making the output responses quite slow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The future for this tool is to migrate it to the InstructorVec for text embedding and on llama.cpp running in server mode, so it can share infra with other tools and run on GPU for much faster token generation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Tool Series - SumBot</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-sumbot/</link>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-sumbot/</guid>
+      <description>&lt;h1 id=&#34;tool-series---sumbot-a-powerful-ai-summarization-tool-for-structured-data&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-sumbot/#tool-series---sumbot-a-powerful-ai-summarization-tool-for-structured-data&#34;&gt;Tool Series - SumBot: A Powerful AI Summarization Tool for Structured Data&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.github.com/patw/sumbot&#34;&gt;https://www.github.com/patw/sumbot&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In our ongoing series covering various tools used for building Generative AI (genai) applications, we are excited to introduce you to SumBot, a Python FastAPI service designed specifically for summarizing structured data into semantically rich English text. As the second tool in this series, SumBot has proven its worth as an essential addition to any genai developer&amp;rsquo;s toolbox, particularly when working with JSON or XML data.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-sumbot&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-sumbot/#what-is-sumbot&#34;&gt;What is SumBot?&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;SumBot is a powerful AI summarization tool that takes structured data (usually JSON) and converts it into coherent paragraphs of English text. With just a single endpoint (&lt;code&gt;summarize&lt;/code&gt;) and two parameters - &lt;code&gt;entity&lt;/code&gt; and &lt;code&gt;data&lt;/code&gt;, this Python FastAPI service can quickly process and summarize your data, making it ideal for running through text embedding models like BERT or Instruct-large.&lt;/p&gt;
+&lt;h2 id=&#34;why-use-sumbot&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-sumbot/#why-use-sumbot&#34;&gt;Why Use SumBot?&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Embedding models often struggle to perform well on JSON, XML, point form data, or tabular data. By using an LLM (Large Language Model) for pre-summarization before text embedding, you can significantly improve recall and precision for semantic search. SumBot was the first tool I hosted on a GPU with LLaMA.cpp running in server mode, utilizing the OpenHermes-2.5-Mistral-7b model to provide accurate summarizations.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-sumbot-work&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-sumbot/#how-does-sumbot-work&#34;&gt;How Does SumBot Work?&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The actual LLM prompt uses the &lt;code&gt;entity&lt;/code&gt; parameter to guide the LLM into summarizing the JSON or XML data. This guidance can be necessary if the keys in your JSON document aren&amp;rsquo;t clear enough for the LLM to figure out what it&amp;rsquo;s summarizing. Thankfully, SumBot doesn&amp;rsquo;t require validation of whether the input data is actually JSON or XML; it can summarize almost anything as long as you provide it an &lt;code&gt;entity&lt;/code&gt; and &lt;code&gt;data&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deploying-sumbot&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-sumbot/#deploying-sumbot&#34;&gt;Deploying SumBot&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;SumBot can be deployed against any LLaMA.cpp server running locally or could be easily updated to point to a hosted service like Mistral.ai or OpenAI. This flexibility makes SumBot an excellent choice for developers who need to quickly process and summarize large amounts of structured data while taking advantage of the latest advancements in AI technology.&lt;/p&gt;
+&lt;p&gt;In conclusion, SumBot is a valuable addition to any genai developer&amp;rsquo;s toolbox. Its ability to transform JSON or XML data into coherent English text using LLM pre-summarization makes it an essential tool for improving recall and precision in semantic search. As the second installment in our series on tools for building Generative AI applications, SumBot demonstrates the power of leveraging cutting-edge technology to optimize workflows and enhance productivity.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Minor.  I had to add the Github URL to sumbot to the article.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-sumbot/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Second tool in the series is SumBot (&lt;a href=&#34;https://www.github.com/patw/sumbot&#34;&gt;https://www.github.com/patw/sumbot&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;SumBot is used for summarizing structured data (usually JSON) into paragraphs of sementically rich english text.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The tool is a Python FastAPI service with a single endpoint (summarize) and two parameters: entity and data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The output of SumBot is ideal for running through text embedding models like BERT or Instructor-large&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Embedding models tend to perform poorly on JSON, XML, point form data and tabular data.  Using an LLM (large language model) for pre-summarization before text embedding can provide a drastic increase in recall and precision for semantic search&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;SumBot was the first tool I hosted on GPU with llama.cpp running in server mode with the OpenHermes-2.5-Mistral-7b model.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The actual LLM prompt uses the entity parameter to guide the LLM into summarizing the JSON or XML data.  This can be necessary if the keys in the JSON document aren&amp;rsquo;t clear enough for the LLM to figure out what it&amp;rsquo;s summarizing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;SumBot doesn&amp;rsquo;t validate if it&amp;rsquo;s actually JSON or XML data! It can be used to summarize almost anything, as long as you provide it an entity and data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This tool can be deployed against any llama.cpp server running locally or could be easily updated to point to a hosted service like Mistral.ai or OpenAI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Tool Series - VectorService</title>
+      <link>https://ai.dungeons.ca/posts/tool-series-vectorservice/</link>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://ai.dungeons.ca/posts/tool-series-vectorservice/</guid>
+      <description>&lt;h1 id=&#34;tool-series---vectorservice-exploring-the-journey-of-text-embedding-models&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#tool-series---vectorservice-exploring-the-journey-of-text-embedding-models&#34;&gt;Tool Series - VectorService: Exploring the Journey of Text Embedding Models&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In this series, we will dive deep into different tools used for building Generative AI (GenAI) applications. The first tool in our exploration is &lt;a href=&#34;https://www.github.com/patw/VectorService&#34;&gt;VectorService&lt;/a&gt;, a FastAPI service that generates dense vectors using various text embedding models.&lt;/p&gt;
+&lt;p&gt;The initial motivation behind VectorService was to test out multiple different text embedding models for generating semantic search capabilities for RAG (Retrieval Augmented Generation) tools with LLMs (Large Language Models). The journey of exploring and implementing various embedding models in this tool has taught us valuable lessons about the evolution of language processing techniques.&lt;/p&gt;
+&lt;h2 id=&#34;from-spacy-to-sentencetransformers-a-journey-of-improvement&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#from-spacy-to-sentencetransformers-a-journey-of-improvement&#34;&gt;From SpaCY to SentenceTransformers: A Journey of Improvement&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;VectorService&amp;rsquo;s initial models were sourced from the Python &lt;a href=&#34;https://spacy.io/&#34;&gt;SpaCY Library&lt;/a&gt;. We implemented small (96d), medium (384d), and large (384d) SpaCY models, which proved to be quite easy to use. However, these models performed poorly beyond a few words or a single sentence compared to more modern alternatives like BERT. They remain in use for legacy reasons in some applications.&lt;/p&gt;
+&lt;p&gt;To improve the quality of text embeddings, we then moved on to using the &lt;a href=&#34;https://www.sbert.net/&#34;&gt;SentenceTransformers Library&lt;/a&gt;, which was incredibly easy to work with. The library provided two models: all-MiniLM-L6-v2 (384d) and all-mpnet-base-v2 (768d). These models performed significantly better than SpaCY, demonstrating the advancements in language processing techniques over time. Many RAG examples online still show miniLM as the text embedding model of choice; however, it&amp;rsquo;s worth noting that larger models like mpnet-all-MiniLM-L6-cos-v1 outperform it significantly.&lt;/p&gt;
+&lt;h2 id=&#34;bert-a-significant-leap-in-quality&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#bert-a-significant-leap-in-quality&#34;&gt;BERT: A Significant Leap in Quality&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Next, we explored using &lt;a href=&#34;https://arxiv.org/abs/1810.04805&#34;&gt;BERT&lt;/a&gt; (Bidirectional Encoder Representations from Transformers), a groundbreaking language processing model developed by Google. BERT uses 768 dimensions and delivered a substantial improvement in the quality of text embeddings compared to its predecessors. The recall and precision metrics showed significant jumps, indicating that BERT was a major step forward for text embedding models.&lt;/p&gt;
+&lt;h2 id=&#34;sota-instructor-large-takes-center-stage&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#sota-instructor-large-takes-center-stage&#34;&gt;SOTA: Instructor-Large Takes Center Stage&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The final model we integrated into VectorService was &lt;a href=&#34;https://huggingface.co/hkunlp/instructor-large&#34;&gt;Instructor-Large&lt;/a&gt;, a state-of-the-art (SOTA) language processing model at the time of its release. This model achieved exceptional results on the HuggingFace MTEB leaderboard and required 4 gigabytes of memory to run, making it quite slow on CPUs.&lt;/p&gt;
+&lt;p&gt;However, the quality level of Instructor-Large was considered the bare minimum for production use cases, and it could be quantized to reduce its memory footprint and latency. This model required LLM-style prompting to produce optimal results and directly competed with OpenAI&amp;rsquo;s much larger text-ada-002 model, which is typically used as a default in RAG applications.&lt;/p&gt;
+&lt;h2 id=&#34;a-comparison-of-models-the-power-of-benchmarking&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#a-comparison-of-models-the-power-of-benchmarking&#34;&gt;A Comparison of Models: The Power of Benchmarking&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To provide users with valuable insights into the performance of different models, VectorService included endpoints for comparing similarity results across all text embedding models implemented. This feature allowed users to benchmark recall and precision metrics between various models, which in turn helped them optimize their RAG use cases.&lt;/p&gt;
+&lt;h2 id=&#34;the-evolution-of-text-embedding-models-from-legacy-to-state-of-the-art&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#the-evolution-of-text-embedding-models-from-legacy-to-state-of-the-art&#34;&gt;The Evolution of Text Embedding Models: From Legacy to State-of-the-Art&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;As we have seen, the journey from SpaCY to Instruction-Large showcases the evolution of text embedding models and how they have improved over time. VectorService served as a valuable experimentation platform for exploring different models and their capabilities. However, it is now considered legacy and not recommended for use. Instead, we recommend using &lt;a href=&#34;https://www.github.com/InstructorVec&#34;&gt;InstrucTorVec&lt;/a&gt;, an open-source alternative that offers self-hosted vector embedding solutions with exceptional performance and ease of use.&lt;/p&gt;
+&lt;p&gt;In conclusion, the development of VectorService has been a fascinating journey through the world of text embedding models. From SpaCY&amp;rsquo;s early attempts to BERT&amp;rsquo;s groundbreaking achievements and Instruction-Large&amp;rsquo;s SOTA status, we have witnessed the incredible progress made in language processing technologies. As we move forward into an era of increasingly sophisticated AI applications, it is essential for developers and researchers alike to continue exploring new frontiers in this rapidly evolving field.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Intervention: Moderate: the bot continues to call the Instructor model Instruction and totally made up a research paper for it.  I also had to correct the two sentence transformer model names, but that was entirely my fault for providing the wrong names in the facts.  I wrote it on a plane while I was half asleep.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;facts-used&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ai.dungeons.ca/posts/tool-series-vectorservice/#facts-used&#34;&gt;Facts Used:&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This series covers different tools used for building Generative AI (genai) applications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;First tool in the series is VectorService (&lt;a href=&#34;https://www.github.com/patw/VectorService&#34;&gt;https://www.github.com/patw/VectorService&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Text embedding models that output dense vectors and critical for building semantic search for RAG (retrieval augmented generation) tools with LLMs (large language models)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Originally wanted to test out multiple different text embedding models, so built a FastAPI service in Python that would generate dense vectors using different models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The first 3 models were from the Python SpaCY Library. I implemented small (96d), medium (384d) and large (384d).  SpaCY was very easy to use, but performed pretty poorly beyond a few words or a single sentence, compared to more modern models like BERT.  They&amp;rsquo;re still in the process for legacy reasons.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;The next two models were minilm-l6 (384d) and mpnet-alllm (768d).  These models performed much better than SpaCY and used the HuggingFace SentenceTransformers library, which was super easy to use.  Many RAG examples online still show minilm as the text embedding model, and while it performs poorly compared to larger models it&amp;rsquo;s still quite good.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Next, I tried BERT (768d).  This model used 768 dimensions and seemed to be another large step up in quality for embeddings and was the first time I saw large jumps in recall and precision.  BERT has much more dimensions than minilm, but performed better in all my tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;Finally I added in Instructor-large (768d).  This model was considered SOTA (state of the art) for the time it released and quickly became #1 on the Huggingface MTEB leaderboard.  The model itself needed 4 gigs of memory to run and is quite slow on CPU.  However, the quality level should be considered the bare minimum for production use cases, and can be quantized to run with less memory and less latency. Instructor requires LLM style prompting to produce good results and competes directly with OpenAI&amp;rsquo;s much larger text-ada-002 model, which is the default for most RAG use cases.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;This tool also included endpoints for comparing similarity results across all the models, which is useful to show off in a demo.  It gives customers the idea that they should be benchmarking recall and precision between multiple models to optimize the RAG use case.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;At this point, VectorService is legacy and not recommended.  InstructorVec (&lt;a href=&#34;https://www.github.com/InstructorVec&#34;&gt;https://www.github.com/InstructorVec&lt;/a&gt;) is considered a replacement for this tool.  It was a great exercise for experimenting with different embedding models but InstructorVec is all you need for self hosted, open source vector embeddings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
       <title>Chunking Techniques - LLM Presummarization</title>
       <link>https://ai.dungeons.ca/posts/chunking-techniques-llm-presummarization/</link>
       <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>

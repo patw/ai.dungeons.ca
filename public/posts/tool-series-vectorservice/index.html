@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Tool Series - VectorService: Exploring the Journey of Text Embedding Models In this series, we will dive deep into different tools used for building Generative AI (GenAI) applications. The first tool in our exploration is VectorService, a FastAPI service that generates dense vectors using various text embedding models.
+The initial motivation behind VectorService was to test out multiple different text embedding models for generating semantic search capabilities for RAG (Retrieval Augmented Generation) tools with LLMs (Large Language Models).">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Tool Series - VectorService | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/tool-series-vectorservice/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/" rel="bookmark">Tool Series - VectorService</a>
+  </h2>
+  
+    <time datetime="2024-02-06T00:00:00Z">6 February, 2024</time>
+  
+</header>
+    <h1 id="tool-series---vectorservice-exploring-the-journey-of-text-embedding-models">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#tool-series---vectorservice-exploring-the-journey-of-text-embedding-models">Tool Series - VectorService: Exploring the Journey of Text Embedding Models</a>
+</h1>
+<p>In this series, we will dive deep into different tools used for building Generative AI (GenAI) applications. The first tool in our exploration is <a href="https://www.github.com/patw/VectorService">VectorService</a>, a FastAPI service that generates dense vectors using various text embedding models.</p>
+<p>The initial motivation behind VectorService was to test out multiple different text embedding models for generating semantic search capabilities for RAG (Retrieval Augmented Generation) tools with LLMs (Large Language Models). The journey of exploring and implementing various embedding models in this tool has taught us valuable lessons about the evolution of language processing techniques.</p>
+<h2 id="from-spacy-to-sentencetransformers-a-journey-of-improvement">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#from-spacy-to-sentencetransformers-a-journey-of-improvement">From SpaCY to SentenceTransformers: A Journey of Improvement</a>
+</h2>
+<p>VectorService&rsquo;s initial models were sourced from the Python <a href="https://spacy.io/">SpaCY Library</a>. We implemented small (96d), medium (384d), and large (384d) SpaCY models, which proved to be quite easy to use. However, these models performed poorly beyond a few words or a single sentence compared to more modern alternatives like BERT. They remain in use for legacy reasons in some applications.</p>
+<p>To improve the quality of text embeddings, we then moved on to using the <a href="https://www.sbert.net/">SentenceTransformers Library</a>, which was incredibly easy to work with. The library provided two models: all-MiniLM-L6-v2 (384d) and all-mpnet-base-v2 (768d). These models performed significantly better than SpaCY, demonstrating the advancements in language processing techniques over time. Many RAG examples online still show miniLM as the text embedding model of choice; however, it&rsquo;s worth noting that larger models like mpnet-all-MiniLM-L6-cos-v1 outperform it significantly.</p>
+<h2 id="bert-a-significant-leap-in-quality">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#bert-a-significant-leap-in-quality">BERT: A Significant Leap in Quality</a>
+</h2>
+<p>Next, we explored using <a href="https://arxiv.org/abs/1810.04805">BERT</a> (Bidirectional Encoder Representations from Transformers), a groundbreaking language processing model developed by Google. BERT uses 768 dimensions and delivered a substantial improvement in the quality of text embeddings compared to its predecessors. The recall and precision metrics showed significant jumps, indicating that BERT was a major step forward for text embedding models.</p>
+<h2 id="sota-instructor-large-takes-center-stage">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#sota-instructor-large-takes-center-stage">SOTA: Instructor-Large Takes Center Stage</a>
+</h2>
+<p>The final model we integrated into VectorService was <a href="https://huggingface.co/hkunlp/instructor-large">Instructor-Large</a>, a state-of-the-art (SOTA) language processing model at the time of its release. This model achieved exceptional results on the HuggingFace MTEB leaderboard and required 4 gigabytes of memory to run, making it quite slow on CPUs.</p>
+<p>However, the quality level of Instructor-Large was considered the bare minimum for production use cases, and it could be quantized to reduce its memory footprint and latency. This model required LLM-style prompting to produce optimal results and directly competed with OpenAI&rsquo;s much larger text-ada-002 model, which is typically used as a default in RAG applications.</p>
+<h2 id="a-comparison-of-models-the-power-of-benchmarking">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#a-comparison-of-models-the-power-of-benchmarking">A Comparison of Models: The Power of Benchmarking</a>
+</h2>
+<p>To provide users with valuable insights into the performance of different models, VectorService included endpoints for comparing similarity results across all text embedding models implemented. This feature allowed users to benchmark recall and precision metrics between various models, which in turn helped them optimize their RAG use cases.</p>
+<h2 id="the-evolution-of-text-embedding-models-from-legacy-to-state-of-the-art">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#the-evolution-of-text-embedding-models-from-legacy-to-state-of-the-art">The Evolution of Text Embedding Models: From Legacy to State-of-the-Art</a>
+</h2>
+<p>As we have seen, the journey from SpaCY to Instruction-Large showcases the evolution of text embedding models and how they have improved over time. VectorService served as a valuable experimentation platform for exploring different models and their capabilities. However, it is now considered legacy and not recommended for use. Instead, we recommend using <a href="https://www.github.com/InstructorVec">InstrucTorVec</a>, an open-source alternative that offers self-hosted vector embedding solutions with exceptional performance and ease of use.</p>
+<p>In conclusion, the development of VectorService has been a fascinating journey through the world of text embedding models. From SpaCY&rsquo;s early attempts to BERT&rsquo;s groundbreaking achievements and Instruction-Large&rsquo;s SOTA status, we have witnessed the incredible progress made in language processing technologies. As we move forward into an era of increasingly sophisticated AI applications, it is essential for developers and researchers alike to continue exploring new frontiers in this rapidly evolving field.</p>
+<ul>
+<li>Human Intervention: Moderate: the bot continues to call the Instructor model Instruction and totally made up a research paper for it.  I also had to correct the two sentence transformer model names, but that was entirely my fault for providing the wrong names in the facts.  I wrote it on a plane while I was half asleep.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-vectorservice/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>First tool in the series is VectorService (<a href="https://www.github.com/patw/VectorService">https://www.github.com/patw/VectorService</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Text embedding models that output dense vectors and critical for building semantic search for RAG (retrieval augmented generation) tools with LLMs (large language models)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Originally wanted to test out multiple different text embedding models, so built a FastAPI service in Python that would generate dense vectors using different models.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The first 3 models were from the Python SpaCY Library. I implemented small (96d), medium (384d) and large (384d).  SpaCY was very easy to use, but performed pretty poorly beyond a few words or a single sentence, compared to more modern models like BERT.  They&rsquo;re still in the process for legacy reasons.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The next two models were minilm-l6 (384d) and mpnet-alllm (768d).  These models performed much better than SpaCY and used the HuggingFace SentenceTransformers library, which was super easy to use.  Many RAG examples online still show minilm as the text embedding model, and while it performs poorly compared to larger models it&rsquo;s still quite good.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Next, I tried BERT (768d).  This model used 768 dimensions and seemed to be another large step up in quality for embeddings and was the first time I saw large jumps in recall and precision.  BERT has much more dimensions than minilm, but performed better in all my tests</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Finally I added in Instructor-large (768d).  This model was considered SOTA (state of the art) for the time it released and quickly became #1 on the Huggingface MTEB leaderboard.  The model itself needed 4 gigs of memory to run and is quite slow on CPU.  However, the quality level should be considered the bare minimum for production use cases, and can be quantized to run with less memory and less latency. Instructor requires LLM style prompting to produce good results and competes directly with OpenAI&rsquo;s much larger text-ada-002 model, which is the default for most RAG use cases.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool also included endpoints for comparing similarity results across all the models, which is useful to show off in a demo.  It gives customers the idea that they should be benchmarking recall and precision between multiple models to optimize the RAG use case.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>At this point, VectorService is legacy and not recommended.  InstructorVec (<a href="https://www.github.com/InstructorVec">https://www.github.com/InstructorVec</a>) is considered a replacement for this tool.  It was a great exercise for experimenting with different embedding models but InstructorVec is all you need for self hosted, open source vector embeddings.</li>
+</ul>
+</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

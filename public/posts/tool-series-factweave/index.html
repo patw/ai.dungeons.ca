@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Tool Series - FactWeave: Writing More by Writing Less In the ongoing series of covering different tools for building Generative AI applications, we introduce FactWeave (https://github.com/patw/FactWeave), a unique tool that can generate blog posts with minimal input. Designed with Fact Expansion in mind, it&rsquo;s the perfect solution if you want to share your thoughts and ideas without spending hours crafting each post.
+How FactWeave Works FactWeave is an incredible example of Fact Expansion.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Tool Series - FactWeave | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/tool-series-factweave/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/" rel="bookmark">Tool Series - FactWeave</a>
+  </h2>
+  
+    <time datetime="2024-02-09T00:00:00Z">9 February, 2024</time>
+  
+</header>
+    <h1 id="tool-series---factweave-writing-more-by-writing-less">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#tool-series---factweave-writing-more-by-writing-less">Tool Series - FactWeave: Writing More by Writing Less</a>
+</h1>
+<p>In the ongoing series of covering different tools for building Generative AI applications, we introduce FactWeave (<a href="https://github.com/patw/FactWeave)">https://github.com/patw/FactWeave)</a>, a unique tool that can generate blog posts with minimal input. Designed with Fact Expansion in mind, it&rsquo;s the perfect solution if you want to share your thoughts and ideas without spending hours crafting each post.</p>
+<h2 id="how-factweave-works">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#how-factweave-works">How FactWeave Works</a>
+</h2>
+<p>FactWeave is an incredible example of Fact Expansion. This tool allows you to input individual facts, which are then fed into a Large Language Model (LLM) along with some prompt engineering to generate specific types of blog posts. You can choose from technical, personal, or humor-based content, and the output will be Markdown files ready for consumption by static site generators like HUGO.</p>
+<h2 id="a-website-built-with-factweave">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#a-website-built-with-factweave">A Website Built with FactWeave</a>
+</h2>
+<p>The website you&rsquo;re currently reading is a testament to the power of FactWeave. This tool has helped me share my ideas in a well-formatted and professional manner, which has been incredibly valuable for my customers at Mongodb who are interested in building Retrieval Augmented Generation (RAG) use cases.</p>
+<h2 id="managing-your-blog-posts-with-factweave">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#managing-your-blog-posts-with-factweave">Managing Your Blog Posts with FactWeave</a>
+</h2>
+<p>FactWeave also acts as a Content Management System (CMS). It enables you to manage your blog posts, change their tags, titles, or content. If the &ldquo;post&rdquo; field is blank, FactWeave will generate the blog post using the LLM. Afterward, you can edit the post as needed.</p>
+<h2 id="tailoring-the-content">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#tailoring-the-content">Tailoring the Content</a>
+</h2>
+<p>The default tone for FactWeave&rsquo;s generated posts is technical, detailed, and professional. However, you have the option to change this tone to personal if you prefer a more casual writing style. The term &ldquo;detailed&rdquo; might sometimes produce overly wordy content, so you can also switch it to &ldquo;succinct&rdquo; for shorter blog posts.</p>
+<h2 id="automating-tags">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#automating-tags">Automating Tags</a>
+</h2>
+<p>Currently, FactWeave uses default tags such as &ldquo;RAG&rdquo;, &ldquo;Grounding&rdquo;, and &ldquo;LLM&rdquo;. However, I plan on updating the system to generate these tags automatically based on the content of each post. This way, the AI can help you categorize your blog posts more effectively!</p>
+<h2 id="factweave-built-with-python">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#factweave-built-with-python">FactWeave Built With Python</a>
+</h2>
+<p>FactWeave is built using Flask, FlaskBootstrap, and FlaskForms, which are popular tools in this series. The tool also incorporates vector search functionality to help you find relevant articles for editing later.</p>
+<h2 id="conclusion">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#conclusion">Conclusion</a>
+</h2>
+<p>In conclusion, FactWeave is a powerful tool that can help you create engaging blog posts with minimal effort. By inputting individual facts, the AI generates well-formatted, personalized content that can be edited and managed as needed. With its versatility and ease of use, FactWeave is an excellent choice for anyone looking to streamline their blogging process.</p>
+<p>So why not give it a try? Write more by writing less with FactWeave!</p>
+<ul>
+<li>Human Intervention: Minor.  It called Fact Expansion &ldquo;Facet Expansion&rdquo;.  Also renamed one of the headings.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-factweave/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>Seventh Tool in the series is FactWeave (<a href="https://www.github.com/patw/FactWeave">https://www.github.com/patw/FactWeave</a>)</li>
+<li>FactWeave is a tool for generating blog posts by just providing individual facts.</li>
+<li>This tool is an example of Fact Expansion (see previous blog post about this subject), it&rsquo;s the opposite of Fact Synthesis</li>
+<li>You can provide an arbitrary number of facts, which get fed to the LLM (large language model), with some prompt engineering to produce a specific type of blog post (technical, personal, humor) and output Markdown files.</li>
+<li>The Markdown files can be consumed by static site generators like HUGO, to deploy a complete website with minimal inputs.</li>
+<li>The website you&rsquo;re reading right now is produced by FactWeave</li>
+<li>FactWeave helped me get my ideas into a nicely formatted blog site which has been valuable for my customers at MongoDB who are interested in building RAG (retrieval augmented generation) use cases</li>
+<li>FactWeave itself is a CMS.  It provides the ability to manage the blog posts, change their tags, title or content.  It only generates the blog post using the LLM if the “post” field is blank.  After the post is generated it can be edited.</li>
+<li>Sometimes I do need to edit the blog posts and I indicate that with the “Human Intervention” part at the bottom of the post.  If it says “None”, it means I haven’t edited the post.  If I do have to edit I explain what and why.  Usually it’s due to the LLM hallucinating URLs or referencing open source projects with the wrong name.</li>
+<li>The default tone for posts is “technical, detailed and professional”.  This directs the LLM to produce technical sounding blogs.  I sometimes change &ldquo;professional to “personal” when I want that tone instead.  The term “detailed” can also be a problem, sometimes.  It’ll get very wordy, so I’ll change it to “succinct” instead.</li>
+<li>The system also has default tags “RAG, Grounding, LLM” but I’ll modify the system later to have to produce tags automatically from the outputted content.  When you have an AI problem, more AI fixes it!</li>
+<li>The tool is built using Flask, FlaskBootstrap and FlaskForms as are many of the tools in this series.</li>
+<li>It also incorporates vector search, to find relevant articles.  This is so I can edit them later.</li>
+<li>Call to action:  This same technique could be used for building technical documentation, or even your own blogging solution.  Clever tagline: Write more by writing less!</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/ai-tools/" rel="tag">AI Tools</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/python/" rel="tag"> Python</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

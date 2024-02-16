@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Tool Series - SumBot: A Powerful AI Summarization Tool for Structured Data https://www.github.com/patw/sumbot
+In our ongoing series covering various tools used for building Generative AI (genai) applications, we are excited to introduce you to SumBot, a Python FastAPI service designed specifically for summarizing structured data into semantically rich English text. As the second tool in this series, SumBot has proven its worth as an essential addition to any genai developer&rsquo;s toolbox, particularly when working with JSON or XML data.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Tool Series - SumBot | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/tool-series-sumbot/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/" rel="bookmark">Tool Series - SumBot</a>
+  </h2>
+  
+    <time datetime="2024-02-06T00:00:00Z">6 February, 2024</time>
+  
+</header>
+    <h1 id="tool-series---sumbot-a-powerful-ai-summarization-tool-for-structured-data">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#tool-series---sumbot-a-powerful-ai-summarization-tool-for-structured-data">Tool Series - SumBot: A Powerful AI Summarization Tool for Structured Data</a>
+</h1>
+<p><a href="https://www.github.com/patw/sumbot">https://www.github.com/patw/sumbot</a></p>
+<p>In our ongoing series covering various tools used for building Generative AI (genai) applications, we are excited to introduce you to SumBot, a Python FastAPI service designed specifically for summarizing structured data into semantically rich English text. As the second tool in this series, SumBot has proven its worth as an essential addition to any genai developer&rsquo;s toolbox, particularly when working with JSON or XML data.</p>
+<h2 id="what-is-sumbot">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#what-is-sumbot">What is SumBot?</a>
+</h2>
+<p>SumBot is a powerful AI summarization tool that takes structured data (usually JSON) and converts it into coherent paragraphs of English text. With just a single endpoint (<code>summarize</code>) and two parameters - <code>entity</code> and <code>data</code>, this Python FastAPI service can quickly process and summarize your data, making it ideal for running through text embedding models like BERT or Instruct-large.</p>
+<h2 id="why-use-sumbot">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#why-use-sumbot">Why Use SumBot?</a>
+</h2>
+<p>Embedding models often struggle to perform well on JSON, XML, point form data, or tabular data. By using an LLM (Large Language Model) for pre-summarization before text embedding, you can significantly improve recall and precision for semantic search. SumBot was the first tool I hosted on a GPU with LLaMA.cpp running in server mode, utilizing the OpenHermes-2.5-Mistral-7b model to provide accurate summarizations.</p>
+<h2 id="how-does-sumbot-work">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#how-does-sumbot-work">How Does SumBot Work?</a>
+</h2>
+<p>The actual LLM prompt uses the <code>entity</code> parameter to guide the LLM into summarizing the JSON or XML data. This guidance can be necessary if the keys in your JSON document aren&rsquo;t clear enough for the LLM to figure out what it&rsquo;s summarizing. Thankfully, SumBot doesn&rsquo;t require validation of whether the input data is actually JSON or XML; it can summarize almost anything as long as you provide it an <code>entity</code> and <code>data</code>.</p>
+<h2 id="deploying-sumbot">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#deploying-sumbot">Deploying SumBot</a>
+</h2>
+<p>SumBot can be deployed against any LLaMA.cpp server running locally or could be easily updated to point to a hosted service like Mistral.ai or OpenAI. This flexibility makes SumBot an excellent choice for developers who need to quickly process and summarize large amounts of structured data while taking advantage of the latest advancements in AI technology.</p>
+<p>In conclusion, SumBot is a valuable addition to any genai developer&rsquo;s toolbox. Its ability to transform JSON or XML data into coherent English text using LLM pre-summarization makes it an essential tool for improving recall and precision in semantic search. As the second installment in our series on tools for building Generative AI applications, SumBot demonstrates the power of leveraging cutting-edge technology to optimize workflows and enhance productivity.</p>
+<ul>
+<li>Human Intervention: Minor.  I had to add the Github URL to sumbot to the article.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-sumbot/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+<li>
+<ul>
+<li>Second tool in the series is SumBot (<a href="https://www.github.com/patw/sumbot">https://www.github.com/patw/sumbot</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>SumBot is used for summarizing structured data (usually JSON) into paragraphs of sementically rich english text.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The tool is a Python FastAPI service with a single endpoint (summarize) and two parameters: entity and data</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The output of SumBot is ideal for running through text embedding models like BERT or Instructor-large</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Embedding models tend to perform poorly on JSON, XML, point form data and tabular data.  Using an LLM (large language model) for pre-summarization before text embedding can provide a drastic increase in recall and precision for semantic search</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>SumBot was the first tool I hosted on GPU with llama.cpp running in server mode with the OpenHermes-2.5-Mistral-7b model.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The actual LLM prompt uses the entity parameter to guide the LLM into summarizing the JSON or XML data.  This can be necessary if the keys in the JSON document aren&rsquo;t clear enough for the LLM to figure out what it&rsquo;s summarizing.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>SumBot doesn&rsquo;t validate if it&rsquo;s actually JSON or XML data! It can be used to summarize almost anything, as long as you provide it an entity and data.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool can be deployed against any llama.cpp server running locally or could be easily updated to point to a hosted service like Mistral.ai or OpenAI</li>
+</ul>
+</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llm/" rel="tag"> LLM</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/chunking/" rel="tag"> Chunking</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/presum/" rel="tag"> Presum</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/llama.cpp/" rel="tag"> llama.cpp</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

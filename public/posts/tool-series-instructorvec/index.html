@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="Tool Series - InstructorVec: A Single Endpoint for Text Embedding https://www.github.com/patw/InstructorVec
+In this series, we dive into different tools and techniques used to build Generative AI applications. As we progress through the series, we&rsquo;ll explore a variety of methods that aid in creating efficient and powerful models. Today, we delve into InstructorVec, the latest evolution in the VectorService tool family.
+InstructorVec is not just another text embedding model; it&rsquo;s an innovative approach to generating dense vectors for production use cases.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.2">
+  <title>Tool Series - InstructorVec | AI Dungeons - Everything I learned about AI</title>
+  <link rel="canonical" href="https://ai.dungeons.ca/posts/tool-series-instructorvec/">
+
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/base.min.ee1d0b98bb68d9e71b2feee16bec52548b2bc0c3f58301d404729345cf0788e3.css" integrity="sha256-7h0LmLto2ecbL&#43;7ha&#43;xSVIsrwMP1gwHUBHKTRc8HiOM=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <h1 class="Banner-heading">
+          <a class="Banner-link u-clickable" href="/">AI Dungeons - Everything I learned about AI</a>
+        </h1>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <article>
+    <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/tool-series-instructorvec/" rel="bookmark">Tool Series - InstructorVec</a>
+  </h2>
+  
+    <time datetime="2024-02-07T00:00:00Z">7 February, 2024</time>
+  
+</header>
+    <h1 id="tool-series---instructorvec-a-single-endpoint-for-text-embedding">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-instructorvec/#tool-series---instructorvec-a-single-endpoint-for-text-embedding">Tool Series - InstructorVec: A Single Endpoint for Text Embedding</a>
+</h1>
+<p><a href="https://www.github.com/patw/InstructorVec">https://www.github.com/patw/InstructorVec</a></p>
+<p>In this series, we dive into different tools and techniques used to build Generative AI applications. As we progress through the series, we&rsquo;ll explore a variety of methods that aid in creating efficient and powerful models. Today, we delve into InstructorVec, the latest evolution in the VectorService tool family.</p>
+<p>InstructorVec is not just another text embedding model; it&rsquo;s an innovative approach to generating dense vectors for production use cases. It&rsquo;s designed as a single endpoint that calls the instructor-large model from HuggingFace, marking a departure from the previous VectorService tool that hosted eight different embedding endpoints. This change allows us to focus entirely on a singular solution for text embedding and outputting 768 dimension dense vectors, making it ideal for real-world applications.</p>
+<p>To achieve this, InstructorVec loads the full instructor-large model but quantizes it from its original FP32 precision down to FP8. This slight reduction in precision offers significant performance improvements without compromising the quality of the outputs. In fact, executing InstructorVec takes no more than 100 milliseconds on a CPU, compared to the 1000 millisecond execution time at full FP32 precision. As a result, many RAG (Retrieval Augmented Generation) tools that consume this service have become much more responsive and efficient.</p>
+<p>As we continue to build new production applications, InstructorVec will serve as the baseline vectorizer for all our tools moving forward. This is because its performance and precision make it a reliable solution for various use cases. Moreover, we currently maintain multiple copies of this service to cater to different production requirements.</p>
+<p>In the future, we may expand InstructorVec&rsquo;s capabilities by adding a similarity checking endpoint. Similarity checking was one of the most useful features in the legacy VectorService tool, and its integration into InstructorVec will further enhance its versatility and utility.</p>
+<p>To sum it up, InstructorVec is an innovative single-endpoint solution for text embedding that delivers high performance and precision while being ideal for production applications. As we continue to refine this tool, we&rsquo;re excited about the possibilities it holds for enhancing our Generative AI applications and unlocking new levels of efficiency in RAG tools. Stay tuned as we explore more exciting developments in the world of text embedding and Generative AI!</p>
+<ul>
+<li>Human Intervention: Minor.  I added the URL for the github repo.  Sometimes it adds it as a link in the text, other times it forgets it entirely.</li>
+</ul>
+<h3 id="facts-used">
+  <a class="Heading-link u-clickable" href="/posts/tool-series-instructorvec/#facts-used">Facts Used:</a>
+</h3>
+<ul>
+<li>
+<ul>
+<li>This series covers different tools used for building Generative AI (genai) applications</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Fourth Tool in the series is InstructVec (<a href="https://www.github.com/patw/InstructorVec">https://www.github.com/patw/InstructorVec</a>)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>InstructorVec is the next generation of VectorService tool, however instead of hosting 8 different embedding endpoints, it hosts a single endpoint that calls the instructor-large model from HuggingFace.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>The other text embedding models in VectorService are nice to show off differences in vector outputs and can demonstrate how different models measure similarity between two strings of text.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>InstructorVec is focused entirely on being a single endpoint for text embedding and outputting 768 dimension dense vectors for production use cases.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This tool loads the full instructor-large model, but quantizes it from full FP32 precision down to FP8.  For a small loss in precision in the model weights, it executes in 100 ms or less on CPU compared to 1000 ms at full precision.  This has made some RAG (retrieval augmented generation) tools that consume this service, much more responsive.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This will be the baseline vectorizer I&rsquo;ll be using in all tools moving forward, and currently operate multiple copies of this for servicing different production applications</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Future state for this tool might include a similarity checking endpoint, as this has been very useful in the legacy VectorService tool.</li>
+</ul>
+</li>
+</ul>
+
+    
+
+
+  
+
+  
+
+
+
+
+
+  <footer>
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/categories/ai/" rel="tag">AI</a>
+            </li>
+          
+        </ul>
+      
+    
+      
+        <ul class="Tags">
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/vector-search/" rel="tag"> Vector Search</a>
+            </li>
+          
+            <li class="Tags-item u-background">
+              <a class="Tags-link u-clickable" href="/tags/tools/" rel="tag"> Tools</a>
+            </li>
+          
+        </ul>
+      
+    
+  </footer>
+
+    
+  
+
+  </article>
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        Copyright 2024 Pat Wendorf (pat.wendorf@mongodb.com)
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
